@@ -22,9 +22,11 @@ export default function Login() {
         transition={{ duration: 0.5 }}
         className="container flex flex-row gap justify-between w-[75%]"
       >
-        <h1 className="flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
-        FeelZChat
-        </h1>
+        <Link to={"/"}>
+          <h1 className="flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
+            FeelZChat
+          </h1>
+        </Link>
         <section className="max-w-[650px] container bg-white p-16 rounded-2xl border-b-cyan-700 border-b-8 z-999">
           <h2 className="text-3xl pb-10">Вход</h2>
           <form className="grid gap-6" action="">
@@ -50,9 +52,7 @@ export default function Login() {
                 <Link
                   to="/privacy"
                   className="text-cyan-700 hover:underline text-center"
-                >
-                  
-                </Link>
+                ></Link>
               </span>
             </label>
             <button className="button-styles col-span-1" type="submit">
