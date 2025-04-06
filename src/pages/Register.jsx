@@ -36,7 +36,7 @@ export default function Register() {
 
   const handleFirstStepSubmit = async (values) => {
     try {
-      const response = await axios.post("https://api/register", values);
+      const response = await axios.post("https://api/ivan", values);
       if (response.status === 200) {
         console.log("все ок!");
         setStep(2);
