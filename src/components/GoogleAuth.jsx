@@ -21,9 +21,11 @@ const GoogleAuth = () => {
   };
 
   return (
-    <div>
+    <div className="w-full">
+
       <GoogleLogin 
         onSuccess={handleLogin} 
+        className="w-full"
         onError={() => console.log('Login Failed')} 
       />
     </div>
