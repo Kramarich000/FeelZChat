@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://messenger-app-uvg3.onrender.com/sitemap.xml
