@@ -1,4 +1,9 @@
 @import "tailwindcss";
+@font-face {
+  font-family: 'YourFont';
+  src: url('path/to/font.woff2') format('woff2');
+  font-display: swap; 
+}
 
 @layer utilities {
   .input-styles {
