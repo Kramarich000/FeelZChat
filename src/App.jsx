@@ -1,5 +1,4 @@
 import "./App.css";
-
 import Privacy from "./pages/Privacy";
 import Register from "./pages/Register";
 import Login from "./pages/Login";

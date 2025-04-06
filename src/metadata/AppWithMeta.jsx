@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import App from './App.jsx';
+import App from '../App';
 
 export default function AppWithMeta() {
     useEffect(() => {
