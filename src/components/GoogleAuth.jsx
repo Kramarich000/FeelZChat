@@ -1,14 +1,18 @@
 import React from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
+import { FaGoogle } from "react-icons/fa";
 
 const GoogleAuth = () => {
   const login = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       try {
-        const res = await axios.post("https://your-server.com/api/auth/google", {
-          token: tokenResponse.access_token,
-        });
+        const res = await axios.post(
+          "https://your-server.com/api/auth/google",
+          {
+            token: tokenResponse.access_token,
+          }
+        );
 
         if (res.status === 200) {
           console.log("Google login successful");
@@ -22,12 +26,13 @@ const GoogleAuth = () => {
   });
 
   return (
-    <button
-      onClick={() => login()}
-      className="w-full bg-white text-black py-2 rounded shadow border hover:bg-gray-100"
-    >
-      Войти через Google
-    </button>
+      <button
+        onClick={() => login()}
+        className="flex items-center justify-center text-center  w-full bg-cyan-700 text-black py-2 rounded shadow border hover:bg-gray-100"
+      >
+        <FaGoogle className="text-left mr-auto" />
+        <p className="mr-auto"> Войти через Google</p>
+      </button>
   );
 };
 
