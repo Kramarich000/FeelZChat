@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import e from "cors";
 
 const faqData = [
   {
