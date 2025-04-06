@@ -67,14 +67,6 @@ function App() {
                 path="/profile"
                 element={
                   <PrivateRoute>
-                    <Profile />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/"
-                element={
-                  <PrivateRoute>
                     {React.createElement(withTitle(Profile, "Профиль"))}
                   </PrivateRoute>
                 }
