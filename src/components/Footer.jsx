@@ -52,7 +52,7 @@ export default function Footer() {
           </motion.div>
         </div>
       </div>
-      <p className="text-[14px] mt-4">© 2025 SuperChat. Все права защищены.</p>
+      <p className="text-[14px] mt-4">© 2025 FeelZChat. Все права защищены.</p>
     </footer>
   );
 }
