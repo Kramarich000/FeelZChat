@@ -1,14 +1,13 @@
 import * as Yup from "yup";
 import { subYears } from "date-fns";
 
-// Функция для форматирования номера телефона
 const formatPhoneNumber = (value) => {
   if (typeof value !== "string") return "";
 
-  value = value.replace(/\D/g, "");  // Убираем все нецифровые символы
+  value = value.replace(/\D/g, "");  
 
   if (value.length > 11) {
-    value = value.slice(0, 11);  // Ограничиваем длину до 11 символов
+    value = value.slice(0, 11);  
   }
 
   let formattedValue = "+7";
