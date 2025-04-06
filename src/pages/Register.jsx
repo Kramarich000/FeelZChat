@@ -22,7 +22,6 @@ export default function Register() {
     date: null,
     agreement: false,
   };
-  
 
   const handleFirstStepSubmit = async (values) => {
     try {
@@ -55,7 +54,7 @@ export default function Register() {
       const response = await axios.post("https://api/ivan", values);
       if (response.status === 200) {
         console.log("все ок!");
-        window.location.href="/profile";
+        window.location.href = "/profile";
       } else {
         console.log("ошибка!", response.data);
       }
@@ -71,9 +70,12 @@ export default function Register() {
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: 50 }}
         transition={{ duration: 0.5 }}
-        className="container flex flex-row gap justify-between w-[75%]"
+        className="container flex flex-row gap justify-between w-[75%] items-center"
       >
-        <Link to={"/"} >
+        <Link
+          to={"/"}
+          className="flex items-center justify-center hover:scale-110 transition-all"
+        >
           <h1 className="flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
             FeelZChat
           </h1>
@@ -120,11 +122,11 @@ export default function Register() {
                       placeholder="Телефон"
                       className="input-styles"
                       onChange={(e) => {
-                        const phoneValue = e.target.value; 
-                        const formattedPhone = formatPhoneNumber(phoneValue); 
-                        setFieldValue("phone", formattedPhone); 
+                        const phoneValue = e.target.value;
+                        const formattedPhone = formatPhoneNumber(phoneValue);
+                        setFieldValue("phone", formattedPhone);
                       }}
-                      value={values.phone} 
+                      value={values.phone}
                     />
 
                     <ErrorMessage name="phone">
