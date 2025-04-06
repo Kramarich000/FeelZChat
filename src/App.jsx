@@ -1,14 +1,14 @@
 import "./App.css";
-import Privacy from "./pages/Privacy";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import Help from "./pages/Help";
-import Profile from "./pages/Profile";
-import Home from "./pages/Home";
-import Chat from "./pages/Chat";
-import ForgotPassword from "./pages/ForgotPassword";
+import Privacy from "@pages/Privacy";
+import Register from "@pages/Register";
+import Login from "@pages/Login";
+import Help from "@pages/Help";
+import Profile from "@pages/Profile";
+import Home from "@pages/Home";
+import Chat from "@pages/Chat";
+import ForgotPassword from "@pages/ForgotPassword";
 
-import Error404 from "./pages/404";
+import Error404 from "@pages/404";
 
 import { AnimatePresence } from "framer-motion";
 import { ErrorBoundary } from "react-error-boundary";
@@ -22,10 +22,10 @@ import {
 
 import React from "react";
 
-import FallbackComponent from "./components/FallbackComponent";
-import PrivateRoute from "./components/PrivateRoute";
-import withTitle from "./components/Title";
-import MusicComponent from "./components/MusicComponent";
+import FallbackComponent from "@components/FallbackComponent";
+import PrivateRoute from "@components/PrivateRoute";
+import withTitle from "@components/Title";
+import MusicComponent from "@components/MusicComponent";
 
 function App() {
   return (

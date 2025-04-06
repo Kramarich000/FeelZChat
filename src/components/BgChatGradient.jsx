@@ -1,5 +1,5 @@
 import React from "react";
-import useEmotionGradient from "../hooks/useEmotionGradient";
+import useEmotionGradient from "@hooks/useEmotionGradient";
 
 export default function BgChatGradient({ aggregated, children }) {
   const gradient = useEmotionGradient(aggregated);  

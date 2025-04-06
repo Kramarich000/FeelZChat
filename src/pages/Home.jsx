@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import Header from "../components/Header";
+import Header from "@components/Header";
 import { motion } from "framer-motion";
-import Footer from "../components/Footer";
+import Footer from "@components/Footer";
 
 export default function Home() {
   const features = [

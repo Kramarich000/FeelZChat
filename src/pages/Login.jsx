@@ -1,8 +1,9 @@
 import React from "react";
-import BgGradient from "../components/BgGradient";
+import BgGradient from "@components/BgGradient";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BsQuestionSquareFill } from "react-icons/bs";
+import GoogleAuth from "@components/GoogleAuth";
 
 export default function Login() {
   const Input = ({ type, placeholder }) => (
@@ -58,6 +59,7 @@ export default function Login() {
             <button className="button-styles col-span-1" type="submit">
               Войти
             </button>
+            <GoogleAuth /> 
             <div className="flex justify-evenly">
               <Link
                 className="text-cyan-700 hover:underline"
@@ -69,6 +71,7 @@ export default function Login() {
                 Нет аккаунта?
               </Link>
             </div>
+            
           </form>
         </section>
       </motion.div>

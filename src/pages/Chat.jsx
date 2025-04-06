@@ -1,5 +1,5 @@
-import { useEmotionAnalysis } from "../hooks/useEmotionAnalysis";
-import BgChatGradient from "../components/BgChatGradient";
+import { useEmotionAnalysis } from "@hooks/useEmotionAnalysis";
+import BgChatGradient from "@components/BgChatGradient";
 
 export default function Chat() {
   const { text, setText, result, loading, handleSubmit } = useEmotionAnalysis();

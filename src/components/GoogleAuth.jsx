@@ -5,6 +5,9 @@ import { FaGoogle } from "react-icons/fa";
 
 const GoogleAuth = () => {
   const login = useGoogleLogin({
+    flow: "auth-code",
+    scope:
+      "openid email profile https://www.googleapis.com/auth/user.birthday.read https://www.googleapis.com/auth/user.phonenumbers.read",
     onSuccess: async (tokenResponse) => {
       try {
         const res = await axios.post(
@@ -26,13 +29,13 @@ const GoogleAuth = () => {
   });
 
   return (
-      <button
-        onClick={() => login()}
-        className="flex items-center justify-center text-center  w-full bg-cyan-700 text-black py-2 rounded shadow border hover:bg-gray-100"
-      >
-        <FaGoogle className="text-left mr-auto" />
-        <p className="mr-auto"> Войти через Google</p>
-      </button>
+    <button
+      onClick={() => login()}
+      className="flex items-center justify-center text-center  mb-4 w-full bg-cyan-700 text-black py-2 rounded shadow border hover:bg-gray-100"
+    >
+      <FaGoogle className="text-left mr-auto" />
+      <p className="mr-auto">Войти через Google</p>
+    </button>
   );
 };
 

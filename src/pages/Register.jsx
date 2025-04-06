@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import BgGradient from "../components/BgGradient";
-import CustomCalendar from "../components/CustomCalendar";
+import BgGradient from "@components/BgGradient";
+import CustomCalendar from "@components/CustomCalendar";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BsQuestionSquareFill } from "react-icons/bs";
 import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { registerSchema, formatPhoneNumber } from "../validate/registerSchema";
-import GoogleAuth from '../components/GoogleAuth';
+import { registerSchema, formatPhoneNumber } from "@validate/registerSchema";
+import GoogleAuth from "@components/GoogleAuth";
+import AnimatedError from "@components/AnimatedError";
 
-import AnimatedError from "../components/AnimatedError";
 
 export default function Register() {
   const [step, setStep] = useState(1);
@@ -202,9 +202,8 @@ export default function Register() {
                 </Form>
               )}
             </Formik>
-            
           )}
-          <GoogleAuth /> 
+          <GoogleAuth />
 
           {step === 2 && (
             <motion.form
@@ -249,6 +248,9 @@ export default function Register() {
               </button>
             </motion.form>
           )}
+          <Link className="text-cyan-700 hover:underline" to="/login">
+            Уже есть аккаунт?
+          </Link>
         </section>
       </motion.div>
       <Link to={"/help"}>

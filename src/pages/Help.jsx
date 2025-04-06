@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import * as Select from "@radix-ui/react-select";
 import { motion } from "framer-motion";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "@components/Header";
+import Footer from "@components/Footer";
+
 
 const faqData = [
   {
