@@ -202,6 +202,19 @@ button:focus-visible {
   }
 }
 
+.header {
+  opacity: 0;
+  transform: translateY(-100px);
+  transition: all .3s; 
+}
+
+.header.loaded {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all .3s; 
+}
+
+
 .bg-gradient-container {
   position: absolute;
   left: 0;
