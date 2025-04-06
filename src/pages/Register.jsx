@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useNavigate } from "react";
+import React, { useState } from "react";
 import BgGradient from "../components/BgGradient";
 import CustomCalendar from "../components/CustomCalendar";
 import { Link } from "react-router-dom";
@@ -12,7 +12,6 @@ import AnimatedError from "../components/AnimatedError";
 
 export default function Register() {
   const [step, setStep] = useState(1);
-  const navigate = useNavigate();
 
   const initialValues = {
     name: "",
@@ -23,16 +22,7 @@ export default function Register() {
     date: null,
     agreement: false,
   };
-
-  useEffect(() => {
-    if (step === 3) {
-      const timer = setTimeout(() => {
-        navigate("/login");
-      }, 3000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [step, navigate]);
+  
 
   const handleFirstStepSubmit = async (values) => {
     try {
@@ -49,7 +39,7 @@ export default function Register() {
   };
   const handleSecondStepSubmit = async (values) => {
     try {
-      const response = await axios.post("https://api/email", values);
+      const response = await axios.post("https://api/ivan", values);
       if (response.status === 200) {
         console.log("все ок!");
         setStep(3);
@@ -62,10 +52,10 @@ export default function Register() {
   };
   const handleThirdStepSubmit = async (values) => {
     try {
-      const response = await axios.post("https://api/ivan/confirm-code", values);
+      const response = await axios.post("https://api/ivan", values);
       if (response.status === 200) {
         console.log("все ок!");
-        window.location.href = "/profile";
+        window.location.href="/profile";
       } else {
         console.log("ошибка!", response.data);
       }
@@ -83,7 +73,7 @@ export default function Register() {
         transition={{ duration: 0.5 }}
         className="container flex flex-row gap justify-between w-[75%]"
       >
-        <Link to={"/"}>
+        <Link to={"/"} >
           <h1 className="flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
             FeelZChat
           </h1>
@@ -130,11 +120,11 @@ export default function Register() {
                       placeholder="Телефон"
                       className="input-styles"
                       onChange={(e) => {
-                        const phoneValue = e.target.value;
-                        const formattedPhone = formatPhoneNumber(phoneValue);
-                        setFieldValue("phone", formattedPhone);
+                        const phoneValue = e.target.value; 
+                        const formattedPhone = formatPhoneNumber(phoneValue); 
+                        setFieldValue("phone", formattedPhone); 
                       }}
-                      value={values.phone}
+                      value={values.phone} 
                     />
 
                     <ErrorMessage name="phone">
