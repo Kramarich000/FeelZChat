@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useNavigate } from "react";
 import BgGradient from "../components/BgGradient";
 import CustomCalendar from "../components/CustomCalendar";
 import { Link } from "react-router-dom";
@@ -12,6 +12,7 @@ import AnimatedError from "../components/AnimatedError";
 
 export default function Register() {
   const [step, setStep] = useState(1);
+  const navigate = useNavigate();
 
   const initialValues = {
     name: "",
@@ -23,12 +24,48 @@ export default function Register() {
     agreement: false,
   };
 
-  const handleSubmit = async (values) => {
+  useEffect(() => {
+    if (step === 3) {
+      const timer = setTimeout(() => {
+        navigate("/login");
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [step, navigate]);
+
+  const handleFirstStepSubmit = async (values) => {
     try {
-      const response = await axios.post("https://api/ivan", values);
+      const response = await axios.post("https://api/register", values);
       if (response.status === 200) {
         console.log("все ок!");
         setStep(2);
+      } else {
+        console.log("ошибка!", response.data);
+      }
+    } catch (error) {
+      console.log("иван error", error);
+    }
+  };
+  const handleSecondStepSubmit = async (values) => {
+    try {
+      const response = await axios.post("https://api/email", values);
+      if (response.status === 200) {
+        console.log("все ок!");
+        setStep(3);
+      } else {
+        console.log("ошибка!", response.data);
+      }
+    } catch (error) {
+      console.log("иван error", error);
+    }
+  };
+  const handleThirdStepSubmit = async (values) => {
+    try {
+      const response = await axios.post("https://api/ivan/confirm-code", values);
+      if (response.status === 200) {
+        console.log("все ок!");
+        window.location.href = "/profile";
       } else {
         console.log("ошибка!", response.data);
       }
@@ -46,7 +83,7 @@ export default function Register() {
         transition={{ duration: 0.5 }}
         className="container flex flex-row gap justify-between w-[75%]"
       >
-        <Link to={"/"} >
+        <Link to={"/"}>
           <h1 className="flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
             FeelZChat
           </h1>
@@ -58,7 +95,7 @@ export default function Register() {
             <Formik
               initialValues={initialValues}
               validationSchema={registerSchema}
-              onSubmit={handleSubmit}
+              onSubmit={handleFirstStepSubmit}
             >
               {({ setFieldValue, values }) => (
                 <Form className="grid grid-cols-2 gap-6">
@@ -93,11 +130,11 @@ export default function Register() {
                       placeholder="Телефон"
                       className="input-styles"
                       onChange={(e) => {
-                        const phoneValue = e.target.value; // Получаем строку с номером
-                        const formattedPhone = formatPhoneNumber(phoneValue); // Форматируем строку
-                        setFieldValue("phone", formattedPhone); // Обновляем значение в Formik
+                        const phoneValue = e.target.value;
+                        const formattedPhone = formatPhoneNumber(phoneValue);
+                        setFieldValue("phone", formattedPhone);
                       }}
-                      value={values.phone} // Добавляем value для связи с Formik
+                      value={values.phone}
                     />
 
                     <ErrorMessage name="phone">
@@ -181,10 +218,7 @@ export default function Register() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 50 }}
               transition={{ duration: 0.5 }}
-              onSubmit={(e) => {
-                e.preventDefault();
-                setStep(3);
-              }}
+              onSubmit={handleSecondStepSubmit}
             >
               <label>
                 <input
@@ -206,10 +240,7 @@ export default function Register() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 50 }}
               transition={{ duration: 0.5 }}
-              onSubmit={(e) => {
-                e.preventDefault();
-                console.log("Форма полностью отправлена");
-              }}
+              onSubmit={handleThirdStepSubmit}
             >
               <label>
                 <input

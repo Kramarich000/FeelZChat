@@ -20,9 +20,9 @@ export default function Login() {
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, x: 50 }}
         transition={{ duration: 0.5 }}
-        className="container flex flex-row gap justify-between w-[75%]"
+        className="container flex flex-row gap justify-between w-[75%] items-center"
       >
-        <Link to={"/"}>
+        <Link to={"/"} className="flex items-center justify-center hover:scale-110 transition-all">
           <h1 className="flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
             FeelZChat
           </h1>
