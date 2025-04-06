@@ -7,6 +7,7 @@ import { BsQuestionSquareFill } from "react-icons/bs";
 import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { registerSchema, formatPhoneNumber } from "../validate/registerSchema";
+import GoogleAuth from '../components/GoogleAuth';
 
 import AnimatedError from "../components/AnimatedError";
 
@@ -201,7 +202,9 @@ export default function Register() {
                 </Form>
               )}
             </Formik>
+            
           )}
+          <GoogleAuth /> 
 
           {step === 2 && (
             <motion.form
