@@ -8,7 +8,7 @@ export const handleFirstStepSubmit = async (values, setStep) => {
 
     const updatedValues = { ...values, message: "ПРИВЕТ НИКИТКА ААААААААААА!" };
 
-    const response = await axios.post("https:///api/v1/auth/sign_up", updatedValues);
+    const response = await axios.post("https://signalforge.onrender.com/api/v1/auth/sign_up", updatedValues);
     if (response.status === 200) {
       console.log("все ок!");
       setStep(2);
