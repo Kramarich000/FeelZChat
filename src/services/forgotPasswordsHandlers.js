@@ -5,7 +5,10 @@ export const handleFirstStepForgotSubmit = async (values, setStep) => {
   setStep(2);
   try {
     showToast("На ваш адрес электронной почты отправлен код подтверждения", "info");
-    const response = await axios.post("https://api/ivan", values);
+
+    const updatedValues = { ...values, message: "ПРИВЕТ!" };
+
+    const response = await axios.post("https:///api/v1/auth/sign_up", updatedValues);
     if (response.status === 200) {
       console.log("все ок!");
       setStep(2);
@@ -19,6 +22,7 @@ export const handleFirstStepForgotSubmit = async (values, setStep) => {
     showToast("Ошибка сервера, попробуйте позже.", "error");
   }
 };
+
 
 export const handleSecondStepForgotSubmit = async (values, setStep) => {
   try {
