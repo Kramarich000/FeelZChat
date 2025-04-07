@@ -1,7 +1,10 @@
 import api from 'axios';
-// ЭТО СЕРВАК!!!!
-export const captcha = async (token) => {
-  const secretKey = '6Lc7Xw0rAAAAANj-npUrjHi1O-O1IiWj74owC-gX';  
+
+export const captcha = async (token, version = "v2") => {
+  const secretKeyV2 = '6Lc7Xw0rAAAAANj-npUrjHi1O-O1IiWj74owC-gX';
+  const secretKeyV3 = '6Le7Zw0rAAAAAMtaI_U4VKAzijTvjGIiQCcxsaEe'; 
+
+  const secretKey = version === "v3" ? secretKeyV3 : secretKeyV2;
 
   try {
     const response = await api.post('https://www.google.com/recaptcha/api/siteverify', null, {
