@@ -23,7 +23,7 @@ export const handleFirstStepForgotSubmit = async (values, setStep) => {
 export const handleSecondStepForgotSubmit = async (values, setStep) => {
   try {
     setStep(3);
-    showToast("Успех", "sucess");
+    showToast("Успех", "sucсess");
     const response = await axios.post("https://api/ivan", values);
     if (response.status === 200) {
       console.log("все ок!");

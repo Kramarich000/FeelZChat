@@ -192,36 +192,39 @@ export default function Register() {
           {step === 2 && (
             <Formik
               initialValues={{ email: "" }}
-              onSubmit={(values) => handleSecondStepSubmit(values, setStep)}
               validationSchema={emailSchema}
+              onSubmit={(values) => {
+                handleSecondStepSubmit(values, setStep);
+              }}
             >
-              {({ handleSubmit, handleChange, values }) => (
-                <motion.form
-                  className="grid grid-cols-1 gap-6"
-                  initial={{ opacity: 0, x: 50 }}
+              {() => (
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 50 }}
+                  exit={{ opacity: 0, x: -50 }}
                   transition={{ duration: 0.5 }}
-                  onSubmit={handleSubmit}
                 >
-                  <label>
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Введите Email"
-                      className="input-styles"
-                      onChange={handleChange}
-                      value={values.email}
-                    />
-                    <ErrorMessage name="email">
-                      {(msg) => <AnimatedError msg={msg} centered />}
-                    </ErrorMessage>
-                  </label>
-                  
-                  <button className="button-styles mb-4" type="submit">
-                    Отправить
-                  </button>
-                </motion.form>
+                  <Form noValidate className="grid gap-6" autoComplete="email">
+                    <label>
+                      <Field
+                        name="email"
+                        type="email"
+                        placeholder="E-mail"
+                        className="input-styles"
+                        pattern=".*"
+                      />
+                      <ErrorMessage name="email">
+                        {(msg) => (
+                          <AnimatedError msg={msg} variant="forgotPassword" />
+                        )}
+                      </ErrorMessage>
+                    </label>
+
+                    <button className="button-styles col-span-1" type="submit">
+                      Сбросить
+                    </button>
+                  </Form>
+                </motion.div>
               )}
             </Formik>
           )}
@@ -270,9 +273,7 @@ export default function Register() {
               <div className="w-20 h-20 bg-cyan-700 rounded-full flex items-center justify-center text-white text-4xl">
                 ✓
               </div>
-              <p className="text-xl text-center">
-                Вы успешно зарегистрированы
-              </p>
+              <p className="text-xl text-center">Вы успешно зарегистрированы</p>
             </motion.div>
           )}
         </section>
