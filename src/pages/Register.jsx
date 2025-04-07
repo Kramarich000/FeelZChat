@@ -33,6 +33,8 @@ export default function Register() {
     agreement: false,
   };
 
+  const [registrationData, setRegistrationData] = useState({});
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -69,7 +71,9 @@ export default function Register() {
             <Formik
               initialValues={initialValues}
               validationSchema={registerSchema}
-              onSubmit={(values) => handleFirstStepSubmit(values, setStep)}
+              onSubmit={(values) =>
+                handleFirstStepSubmit(values, setStep, setRegistrationData)
+              }
             >
               {({ setFieldValue, values }) => (
                 <Form className="grid grid-cols-2 gap-6">
@@ -194,7 +198,7 @@ export default function Register() {
               initialValues={{ email: "" }}
               validationSchema={emailSchema}
               onSubmit={(values) => {
-                handleSecondStepSubmit(values, setStep);
+                handleSecondStepSubmit(values.email, registrationData, setStep);
               }}
             >
               {() => (
@@ -221,7 +225,7 @@ export default function Register() {
                     </label>
 
                     <button className="button-styles col-span-1" type="submit">
-                      Сбросить
+                      Подтвердить
                     </button>
                   </Form>
                 </motion.div>

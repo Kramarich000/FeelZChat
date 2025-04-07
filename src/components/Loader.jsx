@@ -21,7 +21,6 @@ export const Loader = ({ color = "rgb(14 116 144)" }) => {
         speedMultiplier={0.7}
         size={50}
         color={color}
-        ariaLabel="bars-loading"
       />
     </LoaderContainer>
   );

@@ -1,51 +1,64 @@
 import axios from "axios";
 import { showToast } from "@utils/toast";  
 
-export const handleFirstStepSubmit = async (values, setStep) => {
-  setStep(2);
-  try {
-    showToast("На ваш адрес электронной почты отправлен код подтверждения", "info");
-
-    const updatedValues = { user: { ...values, message: "ПРИВЕТ НИКИТКА ААААААААААА!" } };
-
-    console.log("Данные, отправляемые на сервер:", JSON.stringify(updatedValues, null, 2));
-
-    const response = await axios.post("https://signalforge.onrender.com/api/v1/auth/sign_up", updatedValues);
-
-    if (response.status === 200) {
-      console.log("все ок!");
-      setStep(2);
-      showToast("На ваш адрес электронной почты отправлен код подтверждения", "info");
-    } else {
-      console.log("ошибка!", response.data);
-      showToast("Ошибка при регистрации, попробуйте снова.", "error");
-    }
-  } catch (error) {
-    console.log("иван error", error);
-    showToast("Ошибка сервера, попробуйте позже.", "error");
-  }
+const formatDate = (d) => {
+  if (!d) return "";
+  if (typeof d === "string") return d;
+  const day = String(d.getDate()).padStart(2, "0");
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const year = d.getFullYear();
+  return `${day}.${month}.${year}`;
 };
 
+export const handleFirstStepSubmit = (values, setStep, setRegistrationData) => {
+  const partialData = {
+    phone: values.phone.replace(/\D/g, ""),
+    password: values.password,
+    password_confirmation: values.confirmPassword,
+    nickname: `${values.surname} ${values.name}`,
+    birthdate: formatDate(values.date), 
+  };
 
-export const handleSecondStepSubmit = async (values, setStep) => {
+  console.log("partialData", partialData);
+
+  setRegistrationData(partialData);
+  setStep(2);
+};
+
+export const handleSecondStepSubmit = async (email, registrationData, setStep) => {
+  const payload = {
+    user: {
+      ...registrationData,
+      email,
+    },
+  };
+
+  console.log("payload", payload);
+
   try {
-    setStep(3);
-    showToast("На ваш адрес электронной почты отправлен код подтверждения", "info");
-    const response = await axios.post("https://api/ivan", values);
+    const response = await axios.post(
+      "https://signalforge.onrender.com/api/v1/auth/sign_up",
+      payload,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
     if (response.status === 200) {
-      console.log("все ок!");
-      showToast("На ваш адрес электронной почты отправлен код подтверждения", "info");
+      showToast("На почту отправлен код подтверждения", "info");
       setStep(3);
     } else {
-      showToast("Код подтверждения неверен. \n Повторите попытку", "error")
-      console.log("ошибка!", response.data);
+      showToast("Ошибка при регистрации", "error");
+      console.log("Ошибка регистрации", response.data);
     }
   } catch (error) {
-    console.log("иван error", error);
+    console.error("Ошибка запроса", error);
     showToast("Ошибка сервера, попробуйте позже.", "error");
-
   }
 };
+
 
 export const handleThirdStepSubmit = async (values, setStep) => {
   try {
