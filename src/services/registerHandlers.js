@@ -1,7 +1,7 @@
 import axios from "axios";
 import { showToast } from "@utils/toast";  
 
-export const handleFirstStepForgotSubmit = async (values, setStep) => {
+export const handleFirstStepSubmit = async (values, setStep) => {
   setStep(2);
   try {
     showToast("На ваш адрес электронной почты отправлен код подтверждения", "info");
