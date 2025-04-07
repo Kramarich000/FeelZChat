@@ -24,19 +24,13 @@ const Error404 = lazy(() => import("@errors/404"));
 import FallbackComponent from "@components/FallbackComponent";
 import PrivateRoute from "@components/PrivateRoute";
 import withTitle from "@components/Title";
-import withTranslate from "@components/Translate";
 import MusicComponent from "@components/MusicComponent";
 import { Loader } from "@components/Loader"; 
 
-import useEffecti18n from "@hooks/useEffecti18n";
-
-
 const Page = ({ component: Component, title }) => {
-  const Translated = withTranslate(Component);
-  const Wrapped = withTitle(Translated, title);
-  return <Wrapped />;
+  const WrappedComponent = withTitle(Component, title);
+  return <WrappedComponent />;
 };
-console.log("Язык- ", navigator.language);
 
 const routes = [
   { path: "/register", component: Register, title: "Регистрация" },
@@ -56,7 +50,7 @@ const routes = [
 ];
 
 function App() {
-  useEffecti18n();
+  
   return (
     <Router>
       <ErrorBoundary FallbackComponent={FallbackComponent}>
