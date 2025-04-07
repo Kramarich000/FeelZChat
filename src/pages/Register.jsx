@@ -1,20 +1,27 @@
 import React, { useState } from "react";
 import BgGradient from "@components/BgGradient";
 import CustomCalendar from "@components/CustomCalendar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BsQuestionSquareFill } from "react-icons/bs";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { registerSchema, formatPhoneNumber } from "@validate/registerSchema";
+import {
+  registerSchema,
+  formatPhoneNumber,
+  emailSchema,
+  confirmationCodeSchema,
+} from "@validate/registerSchema";
 import GoogleAuth from "@components/GoogleAuth";
 import AnimatedError from "@components/AnimatedError";
-import { ToastContainer } from "react-toastify";
-import { handleFirstStepSubmit, handleSecondStepSubmit, handleThirdStepSubmit } from "../services/registerHandlers";
-
-import 'react-toastify/dist/ReactToastify.css';
+import {
+  handleFirstStepSubmit,
+  handleSecondStepSubmit,
+  handleThirdStepSubmit,
+} from "@services/registerHandlers";
+import { useEffect } from "react";
 
 export default function Register() {
-  const [step] = useState(1);
+  const [step, setStep] = useState(1);
 
   const initialValues = {
     name: "",
@@ -25,6 +32,18 @@ export default function Register() {
     date: null,
     agreement: false,
   };
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (step === 4) {
+      const timer = setTimeout(() => {
+        navigate("/login");
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [step, navigate]);
 
   return (
     <BgGradient>
@@ -50,7 +69,7 @@ export default function Register() {
             <Formik
               initialValues={initialValues}
               validationSchema={registerSchema}
-              onSubmit={handleFirstStepSubmit}
+              onSubmit={(values) => handleFirstStepSubmit(values, setStep)}
             >
               {({ setFieldValue, values }) => (
                 <Form className="grid grid-cols-2 gap-6">
@@ -155,73 +174,120 @@ export default function Register() {
                     </ErrorMessage>
                   </div>
 
-                  <button
-                    className="button-styles col-span-2 mb-4"
-                    type="submit"
-                  >
+                  <button className="button-styles col-span-2" type="submit">
                     Зарегистрироваться
+                  </button>
+                  <GoogleAuth />
+                  <Link
+                    className="text-cyan-700 col-span-2 text-center hover:underline"
+                    to="/login"
+                  >
+                    Уже есть аккаунт?
+                  </Link>
+                </Form>
+              )}
+            </Formik>
+          )}
+
+          {step === 2 && (
+            <Formik
+              initialValues={{ email: "" }}
+              onSubmit={(values) => handleSecondStepSubmit(values, setStep)}
+              validationSchema={emailSchema}
+            >
+              {({ handleSubmit, handleChange, values }) => (
+                <motion.form
+                  className="grid grid-cols-1 gap-6"
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 50 }}
+                  transition={{ duration: 0.5 }}
+                  onSubmit={handleSubmit}
+                >
+                  <label>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Введите Email"
+                      className="input-styles"
+                      onChange={handleChange}
+                      value={values.email}
+                    />
+                    <ErrorMessage name="email">
+                      {(msg) => <AnimatedError msg={msg} centered />}
+                    </ErrorMessage>
+                  </label>
+                  
+                  <button className="button-styles mb-4" type="submit">
+                    Отправить
+                  </button>
+                </motion.form>
+              )}
+            </Formik>
+          )}
+
+          {step === 3 && (
+            <Formik
+              initialValues={{ confirmationCode: "" }}
+              onSubmit={(values) => handleThirdStepSubmit(values, setStep)}
+              validationSchema={confirmationCodeSchema}
+            >
+              {() => (
+                <Form
+                  as={motion.form}
+                  className="grid grid-cols-1 gap-6"
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 50 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="relative">
+                    <Field
+                      type="text"
+                      name="confirmationCode"
+                      placeholder="Код подтверждения"
+                      className="input-styles"
+                    />
+                    <ErrorMessage name="confirmationCode">
+                      {(msg) => <AnimatedError msg={msg} centered />}
+                    </ErrorMessage>
+                  </div>
+                  <button className="button-styles mb-4" type="submit">
+                    Завершить регистрацию
                   </button>
                 </Form>
               )}
             </Formik>
           )}
-          <GoogleAuth />
-
-          <ToastContainer />
-
-          {step === 2 && (
-            <motion.form
-              className="grid grid-cols-1 gap-6"
+          {step === 4 && (
+            <motion.div
+              className="flex flex-col items-center gap-4"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 50 }}
               transition={{ duration: 0.5 }}
-              onSubmit={handleSecondStepSubmit}
             >
-              <label>
-                <input
-                  type="email"
-                  placeholder="Введите Email"
-                  className="input-styles"
-                />
-              </label>
-              <button className="button-styles mb-4" type="submit">
-                Отправить
-              </button>
-            </motion.form>
+              <div className="w-20 h-20 bg-cyan-700 rounded-full flex items-center justify-center text-white text-4xl">
+                ✓
+              </div>
+              <p className="text-xl text-center">
+                Вы успешно зарегистрированы
+              </p>
+            </motion.div>
           )}
-
-          {step === 3 && (
-            <motion.form
-              className="grid grid-cols-1 gap-6"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 50 }}
-              transition={{ duration: 0.5 }}
-              onSubmit={handleThirdStepSubmit}
-            >
-              <label>
-                <input
-                  type="text"
-                  placeholder="Код подтверждения"
-                  className="input-styles"
-                />
-              </label>
-              <button className="button-styles mb-4" type="submit">
-                Завершить регистрацию
-              </button>
-            </motion.form>
-          )}
-          <Link className="text-cyan-700 hover:underline" to="/login">
-            Уже есть аккаунт?
-          </Link>
         </section>
       </motion.div>
       <Link to={"/help"}>
-        <div className="fixed bottom-10 left-10 flex items-center justify-center gap-5 bg-amber-50 p-3 rounded-4xl">
-          <p className="">Есть вопросы?</p>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 50 }}
+          transition={{ duration: 1 }}
+          className="fixed bottom-10 left-10 flex items-center justify-center gap-5 bg-amber-50 p-3 rounded-4xl"
+        >
+          <p>Есть вопросы?</p>
           <BsQuestionSquareFill size={50} color="rgb(14, 116, 144)" />
-        </div>
+        </motion.div>
       </Link>
     </BgGradient>
   );

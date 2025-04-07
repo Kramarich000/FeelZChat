@@ -3,37 +3,28 @@ import BgGradient from "@components/BgGradient";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BsQuestionSquareFill } from "react-icons/bs";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import {
+  forgotPasswordSchema,
+  confirmationCodeSchema,
+} from "@validate/forgotPasswordSchema";
 
+import {
+  handleFirstStepForgotSubmit,
+  handleSecondStepForgotSubmit,
+} from "@services/forgotPasswordsHandlers";
+
+import AnimatedError from "@components/AnimatedError";
 
 export default function ForgotPassword() {
-  const Input = ({ type, placeholder }) => (
-    <input
-      className="input-styles"
-      type={type}
-      placeholder={placeholder}
-      required
-    />
-  );
-
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
-
-  const handleFirstStepSubmit = (e) => {
-    e.preventDefault();
-    setStep(2);
-  };
-
-  const handleFinalSubmit = (e) => {
-    e.preventDefault();
-
-    setStep(3);
-  };
 
   useEffect(() => {
     if (step === 3) {
       const timer = setTimeout(() => {
         navigate("/login");
-      }, 3000);
+      }, 5000);
 
       return () => clearTimeout(timer);
     }
@@ -58,40 +49,84 @@ export default function ForgotPassword() {
         </Link>
         <section className="max-w-[650px] container bg-white p-16 rounded-2xl border-b-cyan-700 border-b-8 z-999">
           <h2 className="text-3xl pb-10">Сброс пароля</h2>
-          {step == 1 && (
-            <motion.form
-              className="grid gap-6"
-              action=""
-              onSubmit={handleFirstStepSubmit}
+          {step === 1 && (
+            <Formik
+              initialValues={{ email: "" }}
+              validationSchema={forgotPasswordSchema}
+              onSubmit={(values) => {
+                handleFirstStepForgotSubmit(values, setStep);
+              }}
             >
-              <label>
-                <Input type="email" placeholder="E-mail" />
-              </label>
+              {() => (
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Form noValidate className="grid gap-6" autoComplete="email">
+                    <label>
+                      <Field
+                        name="email"
+                        type="email"
+                        placeholder="E-mail"
+                        className="input-styles"
+                        pattern=".*"
+                      />
+                      <ErrorMessage name="email">
+                        {(msg) => (
+                          <AnimatedError msg={msg} variant="forgotPassword" />
+                        )}
+                      </ErrorMessage>
+                    </label>
 
-              <button className="button-styles col-span-1" type="submit">
-                Сбросить
-              </button>
-            </motion.form>
+                    <button className="button-styles col-span-1" type="submit">
+                      Сбросить
+                    </button>
+                  </Form>
+                </motion.div>
+              )}
+            </Formik>
           )}
-          {step == 2 && (
-            <motion.form
-              className="grid gap-6"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 50 }}
-              transition={{ duration: 0.5 }}
-              action=""
-              onSubmit={handleFinalSubmit}
+
+          {step === 2 && (
+            <Formik
+              initialValues={{ confirmationCode: "" }}
+              onSubmit={(values) =>
+                handleSecondStepForgotSubmit(values, setStep)
+              }
+              validationSchema={confirmationCodeSchema}
             >
-              <label>
-                <Input type="text" placeholder="Код подтверждения" />
-              </label>
-
-              <button className="button-styles col-span-1" type="submit">
-                Отправить
-              </button>
-            </motion.form>
+              {() => (
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Form as={motion.form} className="grid grid-cols-1 gap-6">
+                    <label>
+                      <Field
+                        type="text"
+                        name="confirmationCode"
+                        placeholder="Код подтверждения"
+                        className="input-styles"
+                      />
+                      <ErrorMessage name="confirmationCode">
+                        {(msg) => (
+                          <AnimatedError msg={msg} variant="forgotPassword" />
+                        )}
+                      </ErrorMessage>
+                    </label>
+                    <button className="button-styles mb-4" type="submit">
+                      Завершить регистрацию
+                    </button>
+                  </Form>
+                </motion.div>
+              )}
+            </Formik>
           )}
+
           {step === 3 && (
             <motion.div
               className="flex flex-col items-center gap-4"

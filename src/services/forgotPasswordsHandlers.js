@@ -1,11 +1,10 @@
 import axios from "axios";
 import { showToast } from "@utils/toast";  
 
-export const handleFirstStepSubmit = async (values, setStep) => {
-  console.log("тварь");
+export const handleFirstStepForgotSubmit = async (values, setStep) => {
   setStep(2);
   try {
-    showToast("Успех", "success");
+    showToast("На ваш адрес электронной почты отправлен код подтверждения", "info");
     const response = await axios.post("https://api/ivan", values);
     if (response.status === 200) {
       console.log("все ок!");
@@ -21,10 +20,10 @@ export const handleFirstStepSubmit = async (values, setStep) => {
   }
 };
 
-export const handleSecondStepSubmit = async (values, setStep) => {
+export const handleSecondStepForgotSubmit = async (values, setStep) => {
   try {
     setStep(3);
-    showToast("На ваш адрес электронной почты отправлен код подтверждения", "info");
+    showToast("Успех", "sucess");
     const response = await axios.post("https://api/ivan", values);
     if (response.status === 200) {
       console.log("все ок!");
@@ -41,10 +40,9 @@ export const handleSecondStepSubmit = async (values, setStep) => {
   }
 };
 
-export const handleThirdStepSubmit = async (values, setStep) => {
+export const handleThirdStepForgotSubmit = async (values) => {
   try {
     showToast("Код подтверждения верен")
-    setStep(4)
     const response = await axios.post("https://api/ivan", values);
     if (response.status === 200) {
       console.log("все ок!");

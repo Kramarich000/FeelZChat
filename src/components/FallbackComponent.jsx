@@ -23,7 +23,7 @@ const FallbackComponent = ({ error }) => {
       <div>
         <h1>Произошла неизвестная ошибка!</h1>
         <p>Что-то пошло не так.</p>
-        <Link className="flex mt-5 flex-wrap justify-center items-center text-center text-white bg-cyan-700 h-[50px] w-[300px]" to="/">Вернуться на главную</Link>
+        <Link className="flex mt-5 flex-wrap justify-center items-center text-center text-white bg-cyan-700 h-[50px] w-[300px] hover:bg-black transition-all" to="/">Вернуться на главную</Link>
       </div>
     );
   }

@@ -27,6 +27,9 @@ import PrivateRoute from "@components/PrivateRoute";
 import withTitle from "@components/Title";
 import MusicComponent from "@components/MusicComponent";
 
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+
 function App() {
   return (
     <Router>
@@ -83,6 +86,7 @@ function App() {
         </main>
         <MusicComponent />
       </ErrorBoundary>
+      <ToastContainer newestOnTop limit={10} />
     </Router>
   );
 }

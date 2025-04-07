@@ -31,7 +31,8 @@ const GoogleAuth = () => {
   return (
     <button
       onClick={() => login()}
-      className="flex items-center justify-center text-center  mb-4 w-full bg-cyan-700 text-black py-2 rounded shadow border hover:bg-gray-100"
+      type="button"
+      className="flex items-center justify-center text-center col-span-2 w-full bg-cyan-700 text-black py-2 rounded shadow border hover:bg-gray-100"
     >
       <FaGoogle className="text-left mr-auto" />
       <p className="mr-auto">Войти через Google</p>
