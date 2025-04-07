@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "./axiosInstance";
 export const refreshAccessToken = async () => {
     const refreshToken = localStorage.getItem("refresh_token");
   
@@ -6,7 +6,7 @@ export const refreshAccessToken = async () => {
       throw new Error("Refresh token not found");
     }
   
-    const response = await axios.post("/api/v1/auth/refresh", {
+    const response = await api.post("/auth/refresh", {
       refresh_token: refreshToken,
     });
   

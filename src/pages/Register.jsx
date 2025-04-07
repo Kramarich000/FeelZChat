@@ -19,6 +19,9 @@ import {
   handleThirdStepSubmit,
 } from "@services/registerHandlers";
 import { useEffect } from "react";
+import { captcha } from "@services/captcha";
+import { toast } from "react-toastify";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Register() {
   const [step, setStep] = useState(1);
@@ -46,6 +49,30 @@ export default function Register() {
       return () => clearTimeout(timer);
     }
   }, [step, navigate]);
+
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+
+  const handleCaptcha = async (token) => {
+    if (!token) {
+      toast.error("Ошибка: капча не пройдена");
+      return;
+    }
+
+    try {
+      const verificationResult = await captcha(token);
+
+      if (verificationResult.success && verificationResult.score >= 0.5) {
+        setCaptchaVerified(true);
+        toast.success("Captcha пройдена!");
+      } else {
+        setCaptchaVerified(false);
+        toast.error("Captcha не пройдена!");
+      }
+    } catch (error) {
+      toast.error("Ошибка при верификации капчи!");
+      console.error("Captcha verification error:", error);
+    }
+  };
 
   return (
     <BgGradient>
@@ -178,7 +205,11 @@ export default function Register() {
                     </ErrorMessage>
                   </div>
 
-                  <button className="button-styles col-span-2" type="submit">
+                  <button
+                    className="button-styles col-span-2"
+                    type="submit"
+                    disabled={!captchaVerified}
+                  >
                     Зарегистрироваться
                   </button>
                   <GoogleAuth />
@@ -192,6 +223,14 @@ export default function Register() {
               )}
             </Formik>
           )}
+
+          <div className="flex justify-center items-center mt-4 origin-top">
+            {" "}
+            <ReCAPTCHA
+              sitekey="6Lc7Xw0rAAAAAB3xa6ZFw2EjErWwzr7qxZbdiO_3"
+              onChange={handleCaptcha}
+            />
+          </div>
 
           {step === 2 && (
             <Formik

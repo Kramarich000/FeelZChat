@@ -1,5 +1,5 @@
 import axios from "axios";
-import { showToast } from "@utils/toast";  
+import { showToast } from "@utils/toast";
 
 const formatDate = (d) => {
   if (!d) return "";
@@ -10,15 +10,15 @@ const formatDate = (d) => {
   return `${day}.${month}.${year}`;
 };
 
+
 export const handleFirstStepSubmit = (values, setStep, setRegistrationData) => {
   const partialData = {
     phone: values.phone.replace(/\D/g, ""),
     password: values.password,
     password_confirmation: values.confirmPassword,
     nickname: `${values.surname} ${values.name}`,
-    birthdate: formatDate(values.date), 
+    birthdate: formatDate(values.date),
   };
-
   console.log("partialData", partialData);
 
   setRegistrationData(partialData);
