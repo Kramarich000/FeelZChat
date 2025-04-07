@@ -54,23 +54,26 @@ export default function Register() {
 
   const executeRecaptchaV3 = async () => {
     try {
-      const token = await window.grecaptcha.execute('6Le7Zw0rAAAAAHKsGR0i4ohPDQTK51JovR46dhnL', { action: 'submit' });
+      const token = await window.grecaptcha.execute(
+        "6Le7Zw0rAAAAAHKsGR0i4ohPDQTK51JovR46dhnL",
+        { action: "submit" }
+      );
       return token;
     } catch (error) {
       console.error("Ошибка при вызове reCAPTCHA v3:", error);
       return null;
     }
   };
-  
+
   const handleCaptcha = async (token) => {
     if (!token) {
       toast.error("Ошибка: капча не пройдена");
       return;
     }
-  
+
     try {
       const verificationResultV2 = await captcha(token, "v2");
-  
+
       if (verificationResultV2.success && verificationResultV2.score >= 0.5) {
         console.log(verificationResultV2);
         setCaptchaVerified(true);
@@ -78,13 +81,16 @@ export default function Register() {
       } else {
         setCaptchaVerified(false);
         toast.error("Captcha не пройдена по v2, пробуем v3.");
-  
+
         const tokenV3 = await executeRecaptchaV3();
-  
+
         if (tokenV3) {
           const verificationResultV3 = await captcha(tokenV3, "v3");
-  
-          if (verificationResultV3.success && verificationResultV3.score >= 0.5) {
+
+          if (
+            verificationResultV3.success &&
+            verificationResultV3.score >= 0.5
+          ) {
             setCaptchaVerified(true);
             toast.success("Captcha пройдена по v3!");
           } else {
@@ -100,7 +106,6 @@ export default function Register() {
       console.error("Captcha verification error:", error);
     }
   };
-  
 
   return (
     <BgGradient>
@@ -239,7 +244,7 @@ export default function Register() {
                   </div>
 
                   <button
-                    className="button-styles col-span-2"
+                    className="button-styles col-span-2 disabled:bg-cyan-700 disabled:opacity-40 transition-all disabled:pointer-events-none"
                     type="submit"
                     disabled={!captchaVerified}
                   >
@@ -252,17 +257,16 @@ export default function Register() {
                   >
                     Уже есть аккаунт?
                   </Link>
+                  <div className="flex justify-center items-center mt-4 origin-top col-span-2">
+                    <ReCAPTCHA
+                      sitekey="6Lc7Xw0rAAAAAB3xa6ZFw2EjErWwzr7qxZbdiO_3"
+                      onChange={handleCaptcha}
+                    />
+                  </div>
                 </Form>
               )}
             </Formik>
           )}
-
-          <div className="flex justify-center items-center mt-4 origin-top">
-            <ReCAPTCHA
-              sitekey="6Lc7Xw0rAAAAAB3xa6ZFw2EjErWwzr7qxZbdiO_3"
-              onChange={handleCaptcha}
-            />
-          </div>
 
           {step === 2 && (
             <Formik
