@@ -11,12 +11,7 @@ const Register = lazy(() => import("@pages/Register"));
 const Login = lazy(() => import("@pages/Login"));
 const Help = lazy(() => import("@pages/Help"));
 const Profile = lazy(() => import("@pages/Profile"));
-const Home = lazy(() => 
-  Promise.all([
-    import("@pages/Home"),
-    new Promise(resolve => setTimeout(resolve, 10000)) // 1 секунда задержки
-  ]).then(([module]) => module)
-);
+const Home = lazy(() => import("@pages/Home"));
 const Chat = lazy(() => import("@pages/Chat"));
 const ForgotPassword = lazy(() => import("@pages/ForgotPassword"));
 const Error404 = lazy(() => import("@errors/404"));
@@ -50,7 +45,6 @@ const routes = [
 ];
 
 function App() {
-  
   return (
     <Router>
       <ErrorBoundary FallbackComponent={FallbackComponent}>
