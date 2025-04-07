@@ -1,26 +1,30 @@
-const axios = require('axios');
-const fs = require('fs');
+import axios from 'axios';
+import { readFileSync, writeFileSync } from 'fs';
 
-const apiKey = 'df4385c2-33de-e423-4134-ca1f7b3ea8b7.';
-const texts = JSON.parse(fs.readFileSync('texts.json', 'utf-8'));
+const texts = JSON.parse(readFileSync('texts.json', 'utf-8'));
 
 (async () => {
   const translations = {};
 
   for (let text of texts) {
-    const res = await axios.post('https://api-free.deepl.com/v2/translate', null, {
-      params: {
-        auth_key: apiKey,
-        text,
-        target_lang: 'RU'
-      }
-    });
-    const translated = res.data.translations[0].text;
-    translations[text] = translated;
-    console.log(`"${text}" → "${translated}"`);
-    await new Promise(r => setTimeout(r, 1000)); 
+    try {
+      const res = await axios.post('https://translate.argosopentech.com/translate', {
+        q: text,
+        source: 'ru',
+        target: 'en',
+        format: 'text'
+      }, { timeout: 5000 });
+
+      const translated = res.data.translatedText;
+      translations[text] = translated;
+      console.log(`"${text}" → "${translated}"`);
+    } catch (err) {
+      console.error(`❌ Ошибка при переводе "${text}":`, err.message);
+    }
+
+    await new Promise(r => setTimeout(r, 1000));
   }
 
-  fs.writeFileSync('translations.json', JSON.stringify(translations, null, 2));
+  writeFileSync('translations.json', JSON.stringify(translations, null, 2));
   console.log('✅ Переводы сохранены в translations.json');
 })();

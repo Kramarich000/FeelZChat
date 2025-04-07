@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import AppWithMeta from "@metadata/AppWithMeta.jsx";
 import { GoogleOAuthProvider } from '@react-oauth/google';
-
+import './i18n';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
