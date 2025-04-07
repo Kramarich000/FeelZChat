@@ -1,13 +1,15 @@
-import api from 'axios';
+import axios from 'axios';
 
 export const captcha = async (token, version = "v2") => {
   const secretKeyV2 = '6Lc7Xw0rAAAAANj-npUrjHi1O-O1IiWj74owC-gX';
   const secretKeyV3 = '6Le7Zw0rAAAAAMtaI_U4VKAzijTvjGIiQCcxsaEe'; 
-
   const secretKey = version === "v3" ? secretKeyV3 : secretKeyV2;
 
+  const url = `https://www.google.com/recaptcha/api/siteverify`;
+  const corsUrl = `https://cors-anywhere.herokuapp.com/${url}`;
+
   try {
-    const response = await api.post('https://www.google.com/recaptcha/api/siteverify', null, {
+    const response = await axios.post(corsUrl, null, {
       params: {
         secret: secretKey,
         response: token,
