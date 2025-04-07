@@ -8,7 +8,7 @@ import Home from "@pages/Home";
 import Chat from "@pages/Chat";
 import ForgotPassword from "@pages/ForgotPassword";
 
-import Error404 from "@pages/404";
+import Error404 from "@errors/404";
 
 import { AnimatePresence } from "framer-motion";
 import { ErrorBoundary } from "react-error-boundary";

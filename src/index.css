@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import 'react-toastify/dist/ReactToastify.css';
+
 @font-face {
   font-family: 'YourFont';
   src: url('path/to/font.woff2') format('woff2');
@@ -238,4 +240,8 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.Toastify__toast{
+  padding: 40px;
 }

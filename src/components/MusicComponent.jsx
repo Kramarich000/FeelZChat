@@ -21,7 +21,7 @@ export default function MusicComponent() {
   return (
     <button
       onClick={toggleMusic}
-      className="fixed bottom-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-lg"
+      className="fixed bottom-13 right-10 bg-cyan-700 text-white px-4 py-2 rounded-lg"
     >
       {isPlaying ? "⏸ Остановить музыку" : "▶ Включить музыку"}
     </button>

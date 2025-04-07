@@ -1,13 +1,16 @@
 import * as Yup from "yup";
 import { subYears } from "date-fns";
+import leoProfanity from "leo-profanity";
+
+leoProfanity.loadDictionary("ru");
 
 const formatPhoneNumber = (value) => {
   if (typeof value !== "string") return "";
 
-  value = value.replace(/\D/g, "");  
+  value = value.replace(/\D/g, "");
 
   if (value.length > 11) {
-    value = value.slice(0, 11);  
+    value = value.slice(0, 11);
   }
 
   let formattedValue = "+7";
@@ -32,12 +35,18 @@ const registerSchema = Yup.object().shape({
     .required("Имя обязательно")
     .min(2, "Минимум 2 буквы")
     .max(30, "Максимум 30 букв")
-    .matches(/^[А-ЯЁ][а-яё]+$/, "Имя должно быть на русском и с заглавной буквы"),
+    .matches(/^[А-ЯЁ][а-яё]+$/, "Имя должно быть на русском и с заглавной буквы")
+    .test("no-profanity", "Имя не должно содержать нецензурных слов", (value) => {
+      return !leoProfanity.check(value);
+    }),
 
   surname: Yup.string()
     .required("Фамилия обязательна")
     .min(2, "Минимум 2 буквы")
-    .matches(/^[А-ЯЁ][а-яё]+$/, "Фамилия должна быть на русском и с заглавной буквы"),
+    .matches(/^[А-ЯЁ][а-яё]+$/, "Фамилия должна быть на русском и с заглавной буквы")
+    .test("no-profanity", "Фамилия не должна содержать нецензурных слов", (value) => {
+      return !leoProfanity.check(value);
+    }),
 
   phone: Yup.string()
     .required("Телефон обязателен")
@@ -45,8 +54,8 @@ const registerSchema = Yup.object().shape({
       "is-correct-phone",
       "Введите корректный номер телефона в формате +7 (900) 473-59-01",
       (value) => {
-        if (!value) return false;  
-        const formattedPhone = formatPhoneNumber(value);  
+        if (!value) return false;
+        const formattedPhone = formatPhoneNumber(value);
         console.log(formattedPhone);
         return /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(formattedPhone);
       }
@@ -58,11 +67,21 @@ const registerSchema = Yup.object().shape({
 
   password: Yup.string()
     .required("Пароль обязателен")
-    .min(6, "Минимум 6 символов"),
+    .min(8, "Пароль должен содержать минимум 8 символов")
+    .matches(/[A-Z]/, "Пароль должен содержать хотя бы одну заглавную букву")
+    .matches(/[a-z]/, "Пароль должен содержать хотя бы одну строчную букву")
+    .matches(/[0-9]/, "Пароль должен содержать хотя бы одну цифру")
+    .matches(/[\W_]/, "Пароль должен содержать хотя бы один специальный символ (например, !, @, #)")
+    .test("no-profanity", "Пароль не должен содержать нецензурных слов", (value) => {
+      return !leoProfanity.check(value);
+    }),
 
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password")], "Пароли должны совпадать")
-    .required("Подтвердите пароль"),
+    .required("Подтвердите пароль")
+    .test("no-profanity", "Пароль не должен содержать нецензурных слов", (value) => {
+      return !leoProfanity.check(value);
+    }),
 
   agreement: Yup.boolean().oneOf([true], "Необходимо принять политику"),
 });
