@@ -9,6 +9,7 @@ import { Formik, Form, Field } from "formik";
 import { ErrorMessage } from "formik";
 import { formatPhoneNumber } from "@validate/registerSchema";
 import AnimatedError from "@components/AnimatedError";
+import { handleLoginSubmit } from "@services/loginHandlers";
 
 export default function Login() {
   const Input = ({ type, placeholder }) => (
@@ -42,7 +43,7 @@ export default function Login() {
             initialValues={{ phone: "", password: "", remember: false }}
             validationSchema={loginSchema}
             onSubmit={(values) => {
-              console.log("Login data:", values);
+              handleLoginSubmit(values)
             }}
           >
             {({ setFieldValue, values }) => (

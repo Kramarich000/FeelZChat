@@ -1,11 +1,12 @@
-import {
-  Navigate,
-} from "react-router-dom";
-
-const isAuthenticated = false;
+import { Navigate } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
-  return isAuthenticated ? children : <Navigate to="/login" />;
+  const token = localStorage.getItem("access_token");
+  const expiresAt = Number(localStorage.getItem("expires_at"));
+
+  const isTokenValid = token && Date.now() < expiresAt;
+
+  return isTokenValid ? children : <Navigate to="/login" />;
 };
 
 export default PrivateRoute;
