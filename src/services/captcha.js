@@ -6,7 +6,7 @@ export const captcha = async (token, version = "v2") => {
   const secretKey = version === "v3" ? secretKeyV3 : secretKeyV2;
 
   const url = `https://www.google.com/recaptcha/api/siteverify`;
-  const corsUrl = `https://cors-anywhere.herokuapp.com/${url}`;
+  const corsUrl = `${url}`;
 
   try {
     const response = await axios.post(corsUrl, null, {
