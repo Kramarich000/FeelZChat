@@ -72,6 +72,7 @@ export default function Register() {
       const verificationResultV2 = await captcha(token, "v2");
   
       if (verificationResultV2.success && verificationResultV2.score >= 0.5) {
+        console.log(verificationResultV2);
         setCaptchaVerified(true);
         toast.success("Captcha пройдена по v2!");
       } else {
