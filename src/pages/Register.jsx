@@ -54,8 +54,7 @@ export default function Register() {
 
   const executeRecaptchaV3 = async () => {
     try {
-      // Выполнение reCAPTCHA v3
-      const token = await window.grecaptcha.execute('your-site-key', { action: 'submit' });
+      const token = await window.grecaptcha.execute('6Le7Zw0rAAAAAHKsGR0i4ohPDQTK51JovR46dhnL', { action: 'submit' });
       return token;
     } catch (error) {
       console.error("Ошибка при вызове reCAPTCHA v3:", error);
