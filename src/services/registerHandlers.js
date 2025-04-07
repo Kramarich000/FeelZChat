@@ -6,9 +6,12 @@ export const handleFirstStepSubmit = async (values, setStep) => {
   try {
     showToast("На ваш адрес электронной почты отправлен код подтверждения", "info");
 
-    const updatedValues = { ...values, message: "ПРИВЕТ НИКИТКА ААААААААААА!" };
+    const updatedValues = { user: { ...values, message: "ПРИВЕТ НИКИТКА ААААААААААА!" } };
+
+    console.log("Данные, отправляемые на сервер:", JSON.stringify(updatedValues, null, 2));
 
     const response = await axios.post("https://signalforge.onrender.com/api/v1/auth/sign_up", updatedValues);
+
     if (response.status === 200) {
       console.log("все ок!");
       setStep(2);
