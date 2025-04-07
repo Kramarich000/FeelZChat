@@ -4,21 +4,19 @@ import react from '@vitejs/plugin-react-swc';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 import viteCompression from 'vite-plugin-compression';
-import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
     viteCompression(),
-    viteStaticCopy({
-      targets: [
-        {
-          src: 'public/_redirects',
-          dest: '.' // в корень dist/
-        }
-      ]
-    })
+    {
+      name: 'copy-redirects',
+      apply: 'build',
+      closeBundle() {
+        fs.copyFileSync('public/_redirects', 'dist/_redirects');
+      }
+    }
   ],
   resolve: {
     alias: {
