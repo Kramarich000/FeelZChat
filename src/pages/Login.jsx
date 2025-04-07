@@ -43,7 +43,7 @@ export default function Login() {
             initialValues={{ phone: "", password: "", remember: false }}
             validationSchema={loginSchema}
             onSubmit={(values) => {
-              handleLoginSubmit(values)
+              handleLoginSubmit(values);
             }}
           >
             {({ setFieldValue, values }) => (
@@ -94,31 +94,26 @@ export default function Login() {
                 </label>
 
                 <button
-                  className="button-styles col-span-2 w-full"
+                  className="button-styles col-span-2 mb-4 w-full"
                   type="submit"
                 >
                   Войти
                 </button>
-
-                <GoogleAuth />
-
-                <div className="flex justify-evenly col-span-2">
-                  <Link
-                    className="text-cyan-700 hover:underline"
-                    to="/forgot-password"
-                  >
-                    Забыли пароль?
-                  </Link>
-                  <Link
-                    className="text-cyan-700 hover:underline"
-                    to="/register"
-                  >
-                    Нет аккаунта?
-                  </Link>
-                </div>
               </Form>
             )}
           </Formik>
+          <GoogleAuth />
+          <div className="flex justify-evenly col-span-2 mt-4">
+            <Link
+              className="text-cyan-700 hover:underline"
+              to="/forgot-password"
+            >
+              Забыли пароль?
+            </Link>
+            <Link className="text-cyan-700 hover:underline" to="/register">
+              Нет аккаунта?
+            </Link>
+          </div>
         </section>
       </motion.div>
       <Link to={"/help"}>
