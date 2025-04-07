@@ -36,6 +36,7 @@ export default function CustomCalendar({ date, setDate }) {
           const selectedDate = selectedDates[0];
           if (selectedDate && instance?.altInput) {
             instance.altInput.value = formatDateWithMonthGenitive(selectedDate);
+            instance.altInput.setAttribute('autocomplete', 'bday');
           }
         },
       }}

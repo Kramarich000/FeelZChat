@@ -138,6 +138,7 @@ export default function Register() {
                       type="text"
                       placeholder="Имя"
                       className="input-styles "
+                      autoComplete="given-name"
                     />
                     <ErrorMessage name="name">
                       {(msg) => <AnimatedError msg={msg} centered />}
@@ -150,6 +151,7 @@ export default function Register() {
                       type="text"
                       placeholder="Фамилия"
                       className="input-styles "
+                      autoComplete="family-name"
                     />
                     <ErrorMessage name="surname">
                       {(msg) => <AnimatedError msg={msg} centered />}
@@ -162,6 +164,7 @@ export default function Register() {
                       type="tel"
                       placeholder="Телефон"
                       className="input-styles"
+                      autoComplete="tel"
                       onChange={(e) => {
                         const phoneValue = e.target.value;
                         const formattedPhone = formatPhoneNumber(phoneValue);
@@ -191,6 +194,7 @@ export default function Register() {
                       type="password"
                       placeholder="Пароль"
                       className="input-styles "
+                      autoComplete="new-password"
                     />
                     <ErrorMessage name="password">
                       {(msg) => <AnimatedError msg={msg} centered />}
@@ -203,6 +207,7 @@ export default function Register() {
                       type="password"
                       placeholder="Подтвердите пароль"
                       className="input-styles "
+                      autoComplete="new-password"
                     />
                     <ErrorMessage name="confirmPassword">
                       {(msg) => <AnimatedError msg={msg} centered />}
@@ -282,6 +287,7 @@ export default function Register() {
                         placeholder="E-mail"
                         className="input-styles"
                         pattern=".*"
+                        autoComplete="email"
                       />
                       <ErrorMessage name="email">
                         {(msg) => (
