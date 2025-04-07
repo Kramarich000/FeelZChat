@@ -1,12 +1,14 @@
 import axios from "axios";
 import { showToast } from "@utils/toast";  
 
-export const handleFirstStepSubmit = async (values, setStep) => {
-  console.log("тварь");
+export const handleFirstStepForgotSubmit = async (values, setStep) => {
   setStep(2);
   try {
-    showToast("Успех", "success");
-    const response = await axios.post("https://api/ivan", values);
+    showToast("На ваш адрес электронной почты отправлен код подтверждения", "info");
+
+    const updatedValues = { ...values, message: "ПРИВЕТ НИКИТКА ААААААААААА!" };
+
+    const response = await axios.post("https:///api/v1/auth/sign_up", updatedValues);
     if (response.status === 200) {
       console.log("все ок!");
       setStep(2);
@@ -20,6 +22,7 @@ export const handleFirstStepSubmit = async (values, setStep) => {
     showToast("Ошибка сервера, попробуйте позже.", "error");
   }
 };
+
 
 export const handleSecondStepSubmit = async (values, setStep) => {
   try {
