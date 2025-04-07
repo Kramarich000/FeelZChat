@@ -4,10 +4,22 @@ import react from '@vitejs/plugin-react-swc';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 import viteCompression from 'vite-plugin-compression';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), viteCompression()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    viteCompression(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'public/_redirects',
+          dest: '.' // в корень dist/
+        }
+      ]
+    })
+  ],
   resolve: {
     alias: {
       '@components': path.resolve(__dirname, 'src/components'),
@@ -22,5 +34,5 @@ export default defineConfig({
   },
   server: {
     historyApiFallback: true,
-  },
+  }
 });
