@@ -10,20 +10,6 @@ export default defineConfig({
     react(),
     tailwindcss(),
     viteCompression(),
-    {
-
-      name: 'copy-redirects',
-      apply: 'build',
-      async closeBundle() {
-        try {
-          const fs = await import('fs');
-          fs.default.copyFileSync('public/_redirects', 'dist/_redirects');
-        } catch (err) {
-          console.warn('Не удалось скопировать _redirects:', err);
-        }
-      }
-
-    }
   ],
   resolve: {
     alias: {

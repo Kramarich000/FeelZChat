@@ -1,5 +1,5 @@
 import "./App.css";
-import { lazy, Suspense } from "react"; 
+import { lazy, Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
 import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -20,7 +20,7 @@ import FallbackComponent from "@components/FallbackComponent";
 import PrivateRoute from "@components/PrivateRoute";
 import withTitle from "@components/Title";
 import MusicComponent from "@components/MusicComponent";
-import { Loader } from "@components/Loader"; 
+import { Loader } from "@components/Loader";
 
 const Page = ({ component: Component, title }) => {
   const WrappedComponent = withTitle(Component, title);
@@ -31,24 +31,36 @@ const routes = [
   { path: "/register", component: Register, title: "Регистрация" },
   { path: "/login", component: Login, title: "Вход" },
   { path: "/chat", component: Chat, title: "Чат" },
-  { path: "/privacy", component: Privacy, title: "Политика конфиденциальности" },
+  {
+    path: "/privacy",
+    component: Privacy,
+    title: "Политика конфиденциальности",
+  },
   { path: "/help", component: Help, title: "FAQ" },
   { path: "/", component: Home, title: "Главная" },
-  { 
-    path: "/profile", 
-    component: Profile, 
+  {
+    path: "/profile",
+    component: Profile,
     title: "Профиль",
-    private: true 
+    private: true,
   },
-  { path: "/forgot-password", component: ForgotPassword, title: "Сброс пароля" },
-  { path: "*", component: Error404, title: "Ошибка" }
+  {
+    path: "/forgot-password",
+    component: ForgotPassword,
+    title: "Сброс пароля",
+  },
+  { path: "*", component: Error404, title: "Ошибка" },
 ];
+
+const preloadPage = (component) => {
+  component();
+};
 
 function App() {
   return (
     <Router>
       <ErrorBoundary FallbackComponent={FallbackComponent}>
-        <Suspense fallback={<Loader fullScreen />}> 
+        <Suspense fallback={<Loader fullScreen />}>
           <main className="container mx-auto">
             <AnimatePresence mode="wait">
               <Routes>
@@ -57,13 +69,23 @@ function App() {
                     key={route.path}
                     path={route.path}
                     element={
-                      route.private ? (
-                        <PrivateRoute>
-                          <Page component={route.component} title={route.title} />
-                        </PrivateRoute>
-                      ) : (
-                        <Page component={route.component} title={route.title} />
-                      )
+                      <div
+                        onMouseEnter={() => preloadPage(route.component)} // Прелоадим страницу при наведении
+                      >
+                        {route.private ? (
+                          <PrivateRoute>
+                            <Page
+                              component={route.component}
+                              title={route.title}
+                            />
+                          </PrivateRoute>
+                        ) : (
+                          <Page
+                            component={route.component}
+                            title={route.title}
+                          />
+                        )}
+                      </div>
                     }
                   />
                 ))}
