@@ -46,9 +46,9 @@ export const handleSecondStepSubmit = async (email, registrationData, setStep) =
       }
     );
 
-    if (response.status === 200) {
+    if (response.status === 200 || response.status === 201) {
       showToast("На почту отправлен код подтверждения", "info");
-      setStep(3);
+      setStep(4);
     } else {
       showToast("Ошибка при регистрации", "error");
       console.log("Ошибка регистрации", response.data);
