@@ -17,10 +17,16 @@ jobs:
       - name: Install Localazy CLI
         run: npm install -g @localazy/cli
 
+      - name: Create localazy.json config
+        run: |
+          echo '{
+            "writeKey": "${{ secrets.LOCALAZY_WRITE_KEY }}",
+            "readKey": "${{ secrets.LOCALAZY_READ_KEY }}",
+            "projectId": "${{ secrets.LOCALAZY_PROJECT_ID }}"
+          }' > localazy.json
+
       - name: Upload to Localazy
-        run: |
-          localazy upload --config - --project ${{ secrets.LOCALAZY_PROJECT_ID }} --write-key ${{ secrets.LOCALAZY_WRITE_KEY }} --read-key ${{ secrets.LOCALAZY_READ_KEY }}
-          
+        run: localazy upload
+
       - name: Download from Localazy
-        run: |
-          localazy download --config - --project-id ${{ secrets.LOCALAZY_PROJECT_ID }} --write-key ${{ secrets.LOCALAZY_WRITE_KEY }} --read-key ${{ secrets.LOCALAZY_READ_KEY }}
+        run: localazy download
