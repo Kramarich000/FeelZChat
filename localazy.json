@@ -1,13 +1,14 @@
 {
-    "readKey": "read-key",
-    "writeKey": "write-key",
+    "readKey": "${{ secrets.LOCALAZY_READ_KEY }}",
+    "writeKey": "${{ secrets.LOCALAZY_WRITE_KEY }}",
   
     "upload": {  
       "type": "json",
-      "files": "/src/locales/ru.json"         
+      "files": "src/locales/ru.json"         
     },
     
     "download": {
-      "files": "/src/locales/${lang}.json"
+      "files": "src/locales/${lang}.json"
     }
   }
+  
