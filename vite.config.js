@@ -11,7 +11,7 @@ export default defineConfig({
     tailwindcss(),
     viteCompression(),
     analyzer(),
-  ],
+  ], 
   resolve: {
     alias: {
       '@components': path.resolve(__dirname, 'src/components'),
