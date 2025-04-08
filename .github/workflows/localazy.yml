@@ -18,12 +18,9 @@ jobs:
         run: npm install -g @localazy/cli
 
       - name: Upload to Localazy
-        run: localazy upload
-        env:
-          LOCALAZY_READ_KEY: ${{ secrets.LOCALAZY_READ_KEY }}
-          LOCALAZY_WRITE_KEY: ${{ secrets.LOCALAZY_WRITE_KEY }}
-
+        run: |
+          localazy upload --project-id ${{ secrets.LOCALAZY_PROJECT_ID }} --write-key ${{ secrets.LOCALAZY_WRITE_KEY }} --read-key ${{ secrets.LOCALAZY_READ_KEY }}
+          
       - name: Download from Localazy
-        run: localazy download
-        env:
-          LOCALAZY_READ_KEY: ${{ secrets.LOCALAZY_READ_KEY }}
+        run: |
+          localazy download --project-id ${{ secrets.LOCALAZY_PROJECT_ID }} --write-key ${{ secrets.LOCALAZY_WRITE_KEY }} --read-key ${{ secrets.LOCALAZY_READ_KEY }}
