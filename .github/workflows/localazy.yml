@@ -1,0 +1,29 @@
+name: Upload & Download Localazy Translations
+
+on:
+  push:
+    paths:
+      - 'src/locales/en.json'
+    branches:
+      - main
+
+jobs:
+  upload-and-download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install Localazy CLI
+        run: npm install -g @localazy/cli
+
+      - name: Upload to Localazy
+        run: localazy upload
+        env:
+          LOCALAZY_READ_KEY: ${{ secrets.LOCALAZY_READ_KEY }}
+          LOCALAZY_WRITE_KEY: ${{ secrets.LOCALAZY_WRITE_KEY }}
+
+      - name: Download from Localazy
+        run: localazy download
+        env:
+          LOCALAZY_READ_KEY: ${{ secrets.LOCALAZY_READ_KEY }}
