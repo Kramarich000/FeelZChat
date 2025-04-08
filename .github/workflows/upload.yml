@@ -25,7 +25,6 @@ jobs:
       - name: Create localazy.json config
         run: |
           echo '{
-            "projectId": "${{ secrets.LOCALAZY_PROJECT_ID }}",
             "readKey": "${{ secrets.LOCALAZY_READ_KEY }}",
             "writeKey": "${{ secrets.LOCALAZY_WRITE_KEY }}"
           }' > localazy.json
