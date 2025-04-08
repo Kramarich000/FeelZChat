@@ -25,5 +25,10 @@ export default defineConfig({
   },
   server: {
     historyApiFallback: true,
-  }
+  },
+  build: {
+    target: 'esnext',  
+    minify: 'esbuild',  
+    cssCodeSplit: true,  
+  },
 });
