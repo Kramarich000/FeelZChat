@@ -7,18 +7,19 @@ import en from './locales/en.json';
 
 
 i18n
-  .use(LanguageDetector) 
+  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources: {
       ru: { translation: ru },
       en: { translation: en },
     },
-    fallbackLng: 'en', 
+    fallbackLng: 'en',
     detection: {
-      order: ['navigator', 'htmlTag'],
-      caches: [], 
+      order: ['localStorage', 'navigator', 'htmlTag'],
+      caches: ['localStorage'],
     },
+
     interpolation: {
       escapeValue: false,
     },
