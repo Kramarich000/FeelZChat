@@ -1,3 +1,1 @@
-- name: Create localazy.json
-  run: |
-    printf '{"writeKey": "%s", "readKey": "%s"}' "${{ secrets.LOCALAZY_WRITE_KEY }}" "${{ secrets.LOCALAZY_READ_KEY }}" > localazy.json
+
