@@ -1,0 +1,13 @@
+{
+    "readKey": "read-key",
+    "writeKey": "write-key",
+  
+    "upload": {  
+      "type": "json",
+      "files": "/src/locales/ru.json"         
+    },
+    
+    "download": {
+      "files": "/src/locales/${lang}.json"
+    }
+  }
