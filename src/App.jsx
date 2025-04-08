@@ -11,6 +11,8 @@ import PrivateRoute from "@components/PrivateRoute";
 import withTitle from "@components/Title";
 import MusicComponent from "@components/MusicComponent";
 import { Loader } from "@components/Loader";
+import Error404 from "@errors/404";
+
 
 const Register = lazy(() => import("@pages/Register"));
 const Login = lazy(() => import("@pages/Login"));
@@ -20,7 +22,7 @@ const Help = lazy(() => import("@pages/Help"));
 const Home = lazy(() => import("@pages/Home"));
 const Profile = lazy(() => import("@pages/Profile"));
 const ForgotPassword = lazy(() => import("@pages/ForgotPassword"));
-const Error404 = lazy(() => import("@errors/404"));
+
 
 const Page = ({ component: Component, title }) => {
   const WrappedComponent = withTitle(Component, title);
