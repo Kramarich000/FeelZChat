@@ -269,7 +269,6 @@ button.message-send-button{
 
 .glass-container::before {
   content: "";
-  background-image: url(path/to/light.png);
   background-repeat: repeat;
   background-size: 750px;
   opacity: 0.075;
