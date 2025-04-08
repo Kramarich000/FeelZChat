@@ -1,6 +1,8 @@
 - name: Create localazy.json
   run: |
-    echo '{
-      "writeKey": "'"${{ secrets.LOCALAZY_WRITE_KEY }}"'",
-      "readKey": "'"${{ secrets.LOCALAZY_READ_KEY }}"'"
-    }' > localazy.json
+    cat <<EOF > localazy.json
+    {
+      "writeKey": "${{ secrets.LOCALAZY_WRITE_KEY }}",
+      "readKey": "${{ secrets.LOCALAZY_READ_KEY }}"
+    }
+EOF
