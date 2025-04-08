@@ -3,14 +3,14 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
-import viteCompression from 'vite-plugin-compression';
-import { analyzer } from 'vite-bundle-analyzer'
+// import viteCompression from 'vite-plugin-compression';
+// import { analyzer } from 'vite-bundle-analyzer'
 export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    viteCompression(),
-    analyzer(),
+    // viteCompression(),
+    // analyzer(),
   ], 
   resolve: {
     alias: {
