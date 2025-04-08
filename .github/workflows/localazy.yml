@@ -22,7 +22,6 @@ jobs:
           echo '{
             "writeKey": "${{ secrets.LOCALAZY_WRITE_KEY }}",
             "readKey": "${{ secrets.LOCALAZY_READ_KEY }}",
-            "projectId": "${{ secrets.LOCALAZY_PROJECT_ID }}"
           }' > localazy.json
 
       - name: Upload to Localazy
