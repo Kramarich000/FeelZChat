@@ -1,40 +1,48 @@
-import { useState } from "react";
-
+import { useState, useCallback, useRef } from "react";
+import debounce from "lodash.debounce";
 export function useEmotionAnalysis() {
-    const [text, setText] = useState("");
-    const [result, setResult] = useState(null);
-    const [loading, setLoading] = useState(false);
-  
-    const handleSubmit = async (e) => {
-      e.preventDefault();
+  const [text, setText] = useState("");
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const batchMessagesRef = useRef([]);
+
+  const handleSubmit = useCallback(
+    debounce(async (text) => {
       if (!text.trim()) return;
-  
-      setLoading(true);
-      setResult(null);
-  
-      try {
-        const response = await fetch("http://127.0.0.1:8000/analyze", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ text }),
-        });
-  
-        const data = await response.json();
-        setResult(data);
-      } catch (error) {
-        setResult({ error: "Ошибка при запросе к серверу." });
-        return error;
-      } finally {
-        setLoading(false);
+
+      batchMessagesRef.current.push(text);
+
+      if (batchMessagesRef.current.length >= 5) {
+        setLoading(true);
+        const batch = batchMessagesRef.current.join(" ");
+        batchMessagesRef.current = [];
+
+        try {
+          const response = await fetch("http://127.0.0.1:8000/analyze", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ text: batch }),
+          });
+
+          const data = await response.json();
+          setResult(data);
+        } catch (error) {
+          setResult({ error: "Ошибка при запросе к серверу." });
+        } finally {
+          setLoading(false);
+        }
       }
-    };
-    return {
-        text,
-        setText,
-        result,
-        loading,
-        handleSubmit
-    }
+    }, 500), 
+    []
+  );
+
+  return {
+    text,
+    setText,
+    result,
+    loading,
+    handleSubmit,
+  };
 }

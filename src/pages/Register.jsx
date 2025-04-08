@@ -20,7 +20,7 @@ import {
 } from "@services/registerHandlers";
 import { useEffect } from "react";
 import { captcha } from "@services/captcha";
-import { toast } from "react-toastify";
+import { showToast } from "../utils/toast";
 import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Register() {
@@ -67,7 +67,7 @@ export default function Register() {
 
   const handleCaptcha = async (token) => {
     if (!token) {
-      toast.error("Ошибка: капча не пройдена");
+      showToast.error("Ошибка: капча не пройдена");
       return;
     }
 
@@ -77,10 +77,10 @@ export default function Register() {
       if (verificationResultV2.success && verificationResultV2.score >= 0.5) {
         console.log(verificationResultV2);
         setCaptchaVerified(true);
-        toast.success("Captcha пройдена по v2!");
+        showToast("Captcha пройдена по v2!", "success");
       } else {
         setCaptchaVerified(false);
-        toast.error("Captcha не пройдена по v2, пробуем v3.");
+        showToast("Captcha не пройдена по v2, пробуем v3.", "error");
 
         const tokenV3 = await executeRecaptchaV3();
 
@@ -92,17 +92,17 @@ export default function Register() {
             verificationResultV3.score >= 0.5
           ) {
             setCaptchaVerified(true);
-            toast.success("Captcha пройдена по v3!");
+            showToast("Captcha пройдена по v3!", "success");
           } else {
             setCaptchaVerified(false);
-            toast.error("Captcha не пройдена по v3!");
+            showToast("Captcha не пройдена по v3!", "error");
           }
         } else {
-          toast.error("Ошибка: не удалось получить токен для v3");
+          showToast("Ошибка: не удалось получить токен для v3", "error");
         }
       }
     } catch (error) {
-      toast.error("Ошибка при верификации капчи!");
+      showToast("Ошибка при верификации капчи!", "error");
       console.error("Captcha verification error:", error);
     }
   };
