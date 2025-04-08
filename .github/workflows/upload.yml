@@ -3,18 +3,28 @@ name: Upload to Localazy
 on: 
   push:
     paths:
-      - 'locales/en.json'
+      - 'locales/en.json'  
 
 jobs:
   localazy-upload:
     name: Upload strings to Localazy
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v1
-      - name: Upload translations
-        uses: localazy/upload@v1
+        uses: actions/checkout@v2 
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          project_id: ${{ secrets.LOCALAZY_PROJECT_ID }}
-          read_key: ${{ secrets.LOCALAZY_READ_KEY }}
-          write_key: ${{ secrets.LOCALAZY_WRITE_KEY }}
+          node-version: '14'  
+
+      - name: Install Localazy CLI
+        run: npm install -g @localazy/cli 
+
+      - name: Upload translations
+        run: localazy upload  
+        env:
+          LOCALAZY_PROJECT_ID: ${{ secrets.LOCALAZY_PROJECT_ID }}
+          LOCALAZY_READ_KEY: ${{ secrets.LOCALAZY_READ_KEY }}
+          LOCALAZY_WRITE_KEY: ${{ secrets.LOCALAZY_WRITE_KEY }}
