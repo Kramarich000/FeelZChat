@@ -19,8 +19,8 @@ jobs:
 
       - name: Upload to Localazy
         run: |
-          localazy upload --project ${{ secrets.LOCALAZY_PROJECT_ID }} --write-key ${{ secrets.LOCALAZY_WRITE_KEY }} --read-key ${{ secrets.LOCALAZY_READ_KEY }}
+          localazy upload --config - --project ${{ secrets.LOCALAZY_PROJECT_ID }} --write-key ${{ secrets.LOCALAZY_WRITE_KEY }} --read-key ${{ secrets.LOCALAZY_READ_KEY }}
           
       - name: Download from Localazy
         run: |
-          localazy download --project ${{ secrets.LOCALAZY_PROJECT_ID }} --write-key ${{ secrets.LOCALAZY_WRITE_KEY }} --read-key ${{ secrets.LOCALAZY_READ_KEY }}
+          localazy download --config - --project-id ${{ secrets.LOCALAZY_PROJECT_ID }} --write-key ${{ secrets.LOCALAZY_WRITE_KEY }} --read-key ${{ secrets.LOCALAZY_READ_KEY }}
