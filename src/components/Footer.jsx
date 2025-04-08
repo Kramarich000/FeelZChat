@@ -46,7 +46,7 @@ export default function Footer() {
 
         <div className="mt-2">
           <motion.div transition={{ type: "spring", stiffness: 300 }}>
-            <Link to="/privacy" className="text-[20px] underline hover:text-cyan-700 transition-all" >
+            <Link to="/privacy" target="_blank" className="text-[20px] underline hover:text-cyan-700 transition-all" >
               Политика конфиденциальности
             </Link>
           </motion.div>
