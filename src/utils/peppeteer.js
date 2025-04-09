@@ -45,10 +45,11 @@ export default async function scrapeText() {
 
     for (let url of urls) {
         try {
-            await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
-
+            await page.goto(url, { waitUntil: 'load', timeout: 30000 });
+            await page.waitForSelector('body');
+            await new Promise(resolve => setTimeout(resolve, 5000));
             const texts = await page.evaluate(() => {
-                const selectors = ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'a', 'button', 'label', 'placeholder', 'span', 'option', 'strong'];
+                const selectors = ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'a', 'button', 'label', 'placeholder', 'span', 'option', 'strong', 'li'];
                 const collected = [];
 
                 selectors.forEach(selector => {
