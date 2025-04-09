@@ -14,7 +14,7 @@ i18n
       ru: { translation: ru },
       en: { translation: en },
     },
-    lng: 'ru',
+    lng: 'de',
     fallbackLng: 'en',
     detection: {
       order: ['localStorage', 'navigator', 'htmlTag'],
