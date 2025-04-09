@@ -4,13 +4,14 @@ import { IoSend } from "react-icons/io5";
 import { motion } from "framer-motion";
 import ChatHeader from "@components/ChatHeader";
 import BgChatGradient from "@components/BgChatGradient";
+import translate from "@utils/translate";
 
 export default function Chat() {
   const [activeChatId, setActiveChatId] = useState(1);
   const [chats] = useState([
-    { id: 1, title: "чат1" },
-    { id: 2, title: "чат2" },
-    { id: 3, title: "чат3" },
+    { id: 1, title: "чат1", titleKey: "key_chat1" },
+    { id: 2, title: "чат2", titleKey: "key_chat2" },
+    { id: 3, title: "чат3", titleKey: "key_chat3" },
   ]);
   const [messages, setMessages] = useState([
     {
@@ -43,13 +44,26 @@ export default function Chat() {
     if (!text.trim()) return;
 
     setLoading(true);
-    setMessages((prev) => [...prev, { author: "Иван", text, type: "sent",  timestamp: new Date().toLocaleTimeString(),
-      delivered: true, }]);
+    setMessages((prev) => [
+      ...prev,
+      {
+        author: "Иван",
+        text,
+        type: "sent",
+        timestamp: new Date().toLocaleTimeString(),
+        delivered: true,
+      },
+    ]);
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
-        { author: "Запара", text: "Ответ...", type: "received", timestamp: new Date().toLocaleTimeString(),
-          delivered: true, },
+        {
+          author: "Запара",
+          text: "Ответ...",
+          type: "received",
+          timestamp: new Date().toLocaleTimeString(),
+          delivered: true,
+        },
       ]);
       setLoading(false);
     }, 1000);
@@ -79,7 +93,7 @@ export default function Chat() {
                   chat.id === activeChatId ? "bg-cyan-700" : ""
                 }`}
               >
-                {chat.title}
+                {chat.titleKey ? translate(chat.titleKey) : chat.title}
               </li>
             ))}
           </ul>
@@ -91,11 +105,15 @@ export default function Chat() {
               {messages.map((msg, index) => (
                 <div
                   key={index}
-                  className={`max-w-[70%] p-3 rounded-xl message shadow ${msg.type} ${
+                  className={`max-w-[70%] p-3 rounded-xl message shadow ${
+                    msg.type
+                  } ${
                     msg.type === "sent"
                       ? "self-end text-right"
                       : "self-start text-left"
-                  } ${isLoaded ? "opacity-100" : "opacity-0"} transition-opacity duration-300`}
+                  } ${
+                    isLoaded ? "opacity-100" : "opacity-0"
+                  } transition-opacity duration-300`}
                 >
                   <div className="mb-1 text-lg text-left">{msg.author}</div>
                   <div className="flex gap-[14px] text-center">

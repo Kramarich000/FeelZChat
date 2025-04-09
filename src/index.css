@@ -16,6 +16,12 @@
   }
 }
 
+*,
+*::after,
+*::before{
+  box-sizing: border-box; 
+}
+
 input[type="date"] {
   color: black;
 }
@@ -150,6 +156,12 @@ button {
   color: white;
   cursor: pointer;
   transition: all .3s;
+}
+
+:root, 
+main{
+  width: 100vw;
+  height: 100vh;
 }
 
 button:focus{

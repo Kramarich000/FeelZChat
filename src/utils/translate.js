@@ -1,5 +1,7 @@
-import i18next from 'i18next'; 
+import i18next from 'i18next';
 
-export const translate = (key) => {
-  return i18next.t(key); 
+const translate = (key) => {
+  return i18next.t(key, { defaultValue: 'NotFound' }); 
 };
+
+export default translate;

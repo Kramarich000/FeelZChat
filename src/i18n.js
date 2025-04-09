@@ -14,6 +14,7 @@ i18n
       ru: { translation: ru },
       en: { translation: en },
     },
+    lng: 'ru',
     fallbackLng: 'en',
     detection: {
       order: ['localStorage', 'navigator', 'htmlTag'],
@@ -24,5 +25,7 @@ i18n
       escapeValue: false,
     },
   });
+  
+console.log('Текущий язык:', i18n.language);  
 
 export default i18n;
