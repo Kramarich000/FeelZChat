@@ -25,7 +25,7 @@ export default function BgChatGradient({ aggregated, children }) {
 
       const timer = setTimeout(() => {
         setDisplayedGradient(currentGradient);
-        api.start({ opacity: 0 }); // плавно исчезает
+        api.start({ opacity: 0 }); 
       }, 1200);
 
       return () => clearTimeout(timer);
@@ -37,8 +37,8 @@ export default function BgChatGradient({ aggregated, children }) {
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
       backgroundSize: "300% 300%",
-      filter: "blur(20px)", // 💫 добавляем мягкий фон
-      transition: "filter 1.2s ease, background-image 1.2s ease", // 🔥 плавность
+      filter: "blur(20px)", 
+      transition: "filter 1.2s ease, background-image 1.2s ease", 
       animation:
         "moveGradient 8s ease-in-out infinite, rotateGradient 12s ease-in-out infinite",
     }),
@@ -55,7 +55,7 @@ export default function BgChatGradient({ aggregated, children }) {
         style={{
           ...layerStyle,
           backgroundImage: displayedGradient,
-          mixBlendMode: "screen", // 🌈 режим наложения
+          mixBlendMode: "screen", 
           position: "absolute",
           top: 0,
           left: 0,
@@ -69,7 +69,7 @@ export default function BgChatGradient({ aggregated, children }) {
         style={{
           ...layerStyle,
           backgroundImage: currentGradient,
-          mixBlendMode: "overlay", // 🌀 наложение другого характера
+          mixBlendMode: "overlay", 
           position: "absolute",
           top: 0,
           left: 0,
