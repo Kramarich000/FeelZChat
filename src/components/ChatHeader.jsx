@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { HiUser } from "react-icons/hi";
-import { Menu,  MenuItem, MenuItems,Transition } from "@headlessui/react";
+import { Menu, MenuItem, MenuItems, Transition, MenuButton } from "@headlessui/react";
 import { Fragment } from "react";
+import { translate } from "@utils/translate";
 
 export default function ChatHeader() {
   return (
@@ -14,9 +15,9 @@ export default function ChatHeader() {
 
         <div className="relative">
           <Menu as="div" className="relative">
-            <Menu.Button className="cursor-pointer">
+            <MenuButton className="cursor-pointer">
               <HiUser size={32} />
-            </Menu.Button>
+            </MenuButton>
 
             <Transition
               as={Fragment}
@@ -37,7 +38,7 @@ export default function ChatHeader() {
                           active ? "bg-gray-200" : ""
                         }`}
                       >
-                        Профиль
+                        {translate("login")}
                       </Link>
                     )}
                   </MenuItem>

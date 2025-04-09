@@ -17,7 +17,7 @@ export default function Chat() {
       author: "Иван",
       text: "Привет запара как дела?",
       type: "sent",
-      timestamp: new Date(),
+      timestamp: new Date().toISOString,
       delivered: true,
       read: true,
     },

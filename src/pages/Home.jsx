@@ -28,12 +28,12 @@ export default function Home() {
     <div className="absolute top-0 left-0 min-h-full w-full flex flex-col justify-center items-center">
       <Header />
       <motion.section
-        className="h-screen flex items-center justify-center text-center bg-opacity-40"
+        className="h-screen flex items-center justify-center text-center bg-opacity-40 p-4"
         layout
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -50 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0}}
+        transition={{ duration: 3, ease: "easeOut" }}
       >
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl font-bold mb-4">
@@ -52,7 +52,7 @@ export default function Home() {
           </Link>
         </div>
       </motion.section>
-      <section className="w-full py-12 text-center bg-gray-700">
+      <section className="w-full py-12 text-center p-4 bg-gray-700">
         <h2 className="text-4xl font-bold mb-4 text-white">Особенности</h2>
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, id) => {
@@ -79,7 +79,7 @@ export default function Home() {
           })}
         </div>
       </section>
-      <section className="flex justify-center items-center gap-4 w-full py-12 pb-0 text-center bg-gray-900 text-white">
+      <section className="flex justify-center items-center gap-4 w-full py-12 p-4 pb-0 text-center bg-gray-900 text-white">
         <Link
           to="/register"
           className="text-2xl hover:underline text-cyan-700 font-bold"

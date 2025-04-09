@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="w-full text-[24px] bg-gray-900 text-white py-6">
+    <footer className="w-full text-[24px] p-4 bg-gray-900 text-white py-6">
       <div className="container mx-auto text-center">
         <div className="flex justify-center space-x-6 mt-6">
           <motion.a
