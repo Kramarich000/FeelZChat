@@ -120,7 +120,7 @@ export default function Register() {
           to={"/"}
           className="flex items-center justify-center hover:scale-110 transition-all"
         >
-          <h1 className="flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
+          <h1 className="main-title flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
             FeelZChat
           </h1>
         </Link>

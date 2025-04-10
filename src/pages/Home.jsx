@@ -2,25 +2,26 @@ import { Link } from "react-router-dom";
 import Header from "@components/Header";
 import { motion } from "framer-motion";
 import Footer from "@components/Footer";
+import translate from "../utils/translate";
 
 export default function Home() {
   const features = [
     {
-      title: "Анализ эмоций",
+      title: translate("key_emotion_analysis"),
       description:
-        "ИИ анализирует текст и предоставляет точную информацию о настроении и эмоциях собеседника.",
+        translate("key_ai_analyzes_text"),
       animated: true,
     },
     {
-      title: "Безопасность",
+      title: translate("key_security"),
       description:
-        "Ваши сообщения защищены с использованием современных технологий шифрования.",
+        translate("key_messages_protected"),
       animated: true,
     },
     {
-      title: "Интуитивно понятный интерфейс",
+      title: translate("key_intuitive_interface"),
       description:
-        "Удобный и понятный интерфейс для общения без лишних настроек.",
+        translate("key_user_friendly"),
       animated: true,
     },
   ];
@@ -37,27 +38,25 @@ export default function Home() {
       >
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl font-bold mb-4">
-            Добро пожаловать в FeelZChat
+            {translate("key_welcome_to")},
           </h2>
           <p className="text-lg mb-8">
-            Откройте для себя новый способ общения с друзьями и коллегами, где
-            каждый разговор может быть проанализирован с использованием ИИ для
-            определения эмоций и тональности.
+            {translate("key_discover")}
           </p>
           <Link
             to="/register"
             className="bg-cyan-700 hover:bg-black transition-all px-6 py-3 rounded-lg text-white "
           >
-            Начать общение
+            {translate("key_start_chatting")}
           </Link>
         </div>
       </motion.section>
       <section className="w-full py-12 text-center p-4 bg-gray-700">
-        <h2 className="text-4xl font-bold mb-4 text-white">Особенности</h2>
+        <h2 className="text-4xl font-bold mb-4 text-white">{translate("key_features")}</h2>
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, id) => {
             const Content = (
-              <div className="bg-white p-6 rounded-lg shadow-md text-center max-h-[150px]">
+              <div className="bg-white p-6 rounded-lg shadow-md text-center h-[150px]">
                 <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
                 <p className="text-gray-700">{feature.description}</p>
               </div>
@@ -84,14 +83,14 @@ export default function Home() {
           to="/register"
           className="text-2xl hover:underline text-cyan-700 font-bold"
         >
-          Войдите{" "}
+          {translate("key_sign_in")}{" "}
         </Link>
-        <p className="text-2xl ">или</p>
+        <p className="text-2xl ">{translate("key_or")}</p>
         <Link
           to="/login"
           className="text-2xl hover:underline text-cyan-700 font-bold"
         >
-          зарегистрируйтесь
+          {translate("key_sign_up")}
         </Link>
       </section>
       <Footer />

@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Formik, Field, Form } from "formik";
 import { IoSend } from "react-icons/io5";
 import { motion } from "framer-motion";
 import ChatHeader from "@components/ChatHeader";
 import BgChatGradient from "@components/BgChatGradient";
 import translate from "@utils/translate";
+import { useResizablePanel } from "@hooks/useResizablePanel";
 
 export default function Chat() {
   const [activeChatId, setActiveChatId] = useState(1);
@@ -13,12 +14,16 @@ export default function Chat() {
     { id: 2, title: "чат2", titleKey: "key_chat2" },
     { id: 3, title: "чат3", titleKey: "key_chat3" },
   ]);
+  const formattedTime = `${new Date()
+    .getHours()
+    .toString()
+    .padStart(2, "0")}:${new Date().getMinutes().toString().padStart(2, "0")}`;
   const [messages, setMessages] = useState([
     {
       author: "Иван",
       text: "Привет запара как дела?",
       type: "sent",
-      timestamp: new Date().toISOString,
+      timestamp: formattedTime,
       delivered: true,
       read: true,
     },
@@ -27,13 +32,14 @@ export default function Chat() {
       author: "Диван",
       text: "Привет juj как дела?",
       type: "received",
-      timestamp: new Date().toLocaleTimeString(),
+      timestamp: formattedTime,
       delivered: true,
       read: true,
     },
   ]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isSendingMessage, setIsSendingMessage] = useState(false); 
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100);
@@ -41,19 +47,25 @@ export default function Chat() {
   }, []);
 
   const sendMessage = (text) => {
-    if (!text.trim()) return;
+    if (!text.trim() || isSendingMessage) return; 
+
+    setIsSendingMessage(true); 
 
     setLoading(true);
+
+    
     setMessages((prev) => [
       ...prev,
       {
         author: "Иван",
         text,
         type: "sent",
-        timestamp: new Date().toLocaleTimeString(),
+        timestamp: formattedTime,
         delivered: true,
       },
     ]);
+
+    
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
@@ -61,128 +73,176 @@ export default function Chat() {
           author: "Запара",
           text: "Ответ...",
           type: "received",
-          timestamp: new Date().toLocaleTimeString(),
+          timestamp: formattedTime,
           delivered: true,
         },
       ]);
       setLoading(false);
-    }, 1000);
+      
+      
+      setTimeout(() => {
+        setIsSendingMessage(false); 
+      }, 1000);
+    }, 1000); 
   };
 
   const selectChat = (id) => setActiveChatId(id);
+
+  const { width: leftPanelWidth, onMouseDown } = useResizablePanel(
+    200,
+    70,
+    400
+  );
+  const containerWidth = 1200;
+  const separatorWidth = 5;
+  const rightPanelWidth = containerWidth - leftPanelWidth - separatorWidth;
+
+  const endOfMessagesRef = useRef(null);
+  useEffect(() => {
+    if (endOfMessagesRef.current) {
+      endOfMessagesRef.current.scrollIntoView({
+        behavior: "smooth",  
+        block: "end",        
+      });
+    }
+  }, [messages]);
 
   return (
     <BgChatGradient>
       <ChatHeader />
       <motion.div
-        className="flex max-h-[800px] border-1 p-[30px] rounded-4xl"
-        layout
+        className="flex min-h-[850px] border-1 p-[30px] rounded-4xl"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -50 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <div className="w-[300px] bg-transparent p-4 overflow-y-auto border-r border-gray-700">
-          <h2 className="text-lg font-semibold mb-4">Чаты</h2>
-          <ul className="space-y-2">
-            {chats.map((chat) => (
-              <li
-                key={chat.id}
-                onClick={() => selectChat(chat.id)}
-                className={`p-3 rounded cursor-pointer hover:bg-gray-800 transition ${
-                  chat.id === activeChatId ? "bg-cyan-700" : ""
-                }`}
-              >
-                {chat.titleKey ? translate(chat.titleKey) : chat.title}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="flex-1 flex flex-col justify-between bg-transparent relative items-center gap-10">
-          <div className="flex-1 glass-container overflow-y-auto min-h-[50vh] bg-transparent rounded transition-all duration-500 min-w-[732px] p-4 m-4">
-            <div className="flex flex-col gap-4">
-              {messages.map((msg, index) => (
-                <div
-                  key={index}
-                  className={`max-w-[70%] p-3 rounded-xl message shadow ${
-                    msg.type
-                  } ${
-                    msg.type === "sent"
-                      ? "self-end text-right"
-                      : "self-start text-left"
-                  } ${
-                    isLoaded ? "opacity-100" : "opacity-0"
-                  } transition-opacity duration-300`}
+        <div className="flex relative w-full max-w-[1200px] min-w-[1200px] mx-auto">
+          <div
+            className="resizeable-panel bg-transparent p-4 overflow-y-auto "
+            style={{ width: `${leftPanelWidth}px`, minWidth: "70px" }}
+          >
+            <h2 className="text-lg font-semibold mb-4">{translate("key_chats")}</h2>
+            <ul className="space-y-2">
+              {chats.map((chat) => (
+                <li
+                  key={chat.id}
+                  onClick={() => selectChat(chat.id)}
+                  className={`p-3 rounded cursor-pointer hover:bg-gray-800 transition ${
+                    chat.id === activeChatId ? "bg-cyan-700" : ""
+                  }`}
                 >
-                  <div className="mb-1 text-lg text-left">{msg.author}</div>
-                  <div className="flex gap-[14px] text-center">
-                    <p className="whitespace-pre-wrap break-words">
-                      {msg.text}
-                    </p>
-                    <div className="flex items-center gap-2 text-xs text-blue-900 mt-2 justify-end">
-                      <span>{msg.timestamp}</span>
-                      {msg.type === "sent" && (
-                        <span>
-                          {msg.read ? (
-                            <span className="text-blue-900">✓✓</span>
-                          ) : msg.delivered ? (
-                            <span>✓✓</span>
-                          ) : (
-                            <span>✓</span>
-                          )}
-                        </span>
-                      )}
+                  {chat.titleKey ? translate(chat.titleKey) : chat.title}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div
+            className="resize-handle top-0 left-0 cursor-ew-resize bg-cyan-700 mt-8 mb-8"
+            onMouseDown={onMouseDown}
+            style={{
+              width: `${separatorWidth}px`,
+            }}
+          />
+
+          <div
+            className="flex max-h-[788px] flex-col justify-between bg-transparent relative items-center overflow-hidden w-full p-[33px]"
+            style={{ width: `${rightPanelWidth}px`, minWidth: "600px" }}
+          >
+            <div
+              className="flex-1 glass-container overflow-y-auto bg-transparent rounded transition-none duration-500 p-4 m-4"
+              style={{ width: `calc(${rightPanelWidth-50}px`, minWidth: "600px" }}
+            >
+              <div className="flex flex-col gap-4">
+                {messages.map((msg, index) => (
+                  <div
+                    key={index}
+                    className={`max-w-[70%] p-3 rounded-xl message shadow text-left ${
+                      msg.type
+                    } ${
+                      msg.type === "sent"
+                        ? "self-end"
+                        : "self-start"
+                    } ${
+                      isLoaded ? "opacity-100" : "opacity-0"
+                    } transition-opacity duration-300`}
+                    style={{ wordWrap: 'break-word', whiteSpace: 'pre-wrap' }}
+                  >
+                    <div className="mb-1 text-lg text-left">{msg.author}</div>
+                    <div className="grid grid-cols-1 text-left]">
+                      <p className="whitespace-pre-wrap break-words max-w-[100%]">
+                        {msg.text}
+                      </p>
+                      <div className="flex items-center gap-2 text-xs text-blue-900 justify-end">
+                        <span>{msg.timestamp}</span>
+                        {msg.type === "sent" && (
+                          <span>
+                            {msg.read ? (
+                              <span className="text-blue-900">✓✓</span>
+                            ) : msg.delivered ? (
+                              <span>✓✓</span>
+                            ) : (
+                              <span>✓</span>
+                            )}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+                <div ref={endOfMessagesRef} />
+              </div>
             </div>
-          </div>
 
-          <div className="max-w-[1200px] ml-4 h-[180px] glass-container bg-transparent mx-auto p-4 rounded transition-all duration-500">
-            <Formik
-              initialValues={{ text: "" }}
-              onSubmit={(values, { resetForm }) => {
-                sendMessage(values.text);
-                resetForm();
-              }}
-            >
-              {({ setFieldValue, values, submitForm }) => (
-                <div className="min-w-[700px] border-t-0">
-                  <Form className="space-y-4 relative">
-                    <Field name="text">
-                      {({ field }) => (
-                        <textarea
-                          {...field}
-                          className="w-full h-32 p-4 border chat-textarea rounded resize-none"
-                          placeholder="Введите сообщение..."
-                          value={values.text}
-                          onChange={(e) =>
-                            setFieldValue("text", e.target.value)
-                          }
-                          onKeyDown={(e) => {
-                            if (e.key === "Enter" && !e.shiftKey) {
-                              e.preventDefault();
-                              submitForm();
+            <div className="max-w-[1200px] h-[160px] glass-container bg-transparent p-4 rounded duration-500 transition-none animate-none">
+              <Formik
+                initialValues={{ text: "" }}
+                onSubmit={(values, { resetForm }) => {
+                  sendMessage(values.text);
+                  resetForm();
+                }}
+              >
+                {({ setFieldValue, values, submitForm }) => (
+                  <div className="min-w-[700px] border-t-0">
+                    <Form className="space-y-4 relative">
+                      <Field name="text">
+                        {({ field }) => (
+                          <textarea
+                            {...field}
+                            className="w-full h-32 p-4 pr-14 border chat-textarea rounded resize-none"
+                            placeholder="Введите сообщение..."
+                            value={values.text}
+                            onChange={(e) =>
+                              setFieldValue("text", e.target.value)
                             }
-                          }}
-                        />
-                      )}
-                    </Field>
-                    <div className="flex justify-end">
-                      <button
-                        type="submit"
-                        disabled={loading}
-                        className="message-send-button text-cyan-700 px-4 focus:outline-none outline-none py-2 mx-auto absolute top-[45%] rounded disabled:opacity-50 hover:bg-gray-200 transition-all"
-                      >
-                        <IoSend size={30} className="text-cyan-700" />
-                      </button>
-                    </div>
-                  </Form>
-                </div>
-              )}
-            </Formik>
+                            style={{
+                              width: `${rightPanelWidth-81}px`,
+                              minWidth: "600px",
+                            }}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter" && !e.shiftKey) {
+                                e.preventDefault();
+                                submitForm();
+                              }
+                            }}
+                            disabled={isSendingMessage} 
+                          />
+                        )}
+                      </Field>
+                      <div className="flex justify-end">
+                        <button
+                          type="submit"
+                          disabled={loading || isSendingMessage} 
+                          className="message-send-button text-cyan-700 px-4 focus:outline-none outline-none py-2 mx-auto absolute top-[45%] rounded disabled:opacity-50 disabled:pointer-events-none hover:bg-gray-200 transition-all"
+                        >
+                          <IoSend size={30} className="text-cyan-700 hover:fill-black transition-colors" />
+                        </button>
+                      </div>
+                    </Form>
+                  </div>
+                )}
+              </Formik>
+            </div>
           </div>
         </div>
       </motion.div>

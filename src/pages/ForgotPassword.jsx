@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BgGradient from "@components/BgGradient";
 import { Link, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, transform } from "framer-motion";
 import { BsQuestionSquareFill } from "react-icons/bs";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import {
@@ -15,6 +15,7 @@ import {
 } from "@services/forgotPasswordsHandlers";
 
 import AnimatedError from "@components/AnimatedError";
+import translate from "../utils/translate";
 
 export default function ForgotPassword() {
   const [step, setStep] = useState(1);
@@ -43,12 +44,12 @@ export default function ForgotPassword() {
           to={"/"}
           className="flex items-center justify-center hover:scale-110 transition-all"
         >
-          <h1 className="flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
+          <h1 className="main-title flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
             FeelZChat
           </h1>
         </Link>
         <section className="max-w-[650px] container bg-white p-16 rounded-2xl border-b-cyan-700 border-b-8 z-999">
-          <h2 className="text-3xl pb-10">Сброс пароля</h2>
+          <h2 className="text-3xl pb-10">{translate("key_password_reset")}</h2>
           {step === 1 && (
             <Formik
               initialValues={{ email: "" }}
@@ -77,7 +78,7 @@ export default function ForgotPassword() {
                     </label>
 
                     <button className="button-styles col-span-1" type="submit">
-                      Сбросить
+                      {translate("key_reset")}
                     </button>
                   </Form>
                 </div>
@@ -115,7 +116,7 @@ export default function ForgotPassword() {
                       </ErrorMessage>
                     </label>
                     <button className="button-styles mb-4" type="submit">
-                      Завершить регистрацию
+                      {translate("key_end_registration")}
                     </button>
                   </Form>
                 </motion.div>
@@ -135,8 +136,7 @@ export default function ForgotPassword() {
                 ✓
               </div>
               <p className="text-xl text-center">
-                Пароль успешно сброшен. Сейчас вы будете перенаправлены на
-                страницу входа...
+                {translate("key_reset_success")}
               </p>
             </motion.div>
           )}
@@ -150,7 +150,7 @@ export default function ForgotPassword() {
           transition={{ duration: 1 }}
           className="fixed bottom-10 left-10 flex items-center justify-center gap-5 bg-amber-50 p-3 rounded-4xl"
         >
-          <p>Есть вопросы?</p>
+          <p>{translate("key_questions?")}</p>
           <BsQuestionSquareFill size={50} color="rgb(14, 116, 144)" />
         </motion.div>
       </Link>

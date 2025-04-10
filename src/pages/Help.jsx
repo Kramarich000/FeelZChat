@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
-
+import translate from "../utils/translate";
 
 const faqData = [
   {
-    question: "Как зарегистрироваться?",
+    question: translate("key_how_sign_in"),
     answer:
       "На главной странице нажмите «Регистрация», введите номер телефона и придумайте пароль.",
   },
@@ -64,12 +64,12 @@ export default function Help() {
                 key={index}
                 className="border-b-10 py-4 min-h-auto bg-cyan-700 p-2 text-white rounded-3xl"
               >
-                <div
+                <p
                   className="w-full cursor-pointer text-left font-medium"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                 >
                   {item.question}
-                </div>
+                </p>
 
                 <motion.div
                   initial={false}
@@ -80,7 +80,7 @@ export default function Help() {
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                   style={{ overflow: "hidden" }}
                 >
-                  <div className="text-left mt-2 py-1">{item.answer}</div>
+                  <p className="text-left mt-2 py-1">{item.answer}</p>
                 </motion.div>
               </div>
             );

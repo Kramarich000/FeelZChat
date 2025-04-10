@@ -162,7 +162,42 @@ button {
 main{
   width: 100vw;
   height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
 }
+
+scrollbar {
+  width: 12px;  
+  height: 12px; 
+}
+
+scrollbar-thumb {
+  background-color: rgb(14, 116, 144);  
+  border-radius: 10px;  
+}
+
+scrollbar-track {
+  background-color: #f0f0f0;  
+}
+
+::-webkit-scrollbar{
+  width: 8px;
+  height: 8px;
+}
+
+
+::-webkit-scrollbar-thumb{
+  width: 8px;
+  height: 8px;
+  background-color: rgb(14, 116, 144);
+}
+
+::-webkit-scrollbar-track{
+  background-color: #151515;
+  width: 8px;
+  height: 8px;
+}
+
 
 button:focus{
   outline: none !important;
@@ -185,6 +220,52 @@ button.trigger.select-styles {
   border-bottom-right-radius: 0;
 }
 
+
+
+textarea scrollbar {
+  width: 6px;  
+  height: 6px; 
+}
+
+textarea scrollbar-thumb {
+  background-color: rgb(14, 116, 144);  
+  border-radius: 10px;  
+}
+
+textarea scrollbar-track {
+  background-color: #f0f0f0;  
+}
+
+textarea::-webkit-scrollbar{
+  width: 6px;  
+  height: 6px; 
+}
+
+
+textarea::-webkit-scrollbar-thumb{
+  width: 6px;  
+  height: 6px; 
+  background-color: rgb(14, 116, 144);
+}
+
+textarea::-webkit-scrollbar-track{
+  background-color: rgb(0, 0, 0);
+  width: 6px;  
+  height: 6px; 
+}
+
+.main-title{
+  transition: all .3s;
+
+}
+
+.main-title:hover{
+  color: #0E7490;
+}
+
+button:hover svg{
+  fill: #000;
+}
 
 button:hover {
   background-color: black;
@@ -262,7 +343,7 @@ button.message-send-button{
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   transition: all .3s ease;
 }
 
