@@ -15,7 +15,8 @@ import {
 } from "@services/forgotPasswordsHandlers";
 
 import AnimatedError from "@components/AnimatedError";
-import translate from "../utils/translate";
+import translate from "@utils/translate";
+import HelpButton from "@components/HelpButton";
 
 export default function ForgotPassword() {
   const [step, setStep] = useState(1);
@@ -45,7 +46,7 @@ export default function ForgotPassword() {
           className="flex items-center justify-center hover:scale-110 transition-all"
         >
           <h1 className="main-title flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
-            FeelZChat
+            {translate("key_app_name")}
           </h1>
         </Link>
         <section className="max-w-[650px] container bg-white p-16 rounded-2xl border-b-cyan-700 border-b-8 z-999">
@@ -59,8 +60,7 @@ export default function ForgotPassword() {
               }}
             >
               {() => (
-                <div
-                >
+                <div>
                   <Form noValidate className="grid gap-6" autoComplete="email">
                     <label>
                       <Field
@@ -106,7 +106,7 @@ export default function ForgotPassword() {
                       <Field
                         type="text"
                         name="confirmationCode"
-                        placeholder="Код подтверждения"
+                        placeholder={translate("key_confirm_code")}
                         className="input-styles"
                       />
                       <ErrorMessage name="confirmationCode">
@@ -142,18 +142,7 @@ export default function ForgotPassword() {
           )}
         </section>
       </motion.div>
-      <Link to={"/help"}>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 50 }}
-          transition={{ duration: 1 }}
-          className="fixed bottom-10 left-10 flex items-center justify-center gap-5 bg-amber-50 p-3 rounded-4xl"
-        >
-          <p>{translate("key_questions?")}</p>
-          <BsQuestionSquareFill size={50} color="rgb(14, 116, 144)" />
-        </motion.div>
-      </Link>
+      <HelpButton />
     </BgGradient>
   );
 }

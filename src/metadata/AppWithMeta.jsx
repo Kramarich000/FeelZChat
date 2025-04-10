@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import App from '../App';
-
+import Ivan from '../assets/images/ivan.jpg'
 export default function AppWithMeta() {
     useEffect(() => {
       document.title = "FeelZChat";  
@@ -11,7 +11,7 @@ export default function AppWithMeta() {
       
       if (metaTitle) metaTitle.setAttribute("content", "FeelZChat");
       if (metaDescription) metaDescription.setAttribute("content", "A modern messaging app for seamless communication.");
-      if (metaImage) metaImage.setAttribute("content", "https://example.com/preview-image.jpg");
+      if (metaImage) metaImage.setAttribute("content", Ivan);
   
     }, []);  
   

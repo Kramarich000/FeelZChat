@@ -2,8 +2,7 @@ import React from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { FaGoogle } from "react-icons/fa";
-import { useTranslation } from "react-i18next";
-
+import translate from "@utils/translate"
 const GoogleAuth = () => {
   const login = useGoogleLogin({
     flow: "auth-code",
@@ -36,7 +35,7 @@ const GoogleAuth = () => {
       className="flex items-center justify-center text-center col-span-2 w-full bg-cyan-700 text-black py-2 rounded shadow border hover:bg-gray-100"
     >
       <FaGoogle className="text-left mr-auto" />
-      <p className="mr-auto">Войти с помощью Google</p>
+      <p className="mr-auto">{translate("key_sign_in_with")}</p>
     </button>
   );
 };

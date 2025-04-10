@@ -6,6 +6,7 @@ import ChatHeader from "@components/ChatHeader";
 import BgChatGradient from "@components/BgChatGradient";
 import translate from "@utils/translate";
 import { useResizablePanel } from "@hooks/useResizablePanel";
+import HelpButton from "@components/HelpButton";
 
 export default function Chat() {
   const [activeChatId, setActiveChatId] = useState(1);
@@ -39,7 +40,7 @@ export default function Chat() {
   ]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [isSendingMessage, setIsSendingMessage] = useState(false); 
+  const [isSendingMessage, setIsSendingMessage] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100);
@@ -47,13 +48,12 @@ export default function Chat() {
   }, []);
 
   const sendMessage = (text) => {
-    if (!text.trim() || isSendingMessage) return; 
+    if (!text.trim() || isSendingMessage) return;
 
-    setIsSendingMessage(true); 
+    setIsSendingMessage(true);
 
     setLoading(true);
 
-    
     setMessages((prev) => [
       ...prev,
       {
@@ -65,7 +65,6 @@ export default function Chat() {
       },
     ]);
 
-    
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
@@ -78,12 +77,11 @@ export default function Chat() {
         },
       ]);
       setLoading(false);
-      
-      
+
       setTimeout(() => {
-        setIsSendingMessage(false); 
+        setIsSendingMessage(false);
       }, 1000);
-    }, 1000); 
+    }, 1000);
   };
 
   const selectChat = (id) => setActiveChatId(id);
@@ -101,8 +99,8 @@ export default function Chat() {
   useEffect(() => {
     if (endOfMessagesRef.current) {
       endOfMessagesRef.current.scrollIntoView({
-        behavior: "smooth",  
-        block: "end",        
+        behavior: "smooth",
+        block: "end",
       });
     }
   }, [messages]);
@@ -122,7 +120,9 @@ export default function Chat() {
             className="resizeable-panel bg-transparent p-4 overflow-y-auto "
             style={{ width: `${leftPanelWidth}px`, minWidth: "70px" }}
           >
-            <h2 className="text-lg font-semibold mb-4">{translate("key_chats")}</h2>
+            <h2 className="text-lg font-semibold mb-4">
+              {translate("key_chats")}
+            </h2>
             <ul className="space-y-2">
               {chats.map((chat) => (
                 <li
@@ -151,7 +151,10 @@ export default function Chat() {
           >
             <div
               className="flex-1 glass-container overflow-y-auto bg-transparent rounded transition-none duration-500 p-4 m-4"
-              style={{ width: `calc(${rightPanelWidth-50}px`, minWidth: "600px" }}
+              style={{
+                width: `calc(${rightPanelWidth - 50}px`,
+                minWidth: "600px",
+              }}
             >
               <div className="flex flex-col gap-4">
                 {messages.map((msg, index) => (
@@ -159,14 +162,10 @@ export default function Chat() {
                     key={index}
                     className={`max-w-[70%] p-3 rounded-xl message shadow text-left ${
                       msg.type
-                    } ${
-                      msg.type === "sent"
-                        ? "self-end"
-                        : "self-start"
-                    } ${
+                    } ${msg.type === "sent" ? "self-end" : "self-start"} ${
                       isLoaded ? "opacity-100" : "opacity-0"
                     } transition-opacity duration-300`}
-                    style={{ wordWrap: 'break-word', whiteSpace: 'pre-wrap' }}
+                    style={{ wordWrap: "break-word", whiteSpace: "pre-wrap" }}
                   >
                     <div className="mb-1 text-lg text-left">{msg.author}</div>
                     <div className="grid grid-cols-1 text-left]">
@@ -209,14 +208,14 @@ export default function Chat() {
                         {({ field }) => (
                           <textarea
                             {...field}
-                            className="w-full h-32 p-4 pr-14 border chat-textarea rounded resize-none"
-                            placeholder="Введите сообщение..."
+                            className="scrollbar-hide w-full h-32 p-4 pr-14 border chat-textarea rounded resize-none"
+                            placeholder={translate("key_enter_message")}
                             value={values.text}
                             onChange={(e) =>
                               setFieldValue("text", e.target.value)
                             }
                             style={{
-                              width: `${rightPanelWidth-81}px`,
+                              width: `${rightPanelWidth - 81}px`,
                               minWidth: "600px",
                             }}
                             onKeyDown={(e) => {
@@ -225,17 +224,20 @@ export default function Chat() {
                                 submitForm();
                               }
                             }}
-                            disabled={isSendingMessage} 
+                            disabled={isSendingMessage}
                           />
                         )}
                       </Field>
                       <div className="flex justify-end">
                         <button
                           type="submit"
-                          disabled={loading || isSendingMessage} 
+                          disabled={loading || isSendingMessage}
                           className="message-send-button text-cyan-700 px-4 focus:outline-none outline-none py-2 mx-auto absolute top-[45%] rounded disabled:opacity-50 disabled:pointer-events-none hover:bg-gray-200 transition-all"
                         >
-                          <IoSend size={30} className="text-cyan-700 hover:fill-black transition-colors" />
+                          <IoSend
+                            size={30}
+                            className="send-message text-cyan-700 hover:fill-black transition-colors"
+                          />
                         </button>
                       </div>
                     </Form>
@@ -245,6 +247,7 @@ export default function Chat() {
             </div>
           </div>
         </div>
+        <HelpButton/>
       </motion.div>
     </BgChatGradient>
   );

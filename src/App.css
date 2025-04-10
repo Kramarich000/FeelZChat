@@ -19,9 +19,9 @@
   transition: fill 0.3s ease-in-out; 
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 1em #0E7490);
-}
+/* .logo:hover {
+  filter: drop-shadow(0  1.5em #0E7490);
+} */
 
 .logo:hover .logo__path--1,
 .logo:hover .logo__path--2,

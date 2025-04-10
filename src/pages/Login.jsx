@@ -10,6 +10,8 @@ import { ErrorMessage } from "formik";
 import { formatPhoneNumber } from "@validate/registerSchema";
 import AnimatedError from "@components/AnimatedError";
 import { handleLoginSubmit } from "@services/loginHandlers";
+import translate from "@utils/translate";
+import HelpButton from "@components/HelpButton";
 
 export default function Login() {
   const Input = ({ type, placeholder }) => (
@@ -34,11 +36,11 @@ export default function Login() {
           className="flex items-center justify-center hover:scale-110 transition-all"
         >
           <h1 className="main-title flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
-            FeelZChat
+            {translate("key_app_name")}
           </h1>
         </Link>
         <section className="max-w-[650px] container bg-white p-16 rounded-2xl border-b-cyan-700 border-b-8 z-999">
-          <h2 className="text-3xl pb-10">Вход</h2>
+          <h2 className="text-3xl pb-10">{translate("key_login_title")}</h2>
           <Formik
             initialValues={{ phone: "", password: "", remember: false }}
             validationSchema={loginSchema}
@@ -52,7 +54,7 @@ export default function Login() {
                   <Field
                     name="phone"
                     type="tel"
-                    placeholder="Телефон"
+                    placeholder={translate("key_phone")}
                     className="input-styles"
                     onChange={(e) => {
                       const phoneValue = e.target.value;
@@ -70,7 +72,7 @@ export default function Login() {
                   <Field
                     name="password"
                     type="password"
-                    placeholder="Пароль"
+                    placeholder={translate("key_password")}
                     className="input-styles "
                   />
                   <ErrorMessage name="password">
@@ -85,7 +87,7 @@ export default function Login() {
                   />
                   <span className="checkbox-custom"></span>
                   <span>
-                    Запомнить меня{" "}
+                    {translate("key_remember_me")}{" "}
                     <Link
                       to="/privacy"
                       className="text-cyan-700 hover:underline text-center"
@@ -97,7 +99,7 @@ export default function Login() {
                   className="button-styles col-span-2 mb-4 w-full"
                   type="submit"
                 >
-                  Войти
+                  {translate("key_enter")}
                 </button>
               </Form>
             )}
@@ -108,26 +110,15 @@ export default function Login() {
               className="text-cyan-700 hover:underline"
               to="/forgot-password"
             >
-              Забыли пароль?
+              {translate("key_forgot_password")}
             </Link>
             <Link className="text-cyan-700 hover:underline" to="/register">
-              Нет аккаунта?
+              {translate("key_no_account")}
             </Link>
           </div>
         </section>
       </motion.div>
-      <Link to={"/help"}>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 50 }}
-          transition={{ duration: 1 }}
-          className="fixed bottom-10 left-10 flex items-center justify-center gap-5 bg-amber-50 p-3 rounded-4xl"
-        >
-          <p>Есть вопросы?</p>
-          <BsQuestionSquareFill size={50} color="rgb(14, 116, 144)" />
-        </motion.div>
-      </Link>
+      <HelpButton/>
     </BgGradient>
   );
 }

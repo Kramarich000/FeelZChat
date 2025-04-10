@@ -28,7 +28,7 @@ export function useEmotionAnalysis() {
 
           const data = await response.json();
           setResult(data);
-        } catch (error) {
+        } catch (err) {
           setResult({ error: "Ошибка при запросе к серверу." });
         } finally {
           setLoading(false);

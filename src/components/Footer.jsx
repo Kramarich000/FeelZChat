@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import translate from "@utils/translate"
 
 export default function Footer() {
   return (
@@ -47,12 +48,12 @@ export default function Footer() {
         <div className="mt-2">
           <motion.div transition={{ type: "spring", stiffness: 300 }}>
             <Link to="/privacy" target="_blank" className="text-[20px] underline hover:text-cyan-700 transition-all" >
-              Политика конфиденциальности
+              {translate("key_privacy_policy")}
             </Link>
           </motion.div>
         </div>
       </div>
-      <p className="text-[14px] mt-4">© 2025 FeelZChat. Все права защищены.</p>
+      <p className="text-[14px] mt-4">{translate("key_copyright_2025_feelzchat")}</p>
     </footer>
   );
 }
