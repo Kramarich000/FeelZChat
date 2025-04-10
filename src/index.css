@@ -366,9 +366,9 @@ button:hover svg {
   transition: all .3s ease;
 }
 
-.Toastify__toast {
+/* .Toastify__toast {
   padding: 40px;
-}
+} */
 
 .glass-container {
   backdrop-filter: blur(10px);

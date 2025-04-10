@@ -50,14 +50,14 @@ export default async function scrapeText() {
             const texts = await page.evaluate(() => {
                 const selectors = [
                     'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'a', 'button', 'label', 'span', 'option', 'strong', 'li',
-                    'input[placeholder]', 'textarea[placeholder]'  // Добавляем элементы с атрибутом placeholder
+                    'input[placeholder]', 'textarea[placeholder]'  
                 ];
                 const collected = [];
 
                 selectors.forEach(selector => {
                     const elements = Array.from(document.querySelectorAll(selector));
                     elements.forEach(el => {
-                        const text = el.innerText?.trim() || el.getAttribute('placeholder')?.trim();  // Используем placeholder, если есть
+                        const text = el.innerText?.trim() || el.getAttribute('placeholder')?.trim();  
                         if (text && text.length > 1) {
                             collected.push(text);
                         }
@@ -80,13 +80,13 @@ export default async function scrapeText() {
             });
 
         } catch (err) {
-            console.warn(`⚠️ Ошибка при загрузке ${url}:`, err.message);
+            console.warn(`Ошибка при загрузке ${url}:`, err.message);
         }
     }
 
     fs.writeFileSync('scrapedTexts.json', JSON.stringify(allTexts, null, 2), 'utf-8');
 
-    console.log('✅ Тексты успешно сохранены в файл scrapedTexts.json');
+    console.log('Тексты успешно сохранены в файл scrapedTexts.json');
     await browser.close();
 }
 
