@@ -6,9 +6,9 @@ import translate from "@utils/translate";
 const Error401 = () => {
   const navigate = useNavigate();
 
-  const goBack = () => {
+  function goBack() {
     navigate(-1);
-  };
+  }
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
