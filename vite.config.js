@@ -7,7 +7,7 @@ import viteCompression from 'vite-plugin-compression';
 import { analyzer } from 'vite-bundle-analyzer';
 import VitePreload from 'vite-plugin-preload';
 import { VitePWA } from 'vite-plugin-pwa';
-import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
+// import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 export default defineConfig({
   plugins: [
@@ -19,23 +19,23 @@ export default defineConfig({
     }),
     VitePWA(),
     analyzer(),
-    ViteImageOptimizer ({
-      jpeg: {
-        quality: 75,
-      },
-      png: {
-        quality: [0.65, 0.9],
-      },
-      svg: {
-        multipass: true,
-      },
-      gif: {
-        optimizationLevel: 3,
-      },
-      webp: {
-        quality: 75,
-      }
-    }),
+    // ViteImageOptimizer ({
+    //   jpeg: {
+    //     quality: 75,
+    //   },
+    //   png: {
+    //     quality: [0.65, 0.9],
+    //   },
+    //   svg: {
+    //     multipass: true,
+    //   },
+    //   gif: {
+    //     optimizationLevel: 3,
+    //   },
+    //   webp: {
+    //     quality: 75,
+    //   }
+    // }),
     VitePreload()
   ],
   optimizeDeps: {
