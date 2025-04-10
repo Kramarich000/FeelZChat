@@ -6,19 +6,19 @@ const Logo = () => {
   const handleMouseEnter = () => {
     const wheel = document.querySelector(".wheel");
     gsap.to(wheel, {
-      rotation: 360, 
-      repeat: -1, 
-      duration: 1.5, 
-      ease: "none", 
-      transformOrigin: "50% 50%", 
+      rotation: 360,
+      repeat: -1,
+      duration: 5,
+      ease: "linear",
+      transformOrigin: "50% 50%",
     });
   };
 
   const handleMouseLeave = () => {
-    gsap.killTweensOf('.wheel');
-    gsap.to('.wheel', {
+    gsap.killTweensOf(".wheel");
+    gsap.to(".wheel", {
       rotation: 0,
-      duration: 1.5
+      duration: 1,
     });
   };
   return (

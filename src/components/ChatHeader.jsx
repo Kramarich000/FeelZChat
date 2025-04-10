@@ -38,7 +38,7 @@ export default function ChatHeader() {
                           active ? "bg-gray-200" : ""
                         }`}
                       >
-                        {translate("login")}
+                        {translate("key_profile")}
                       </Link>
                     )}
                   </MenuItem>
@@ -50,7 +50,7 @@ export default function ChatHeader() {
                           active ? "bg-gray-200" : ""
                         }`}
                       >
-                        Настройки
+                        {translate("key_settings")}
                       </Link>
                     )}
                   </MenuItem>
@@ -62,7 +62,7 @@ export default function ChatHeader() {
                           active ? "bg-gray-200" : ""
                         }`}
                       >
-                        Выйти
+                         {translate("key_logout")}
                       </Link>
                     )}
                   </MenuItem>

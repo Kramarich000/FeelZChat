@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import BgGradient from "@components/BgGradient";
 import CustomCalendar from "@components/CustomCalendar";
 import { Link, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, transform } from "framer-motion";
 import { BsQuestionSquareFill } from "react-icons/bs";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import {
@@ -22,6 +22,9 @@ import { useEffect } from "react";
 import { captcha } from "@services/captcha";
 import { showToast } from "../utils/toast";
 import ReCAPTCHA from "react-google-recaptcha";
+import translate from "@utils/translate";
+
+import HelpButton from "@components/HelpButton";
 
 export default function Register() {
   const [step, setStep] = useState(1);
@@ -77,10 +80,10 @@ export default function Register() {
       if (verificationResultV2.success && verificationResultV2.score >= 0.5) {
         console.log(verificationResultV2);
         setCaptchaVerified(true);
-        showToast("Captcha пройдена по v2!", "success");
+        // showToast("Captcha пройдена по v2!", "success");
       } else {
         setCaptchaVerified(false);
-        showToast("Captcha не пройдена по v2, пробуем v3.", "error");
+        // showToast("Captcha не пройдена по v2, пробуем v3.", "error");
 
         const tokenV3 = await executeRecaptchaV3();
 
@@ -92,13 +95,13 @@ export default function Register() {
             verificationResultV3.score >= 0.5
           ) {
             setCaptchaVerified(true);
-            showToast("Captcha пройдена по v3!", "success");
+            // showToast("Captcha пройдена по v3!", "success");
           } else {
             setCaptchaVerified(false);
-            showToast("Captcha не пройдена по v3!", "error");
+            // showToast("Captcha не пройдена по v3!", "error");
           }
         } else {
-          showToast("Ошибка: не удалось получить токен для v3", "error");
+          // showToast("Ошибка: не удалось получить токен для v3", "error");
         }
       }
     } catch (error) {
@@ -121,11 +124,11 @@ export default function Register() {
           className="flex items-center justify-center hover:scale-110 transition-all"
         >
           <h1 className="main-title flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
-            FeelZChat
+            {translate("key_app_name")}
           </h1>
         </Link>
         <section className="max-w-[650px] container bg-white p-16 rounded-2xl border-b-cyan-700 border-b-8 z-999">
-          <h2 className="text-3xl pb-10">Регистрация</h2>
+          <h2 className="text-3xl pb-10">{translate("key_register_1")}</h2>
 
           {step === 1 && (
             <Formik
@@ -141,7 +144,7 @@ export default function Register() {
                     <Field
                       name="name"
                       type="text"
-                      placeholder="Имя"
+                      placeholder={translate("key_name")}
                       className="input-styles "
                       autoComplete="given-name"
                     />
@@ -154,7 +157,7 @@ export default function Register() {
                     <Field
                       name="surname"
                       type="text"
-                      placeholder="Фамилия"
+                      placeholder={translate("key_surname")}
                       className="input-styles "
                       autoComplete="family-name"
                     />
@@ -167,7 +170,7 @@ export default function Register() {
                     <Field
                       name="phone"
                       type="tel"
-                      placeholder="Телефон"
+                      placeholder={translate("key_phone")}
                       className="input-styles"
                       autoComplete="tel"
                       onChange={(e) => {
@@ -197,7 +200,7 @@ export default function Register() {
                     <Field
                       name="password"
                       type="password"
-                      placeholder="Пароль"
+                      placeholder={translate("key_password")}
                       className="input-styles "
                       autoComplete="new-password"
                     />
@@ -210,7 +213,7 @@ export default function Register() {
                     <Field
                       name="confirmPassword"
                       type="password"
-                      placeholder="Подтвердите пароль"
+                      placeholder={translate("key_confirm_password")}
                       className="input-styles "
                       autoComplete="new-password"
                     />
@@ -228,13 +231,13 @@ export default function Register() {
                       />
                       <span className="checkbox-custom"></span>
                       <span>
-                        Я согласен с{" "}
+                        {translate("key_i_confirm")}{" "}
                         <Link
                           to="/privacy"
                           className="text-cyan-700 hover:underline"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          политикой конфиденциальности
+                          {translate("key_privacy_1")}
                         </Link>
                       </span>
                     </label>
@@ -248,14 +251,14 @@ export default function Register() {
                     type="submit"
                     disabled={!captchaVerified}
                   >
-                    Зарегистрироваться
+                    {translate("key_sign_up")}
                   </button>
                   <GoogleAuth />
                   <Link
                     className="text-cyan-700 col-span-2 text-center hover:underline"
                     to="/login"
                   >
-                    Уже есть аккаунт?
+                    {translate("key_already_have_account")}
                   </Link>
                   <div className="flex justify-center items-center mt-4 origin-top col-span-2">
                     <ReCAPTCHA
@@ -301,7 +304,7 @@ export default function Register() {
                     </label>
 
                     <button className="button-styles col-span-1" type="submit">
-                      Подтвердить
+                      {translate("key_confirm")}
                     </button>
                   </Form>
                 </motion.div>
@@ -336,7 +339,7 @@ export default function Register() {
                     </ErrorMessage>
                   </div>
                   <button className="button-styles mb-4" type="submit">
-                    Завершить регистрацию
+                    {translate("key_end_registration")}
                   </button>
                 </Form>
               )}
@@ -353,23 +356,12 @@ export default function Register() {
               <div className="w-20 h-20 bg-cyan-700 rounded-full flex items-center justify-center text-white text-4xl">
                 ✓
               </div>
-              <p className="text-xl text-center">Вы успешно зарегистрированы</p>
+              <p className="text-xl text-center">{translate("key_success_registration")}</p>
             </motion.div>
           )}
         </section>
       </motion.div>
-      <Link to={"/help"}>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 50 }}
-          transition={{ duration: 1 }}
-          className="fixed bottom-10 left-10 flex items-center justify-center gap-5 bg-amber-50 p-3 rounded-4xl"
-        >
-          <p>Есть вопросы?</p>
-          <BsQuestionSquareFill size={50} color="rgb(14, 116, 144)" />
-        </motion.div>
-      </Link>
+      <HelpButton/>
     </BgGradient>
   );
 }

@@ -13,6 +13,7 @@ import MusicComponent from "@components/MusicComponent";
 import { Loader } from "@components/Loader";
 import Error404 from "@errors/404";
 
+import translate from "@utils/translate";
 
 const Register = lazy(() => import("@pages/Register"));
 const Login = lazy(() => import("@pages/Login"));
@@ -25,7 +26,9 @@ const ForgotPassword = lazy(() => import("@pages/ForgotPassword"));
 
 
 const Page = ({ component: Component, title }) => {
-  const WrappedComponent = withTitle(Component, title);
+  const translatedTitle = translate(title);
+
+  const WrappedComponent = withTitle(Component, translatedTitle);
   return <WrappedComponent />;
 };
 
@@ -33,59 +36,60 @@ const routes = [
   {
     path: "/register",
     component: Register,
-    title: "Регистрация",
+    titleKey: "key_register_1", 
     importFunc: () => import("@pages/Register"),
   },
   {
     path: "/login",
     component: Login,
-    title: "Вход",
+    titleKey: "key_login_1", 
     importFunc: () => import("@pages/Login"),
   },
   {
     path: "/chat",
     component: Chat,
-    title: "Чат",
+    titleKey: "key_chat", 
     importFunc: () => import("@pages/Chat"),
   },
   {
     path: "/privacy",
     component: Privacy,
-    title: "Политика конфиденциальности",
+    titleKey: "key_privacy", 
     importFunc: () => import("@pages/Privacy"),
   },
   {
     path: "/help",
     component: Help,
-    title: "FAQ",
+    titleKey: "key_help", 
     importFunc: () => import("@pages/Help"),
   },
   {
     path: "/",
     component: Home,
-    title: "Главная",
+    titleKey: "key_home", 
     importFunc: () => import("@pages/Home"),
   },
   {
     path: "/profile",
     component: Profile,
-    title: "Профиль",
+    titleKey: "key_profile_1", 
     private: true,
     importFunc: () => import("@pages/Profile"),
   },
   {
     path: "/forgot-password",
     component: ForgotPassword,
-    title: "Сброс пароля",
+    titleKey: "key_reset_password", 
     importFunc: () => import("@pages/ForgotPassword"),
   },
   {
     path: "*",
     component: Error404,
-    title: "Ошибка",
+    titleKey: "key_error", 
     importFunc: () => import("@errors/404"),
   },
 ];
+
 
 const preloadPage = (importFunc) => {
   if (typeof importFunc === "function") {
@@ -113,13 +117,13 @@ function App() {
                           <PrivateRoute>
                             <Page
                               component={route.component}
-                              title={route.title}
+                              title={route.titleKey}
                             />
                           </PrivateRoute>
                         ) : (
                           <Page
                             component={route.component}
-                            title={route.title}
+                            title={route.titleKey}
                           />
                         )}
                       </div>
