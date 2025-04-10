@@ -17,8 +17,8 @@ export default defineConfig({
       algorithm: 'brotliCompress',
       ext: '.br',
     }),
-    VitePWA(),
-    analyzer(),
+    // VitePWA(),
+    // analyzer(),
     // ViteImageOptimizer ({
     //   jpeg: {
     //     quality: 75,
