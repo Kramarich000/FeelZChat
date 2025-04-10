@@ -5,9 +5,9 @@ import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 import viteCompression from 'vite-plugin-compression';
 import { analyzer } from 'vite-bundle-analyzer';
-import imageminPlugin from 'vite-plugin-imagemin';
 import VitePreload from 'vite-plugin-preload';
 import { VitePWA } from 'vite-plugin-pwa';
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 export default defineConfig({
   plugins: [
@@ -19,30 +19,22 @@ export default defineConfig({
     }),
     VitePWA(),
     analyzer(),
-    imageminPlugin({
-      gifsicle: {
-        optimizationLevel: 3,
-        interlaced: false,
-      },
-      mozjpeg: {
+    ViteImageOptimizer ({
+      jpeg: {
         quality: 75,
       },
-      optipng: {
-        optimizationLevel: 5,
-      },
-      pngquant: {
+      png: {
         quality: [0.65, 0.9],
-        speed: 4,
       },
-      svgo: {
-        plugins: [
-          'preset-default',
-          {
-            name: 'removeViewBox',
-            active: false,
-          },
-        ],
+      svg: {
+        multipass: true,
       },
+      gif: {
+        optimizationLevel: 3,
+      },
+      webp: {
+        quality: 75,
+      }
     }),
     VitePreload()
   ],
