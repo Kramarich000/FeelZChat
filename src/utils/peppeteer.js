@@ -42,20 +42,22 @@ export default async function scrapeText() {
         }
     };
 
-
     for (let url of urls) {
         try {
             await page.goto(url, { waitUntil: 'load', timeout: 30000 });
             await page.waitForSelector('body');
             await new Promise(resolve => setTimeout(resolve, 5000));
             const texts = await page.evaluate(() => {
-                const selectors = ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'a', 'button', 'label', 'placeholder', 'span', 'option', 'strong', 'li'];
+                const selectors = [
+                    'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'a', 'button', 'label', 'span', 'option', 'strong', 'li',
+                    'input[placeholder]', 'textarea[placeholder]'  // Добавляем элементы с атрибутом placeholder
+                ];
                 const collected = [];
 
                 selectors.forEach(selector => {
                     const elements = Array.from(document.querySelectorAll(selector));
                     elements.forEach(el => {
-                        const text = el.innerText?.trim();
+                        const text = el.innerText?.trim() || el.getAttribute('placeholder')?.trim();  // Используем placeholder, если есть
                         if (text && text.length > 1) {
                             collected.push(text);
                         }
@@ -76,7 +78,6 @@ export default async function scrapeText() {
                     }
                 });
             });
-
 
         } catch (err) {
             console.warn(`⚠️ Ошибка при загрузке ${url}:`, err.message);

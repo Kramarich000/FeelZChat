@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Header from "@components/Header";
-
+import Footer from "@components/Footer";
 
 export default function Privacy() {
   return (
@@ -62,6 +62,7 @@ export default function Privacy() {
           </div>
         </div>
       </motion.div>
+      <Footer/>
     </div>
   );
 }

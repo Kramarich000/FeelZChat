@@ -4,18 +4,39 @@
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
   will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  transition: all 0.3s ease-in-out; 
+  width: 80px;
+  height: 80px;
 }
 
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.logo__path--1,
+.logo__path--2,
+.logo__path--3,
+.logo__path--5,
+.logo__path--4,
+.logo__path--6 {
+  transition: fill 0.3s ease-in-out; 
 }
+
+.logo:hover {
+  filter: drop-shadow(0 0 1em #0E7490);
+}
+
+.logo:hover .logo__path--1,
+.logo:hover .logo__path--2,
+.logo:hover .logo__path--3,
+.logo:hover .logo__path--5 {
+  fill: black; 
+}
+
+.logo:hover .logo__path--4,
+.logo:hover .logo__path--6 {
+  fill: #0E7490; 
+}
+
+
+
 
 @keyframes logo-spin {
   from {
