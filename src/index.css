@@ -331,7 +331,7 @@ button:hover svg {
 }
 
 .header {
-  transform: translateY(-100px);
+  transform: translateY(-120px);
   transition: all .3s;
 }
 
@@ -417,4 +417,22 @@ button:hover svg {
 .message.received {
   align-self: flex-start;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* .resizeablePanel {
+  transition: all 0.3s ease;
+  overflow: hidden;
+} */
+
+.scrollbar-chat::-webkit-scrollbar {
+  width: 5.5px;
+}
+
+.scrollbar-chat::-webkit-scrollbar-thumb {
+  background-color: rgba(14, 116, 144, 0.5);
+  border-radius: 10px;
+}
+
+.scrollbar-chat::-webkit-scrollbar-track {
+  background-color: transparent;
 }
