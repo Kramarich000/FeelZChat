@@ -86,11 +86,7 @@ export default function Chat() {
 
   const selectChat = (id) => setActiveChatId(id);
 
-  const { width: leftPanelWidth, onMouseDown } = useResizablePanel(
-    200,
-    70,
-    400
-  );
+  const { width: leftPanelWidth, panelRef, onMouseDown } = useResizablePanel();
   const containerWidth = 1200;
   const separatorWidth = 5;
   const rightPanelWidth = containerWidth - leftPanelWidth - separatorWidth;
@@ -109,16 +105,17 @@ export default function Chat() {
     <BgChatGradient>
       <ChatHeader />
       <motion.div
-        className="flex min-h-[850px] border-1 p-[30px] rounded-4xl"
+        className="flex min-h-[850px] border-1 p-[30px] rounded-4xl w-[1200px]"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -50 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <div className="flex relative w-full max-w-[1200px] min-w-[1200px] mx-auto">
+        <div className="flex relative w-full max-w-[1200px] mx-auto">
           <div
-            className="resizeable-panel bg-transparent p-4 overflow-y-auto "
-            style={{ width: `${leftPanelWidth}px`, minWidth: "70px" }}
+            className="resizeable-panel bg-transparent p-4 overflow-y-auto"
+            ref={panelRef}
+            style={{ width: `${leftPanelWidth}px`}}
           >
             <h2 className="text-lg font-semibold mb-4">
               {translate("key_chats")}
@@ -147,13 +144,12 @@ export default function Chat() {
 
           <div
             className="flex max-h-[788px] flex-col justify-between bg-transparent relative items-center overflow-hidden w-full p-[33px]"
-            style={{ width: `${rightPanelWidth}px`, minWidth: "600px" }}
+            style={{ width: `${rightPanelWidth}px`,  }} 
           >
             <div
-              className="flex-1 glass-container overflow-y-auto bg-transparent rounded transition-none duration-500 p-4 m-4"
+              className="scrollbar-chat flex-1 glass-container overflow-y-auto bg-transparent w-full rounded transition-all duration-500 p-4 m-4"
               style={{
-                width: `calc(${rightPanelWidth - 50}px`,
-                minWidth: "600px",
+                Maxwidth: `calc(${rightPanelWidth - 50}px)`, 
               }}
             >
               <div className="flex flex-col gap-4">
@@ -167,8 +163,8 @@ export default function Chat() {
                     } transition-opacity duration-300`}
                     style={{ wordWrap: "break-word", whiteSpace: "pre-wrap" }}
                   >
-                    <div className="mb-1 text-lg text-left">{msg.author}</div>
-                    <div className="grid grid-cols-1 text-left]">
+                    <div className="mb-1  text-left text-sm">{msg.author}</div>
+                    <div className="grid grid-cols-1 text-sm text-left">
                       <p className="whitespace-pre-wrap break-words max-w-[100%]">
                         {msg.text}
                       </p>
@@ -193,7 +189,7 @@ export default function Chat() {
               </div>
             </div>
 
-            <div className="max-w-[1200px] h-[160px] glass-container bg-transparent p-4 rounded duration-500 transition-none animate-none">
+            <div className="w-full h-[160px] glass-container bg-transparent p-4 rounded transition-all duration-500">
               <Formik
                 initialValues={{ text: "" }}
                 onSubmit={(values, { resetForm }) => {
@@ -202,7 +198,7 @@ export default function Chat() {
                 }}
               >
                 {({ setFieldValue, values, submitForm }) => (
-                  <div className="min-w-[700px] border-t-0">
+                  <div className="w-full border-t-0">
                     <Form className="space-y-4 relative">
                       <Field name="text">
                         {({ field }) => (
@@ -214,10 +210,6 @@ export default function Chat() {
                             onChange={(e) =>
                               setFieldValue("text", e.target.value)
                             }
-                            style={{
-                              width: `${rightPanelWidth - 81}px`,
-                              minWidth: "600px",
-                            }}
                             onKeyDown={(e) => {
                               if (e.key === "Enter" && !e.shiftKey) {
                                 e.preventDefault();
@@ -247,7 +239,6 @@ export default function Chat() {
             </div>
           </div>
         </div>
-        <HelpButton/>
       </motion.div>
     </BgChatGradient>
   );

@@ -36,8 +36,10 @@ export default defineConfig({
       },
       svgo: {
         plugins: [
+          'preset-default',
           {
-            removeViewBox: false,
+            name: 'removeViewBox',
+            active: false,
           },
         ],
       },
