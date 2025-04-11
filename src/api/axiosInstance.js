@@ -31,7 +31,7 @@ api.interceptors.request.use(async (config) => {
       } catch (e) {
         console.error("Failed to refresh token", e);
         localStorage.clear();
-        window.location.href = "/login";
+        // window.location.href = "/login";
         return Promise.reject(e);
       }
     }

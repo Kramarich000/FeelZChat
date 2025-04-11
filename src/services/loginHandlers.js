@@ -31,7 +31,7 @@ export const handleLoginSubmit = async (values, navigate) => {
             localStorage.setItem("expires_at", Date.now() + expires_in * 1000);
             localStorage.setItem("user", JSON.stringify(user));
 
-            navigate("/");
+            // navigate("/");
         } else {
             showToast("Неверные данные для входа", "error");
             console.warn("Ошибка входа", response.data);
