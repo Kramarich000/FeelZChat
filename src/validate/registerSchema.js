@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-import { subYears } from "date-fns";
+import { subYears } from "date-fns/subYears";
 import leoProfanity from "leo-profanity";
 
 leoProfanity.loadDictionary("ru");

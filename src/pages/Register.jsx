@@ -187,10 +187,11 @@ export default function Register() {
                   </div>
 
                   <div className="relative">
-                    <CustomCalendar
-                      date={values.date}
-                      setDate={(date) => setFieldValue("date", date)}
-                    />
+                  <CustomCalendar
+  date={values.date || new Date()} // Здесь важно установить дефолтное значение
+  setDate={(date) => setFieldValue("date", date)}
+/>
+
                     <ErrorMessage name="date">
                       {(msg) => <AnimatedError msg={msg} centered />}
                     </ErrorMessage>
