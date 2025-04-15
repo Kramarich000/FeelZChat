@@ -19,12 +19,12 @@ const texts = JSON.parse(readFileSync('texts.json', 'utf-8'));
       translations[text] = translated;
       console.log(`"${text}" → "${translated}"`);
     } catch (err) {
-      console.error(`❌ Ошибка при переводе "${text}":`, err.message);
+      console.error(`Ошибка при переводе "${text}":`, err.message);
     }
 
     await new Promise(r => setTimeout(r, 1000));
   }
 
   writeFileSync('translations.json', JSON.stringify(translations, null, 2));
-  console.log('✅ Переводы сохранены в translations.json');
+  console.log('Переводы сохранены в translations.json');
 })();

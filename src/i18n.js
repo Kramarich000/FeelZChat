@@ -23,7 +23,7 @@ function detectPreferredLanguage() {
   return 'en';
 }
 
-const lang = detectPreferredLanguage(); // вызов точно здесь
+const lang = detectPreferredLanguage(); 
 
 i18n
   .use(initReactI18next)

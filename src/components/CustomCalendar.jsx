@@ -46,7 +46,7 @@ export default function CustomCalendar({ date, setDate }) {
   };
   //console.log("flatpickrLocale: ", flatpickrLocale);
   const initialDate = date || new Date();
-  //console.log("Initial Date:", initialDate); // Логируем начальную дату
+  //console.log("Initial Date:", initialDate); 
 
   return (
     <div className="relative w-full">
