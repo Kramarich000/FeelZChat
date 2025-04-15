@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 !ru.json
 *.json
+Dockerfile
+cypress/e2e/spec.cy.js
