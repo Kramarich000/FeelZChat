@@ -1,6 +1,6 @@
 import axios from "axios";
 import { showToast } from "@utils/toast";  
-
+import translate from "@utils/translate"
 export const handleFirstStepForgotSubmit = async (values, setStep) => {
   setStep(2);
   try {
@@ -27,7 +27,7 @@ export const handleFirstStepForgotSubmit = async (values, setStep) => {
 export const handleSecondStepForgotSubmit = async (values, setStep) => {
   try {
     setStep(3);
-    showToast("Успех", "sucсess");
+    showToast(`${translate("key_privacy_policy")}`, "success"); // в тостифай можно добавлять локализацию
     const response = await axios.post("https://api/ivan", values);
     if (response.status === 200) {
       console.log("все ок!");
