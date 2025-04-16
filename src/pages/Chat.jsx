@@ -47,11 +47,17 @@ export default function Chat() {
     return () => clearTimeout(timer);
   }, []);
 
+  const showPushNotification = (title, options) => {
+    if (Notification.permission === "granted") {
+      console.log("Отправка уведомления...");
+      new Notification(title, options);
+    }
+  };
+
   const sendMessage = (text) => {
     if (!text.trim() || isSendingMessage) return;
 
     setIsSendingMessage(true);
-
     setLoading(true);
 
     setMessages((prev) => [
@@ -66,24 +72,30 @@ export default function Chat() {
     ]);
 
     setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        {
-          author: "Запара",
-          text: "Ответ...",
-          type: "received",
-          timestamp: formattedTime,
-          delivered: true,
-        },
-      ]);
+      const reply = {
+        author: "Запара",
+        text: "Ответ...",
+        type: "received",
+        timestamp: formattedTime,
+        delivered: true,
+      };
+
+      setMessages((prev) => [...prev, reply]);
       setLoading(false);
+
+      // if (document.hidden) {
+        showPushNotification("Новое сообщение", {
+          body: reply.text,
+          icon: "/icon.png", 
+        });
+      // }
 
       setTimeout(() => {
         setIsSendingMessage(false);
       }, 1000);
     }, 1000);
   };
-
+  
   const selectChat = (id) => setActiveChatId(id);
 
   const { width: leftPanelWidth, panelRef, onMouseDown } = useResizablePanel();
