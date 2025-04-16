@@ -16,18 +16,19 @@ import Error404 from "@errors/404";
 import translate from "@utils/translate";
 import SpotifyPlayer from "@components/SpotifyPlayer";
 
-// const registerServiceWorker = () => {
-//   if ("serviceWorker" in navigator) {
-//     navigator.serviceWorker
-//       .register("/service-worker.js")
-//       .then((registration) => {
-//         console.log("Service Worker зарегистрирован с областью:", registration.scope);
-//       })
-//       .catch((error) => {
-//         console.log("Ошибка при регистрации Service Worker:", error);
-//       });
-//   }
-// };
+import { useEffect } from "react";
+const registerServiceWorker = () => {
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then((registration) => {
+        console.log("Service Worker зарегистрирован с областью:", registration.scope);
+      })
+      .catch((error) => {
+        console.log("Ошибка при регистрации Service Worker:", error);
+      });
+  }
+};
 
 
 const Register = lazy(() => import("@pages/Register"));
@@ -137,10 +138,10 @@ const preloadPage = (importFunc) => {
 };
 
 function App() {
-  // useEffect(() => {
-  //   registerServiceWorker();
-  //   requestPermissionForPushNotifications();
-  // }, []);
+  useEffect(() => {
+    registerServiceWorker();
+    // requestPermissionForPushNotifications();
+  }, []);
   return (
     <Router>
       <ErrorBoundary FallbackComponent={FallbackComponent}>

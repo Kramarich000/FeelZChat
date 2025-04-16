@@ -134,16 +134,18 @@ export default defineConfig({
     target: 'esnext',
     minify: 'esbuild',
     cssCodeSplit: true,
+    chunkSizeWarningLimit: 5000, 
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            if (id.includes('react')) return 'react';
+            if (id.includes('react') || id.includes('react-dom') || id.includes('formik')) return 'react'; 
             if (id.includes('framer-motion')) return 'motion';
             if (id.includes('axios')) return 'axios';
             if (id.includes('react-router')) return 'router';
-            return 'vendor'; 
+            return 'vendor';
           }
+          
           
           if (id.includes('src/assets')) {
             return 'assets';
