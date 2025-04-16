@@ -438,7 +438,7 @@ button:hover svg {
 }
 
 .spotify-btn{
-  position: fixed; bottom: 50px;
+  position: fixed; bottom: 15px;
   right: 50px; background-color: #0E7490;
   z-index: 9999;
 }
