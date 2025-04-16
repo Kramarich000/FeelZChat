@@ -125,7 +125,7 @@ export default function Chat() {
       >
         <div className="flex relative w-full max-w-[1200px] mx-auto">
           <div
-            className="resizeable-panel bg-transparent p-4 overflow-y-auto"
+            className="resizeable-panel scrollbar-chat bg-transparent p-2 mt-[32px] overflow-y-auto max-h-[722px]"
             ref={panelRef}
             style={{ width: `${leftPanelWidth}px`}}
           >
@@ -147,7 +147,7 @@ export default function Chat() {
             </ul>
           </div>
           <div
-            className="resize-handle top-0 left-0 cursor-ew-resize bg-cyan-700 mt-8 mb-8"
+            className="resize-handle top-0 left-0 cursor-ew-resize bg-cyan-700 mt-8 ml-1 mb-8 rounded-3xl"
             onMouseDown={onMouseDown}
             style={{
               width: `${separatorWidth}px`,

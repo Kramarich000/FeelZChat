@@ -16,21 +16,21 @@ import Error404 from "@errors/404";
 import translate from "@utils/translate";
 import { useEffect } from "react";
 
-import { getMessaging, getToken } from "firebase/messaging";
-import { messaging } from "../public/firebase-config";
+// import { getMessaging, getToken } from "firebase/messaging";
+// import { messaging } from "../public/firebase-config";
 
-const registerServiceWorker = () => {
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker
-      .register("/service-worker.js")
-      .then((registration) => {
-        console.log("Service Worker зарегистрирован с областью:", registration.scope);
-      })
-      .catch((error) => {
-        console.log("Ошибка при регистрации Service Worker:", error);
-      });
-  }
-};
+// const registerServiceWorker = () => {
+//   if ("serviceWorker" in navigator) {
+//     navigator.serviceWorker
+//       .register("/service-worker.js")
+//       .then((registration) => {
+//         console.log("Service Worker зарегистрирован с областью:", registration.scope);
+//       })
+//       .catch((error) => {
+//         console.log("Ошибка при регистрации Service Worker:", error);
+//       });
+//   }
+// };
 
 
 const Register = lazy(() => import("@pages/Register"));
@@ -50,31 +50,29 @@ const Page = ({ component: Component, title }) => {
   return <WrappedComponent />;
 };
 
-const requestPermissionForPushNotifications = () => {
-  Notification.requestPermission().then((permission) => {
-    if (permission === "granted") {
-      console.log("Разрешение на пуш-уведомления получено");
+// const requestPermissionForPushNotifications = () => {
+//   Notification.requestPermission().then((permission) => {
+//     if (permission === "granted") {
+//       console.log("Разрешение на пуш-уведомления получено");
 
-      // Получаем токен для пуш-уведомлений
-      getToken(messaging, {
-        vapidKey: "BMwGXTe80IcVoOJ4b2WHJX9bIDezkBFgjzjB2c1m51NldzPmxwaEVO80TPcG1wqmwExIEjAHi7I9B2_-ysCNCRY", // Укажи свой VAPID ключ
-      })
-        .then((currentToken) => {
-          if (currentToken) {
-            console.log("FCM Token:", currentToken);
-            // Здесь можешь отправить токен на сервер для дальнейшей отправки уведомлений
-          } else {
-            console.log("Не удалось получить токен");
-          }
-        })
-        .catch((err) => {
-          console.log("Ошибка при получении токена:", err);
-        });
-    } else {
-      console.log("Разрешение на уведомления отклонено");
-    }
-  });
-};
+//       getToken(messaging, {
+//         vapidKey: "BMwGXTe80IcVoOJ4b2WHJX9bIDezkBFgjzjB2c1m51NldzPmxwaEVO80TPcG1wqmwExIEjAHi7I9B2_-ysCNCRY", 
+//       })
+//         .then((currentToken) => {
+//           if (currentToken) {
+//             console.log("FCM Token:", currentToken);
+//           } else {
+//             console.log("Не удалось получить токен");
+//           }
+//         })
+//         .catch((err) => {
+//           console.log("Ошибка при получении токена:", err);
+//         });
+//     } else {
+//       console.log("Разрешение на уведомления отклонено");
+//     }
+//   });
+// };
 
 const routes = [
   {
@@ -142,10 +140,10 @@ const preloadPage = (importFunc) => {
 };
 
 function App() {
-  useEffect(() => {
-    registerServiceWorker();
-    requestPermissionForPushNotifications();
-  }, []);
+  // useEffect(() => {
+  //   registerServiceWorker();
+  //   requestPermissionForPushNotifications();
+  // }, []);
   return (
     <Router>
       <ErrorBoundary FallbackComponent={FallbackComponent}>
