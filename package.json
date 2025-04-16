@@ -12,7 +12,6 @@
   "dependencies": {
     "@cloudinary/react": "^1.14.1",
     "@cloudinary/url-gen": "^1.21.0",
-    "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
     "@headlessui/react": "^2.2.1",
     "@radix-ui/react-icons": "^1.3.2",
     "@radix-ui/react-select": "^2.1.7",
@@ -23,7 +22,6 @@
     "chromedriver": "^135.0.1",
     "date-fns": "^4.1.0",
     "esbuild": "^0.25.2",
-    "firebase-admin": "^13.2.0",
     "flatpickr": "^4.6.13",
     "formik": "^2.4.6",
     "framer-motion": "^12.6.3",
@@ -72,6 +70,7 @@
     "vite-plugin-preload": "^0.4.2",
     "vite-plugin-pwa": "^1.0.0",
     "vitest": "^3.1.1",
-    "webpack-bundle-analyzer": "^4.10.2"
+    "webpack-bundle-analyzer": "^4.10.2",
+    "workbox-build": "^7.3.0"
   }
 }
