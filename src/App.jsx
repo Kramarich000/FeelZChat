@@ -16,9 +16,6 @@ import Error404 from "@errors/404";
 import translate from "@utils/translate";
 import { useEffect } from "react";
 
-// import { getMessaging, getToken } from "firebase/messaging";
-// import { messaging } from "../public/firebase-config";
-
 // const registerServiceWorker = () => {
 //   if ("serviceWorker" in navigator) {
 //     navigator.serviceWorker

@@ -436,3 +436,13 @@ button:hover svg {
 .scrollbar-chat::-webkit-scrollbar-track {
   background-color: transparent;
 }
+
+.spotify-btn{
+  position: fixed; bottom: 50px;
+  right: 50px; background-color: #0E7490;
+  z-index: 9999;
+}
+
+.spotify-btn:hover{
+  background-color: #000;
+}

@@ -17,78 +17,78 @@ export default defineConfig({
       algorithm: 'brotliCompress',
       ext: '.br',
     }),
-    VitePWA({
-      registerType: 'autoUpdate',
-      devOptions: {
-        enabled: true,  
-      },
-      workbox: {
-        runtimeCaching: [
-          {
-            urlPattern: /\/src\//,  
-            handler: 'NetworkOnly',   
-          },
-          {
-            urlPattern: /\/node_modules\//,  
-            handler: 'NetworkOnly',  
-          },
-          {
-            urlPattern: /.*\.(png|jpg|jpeg|svg|mp3|woff2)/,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'assets-cache',
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 7, 
-              },
-            },
-          },
-          {
-            urlPattern: /\/assets\//,  
-            handler: 'CacheFirst', 
-            options: {
-              cacheName: 'assets-cache',
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 30, 
-              },
-            },
-          },
-        ],
-      },
-      manifest: {
-        name: 'FeelZChat',
-        short_name: 'FZ',
-        description: 'Мессенджер для общения с ИИ',
-        theme_color: '#0E7490',
-        icons: [
-          {
-            src: 'icons/pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: 'icons/pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-        ],
-      },
-      screenshots: [
-        {
-          src: "screenshots/app-mobile.png", 
-          sizes: "540x720", 
-          type: "image/png",
-          form_factor: "narrow" 
-        },
-        {
-          src: "screenshots/app-desktop.png",
-          sizes: "1024x768",
-          type: "image/png",
-          form_factor: "wide" 
-        }
-      ]
-    }),
+    // VitePWA({
+    //   registerType: 'autoUpdate',
+    //   devOptions: {
+    //     enabled: true,  
+    //   },
+    //   workbox: {
+    //     runtimeCaching: [
+    //       {
+    //         urlPattern: /\/src\//,  
+    //         handler: 'NetworkOnly',   
+    //       },
+    //       {
+    //         urlPattern: /\/node_modules\//,  
+    //         handler: 'NetworkOnly',  
+    //       },
+    //       {
+    //         urlPattern: /.*\.(png|jpg|jpeg|svg|mp3|woff2)/,
+    //         handler: 'CacheFirst',
+    //         options: {
+    //           cacheName: 'assets-cache',
+    //           expiration: {
+    //             maxEntries: 50,
+    //             maxAgeSeconds: 60 * 60 * 24 * 7, 
+    //           },
+    //         },
+    //       },
+    //       {
+    //         urlPattern: /\/assets\//,  
+    //         handler: 'CacheFirst', 
+    //         options: {
+    //           cacheName: 'assets-cache',
+    //           expiration: {
+    //             maxEntries: 50,
+    //             maxAgeSeconds: 60 * 60 * 24 * 30, 
+    //           },
+    //         },
+    //       },
+    //     ],
+    //   },
+    //   manifest: {
+    //     name: 'FeelZChat',
+    //     short_name: 'FZ',
+    //     description: 'Мессенджер для общения с ИИ',
+    //     theme_color: '#0E7490',
+    //     icons: [
+    //       {
+    //         src: 'icons/pwa-192x192.png',
+    //         sizes: '192x192',
+    //         type: 'image/png',
+    //       },
+    //       {
+    //         src: 'icons/pwa-512x512.png',
+    //         sizes: '512x512',
+    //         type: 'image/png',
+    //       },
+    //     ],
+    //   },
+    //   screenshots: [
+    //     {
+    //       src: "screenshots/app-mobile.png", 
+    //       sizes: "540x720", 
+    //       type: "image/png",
+    //       form_factor: "narrow" 
+    //     },
+    //     {
+    //       src: "screenshots/app-desktop.png",
+    //       sizes: "1024x768",
+    //       type: "image/png",
+    //       form_factor: "wide" 
+    //     }
+    //   ]
+    // }),
     
     
     // analyzer(),

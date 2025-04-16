@@ -22,7 +22,7 @@ export default function MusicComponent() {
   return (
     <button
       onClick={toggleMusic}
-      className="fixed bottom-13 right-10 bg-cyan-700 text-white px-4 py-2 rounded-lg"
+      className="hidden fixed bottom-13 right-10 bg-cyan-700 text-white px-4 py-2 rounded-lg"
     >
       {isPlaying ? `${translate("key_stop_music")}` : `${translate("key_play_music")}`}
     </button>
