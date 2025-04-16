@@ -177,10 +177,10 @@ function App() {
             </AnimatePresence>
           </main>
           <MusicComponent />
+          <SpotifyPlayer />
         </Suspense>
       </ErrorBoundary>
       <ToastContainer newestOnTop limit={10} />
-      <SpotifyPlayer />
     </Router>
   );
 }
