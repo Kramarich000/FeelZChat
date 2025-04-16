@@ -22,40 +22,40 @@ export default defineConfig({
       devOptions: {
         enabled: true,  
       },
-      workbox: {
-        runtimeCaching: [
-          {
-            urlPattern: /\/src\//,  
-            handler: 'NetworkOnly',   
-          },
-          {
-            urlPattern: /\/node_modules\//,  
-            handler: 'NetworkOnly',  
-          },
-          {
-            urlPattern: /.*\.(png|jpg|jpeg|svg|mp3|woff2)/,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'assets-cache',
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 7, 
-              },
-            },
-          },
-          {
-            urlPattern: /\/assets\//,  
-            handler: 'CacheFirst', 
-            options: {
-              cacheName: 'assets-cache',
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 30, 
-              },
-            },
-          },
-        ],
-      },
+      // workbox: {
+      //   runtimeCaching: [
+      //     {
+      //       urlPattern: /\/src\//,  
+      //       handler: 'NetworkOnly',   
+      //     },
+      //     {
+      //       urlPattern: /\/node_modules\//,  
+      //       handler: 'NetworkOnly',  
+      //     },
+      //     {
+      //       urlPattern: /.*\.(png|jpg|jpeg|svg|mp3|woff2)/,
+      //       handler: 'CacheFirst',
+      //       options: {
+      //         cacheName: 'assets-cache',
+      //         expiration: {
+      //           maxEntries: 50,
+      //           maxAgeSeconds: 60 * 60 * 24 * 7, 
+      //         },
+      //       },
+      //     },
+      //     {
+      //       urlPattern: /\/assets\//,  
+      //       handler: 'CacheFirst', 
+      //       options: {
+      //         cacheName: 'assets-cache',
+      //         expiration: {
+      //           maxEntries: 50,
+      //           maxAgeSeconds: 60 * 60 * 24 * 30, 
+      //         },
+      //       },
+      //     },
+      //   ],
+      // },
       manifest: {
         name: 'FeelZChat',
         short_name: 'FZ',
@@ -134,16 +134,18 @@ export default defineConfig({
     target: 'esnext',
     minify: 'esbuild',
     cssCodeSplit: true,
+    chunkSizeWarningLimit: 5000, 
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            if (id.includes('react')) return 'react';
+            if (id.includes('react') || id.includes('react-dom') || id.includes('formik')) return 'react'; 
             if (id.includes('framer-motion')) return 'motion';
             if (id.includes('axios')) return 'axios';
             if (id.includes('react-router')) return 'router';
-            return 'vendor'; 
+            return 'vendor';
           }
+          
           
           if (id.includes('src/assets')) {
             return 'assets';
