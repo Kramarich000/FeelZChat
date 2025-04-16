@@ -92,23 +92,23 @@ export default defineConfig({
     
     
     analyzer(),
-    ViteImageOptimizer ({
-      jpeg: {
-        quality: 75,
-      },
-      png: {
-        quality: [0.65, 0.9],
-      },
-      svg: {
-        multipass: true,
-      },
-      gif: {
-        optimizationLevel: 3,
-      },
-      webp: {
-        quality: 75,
-      }
-    }),
+    // ViteImageOptimizer ({
+    //   jpeg: {
+    //     quality: 75,
+    //   },
+    //   png: {
+    //     quality: [0.65, 0.9],
+    //   },
+    //   svg: {
+    //     multipass: true,
+    //   },
+    //   gif: {
+    //     optimizationLevel: 3,
+    //   },
+    //   webp: {
+    //     quality: 75,
+    //   }
+    // }),
     VitePreload()
   ],
   optimizeDeps: {
