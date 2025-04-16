@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 
 const playlists = [
   {
@@ -43,7 +43,6 @@ const playlists = [
     src: "https://open.spotify.com/embed/playlist/37i9dQZF1DWZtZ8vUCzche",
   },
 ];
-
 const SpotifyPlayer = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentSrc, setCurrentSrc] = useState("");
@@ -82,8 +81,10 @@ const SpotifyPlayer = () => {
       </button>
 
       <motion.div
+        initial={{ visibility: "hidden", opacity: 0 }} // Скрыто на первом рендере
         animate={{
-          opacity: isVisible ? 1 : 0,
+          visibility: isVisible ? "visible" : "hidden", // Показываем/скрываем
+          opacity: isVisible ? 1 : 0, // Анимация прозрачности
           x: isVisible ? 0 : 100,
           pointerEvents: isVisible ? "auto" : "none",
         }}
