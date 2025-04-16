@@ -4,15 +4,15 @@ import react from '@vitejs/plugin-react-swc';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 import viteCompression from 'vite-plugin-compression';
-// import { analyzer } from 'vite-bundle-analyzer';
+import { analyzer } from 'vite-bundle-analyzer';
 import VitePreload from 'vite-plugin-preload';
 import { VitePWA } from 'vite-plugin-pwa';
-// import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 export default defineConfig({
   plugins: [
-    tailwindcss(),
-    react(),
+    tailwindcss(),  
+    react(),  
     viteCompression({
       algorithm: 'brotliCompress',
       ext: '.br',
@@ -22,40 +22,40 @@ export default defineConfig({
       devOptions: {
         enabled: true,  
       },
-      // workbox: {
-      //   runtimeCaching: [
-      //     {
-      //       urlPattern: /\/src\//,  
-      //       handler: 'NetworkOnly',   
-      //     },
-      //     {
-      //       urlPattern: /\/node_modules\//,  
-      //       handler: 'NetworkOnly',  
-      //     },
-      //     {
-      //       urlPattern: /.*\.(png|jpg|jpeg|svg|mp3|woff2)/,
-      //       handler: 'CacheFirst',
-      //       options: {
-      //         cacheName: 'assets-cache',
-      //         expiration: {
-      //           maxEntries: 50,
-      //           maxAgeSeconds: 60 * 60 * 24 * 7, 
-      //         },
-      //       },
-      //     },
-      //     {
-      //       urlPattern: /\/assets\//,  
-      //       handler: 'CacheFirst', 
-      //       options: {
-      //         cacheName: 'assets-cache',
-      //         expiration: {
-      //           maxEntries: 50,
-      //           maxAgeSeconds: 60 * 60 * 24 * 30, 
-      //         },
-      //       },
-      //     },
-      //   ],
-      // },
+      workbox: {
+        runtimeCaching: [
+          {
+            urlPattern: /\/src\//,  
+            handler: 'NetworkOnly',   
+          },
+          {
+            urlPattern: /\/node_modules\//,  
+            handler: 'NetworkOnly',  
+          },
+          {
+            urlPattern: /.*\.(png|jpg|jpeg|svg|mp3|woff2)/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'assets-cache',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 24 * 7, 
+              },
+            },
+          },
+          {
+            urlPattern: /\/assets\//,  
+            handler: 'CacheFirst', 
+            options: {
+              cacheName: 'assets-cache',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 24 * 30, 
+              },
+            },
+          },
+        ],
+      },
       manifest: {
         name: 'FeelZChat',
         short_name: 'FZ',
@@ -89,26 +89,24 @@ export default defineConfig({
         }
       ]
     }),
-    
-    
-    // analyzer(),
-    // ViteImageOptimizer ({
-    //   jpeg: {
-    //     quality: 75,
-    //   },
-    //   png: {
-    //     quality: [0.65, 0.9],
-    //   },
-    //   svg: {
-    //     multipass: true,
-    //   },
-    //   gif: {
-    //     optimizationLevel: 3,
-    //   },
-    //   webp: {
-    //     quality: 75,
-    //   }
-    // }),
+    analyzer(),
+    ViteImageOptimizer ({
+      jpeg: {
+        quality: 75,
+      },
+      png: {
+        quality: 75,
+      },
+      svg: {
+        multipass: true,
+      },
+      gif: {
+        optimizationLevel: 3,
+      },
+      webp: {
+        quality: 75,
+      }
+    }),
     VitePreload()
   ],
   optimizeDeps: {
@@ -134,38 +132,36 @@ export default defineConfig({
     target: 'esnext',
     minify: 'esbuild',
     cssCodeSplit: true,
-    chunkSizeWarningLimit: 5000, 
-    rollupOptions: {
+    // rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom') || id.includes('formik')) return 'react'; 
-            if (id.includes('framer-motion')) return 'motion';
-            if (id.includes('axios')) return 'axios';
-            if (id.includes('react-router')) return 'router';
-            return 'vendor';
-          }
+          // if (id.includes('node_modules')) {
+          //   if (id.includes('react') || id.includes('react-dom') || id.includes('formik')) return 'react'; 
+          //   if (id.includes('framer-motion')) return 'motion';
+          //   if (id.includes('axios')) return 'axios';
+          //   if (id.includes('react-router')) return 'router';
+          //   return 'vendor';
+          // }
           
-          
-          if (id.includes('src/assets')) {
-            return 'assets';
-          }
-          if (id.includes('src/components')) {
-            return 'components';
-          }
-          if (id.includes('src/hooks')) {
-            return 'hooks';
-          }
-          if (id.includes('src/services')) {
-            return 'services';
-          }
-          if (id.includes('src/utils')) {
-            return 'utils';
-          }
-          if (id.includes('src/validate')) {
-            return 'validate';
-          }
-        },
+          // if (id.includes('src/assets')) {
+          //   return 'assets';
+          // }
+          // if (id.includes('src/components')) {
+          //   return 'components';
+          // }
+          // if (id.includes('src/hooks')) {
+          //   return 'hooks';
+          // }
+          // if (id.includes('src/services')) {
+          //   return 'services';
+          // }
+          // if (id.includes('src/utils')) {
+          //   return 'utils';
+          // }
+          // if (id.includes('src/validate')) {
+          //   return 'validate';
+          // }
+    //     },
       }
     }
   },
