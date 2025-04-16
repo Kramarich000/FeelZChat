@@ -14,7 +14,7 @@ import { Loader } from "@components/Loader";
 import Error404 from "@errors/404";
 
 import translate from "@utils/translate";
-import { useEffect } from "react";
+import SpotifyPlayer from "@components/SpotifyPlayer";
 
 // const registerServiceWorker = () => {
 //   if ("serviceWorker" in navigator) {
@@ -180,6 +180,7 @@ function App() {
         </Suspense>
       </ErrorBoundary>
       <ToastContainer newestOnTop limit={10} />
+      <SpotifyPlayer />
     </Router>
   );
 }
