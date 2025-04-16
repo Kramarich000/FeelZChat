@@ -22,40 +22,40 @@ export default defineConfig({
       devOptions: {
         enabled: true,  
       },
-      workbox: {
-        runtimeCaching: [
-          {
-            urlPattern: /\/src\//,  
-            handler: 'NetworkOnly',   
-          },
-          {
-            urlPattern: /\/node_modules\//,  
-            handler: 'NetworkOnly',  
-          },
-          {
-            urlPattern: /.*\.(png|jpg|jpeg|svg|mp3|woff2)/,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'assets-cache',
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 7, 
-              },
-            },
-          },
-          {
-            urlPattern: /\/assets\//,  
-            handler: 'CacheFirst', 
-            options: {
-              cacheName: 'assets-cache',
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 30, 
-              },
-            },
-          },
-        ],
-      },
+      // workbox: {
+      //   runtimeCaching: [
+      //     {
+      //       urlPattern: /\/src\//,  
+      //       handler: 'NetworkOnly',   
+      //     },
+      //     {
+      //       urlPattern: /\/node_modules\//,  
+      //       handler: 'NetworkOnly',  
+      //     },
+      //     {
+      //       urlPattern: /.*\.(png|jpg|jpeg|svg|mp3|woff2)/,
+      //       handler: 'CacheFirst',
+      //       options: {
+      //         cacheName: 'assets-cache',
+      //         expiration: {
+      //           maxEntries: 50,
+      //           maxAgeSeconds: 60 * 60 * 24 * 7, 
+      //         },
+      //       },
+      //     },
+      //     {
+      //       urlPattern: /\/assets\//,  
+      //       handler: 'CacheFirst', 
+      //       options: {
+      //         cacheName: 'assets-cache',
+      //         expiration: {
+      //           maxEntries: 50,
+      //           maxAgeSeconds: 60 * 60 * 24 * 30, 
+      //         },
+      //       },
+      //     },
+      //   ],
+      // },
       manifest: {
         name: 'FeelZChat',
         short_name: 'FZ',
