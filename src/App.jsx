@@ -142,4 +142,3 @@ function App() {
 }
 
 export default App;
-вот
