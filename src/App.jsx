@@ -11,7 +11,6 @@ import PrivateRoute from "@components/PrivateRoute";
 import withTitle from "@components/Title";
 import MusicComponent from "@components/MusicComponent";
 import { Loader } from "@components/Loader";
-import Error404 from "@errors/404";
 
 import translate from "@utils/translate";
 import SpotifyPlayer from "@components/SpotifyPlayer";
@@ -39,7 +38,7 @@ const Help = lazy(() => import("@pages/Help"));
 const Home = lazy(() => import("@pages/Home"));
 const Profile = lazy(() => import("@pages/Profile"));
 const ForgotPassword = lazy(() => import("@pages/ForgotPassword"));
-
+const Error404 = lazy(() => import("@errors/404"));
 
 const Page = ({ component: Component, title }) => {
   const translatedTitle = translate(title);
