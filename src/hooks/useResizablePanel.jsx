@@ -19,17 +19,17 @@ export const useResizablePanel = (
     };
     window.addEventListener("resize", handleResize);
 
-    if (width === minWidth && panelRef.current) {
-      panelRef.current.style.opacity = "0";
-      panelRef.current.style.visibility = "hidden";
-      panelRef.current.style.padding = "0";
-      panelRef.current.style.width = "0";
-    } else if (panelRef.current) {
-      panelRef.current.style.opacity = "1";
-      panelRef.current.style.visibility = "visible";
-      panelRef.current.style.padding = "16px";
-      // panelRef.current.style.width = "auto";
-    }
+    // if (width === minWidth && panelRef.current) {
+    //   panelRef.current.style.opacity = "0";
+    //   panelRef.current.style.visibility = "hidden";
+    //   panelRef.current.style.padding = "0";
+    //   panelRef.current.style.width = "0";
+    // } else if (panelRef.current) {
+    //   panelRef.current.style.opacity = "1";
+    //   panelRef.current.style.visibility = "visible";
+    //   panelRef.current.style.padding = "16px";
+    //   // panelRef.current.style.width = "auto";
+    // }
 
     return () => window.removeEventListener("resize", handleResize);
   }, [width, minWidth, maxWidth]);

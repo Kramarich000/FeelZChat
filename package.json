@@ -23,7 +23,6 @@
     "chromedriver": "^135.0.1",
     "date-fns": "^4.1.0",
     "esbuild": "^0.25.2",
-    "firebase": "^11.6.0",
     "firebase-admin": "^13.2.0",
     "flatpickr": "^4.6.13",
     "formik": "^2.4.6",

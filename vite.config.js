@@ -57,7 +57,7 @@ export default defineConfig({
         ],
       },
       manifest: {
-        name: 'FeelZChar',
+        name: 'FeelZChat',
         short_name: 'FZ',
         description: 'Мессенджер для общения с ИИ',
         theme_color: '#0E7490',
