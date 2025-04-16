@@ -134,31 +134,31 @@ export default defineConfig({
     cssCodeSplit: true,
 
 
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) return 'react';
-            if (id.includes('formik')) return 'formik';
-            if (id.includes('framer-motion')) return 'motion';
-            if (id.includes('axios')) return 'axios';
-            if (id.includes('react-router')) return 'router';
-            return 'vendor';
-          }
+    // rollupOptions: {
+    //   output: {
+    //     manualChunks(id) {
+    //       if (id.includes('node_modules')) {
+    //         if (id.includes('react') || id.includes('react-dom')) return 'react';
+    //         if (id.includes('formik')) return 'formik';
+    //         if (id.includes('framer-motion')) return 'motion';
+    //         if (id.includes('axios')) return 'axios';
+    //         if (id.includes('react-router')) return 'router';
+    //         return 'vendor';
+    //       }
 
-          const srcPath = (dir) => id.includes(path.resolve(__dirname, `src/${dir}`));
+    //       const srcPath = (dir) => id.includes(path.resolve(__dirname, `src/${dir}`));
 
-          if (srcPath('assets')) return 'assets';
-          if (srcPath('components')) return 'components';
-          if (srcPath('hooks')) return 'hooks';
-          if (srcPath('services')) return 'services';
-          if (srcPath('utils')) return 'utils';
-          if (srcPath('validate')) return 'validate';
+    //       if (srcPath('assets')) return 'assets';
+    //       if (srcPath('components')) return 'components';
+    //       if (srcPath('hooks')) return 'hooks';
+    //       if (srcPath('services')) return 'services';
+    //       if (srcPath('utils')) return 'utils';
+    //       if (srcPath('validate')) return 'validate';
 
-          return 'misc';
-        },
-      }
-    }
+    //       return 'misc';
+    //     },
+    //   }
+    // }
 
   },
 });
