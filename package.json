@@ -43,6 +43,7 @@
     "react-spinners": "^0.15.0",
     "react-spring": "^9.7.5",
     "react-toastify": "^11.0.5",
+    "react-window": "^1.8.11",
     "selenium-webdriver": "^4.31.0",
     "uuid": "^11.1.0",
     "vite-bundle-analyzer": "^0.18.1",
