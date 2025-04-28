@@ -1,36 +1,36 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Header from "@components/Header";
-import { motion } from "framer-motion";
-import Footer from "@components/Footer";
-import translate from "../utils/translate";
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import Header from '@components/Header';
+import { motion } from 'framer-motion';
+import Footer from '@components/Footer';
+import translate from '../utils/translate';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    const hasVisited = localStorage.getItem("hasVisited");
+    const hasVisited = localStorage.getItem('hasVisited');
 
     if (!hasVisited) {
       setIsModalOpen(true);
-      localStorage.setItem("hasVisited", "true");
+      localStorage.setItem('hasVisited', 'true');
     }
   }, []);
 
   const features = [
     {
-      title: translate("key_emotion_analysis"),
-      description: translate("key_ai_analyzes_the"),
+      title: translate('key_emotion_analysis'),
+      description: translate('key_ai_analyzes_the'),
       animated: true,
     },
     {
-      title: translate("key_security"),
-      description: translate("key_messages_protected"),
+      title: translate('key_security'),
+      description: translate('key_messages_protected'),
       animated: true,
     },
     {
-      title: translate("key_intuitive_interface"),
-      description: translate("key_user_friendly_interface"),
+      title: translate('key_intuitive_interface'),
+      description: translate('key_user_friendly_interface'),
       animated: true,
     },
   ];
@@ -49,16 +49,16 @@ export default function Home() {
         >
           <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full text-center">
             <h3 className="text-xl font-bold mb-4">
-              {translate("key_new_features")}
+              {translate('key_new_features')}
             </h3>
             <p className="text-gray-700 mb-6">
-              {translate("key_what_has_changed")}
+              {translate('key_what_has_changed')}
             </p>
             <button
               onClick={() => setIsModalOpen(false)}
               className="bg-cyan-700 hover:bg-black transition-all px-6 py-3 rounded-lg text-white"
             >
-              {translate("key_close")}
+              {translate('key_close')}
             </button>
           </div>
         </motion.div>
@@ -70,34 +70,34 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 3, ease: "easeOut" }}
+        transition={{ duration: 3, ease: 'easeOut' }}
       >
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl font-bold mb-4">
-            {translate("key_welcome_to_feelzchat")},
+            {translate('key_welcome_to_feelzchat')},
           </h2>
-          <p className="text-lg mb-8">{translate("key_discover_a_new")}</p>
+          <p className="text-lg mb-8">{translate('key_discover_a_new')}</p>
           <Link
             to="/register"
             className="bg-cyan-700 hover:bg-black transition-all px-6 py-3 rounded-lg text-white "
           >
-            {translate("key_start_chatting")}
+            {translate('key_start_chatting')}
           </Link>
         </div>
       </motion.section>
 
       <section className="w-full py-12 text-center p-4 bg-gray-900 text-white">
         <h2 className="text-4xl font-bold mb-8">
-          {translate("key_see_how_it_works")}
+          {translate('key_see_how_it_works')}
         </h2>
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="bg-gray-800 p-6 rounded-lg shadow-md">
             <h3 className="text-xl font-bold mb-4">
-              {translate("key_what_is_emotion_analysis")}
+              {translate('key_what_is_emotion_analysis')}
             </h3>
             <p className="text-gray-300 mb-4">
-              {translate("key_emotion_analysis_description")}
+              {translate('key_emotion_analysis_description')}
             </p>
             <img
               src="/path/to/your/image1.jpg"
@@ -110,7 +110,7 @@ export default function Home() {
               poster="/path/to/your/video_thumbnail.jpg"
             >
               <source src="/path/to/your/video.mp4" type="video/mp4" />
-              {translate("key_video_not_supported")}
+              {translate('key_video_not_supported')}
             </video>
           </div>
         </div>
@@ -121,14 +121,14 @@ export default function Home() {
           to="/register"
           className="text-2xl hover:underline text-cyan-700 font-bold"
         >
-          {translate("key_sign_in")}
+          {translate('key_sign_in')}
         </Link>
-        <p className="text-2xl ">{translate("key_or")}</p>
+        <p className="text-2xl ">{translate('key_or')}</p>
         <Link
           to="/login"
           className="text-2xl hover:underline text-cyan-700 font-bold"
         >
-          {translate("key_sign_up")}
+          {translate('key_sign_up')}
         </Link>
       </section>
 
