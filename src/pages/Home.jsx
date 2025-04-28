@@ -35,6 +35,12 @@ export default function Home() {
       animated: true,
     },
   ];
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const handleVideoLoad = () => {
+    setIsLoaded(true);
+  };
+
   return (
     <div className="w-full min-h-screen absolute top-0 left-0">
       <Header />
@@ -49,11 +55,12 @@ export default function Home() {
         loading="lazy"
         className="z-[-100] absolute top-150 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto object-cover"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={{ opacity: isLoaded ? 1 : 0 }}
         transition={{
           duration: 1,
           ease: 'easeInOut',
         }}
+        onLoadedData={handleVideoLoad}
       />
       {isModalOpen && (
         <motion.div
