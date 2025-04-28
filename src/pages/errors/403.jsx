@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { BsEmojiTearFill } from "react-icons/bs";
 import translate from "@utils/translate";

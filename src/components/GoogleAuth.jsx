@@ -1,4 +1,3 @@
-import React from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { FaGoogle } from "react-icons/fa";

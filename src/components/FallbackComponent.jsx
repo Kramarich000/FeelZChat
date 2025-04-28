@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 // import Error404 from "@errors/404";
 import Error500 from "@errors/500";
