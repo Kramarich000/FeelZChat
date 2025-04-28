@@ -1,29 +1,7 @@
-import { useNavigate } from "react-router-dom";
-import { BsEmojiTearFill } from "react-icons/bs";
-import translate from "@utils/translate";
+import ErrorPage from '@components/ErrorPage';
 
 const Error401 = () => {
-  const navigate = useNavigate();
-
-  function goBack() {
-    navigate(-1);
-  }
-
-  return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <BsEmojiTearFill className="mb-20" size={500} color="rgb(14, 116, 144)" />
-      <h1 className="text-6xl font-bold text-cyan-700">
-        {translate("key_401")}
-      </h1>
-      <p className="text-xl">{translate("key_error_401")}</p>
-      <button
-        onClick={goBack}
-        className="mt-4 bg-cyan-700 p-4 rounded-3xl hover:bg-cyan-600 text-white transition-all"
-      >
-        {translate("key_return")}
-      </button>
-    </div>
-  );
+  return <ErrorPage errorTitleKey="key_401" errorMessageKey="key_error_401" />;
 };
 
 export default Error401;

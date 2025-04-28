@@ -4,7 +4,9 @@ import Header from '@components/Header';
 import { motion } from 'framer-motion';
 import Footer from '@components/Footer';
 import translate from '../utils/translate';
-
+import EmtnAnlsys from '@assets/images/emotion-analysis.jpg';
+import mainVideo from '@assets/videos/main-bg.mp4';
+import ReactPlayer from 'react-player';
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -34,10 +36,16 @@ export default function Home() {
       animated: true,
     },
   ];
-
   return (
-    <div className="absolute top-0 left-0 min-h-full w-full flex flex-col justify-center items-center">
+    <div className="w-full min-h-screen absolute top-0 left-0">
       <Header />
+      <video
+        src={mainVideo}
+        autoPlay
+        muted
+        loop
+        className="z-[-100] absolute top-150 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto object-cover"
+      />
 
       {isModalOpen && (
         <motion.div
@@ -65,21 +73,21 @@ export default function Home() {
       )}
 
       <motion.section
-        className="h-screen flex items-center justify-center text-center bg-opacity-40 p-4"
+        className="min-h-screen flex items-center justify-center text-center bg-opacity-40 p-4 backdrop-blur-[2px]"
         layout
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 3, ease: 'easeOut' }}
+        transition={{ duration: 2, ease: 'easeOut' }}
       >
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto p-4 rounded-4xl">
           <h2 className="text-4xl font-bold mb-4">
             {translate('key_welcome_to_feelzchat')},
           </h2>
           <p className="text-lg mb-8">{translate('key_discover_a_new')}</p>
           <Link
             to="/register"
-            className="bg-cyan-700 hover:bg-black transition-all px-6 py-3 rounded-lg text-white "
+            className="bg-cyan-700 hover:bg-black transition-all px-6 py-3 rounded-lg text-white"
           >
             {translate('key_start_chatting')}
           </Link>
@@ -91,27 +99,24 @@ export default function Home() {
           {translate('key_see_how_it_works')}
         </h2>
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="bg-gray-800 p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-bold mb-4">
-              {translate('key_what_is_emotion_analysis')}
-            </h3>
-            <p className="text-gray-300 mb-4">
-              {translate('key_emotion_analysis_description')}
-            </p>
+        <div className="max-w-7xl mx-auto gap-8">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-md text-center mx-auto max-w-[1000px]">
             <img
-              src="/path/to/your/image1.jpg"
+              src={EmtnAnlsys}
               alt="Emotion Analysis"
-              className="w-full h-48 object-cover rounded-lg"
+              className="w-full mb-4 h-[500px] object-cover rounded-lg object-top"
             />
-            <video
-              className="mt-4 w-full rounded-lg"
-              controls
-              poster="/path/to/your/video_thumbnail.jpg"
+            <iframe
+              className="w-full h-[500px]"
+              src="https://www.youtube.com/embed/-U8rukzWCNs"
+              title="Sentiment Analysis &amp; Emotional Classification with GPT-4"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
             >
-              <source src="/path/to/your/video.mp4" type="video/mp4" />
               {translate('key_video_not_supported')}
-            </video>
+            </iframe>
           </div>
         </div>
       </section>
@@ -123,7 +128,7 @@ export default function Home() {
         >
           {translate('key_sign_in')}
         </Link>
-        <p className="text-2xl ">{translate('key_or')}</p>
+        <p className="text-2xl">{translate('key_or')}</p>
         <Link
           to="/login"
           className="text-2xl hover:underline text-cyan-700 font-bold"

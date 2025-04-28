@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react-swc";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import viteCompression from "vite-plugin-compression";
-// import { analyzer } from 'vite-bundle-analyzer';
+import { analyzer } from 'vite-bundle-analyzer';
 import VitePreload from "vite-plugin-preload";
 import { VitePWA } from "vite-plugin-pwa";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
@@ -17,79 +17,79 @@ export default defineConfig({
       algorithm: "brotliCompress",
       ext: ".br",
     }),
-    VitePWA({
-      registerType: "autoUpdate",
-      devOptions: {
-        enabled: true,
-      },
-      workbox: {
-        runtimeCaching: [
-          {
-            urlPattern: /\/src\//,
-            handler: "NetworkOnly",
-          },
-          {
-            urlPattern: /\/node_modules\//,
-            handler: "NetworkOnly",
-          },
-          {
-            urlPattern: /.*\.(png|jpg|jpeg|svg|mp3|woff2)/,
-            handler: "CacheFirst",
-            options: {
-              cacheName: "assets-cache",
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 7,
-              },
-            },
-          },
-          {
-            urlPattern: /\/assets\//,
-            handler: "CacheFirst",
-            options: {
-              cacheName: "assets-cache",
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 30,
-              },
-            },
-          },
-        ],
-      },
-      manifest: {
-        name: "FeelZChat",
-        short_name: "FZ",
-        description: "Мессенджер для общения с ИИ",
-        theme_color: "#0E7490",
-        icons: [
-          {
-            src: "icons/pwa-192x192.png",
-            sizes: "192x192",
-            type: "image/png",
-          },
-          {
-            src: "icons/pwa-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-          },
-        ],
-      },
-      screenshots: [
-        {
-          src: "screenshots/app-mobile.png",
-          sizes: "540x720",
-          type: "image/png",
-          form_factor: "narrow",
-        },
-        {
-          src: "screenshots/app-desktop.png",
-          sizes: "1024x768",
-          type: "image/png",
-          form_factor: "wide",
-        },
-      ],
-    }),
-    // analyzer(),
+    // VitePWA({
+    //   registerType: "autoUpdate",
+    //   devOptions: {
+    //     enabled: true,
+    //   },
+    //   workbox: {
+    //     runtimeCaching: [
+    //       {
+    //         urlPattern: /\/src\//,
+    //         handler: "NetworkOnly",
+    //       },
+    //       {
+    //         urlPattern: /\/node_modules\//,
+    //         handler: "NetworkOnly",
+    //       },
+    //       {
+    //         urlPattern: /.*\.(png|jpg|jpeg|svg|mp3|woff2)/,
+    //         handler: "CacheFirst",
+    //         options: {
+    //           cacheName: "assets-cache",
+    //           expiration: {
+    //             maxEntries: 50,
+    //             maxAgeSeconds: 60 * 60 * 24 * 7,
+    //           },
+    //         },
+    //       },
+    //       {
+    //         urlPattern: /\/assets\//,
+    //         handler: "CacheFirst",
+    //         options: {
+    //           cacheName: "assets-cache",
+    //           expiration: {
+    //             maxEntries: 50,
+    //             maxAgeSeconds: 60 * 60 * 24 * 30,
+    //           },
+    //         },
+    //       },
+    //     ],
+    //   },
+    //   manifest: {
+    //     name: "FeelZChat",
+    //     short_name: "FZ",
+    //     description: "Мессенджер для общения с ИИ",
+    //     theme_color: "#0E7490",
+    //     icons: [
+    //       {
+    //         src: "icons/pwa-192x192.png",
+    //         sizes: "192x192",
+    //         type: "image/png",
+    //       },
+    //       {
+    //         src: "icons/pwa-512x512.png",
+    //         sizes: "512x512",
+    //         type: "image/png",
+    //       },
+    //     ],
+    //   },
+    //   screenshots: [
+    //     {
+    //       src: "screenshots/app-mobile.png",
+    //       sizes: "540x720",
+    //       type: "image/png",
+    //       form_factor: "narrow",
+    //     },
+    //     {
+    //       src: "screenshots/app-desktop.png",
+    //       sizes: "1024x768",
+    //       type: "image/png",
+    //       form_factor: "wide",
+    //     },
+    //   ],
+    // }),
+    analyzer(),
     ViteImageOptimizer({
       jpeg: {
         quality: 75,
@@ -122,6 +122,7 @@ export default defineConfig({
       "@validate": path.resolve(__dirname, "src/validate"),
       "@services": path.resolve(__dirname, "src/services"),
       "@utils": path.resolve(__dirname, "src/utils"),
+      "@assets": path.resolve(__dirname, "src/assets"),
     },
   },
   server: {
@@ -133,29 +134,30 @@ export default defineConfig({
     minify: "esbuild",
     cssCodeSplit: true,
 
-    // rollupOptions: {
-    //   output: {
-    //     manualChunks(id) {
-    //       if (id.includes('node_modules')) {
-    //         if (id.includes('react') || id.includes('react-dom')) return 'react';
-    //         if (id.includes('formik')) return 'formik';
-    //         if (id.includes('framer-motion')) return 'motion';
-    //         if (id.includes('axios')) return 'axios';
-    //         if (id.includes('react-router')) return 'router';
-    //         return 'vendor';
-    //       }
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react')) return 'react-core';
+            if (id.includes('react-dom')) return 'react-dom';
+            if (id.includes('formik')) return 'formik';
+            if (id.includes('framer-motion')) return 'motion';
+            if (id.includes('axios')) return 'axios';
+            if (id.includes('react-router')) return 'router';
+            return 'vendor';
+          }
 
-    //       const srcPath = (dir) => id.includes(path.resolve(__dirname, `src/${dir}`));
+          const srcPath = (dir) => id.includes(path.resolve(__dirname, `src/${dir}`));
 
-    //       if (srcPath('assets')) return 'assets';
-    //       if (srcPath('components')) return 'components';
-    //       if (srcPath('hooks')) return 'hooks';
-    //       if (srcPath('services')) return 'services';
-    //       if (srcPath('utils')) return 'utils';
-    //       if (srcPath('validate')) return 'validate';
-    //       return 'misc';
-    //     },
-    //   }
-    // }
+          if (srcPath('assets')) return 'assets';
+          if (srcPath('components')) return 'components';
+          if (srcPath('hooks')) return 'hooks';
+          if (srcPath('services')) return 'services';
+          if (srcPath('utils')) return 'utils';
+          if (srcPath('validate')) return 'validate';
+          return 'misc';
+        },
+      }
+    }
   },
 });
