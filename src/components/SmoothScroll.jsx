@@ -3,10 +3,11 @@ import Lenis from '@studio-freight/lenis';
 
 const SmoothScroll = ({ children }) => {
   const lenisRef = useRef(null);
+  const rafRef = useRef(null);
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 0.5,
+      duration: 1,
       easing: (t) => t * (2 - t),
       direction: 'vertical',
       gestureDirection: 'vertical',
@@ -19,17 +20,50 @@ const SmoothScroll = ({ children }) => {
 
     lenisRef.current = lenis;
 
-    let rafId;
-
-    const handleRaf = (time) => {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(handleRaf);
+    const raf = (time) => {
+      if (lenisRef.current?.isStopped) return;
+      try {
+        lenisRef.current.raf(time);
+      } catch (e) {
+        console.error('Lenis error', e);
+      }
+      rafRef.current = requestAnimationFrame(raf);
     };
 
-    rafId = requestAnimationFrame(handleRaf);
+    rafRef.current = requestAnimationFrame(raf);
+
+    const handleIframeMouseEnter = () => {
+      lenis.stop();
+    };
+
+    const handleIframeMouseLeave = () => {
+      lenis.start();
+    };
+
+    const observeIframes = () => {
+      const iframes = document.querySelectorAll('iframe');
+      iframes.forEach((iframe) => {
+        iframe.addEventListener('mouseenter', handleIframeMouseEnter);
+        iframe.addEventListener('mouseleave', handleIframeMouseLeave);
+      });
+      return iframes;
+    };
+
+    let iframes = observeIframes();
+
+    const observer = new MutationObserver(() => {
+      iframes = observeIframes();
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      cancelAnimationFrame(rafId);
+      cancelAnimationFrame(rafRef.current);
+      observer.disconnect();
+      iframes.forEach((iframe) => {
+        iframe.removeEventListener('mouseenter', handleIframeMouseEnter);
+        iframe.removeEventListener('mouseleave', handleIframeMouseLeave);
+      });
       lenisRef.current = null;
     };
   }, []);
