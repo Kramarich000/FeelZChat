@@ -28,6 +28,29 @@ export default [
       import: importPlugin,
       security: securityPlugin,
     },
+    settings: {
+      react: {
+        version: "detect", // Автоматическое определение версии React
+      },
+      "import/resolver": {
+        alias: {
+          map: [
+            ["@components", "./src/components"],
+            ["@pages", "./src/pages"],
+            ["@errors", "./src/pages/errors"],
+            ["@hooks", "./src/hooks"],
+            ["@metadata", "./src/metadata"],
+            ["@validate", "./src/validate"],
+            ["@services", "./src/services"],
+            ["@utils", "./src/utils"],
+          ],
+          extensions: [".js", ".jsx", ".ts", ".tsx"],
+        },
+        node: {
+          extensions: [".js", ".jsx", ".ts", ".tsx"],
+        },
+      },
+    },
     rules: {
       ...js.configs.recommended.rules,
       ...reactPlugin.configs.recommended.rules,
@@ -43,7 +66,6 @@ export default [
       ],
       "react/react-in-jsx-scope": "off",
 
-      "no-console": "warn",
       "no-debugger": "warn",
       "prefer-const": "warn",
       "no-duplicate-imports": "error",
@@ -55,14 +77,13 @@ export default [
       "security/detect-non-literal-regexp": "warn",
 
       "no-unused-expressions": "warn",
-      "no-magic-numbers": ["warn", { ignore: [0, 1] }],
       "array-callback-return": "warn",
 
       "import/no-unresolved": "error",
       "import/named": "error",
       "import/default": "error",
       "import/no-absolute-path": "error",
-      "import/no-cycle": "warn",
+      "import/no-cycle": "off",
       "prettier/prettier": "error",
     },
   },

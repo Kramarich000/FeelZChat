@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 // import Error404 from "@errors/404";
 import Error500 from "@errors/500";
 import Error400 from "@errors/400";
@@ -32,6 +33,12 @@ const FallbackComponent = ({ error }) => {
       </div>
     );
   }
+};
+
+FallbackComponent.propTypes = {
+  error: PropTypes.shape({
+    message: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default FallbackComponent;
