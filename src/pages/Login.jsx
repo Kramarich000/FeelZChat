@@ -1,27 +1,27 @@
-import React from "react";
-import BgGradient from "@components/BgGradient";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { BsQuestionSquareFill } from "react-icons/bs";
-import GoogleAuth from "@components/GoogleAuth";
-import { loginSchema } from "@validate/loginSchema";
-import { Formik, Form, Field } from "formik";
-import { ErrorMessage } from "formik";
-import { formatPhoneNumber } from "@validate/registerSchema";
-import AnimatedError from "@components/AnimatedError";
-import { handleLoginSubmit } from "@services/loginHandlers";
-import translate from "@utils/translate";
-import HelpButton from "@components/HelpButton";
+import React from 'react';
+import BgGradient from '@components/BgGradient';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { BsQuestionSquareFill } from 'react-icons/bs';
+import GoogleAuth from '@components/GoogleAuth';
+import { loginSchema } from '@validate/loginSchema';
+import { Formik, Form, Field } from 'formik';
+import { ErrorMessage } from 'formik';
+import { formatPhoneNumber } from '@validate/registerSchema';
+import AnimatedError from '@components/AnimatedError';
+import { handleLoginSubmit } from '@services/loginHandlers';
+import translate from '@utils/translate';
+import HelpButton from '@components/HelpButton';
 
 export default function Login() {
-  const Input = ({ type, placeholder }) => (
-    <input
-      className="input-styles"
-      type={type}
-      placeholder={placeholder}
-      required
-    />
-  );
+  // const Input = ({ type, placeholder }) => (
+  //   <input
+  //     className="input-styles"
+  //     type={type}
+  //     placeholder={placeholder}
+  //     required
+  //   />
+  // );
   return (
     <BgGradient>
       <motion.div
@@ -32,17 +32,17 @@ export default function Login() {
         className="container flex flex-row gap justify-between w-[75%] items-center"
       >
         <Link
-          to={"/"}
+          to={'/'}
           className="flex items-center justify-center hover:scale-110 transition-all"
         >
           <h1 className="main-title flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
-            {translate("key_app_name")}
+            {translate('key_app_name')}
           </h1>
         </Link>
         <section className="max-w-[650px] container bg-white p-16 rounded-2xl border-b-cyan-700 border-b-8 z-999">
-          <h2 className="text-3xl pb-10">{translate("key_login_title")}</h2>
+          <h2 className="text-3xl pb-10">{translate('key_login_title')}</h2>
           <Formik
-            initialValues={{ phone: "", password: "", remember: false }}
+            initialValues={{ phone: '', password: '', remember: false }}
             validationSchema={loginSchema}
             onSubmit={(values) => {
               handleLoginSubmit(values);
@@ -54,12 +54,12 @@ export default function Login() {
                   <Field
                     name="phone"
                     type="tel"
-                    placeholder={translate("key_phone")}
+                    placeholder={translate('key_phone')}
                     className="input-styles"
                     onChange={(e) => {
                       const phoneValue = e.target.value;
                       const formattedPhone = formatPhoneNumber(phoneValue);
-                      setFieldValue("phone", formattedPhone);
+                      setFieldValue('phone', formattedPhone);
                     }}
                     value={values.phone}
                   />
@@ -72,7 +72,7 @@ export default function Login() {
                   <Field
                     name="password"
                     type="password"
-                    placeholder={translate("key_password")}
+                    placeholder={translate('key_password')}
                     className="input-styles "
                   />
                   <ErrorMessage name="password">
@@ -87,7 +87,7 @@ export default function Login() {
                   />
                   <span className="checkbox-custom"></span>
                   <span>
-                    {translate("key_remember_me")}{" "}
+                    {translate('key_remember_me')}{' '}
                     <Link
                       to="/privacy"
                       className="text-cyan-700 hover:underline text-center"
@@ -99,7 +99,7 @@ export default function Login() {
                   className="button-styles col-span-2 mb-4 w-full"
                   type="submit"
                 >
-                  {translate("key_enter")}
+                  {translate('key_enter')}
                 </button>
               </Form>
             )}
@@ -110,15 +110,15 @@ export default function Login() {
               className="text-cyan-700 hover:underline"
               to="/forgot-password"
             >
-              {translate("key_forgot_password")}
+              {translate('key_forgot_password')}
             </Link>
             <Link className="text-cyan-700 hover:underline" to="/register">
-              {translate("key_no_account")}
+              {translate('key_no_account')}
             </Link>
           </div>
         </section>
       </motion.div>
-      <HelpButton/>
+      <HelpButton />
     </BgGradient>
   );
 }

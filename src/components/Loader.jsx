@@ -1,7 +1,5 @@
-import { motion } from "framer-motion";
-import {
-  PulseLoader,
-} from "react-spinners";
+import { motion } from 'framer-motion';
+import { PulseLoader } from 'react-spinners';
 
 const LoaderContainer = ({ children }) => (
   <motion.div
@@ -14,14 +12,10 @@ const LoaderContainer = ({ children }) => (
   </motion.div>
 );
 
-export const Loader = ({ color = "rgb(14 116 144)" }) => {
+export const Loader = ({ color = 'rgb(14 116 144)' }) => {
   return (
     <LoaderContainer>
-      <PulseLoader
-        speedMultiplier={0.7}
-        size={50}
-        color={color}
-      />
+      <PulseLoader speedMultiplier={0.7} size={50} color={color} />
     </LoaderContainer>
   );
 };

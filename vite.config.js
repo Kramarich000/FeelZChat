@@ -15,22 +15,22 @@ export default defineConfig({
     react(),
     viteCompression({
       algorithm: 'brotliCompress',
-      ext: '.br',
+      ext: '.br'
     }),
     VitePWA({
       registerType: 'autoUpdate',
       devOptions: {
-        enabled: true,
+        enabled: true
       },
       workbox: {
         runtimeCaching: [
           {
             urlPattern: /\/src\//,
-            handler: 'NetworkOnly',
+            handler: 'NetworkOnly'
           },
           {
             urlPattern: /\/node_modules\//,
-            handler: 'NetworkOnly',
+            handler: 'NetworkOnly'
           },
           {
             urlPattern: /.*\.(png|jpg|jpeg|svg|mp3|woff2)/,
@@ -39,9 +39,9 @@ export default defineConfig({
               cacheName: 'assets-cache',
               expiration: {
                 maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 7,
-              },
-            },
+                maxAgeSeconds: 60 * 60 * 24 * 7
+              }
+            }
           },
           {
             urlPattern: /\/assets\//,
@@ -50,11 +50,11 @@ export default defineConfig({
               cacheName: 'assets-cache',
               expiration: {
                 maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 30,
-              },
-            },
-          },
-        ],
+                maxAgeSeconds: 60 * 60 * 24 * 30
+              }
+            }
+          }
+        ]
       },
       manifest: {
         name: 'FeelZChat',
@@ -65,52 +65,52 @@ export default defineConfig({
           {
             src: 'icons/pwa-192x192.png',
             sizes: '192x192',
-            type: 'image/png',
+            type: 'image/png'
           },
           {
             src: 'icons/pwa-512x512.png',
             sizes: '512x512',
-            type: 'image/png',
-          },
-        ],
+            type: 'image/png'
+          }
+        ]
       },
       screenshots: [
         {
-          src: "screenshots/app-mobile.png",
-          sizes: "540x720",
-          type: "image/png",
-          form_factor: "narrow"
+          src: 'screenshots/app-mobile.png',
+          sizes: '540x720',
+          type: 'image/png',
+          form_factor: 'narrow'
         },
         {
-          src: "screenshots/app-desktop.png",
-          sizes: "1024x768",
-          type: "image/png",
-          form_factor: "wide"
+          src: 'screenshots/app-desktop.png',
+          sizes: '1024x768',
+          type: 'image/png',
+          form_factor: 'wide'
         }
       ]
     }),
     // analyzer(),
     ViteImageOptimizer({
       jpeg: {
-        quality: 75,
+        quality: 75
       },
       png: {
-        quality: 75,
+        quality: 75
       },
       svg: {
-        multipass: true,
+        multipass: true
       },
       gif: {
-        optimizationLevel: 3,
+        optimizationLevel: 3
       },
       webp: {
-        quality: 75,
+        quality: 75
       }
     }),
     VitePreload()
   ],
   optimizeDeps: {
-    include: ['framer-motion'],
+    include: ['framer-motion']
   },
   resolve: {
     alias: {
@@ -121,18 +121,17 @@ export default defineConfig({
       '@metadata': path.resolve(__dirname, 'src/metadata'),
       '@validate': path.resolve(__dirname, 'src/validate'),
       '@services': path.resolve(__dirname, 'src/services'),
-      '@utils': path.resolve(__dirname, 'src/utils'),
+      '@utils': path.resolve(__dirname, 'src/utils')
     }
   },
   server: {
-    historyApiFallback: true,
+    historyApiFallback: true
   },
   mode: 'production',
   build: {
     target: 'esnext',
     minify: 'esbuild',
-    cssCodeSplit: true,
-
+    cssCodeSplit: true
 
     // rollupOptions: {
     //   output: {
@@ -154,12 +153,9 @@ export default defineConfig({
     //       if (srcPath('services')) return 'services';
     //       if (srcPath('utils')) return 'utils';
     //       if (srcPath('validate')) return 'validate';
-
-    
     //       return 'misc';
     //     },
     //   }
     // }
-
-  },
+  }
 });
