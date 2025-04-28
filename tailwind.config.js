@@ -7,5 +7,15 @@ export default {
       textDecoration: ["responsive"],
     },
   },
-  plugins: [require("tailwindcss-textshadow")],
+  plugins: [
+    require("tailwindcss-textshadow"),
+    require('tailwindcss-important'),
+    require('tailwindcss-custom-forms'),
+    require('tailwindcss-gradients'),
+    require('@tailwindcss/line-clamp'),
+    require('tailwind-scrollbar'),
+    require('@tailwindcss/aspect-ratio'),
+    require('tailwindcss-animate'),
+    require('@tailwindcss/typography'),
+  ],
 };
