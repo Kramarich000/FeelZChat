@@ -100,7 +100,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  width: 100%
+  width: 100%;
 }
 
 :root {
@@ -161,7 +161,7 @@ button {
 
 main {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -437,12 +437,14 @@ button:hover svg {
   background-color: transparent;
 }
 
-.spotify-btn{
-  position: fixed; bottom: 15px;
-  right: 50px; background-color: #0E7490;
+.spotify-btn {
+  position: fixed;
+  bottom: 15px;
+  right: 50px;
+  background-color: #0E7490;
   z-index: 9999;
 }
 
-.spotify-btn:hover{
+.spotify-btn:hover {
   background-color: #000;
 }
