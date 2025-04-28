@@ -1,4 +1,3 @@
-import React from "react";
 import { BsFillExclamationDiamondFill } from "react-icons/bs";
 import translate from "@utils/translate";
 

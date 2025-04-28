@@ -1,4 +1,3 @@
-import React from "react";
 import BgGradient from "@components/BgGradient";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
