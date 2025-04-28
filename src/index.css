@@ -104,6 +104,14 @@ body {
   padding-bottom: 1px;
 }
 
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+video {
+  object-fit: cover;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
