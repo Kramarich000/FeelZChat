@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen absolute top-0 left-0">
       <Header />
-      <video
+      <motion.video
         src={mainVideo}
         autoPlay
         muted
@@ -46,9 +46,15 @@ export default function Home() {
         playsInline
         disablePictureInPicture
         disableRemotePlayback
+        loading="lazy"
         className="z-[-100] absolute top-150 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto object-cover"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 1,
+          ease: 'easeInOut',
+        }}
       />
-
       {isModalOpen && (
         <motion.div
           className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
