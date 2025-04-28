@@ -6,7 +6,6 @@ import Footer from '@components/Footer';
 import translate from '../utils/translate';
 import EmtnAnlsys from '@assets/images/emotion-analysis.jpg';
 import mainVideo from '@assets/videos/main-bg.mp4';
-import ReactPlayer from 'react-player';
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -44,6 +43,9 @@ export default function Home() {
         autoPlay
         muted
         loop
+        playsInline
+        disablePictureInPicture
+        disableRemotePlayback
         className="z-[-100] absolute top-150 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto object-cover"
       />
 
