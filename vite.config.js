@@ -17,7 +17,7 @@ export default defineConfig({
       algorithm: "brotliCompress",
       ext: ".br",
       threshold: 10240,
-      filter: /\.(js|css|html|mp4|webm|ogg)$/,
+      // filter: /\.(js|css|html|mp4|webm|ogg)$/,
     }),
     // VitePWA({
     //   registerType: "autoUpdate",
@@ -135,31 +135,32 @@ export default defineConfig({
     target: "esnext",
     minify: "esbuild",
     cssCodeSplit: true,
+    sourcemap: true,
 
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('react')) return 'react-core';
-            if (id.includes('react-dom')) return 'react-dom';
-            if (id.includes('formik')) return 'formik';
-            if (id.includes('framer-motion')) return 'motion';
-            if (id.includes('axios')) return 'axios';
-            if (id.includes('react-router')) return 'router';
-            return 'vendor';
-          }
+    // rollupOptions: {
+    //   output: {
+    //     manualChunks(id) {
+    //       if (id.includes('node_modules')) {
+    //         if (id.includes('react')) return 'react-core';
+    //         if (id.includes('react-dom')) return 'react-dom';
+    //         if (id.includes('formik')) return 'formik';
+    //         if (id.includes('framer-motion')) return 'motion';
+    //         if (id.includes('axios')) return 'axios';
+    //         if (id.includes('react-router')) return 'router';
+    //         return 'vendor';
+    //       }
 
-          const srcPath = (dir) => id.includes(path.resolve(__dirname, `src/${dir}`));
+    //       const srcPath = (dir) => id.includes(path.resolve(__dirname, `src/${dir}`));
 
-          if (srcPath('assets')) return 'assets';
-          if (srcPath('components')) return 'components';
-          if (srcPath('hooks')) return 'hooks';
-          if (srcPath('services')) return 'services';
-          if (srcPath('utils')) return 'utils';
-          if (srcPath('validate')) return 'validate';
-          return 'misc';
-        },
-      }
-    }
+    //       if (srcPath('assets')) return 'assets';
+    //       if (srcPath('components')) return 'components';
+    //       if (srcPath('hooks')) return 'hooks';
+    //       if (srcPath('services')) return 'services';
+    //       if (srcPath('utils')) return 'utils';
+    //       if (srcPath('validate')) return 'validate';
+    //       return 'misc';
+    //     },
+    //   }
+    // }
   },
 });

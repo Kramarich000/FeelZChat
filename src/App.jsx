@@ -17,21 +17,21 @@ import SpotifyPlayer from '@components/SpotifyPlayer';
 
 import SmoothScroll from '@components/SmoothScroll';
 
-const registerServiceWorker = () => {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-      .register('/service-worker.js')
-      .then((registration) => {
-        console.log(
-          'Service Worker зарегистрирован с областью:',
-          registration.scope,
-        );
-      })
-      .catch((error) => {
-        console.log('Ошибка при регистрации Service Worker:', error);
-      });
-  }
-};
+// const registerServiceWorker = () => {
+//   if ('serviceWorker' in navigator) {
+//     navigator.serviceWorker
+//       .register('/service-worker.js')
+//       .then((registration) => {
+//         console.log(
+//           'Service Worker зарегистрирован с областью:',
+//           registration.scope,
+//         );
+//       })
+//       .catch((error) => {
+//         console.log('Ошибка при регистрации Service Worker:', error);
+//       });
+//   }
+// };
 
 const Register = lazy(() => import('@pages/Register'));
 const Login = lazy(() => import('@pages/Login'));
