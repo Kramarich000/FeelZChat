@@ -123,14 +123,14 @@ export default function Home() {
 
       <section className="flex justify-center items-center gap-4 w-full py-12 p-4 pb-0 text-center bg-gray-900 text-white">
         <Link
-          to="/register"
+          to="/login"
           className="text-2xl hover:underline text-cyan-700 font-bold"
         >
           {translate('key_sign_in')}
         </Link>
         <p className="text-2xl">{translate('key_or')}</p>
         <Link
-          to="/login"
+          to="/register"
           className="text-2xl hover:underline text-cyan-700 font-bold"
         >
           {translate('key_sign_up')}
