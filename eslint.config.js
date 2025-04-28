@@ -1,25 +1,25 @@
-import js from '@eslint/js';
-import globals from 'globals';
-import reactPlugin from 'eslint-plugin-react';
-import prettierPlugin from 'eslint-plugin-prettier';
-import importPlugin from 'eslint-plugin-import';
-import securityPlugin from 'eslint-plugin-security';
+import js from "@eslint/js";
+import globals from "globals";
+import reactPlugin from "eslint-plugin-react";
+import prettierPlugin from "eslint-plugin-prettier";
+import importPlugin from "eslint-plugin-import";
+import securityPlugin from "eslint-plugin-security";
 
 export default [
   {
-    ignores: ['dist'],
+    ignores: ["dist"],
   },
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
+    files: ["**/*.{js,jsx,ts,tsx}"],
     languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
+      ecmaVersion: "latest",
+      sourceType: "module",
       globals: globals.browser,
       parserOptions: {
-        ecmaVersion: 'latest',
+        ecmaVersion: "latest",
         ecmaFeatures: { jsx: true },
-        sourceType: 'module',
-        project: './tsconfig.json',
+        sourceType: "module",
+        project: "./tsconfig.json",
       },
     },
     plugins: {
@@ -35,31 +35,35 @@ export default [
       ...importPlugin.configs.recommended.rules,
       ...securityPlugin.configs.recommended.rules,
 
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
-      'react/prop-types': 'warn',
-      'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.js', '.tsx'] }],
-      'react/react-in-jsx-scope': 'off',
+      "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
+      "react/prop-types": "warn",
+      "react/jsx-filename-extension": [
+        "warn",
+        { extensions: [".jsx", ".js", ".tsx"] },
+      ],
+      "react/react-in-jsx-scope": "off",
 
-      'no-console': 'warn',
-      'no-debugger': 'warn',
-      'prefer-const': 'warn',
-      'no-duplicate-imports': 'error',
-      'consistent-return': 'error',
-      'no-var': 'error',
+      "no-console": "warn",
+      "no-debugger": "warn",
+      "prefer-const": "warn",
+      "no-duplicate-imports": "error",
+      "consistent-return": "error",
+      "no-var": "error",
 
-      'no-eval': 'error',
-      'no-new-func': 'error',
-      'security/detect-non-literal-regexp': 'warn',
+      "no-eval": "error",
+      "no-new-func": "error",
+      "security/detect-non-literal-regexp": "warn",
 
-      'no-unused-expressions': 'warn',
-      'no-magic-numbers': ['warn', { ignore: [0, 1] }],
-      'array-callback-return': 'warn',
+      "no-unused-expressions": "warn",
+      "no-magic-numbers": ["warn", { ignore: [0, 1] }],
+      "array-callback-return": "warn",
 
-      'import/no-unresolved': 'error',
-      'import/named': 'error',
-      'import/default': 'error',
-      'import/no-absolute-path': 'error',
-      'import/no-cycle': 'warn',
+      "import/no-unresolved": "error",
+      "import/named": "error",
+      "import/default": "error",
+      "import/no-absolute-path": "error",
+      "import/no-cycle": "warn",
+      "prettier/prettier": "error",
     },
   },
 ];

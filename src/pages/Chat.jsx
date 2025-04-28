@@ -84,10 +84,10 @@ export default function Chat() {
       setLoading(false);
 
       // if (document.hidden) {
-        showPushNotification("Новое сообщение", {
-          body: reply.text,
-          icon: "/icon.png", 
-        });
+      showPushNotification("Новое сообщение", {
+        body: reply.text,
+        icon: "/icon.png",
+      });
       // }
 
       setTimeout(() => {
@@ -95,7 +95,7 @@ export default function Chat() {
       }, 1000);
     }, 1000);
   };
-  
+
   const selectChat = (id) => setActiveChatId(id);
 
   const { width: leftPanelWidth, panelRef, onMouseDown } = useResizablePanel();
@@ -127,7 +127,7 @@ export default function Chat() {
           <div
             className="resizeable-panel scrollbar-chat bg-transparent p-2 mt-[32px] overflow-y-auto max-h-[722px]"
             ref={panelRef}
-            style={{ width: `${leftPanelWidth}px`}}
+            style={{ width: `${leftPanelWidth}px` }}
           >
             <h2 className="text-lg font-semibold mb-4">
               {translate("key_chats")}
@@ -156,12 +156,12 @@ export default function Chat() {
 
           <div
             className="flex max-h-[788px] flex-col justify-between bg-transparent relative items-center overflow-hidden w-full p-[33px]"
-            style={{ width: `${rightPanelWidth}px`,  }} 
+            style={{ width: `${rightPanelWidth}px` }}
           >
             <div
               className="scrollbar-chat flex-1 glass-container overflow-y-auto bg-transparent w-full rounded transition-all duration-500 p-4 m-4"
               style={{
-                Maxwidth: `calc(${rightPanelWidth - 50}px)`, 
+                Maxwidth: `calc(${rightPanelWidth - 50}px)`,
               }}
             >
               <div className="flex flex-col gap-4">

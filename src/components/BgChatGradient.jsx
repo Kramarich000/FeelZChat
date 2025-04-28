@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useSpring, animated } from "react-spring";
-import { useMemo } from "react";
+
 import useEmotionGradient from "@hooks/useEmotionGradient";
 import useLocalStorage from "@hooks/useLocalStorage";
 
@@ -8,7 +8,7 @@ export default function BgChatGradient({ aggregated, children }) {
   const currentGradient = useEmotionGradient(aggregated);
   const [displayedGradient, setDisplayedGradient] = useLocalStorage(
     "prevGradient",
-    currentGradient
+    currentGradient,
   );
 
   const [fadeInStyle, api] = useSpring(() => ({
@@ -25,7 +25,7 @@ export default function BgChatGradient({ aggregated, children }) {
 
       const timer = setTimeout(() => {
         setDisplayedGradient(currentGradient);
-        api.start({ opacity: 0 }); 
+        api.start({ opacity: 0 });
       }, 1200);
 
       return () => clearTimeout(timer);
@@ -37,12 +37,12 @@ export default function BgChatGradient({ aggregated, children }) {
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
       backgroundSize: "300% 300%",
-      filter: "blur(20px)", 
-      transition: "filter 1.2s ease, background-image 1.2s ease", 
+      filter: "blur(20px)",
+      transition: "filter 1.2s ease, background-image 1.2s ease",
       animation:
         "moveGradient 8s ease-in-out infinite, rotateGradient 12s ease-in-out infinite",
     }),
-    []
+    [],
   );
 
   return (
@@ -55,7 +55,7 @@ export default function BgChatGradient({ aggregated, children }) {
         style={{
           ...layerStyle,
           backgroundImage: displayedGradient,
-          mixBlendMode: "screen", 
+          mixBlendMode: "screen",
           position: "absolute",
           top: 0,
           left: 0,
@@ -69,7 +69,7 @@ export default function BgChatGradient({ aggregated, children }) {
         style={{
           ...layerStyle,
           backgroundImage: currentGradient,
-          mixBlendMode: "overlay", 
+          mixBlendMode: "overlay",
           position: "absolute",
           top: 0,
           left: 0,
