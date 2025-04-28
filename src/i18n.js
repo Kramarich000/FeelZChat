@@ -6,42 +6,47 @@ import en from './locales/en.json';
 
 function detectPreferredLanguage() {
   const savedLang = localStorage.getItem('i18nextLng');
-  if (savedLang) return savedLang;
+  if (savedLang) {
+    return savedLang;
+  }
 
   const navLang = navigator.language || navigator.userLanguage;
-  const browserLang = (navigator.languages && navigator.languages[0]) || navLang;
+  const browserLang =
+    (navigator.languages && navigator.languages[0]) || navLang;
 
   const isSystemRu = navLang.startsWith('ru');
   const isBrowserEn = browserLang.startsWith('en');
 
-  console.log("иван");
+  console.log('иван');
   console.log({ navLang, browserLang, isSystemRu, isBrowserEn });
 
-  if (isSystemRu && isBrowserEn) return 'en';
-  if (isSystemRu) return 'ru';
+  if (isSystemRu && isBrowserEn) {
+    return 'en';
+  }
+  if (isSystemRu) {
+    return 'ru';
+  }
 
   return 'en';
 }
 
-const lang = detectPreferredLanguage(); 
+const lang = detectPreferredLanguage();
 
-i18n
-  .use(initReactI18next)
-  .init({
-    resources: {
-      ru: { translation: ru },
-      en: { translation: en },
-    },
-    lng: lang,
-    fallbackLng: 'en',
-    detection: {
-      caches: ['localStorage'],
-    },
-    supportedLngs: ['en', 'ru'],
-    interpolation: {
-      escapeValue: false,
-    },
-  });
+i18n.use(initReactI18next).init({
+  resources: {
+    ru: { translation: ru },
+    en: { translation: en }
+  },
+  lng: lang,
+  fallbackLng: 'en',
+  detection: {
+    caches: ['localStorage']
+  },
+  supportedLngs: ['en', 'ru'],
+  interpolation: {
+    escapeValue: false
+  }
+});
 
 console.log('Текущий язык:', i18n.language);
 

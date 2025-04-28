@@ -1,34 +1,65 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
+import js from '@eslint/js';
+import globals from 'globals';
+import reactPlugin from 'eslint-plugin-react';
+import prettierPlugin from 'eslint-plugin-prettier';
+import importPlugin from 'eslint-plugin-import';
+import securityPlugin from 'eslint-plugin-security';
 
 export default [
-  { ignores: ['dist'] },
   {
-    files: ['**/*.{js,jsx}'],
+    ignores: ['dist'],
+  },
+  {
+    files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
-      ecmaVersion: 2020,
+      ecmaVersion: 'latest',
+      sourceType: 'module',
       globals: globals.browser,
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
         sourceType: 'module',
+        project: './tsconfig.json',
       },
     },
     plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+      react: reactPlugin,
+      prettier: prettierPlugin,
+      import: importPlugin,
+      security: securityPlugin,
     },
     rules: {
       ...js.configs.recommended.rules,
-      ...reactHooks.configs.recommended.rules,
+      ...reactPlugin.configs.recommended.rules,
+      ...prettierPlugin.configs.recommended.rules,
+      ...importPlugin.configs.recommended.rules,
+      ...securityPlugin.configs.recommended.rules,
+
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
-      "import/no-unresolved": [2, { "ignore": ["framer-motion"] }]
+      'react/prop-types': 'warn',
+      'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.js', '.tsx'] }],
+      'react/react-in-jsx-scope': 'off',
+
+      'no-console': 'warn',
+      'no-debugger': 'warn',
+      'prefer-const': 'warn',
+      'no-duplicate-imports': 'error',
+      'consistent-return': 'error',
+      'no-var': 'error',
+
+      'no-eval': 'error',
+      'no-new-func': 'error',
+      'security/detect-non-literal-regexp': 'warn',
+
+      'no-unused-expressions': 'warn',
+      'no-magic-numbers': ['warn', { ignore: [0, 1] }],
+      'array-callback-return': 'warn',
+
+      'import/no-unresolved': 'error',
+      'import/named': 'error',
+      'import/default': 'error',
+      'import/no-absolute-path': 'error',
+      'import/no-cycle': 'warn',
     },
   },
-]
+];
