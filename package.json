@@ -39,6 +39,7 @@
     "chromedriver": "^135.0.1",
     "date-fns": "^4.1.0",
     "esbuild": "^0.25.2",
+    "esbuild-css-modules-plugin": "^3.1.4",
     "eslint": "^9.25.1",
     "eslint-config-prettier": "^10.1.2",
     "eslint-import-resolver-alias": "^1.1.2",
@@ -78,6 +79,7 @@
     "tailwindcss-animate": "^1.0.7",
     "uuid": "^11.1.0",
     "vite-bundle-analyzer": "^0.18.1",
+    "vite-plugin-checker": "^0.9.1",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-image-optimizer": "^1.0.0",
     "yup": "^1.6.1"

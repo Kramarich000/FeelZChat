@@ -73,7 +73,7 @@ export default function Home() {
       )}
 
       <motion.section
-        className="min-h-screen flex items-center justify-center text-center bg-opacity-40 p-4 backdrop-blur-[2px]"
+        className="main-section min-h-screen flex items-center justify-center text-center bg-opacity-40 p-4 backdrop-blur-[2px]"
         layout
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
