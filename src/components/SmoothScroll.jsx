@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import Lenis from '@studio-freight/lenis';
 
-const SmoothScroll = ({ children }) => {
+const SmoothScroll = () => {
   const lenisRef = useRef(null);
   const rafRef = useRef(null);
 
@@ -68,7 +68,7 @@ const SmoothScroll = ({ children }) => {
     };
   }, []);
 
-  return <div>{children}</div>;
+  return <></>;
 };
 
 export default SmoothScroll;
