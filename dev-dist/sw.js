@@ -24,8 +24,8 @@ if (!self.define) {
     return (
       registry[uri] ||
       new Promise((resolve) => {
-        if ('document' in self) {
-          const script = document.createElement('script');
+        if ("document" in self) {
+          const script = document.createElement("script");
           script.src = uri;
           script.onload = resolve;
           document.head.appendChild(script);
@@ -47,7 +47,7 @@ if (!self.define) {
   self.define = (depsNames, factory) => {
     const uri =
       nextDefineUri ||
-      ('document' in self ? document.currentScript.src : '') ||
+      ("document" in self ? document.currentScript.src : "") ||
       location.href;
     if (registry[uri]) {
       // Module is already loading or loaded.
@@ -58,18 +58,18 @@ if (!self.define) {
     const specialDeps = {
       module: { uri },
       exports,
-      require
+      require,
     };
     registry[uri] = Promise.all(
-      depsNames.map((depName) => specialDeps[depName] || require(depName))
+      depsNames.map((depName) => specialDeps[depName] || require(depName)),
     ).then((deps) => {
       factory(...deps);
       return exports;
     });
   };
 }
-define(['./workbox-fc76d6c3'], function (workbox) {
-  'use strict';
+define(["./workbox-fc76d6c3"], function (workbox) {
+  "use strict";
 
   self.skipWaiting();
   workbox.clientsClaim();
@@ -82,48 +82,48 @@ define(['./workbox-fc76d6c3'], function (workbox) {
   workbox.precacheAndRoute(
     [
       {
-        url: 'registerSW.js',
-        revision: '3ca0b8505b4bec776b69afdba2768812'
+        url: "registerSW.js",
+        revision: "3ca0b8505b4bec776b69afdba2768812",
       },
       {
-        url: 'index.html',
-        revision: '0.kfru92n0qeo'
-      }
+        url: "index.html",
+        revision: "0.kfru92n0qeo",
+      },
     ],
-    {}
+    {},
   );
   workbox.cleanupOutdatedCaches();
   workbox.registerRoute(
-    new workbox.NavigationRoute(workbox.createHandlerBoundToURL('index.html'), {
-      allowlist: [/^\/$/]
-    })
+    new workbox.NavigationRoute(workbox.createHandlerBoundToURL("index.html"), {
+      allowlist: [/^\/$/],
+    }),
   );
-  workbox.registerRoute(/\/src\//, new workbox.NetworkOnly(), 'GET');
-  workbox.registerRoute(/\/node_modules\//, new workbox.NetworkOnly(), 'GET');
+  workbox.registerRoute(/\/src\//, new workbox.NetworkOnly(), "GET");
+  workbox.registerRoute(/\/node_modules\//, new workbox.NetworkOnly(), "GET");
   workbox.registerRoute(
     /.*\.(png|jpg|jpeg|svg|mp3|woff2)/,
     new workbox.CacheFirst({
-      cacheName: 'assets-cache',
+      cacheName: "assets-cache",
       plugins: [
         new workbox.ExpirationPlugin({
           maxEntries: 50,
-          maxAgeSeconds: 604800
-        })
-      ]
+          maxAgeSeconds: 604800,
+        }),
+      ],
     }),
-    'GET'
+    "GET",
   );
   workbox.registerRoute(
     /\/assets\//,
     new workbox.CacheFirst({
-      cacheName: 'assets-cache',
+      cacheName: "assets-cache",
       plugins: [
         new workbox.ExpirationPlugin({
           maxEntries: 50,
-          maxAgeSeconds: 2592000
-        })
-      ]
+          maxAgeSeconds: 2592000,
+        }),
+      ],
     }),
-    'GET'
+    "GET",
   );
 });

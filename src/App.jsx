@@ -1,46 +1,45 @@
-import './App.css';
-import { lazy, Suspense } from 'react';
-import { AnimatePresence } from 'framer-motion';
-import { ErrorBoundary } from 'react-error-boundary';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import "./App.css";
+import { lazy, Suspense, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+import { ErrorBoundary } from "react-error-boundary";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import FallbackComponent from '@components/FallbackComponent';
-import PrivateRoute from '@components/PrivateRoute';
-import withTitle from '@components/Title';
-import MusicComponent from '@components/MusicComponent';
-import { Loader } from '@components/Loader';
+import FallbackComponent from "@components/FallbackComponent";
+import PrivateRoute from "@components/PrivateRoute";
+import withTitle from "@components/Title";
+import MusicComponent from "@components/MusicComponent";
+import { Loader } from "@components/Loader";
 
-import translate from '@utils/translate';
-import SpotifyPlayer from '@components/SpotifyPlayer';
+import translate from "@utils/translate";
+import SpotifyPlayer from "@components/SpotifyPlayer";
 
-import { useEffect } from 'react';
 const registerServiceWorker = () => {
-  if ('serviceWorker' in navigator) {
+  if ("serviceWorker" in navigator) {
     navigator.serviceWorker
-      .register('/service-worker.js')
+      .register("/service-worker.js")
       .then((registration) => {
         console.log(
-          'Service Worker зарегистрирован с областью:',
+          "Service Worker зарегистрирован с областью:",
           registration.scope,
         );
       })
       .catch((error) => {
-        console.log('Ошибка при регистрации Service Worker:', error);
+        console.log("Ошибка при регистрации Service Worker:", error);
       });
   }
 };
 
-const Register = lazy(() => import('@pages/Register'));
-const Login = lazy(() => import('@pages/Login'));
-const Chat = lazy(() => import('@pages/Chat'));
-const Privacy = lazy(() => import('@pages/Privacy'));
-const Help = lazy(() => import('@pages/Help'));
-const Home = lazy(() => import('@pages/Home'));
-const Profile = lazy(() => import('@pages/Profile'));
-const ForgotPassword = lazy(() => import('@pages/ForgotPassword'));
-const Error404 = lazy(() => import('@errors/404'));
+const Register = lazy(() => import("@pages/Register"));
+const Login = lazy(() => import("@pages/Login"));
+const Chat = lazy(() => import("@pages/Chat"));
+const Privacy = lazy(() => import("@pages/Privacy"));
+const Help = lazy(() => import("@pages/Help"));
+const Home = lazy(() => import("@pages/Home"));
+const Profile = lazy(() => import("@pages/Profile"));
+const ForgotPassword = lazy(() => import("@pages/ForgotPassword"));
+const Error404 = lazy(() => import("@errors/404"));
 
 const Page = ({ component: Component, title }) => {
   const translatedTitle = translate(title);
@@ -75,64 +74,64 @@ const Page = ({ component: Component, title }) => {
 
 const routes = [
   {
-    path: '/register',
+    path: "/register",
     component: Register,
-    titleKey: 'key_register_1',
-    importFunc: () => import('@pages/Register'),
+    titleKey: "key_register_1",
+    importFunc: () => import("@pages/Register"),
   },
   {
-    path: '/login',
+    path: "/login",
     component: Login,
-    titleKey: 'key_login_1',
-    importFunc: () => import('@pages/Login'),
+    titleKey: "key_login_1",
+    importFunc: () => import("@pages/Login"),
   },
   {
-    path: '/chat',
+    path: "/chat",
     component: Chat,
-    titleKey: 'key_chat',
-    importFunc: () => import('@pages/Chat'),
+    titleKey: "key_chat",
+    importFunc: () => import("@pages/Chat"),
   },
   {
-    path: '/privacy',
+    path: "/privacy",
     component: Privacy,
-    titleKey: 'key_privacy',
-    importFunc: () => import('@pages/Privacy'),
+    titleKey: "key_privacy",
+    importFunc: () => import("@pages/Privacy"),
   },
   {
-    path: '/help',
+    path: "/help",
     component: Help,
-    titleKey: 'key_help',
-    importFunc: () => import('@pages/Help'),
+    titleKey: "key_help",
+    importFunc: () => import("@pages/Help"),
   },
   {
-    path: '/',
+    path: "/",
     component: Home,
-    titleKey: 'key_home',
-    importFunc: () => import('@pages/Home'),
+    titleKey: "key_home",
+    importFunc: () => import("@pages/Home"),
   },
   {
-    path: '/profile',
+    path: "/profile",
     component: Profile,
-    titleKey: 'key_profile_1',
+    titleKey: "key_profile_1",
     private: true,
-    importFunc: () => import('@pages/Profile'),
+    importFunc: () => import("@pages/Profile"),
   },
   {
-    path: '/forgot-password',
+    path: "/forgot-password",
     component: ForgotPassword,
-    titleKey: 'key_reset_password',
-    importFunc: () => import('@pages/ForgotPassword'),
+    titleKey: "key_reset_password",
+    importFunc: () => import("@pages/ForgotPassword"),
   },
   {
-    path: '*',
+    path: "*",
     component: Error404,
-    titleKey: 'key_error',
-    importFunc: () => import('@errors/404'),
+    titleKey: "key_error",
+    importFunc: () => import("@errors/404"),
   },
 ];
 
 const preloadPage = (importFunc) => {
-  if (typeof importFunc === 'function') {
+  if (typeof importFunc === "function") {
     importFunc();
   }
 };

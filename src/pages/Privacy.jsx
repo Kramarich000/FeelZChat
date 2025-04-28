@@ -7,7 +7,7 @@ import translate from "../utils/translate";
 export default function Privacy() {
   return (
     <div className="absolute top-0 left-0 min-h-full w-full bg-blue-200 flex flex-col justify-center items-center">
-      <Header/>
+      <Header />
       <motion.div
         layout
         initial={{ opacity: 0, y: -50 }}
@@ -20,37 +20,31 @@ export default function Privacy() {
             {translate("key_privacy")}
           </h1>
           <div className="text-lg space-y-4">
-            <p>
-              {translate("key_privacy_intro")}
-            </p>
-            <h2 className="text-2xl font-semibold">{translate("key_section_data_collection")}</h2>
-            <p>
-              {translate("key_data_collection")}
-            </p>
-            <h2 className="text-2xl font-semibold">{translate("key_section_data_usage")}</h2>
-            <p>
-              {translate("key_data_usage")}
-            </p>
-            <h2 className="text-2xl font-semibold">{translate("key_section_data_protection")}</h2>
-            <p>
-              {translate("key_data_protection")}
-            </p>
+            <p>{translate("key_privacy_intro")}</p>
+            <h2 className="text-2xl font-semibold">
+              {translate("key_section_data_collection")}
+            </h2>
+            <p>{translate("key_data_collection")}</p>
+            <h2 className="text-2xl font-semibold">
+              {translate("key_section_data_usage")}
+            </h2>
+            <p>{translate("key_data_usage")}</p>
+            <h2 className="text-2xl font-semibold">
+              {translate("key_section_data_protection")}
+            </h2>
+            <p>{translate("key_data_protection")}</p>
             <h2 className="text-2xl font-semibold">
               {translate("key_section_data_sharing")}
             </h2>
-            <p>
-              {translate("key_data_sharing")}
-            </p>
+            <p>{translate("key_data_sharing")}</p>
             <h2 className="text-2xl font-semibold">
               {translate("key_section_policy_changes")}
             </h2>
-            <p>
-              {translate("key_policy_changes")}
-            </p>
+            <p>{translate("key_policy_changes")}</p>
           </div>
         </div>
       </motion.div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

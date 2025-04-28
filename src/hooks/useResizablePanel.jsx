@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 export const useResizablePanel = (
   initialWidth = 200,
   minWidth = 100,
-  maxWidth = 400
+  maxWidth = 400,
 ) => {
   const [width, setWidth] = useState(initialWidth);
   const panelRef = useRef(null);
@@ -49,7 +49,7 @@ export const useResizablePanel = (
           const deltaX = e.clientX - startX;
           const newWidth = Math.min(
             maxWidth,
-            Math.max(minWidth, startWidth + deltaX)
+            Math.max(minWidth, startWidth + deltaX),
           );
 
           if (Math.abs(newWidth - lastKnownWidth.current) > 0.1) {
@@ -71,7 +71,7 @@ export const useResizablePanel = (
       document.addEventListener("mousemove", onMouseMove);
       document.addEventListener("mouseup", onMouseUp);
     },
-    [width, minWidth, maxWidth]
+    [width, minWidth, maxWidth],
   );
 
   return { width, panelRef, onMouseDown };

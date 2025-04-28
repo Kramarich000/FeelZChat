@@ -2,7 +2,7 @@ import React from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { FaGoogle } from "react-icons/fa";
-import translate from "@utils/translate"
+import translate from "@utils/translate";
 const GoogleAuth = () => {
   const login = useGoogleLogin({
     flow: "auth-code",
@@ -14,7 +14,7 @@ const GoogleAuth = () => {
           "https://your-server.com/api/auth/google",
           {
             token: tokenResponse.access_token,
-          }
+          },
         );
 
         if (res.status === 200) {

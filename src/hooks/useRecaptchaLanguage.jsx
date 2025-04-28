@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import useLocalStorage from "@hooks/useLocalStorage";
 const useRecaptchaLanguage = () => {
-  const [language] = useLocalStorage('language', 'ru'); 
+  const [language] = useLocalStorage("language", "ru");
 
   useEffect(() => {
-    const script = document.createElement('script');
+    const script = document.createElement("script");
     script.src = `https://www.google.com/recaptcha/api.js?hl=${language}`;
     script.async = true;
     script.defer = true;
@@ -14,7 +14,7 @@ const useRecaptchaLanguage = () => {
     return () => {
       document.head.removeChild(script);
     };
-  }, [language]); 
+  }, [language]);
 };
 
 export default useRecaptchaLanguage;

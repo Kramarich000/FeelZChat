@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import BgGradient from '@components/BgGradient';
-import { Link, useNavigate } from 'react-router-dom';
-import { motion, transform } from 'framer-motion';
-import { BsQuestionSquareFill } from 'react-icons/bs';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import React, { useEffect, useState } from "react";
+import BgGradient from "@components/BgGradient";
+import { Link, useNavigate } from "react-router-dom";
+import { motion, transform } from "framer-motion";
+import { BsQuestionSquareFill } from "react-icons/bs";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 import {
   forgotPasswordSchema,
   confirmationCodeSchema,
-} from '@validate/forgotPasswordSchema';
+} from "@validate/forgotPasswordSchema";
 
 import {
   handleFirstStepForgotSubmit,
   handleSecondStepForgotSubmit,
-} from '@services/forgotPasswordsHandlers';
+} from "@services/forgotPasswordsHandlers";
 
-import AnimatedError from '@components/AnimatedError';
-import translate from '@utils/translate';
-import HelpButton from '@components/HelpButton';
+import AnimatedError from "@components/AnimatedError";
+import translate from "@utils/translate";
+import HelpButton from "@components/HelpButton";
 
 export default function ForgotPassword() {
   const [step, setStep] = useState(1);
@@ -25,7 +25,7 @@ export default function ForgotPassword() {
   useEffect(() => {
     if (step === 3) {
       const timer = setTimeout(() => {
-        navigate('/login');
+        navigate("/login");
       }, 5000);
 
       return () => clearTimeout(timer);
@@ -42,18 +42,18 @@ export default function ForgotPassword() {
         className="container flex flex-row gap justify-between w-[75%] items-center"
       >
         <Link
-          to={'/'}
+          to={"/"}
           className="flex items-center justify-center hover:scale-110 transition-all"
         >
           <h1 className="main-title flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
-            {translate('key_app_name')}
+            {translate("key_app_name")}
           </h1>
         </Link>
         <section className="max-w-[650px] container bg-white p-16 rounded-2xl border-b-cyan-700 border-b-8 z-999">
-          <h2 className="text-3xl pb-10">{translate('key_password_reset')}</h2>
+          <h2 className="text-3xl pb-10">{translate("key_password_reset")}</h2>
           {step === 1 && (
             <Formik
-              initialValues={{ email: '' }}
+              initialValues={{ email: "" }}
               validationSchema={forgotPasswordSchema}
               onSubmit={(values) => {
                 handleFirstStepForgotSubmit(values, setStep);
@@ -78,7 +78,7 @@ export default function ForgotPassword() {
                     </label>
 
                     <button className="button-styles col-span-1" type="submit">
-                      {translate('key_reset')}
+                      {translate("key_reset")}
                     </button>
                   </Form>
                 </div>
@@ -88,7 +88,7 @@ export default function ForgotPassword() {
 
           {step === 2 && (
             <Formik
-              initialValues={{ confirmationCode: '' }}
+              initialValues={{ confirmationCode: "" }}
               onSubmit={(values) =>
                 handleSecondStepForgotSubmit(values, setStep)
               }
@@ -106,7 +106,7 @@ export default function ForgotPassword() {
                       <Field
                         type="text"
                         name="confirmationCode"
-                        placeholder={translate('key_confirm_code')}
+                        placeholder={translate("key_confirm_code")}
                         className="input-styles"
                       />
                       <ErrorMessage name="confirmationCode">
@@ -116,7 +116,7 @@ export default function ForgotPassword() {
                       </ErrorMessage>
                     </label>
                     <button className="button-styles mb-4" type="submit">
-                      {translate('key_end_registration')}
+                      {translate("key_end_registration")}
                     </button>
                   </Form>
                 </motion.div>
@@ -136,7 +136,7 @@ export default function ForgotPassword() {
                 ✓
               </div>
               <p className="text-xl text-center">
-                {translate('key_reset_success')}
+                {translate("key_reset_success")}
               </p>
             </motion.div>
           )}

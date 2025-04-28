@@ -10,5 +10,3 @@ const withTitle = (Component, title) => {
 };
 
 export default withTitle;
-
-

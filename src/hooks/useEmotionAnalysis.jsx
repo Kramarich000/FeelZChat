@@ -34,8 +34,8 @@ export function useEmotionAnalysis() {
           setLoading(false);
         }
       }
-    }, 500), 
-    []
+    }, 500),
+    [],
   );
 
   return {

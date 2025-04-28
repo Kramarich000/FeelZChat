@@ -1,17 +1,17 @@
-import * as Yup from 'yup';
-import leoProfanity from 'leo-profanity';
+import * as Yup from "yup";
+import leoProfanity from "leo-profanity";
 
-leoProfanity.loadDictionary('ru');
+leoProfanity.loadDictionary("ru");
 
 const formatPhoneNumber = (value) => {
-  if (typeof value !== 'string') {
-    return '';
+  if (typeof value !== "string") {
+    return "";
   }
-  value = value.replace(/\D/g, '');
+  value = value.replace(/\D/g, "");
   if (value.length > 11) {
     value = value.slice(0, 11);
   }
-  let formattedValue = '+7';
+  let formattedValue = "+7";
   if (value.length > 1) {
     formattedValue += ` (${value.slice(1, 4)}`;
   }
@@ -29,25 +29,25 @@ const formatPhoneNumber = (value) => {
 
 const loginSchema = Yup.object().shape({
   phone: Yup.string()
-    .required('Ввведите номер телефона')
+    .required("Ввведите номер телефона")
     .test(
-      'is-correct-phone',
-      'Введите корректный номер телефона в формате +7 (012) 345-67-89',
+      "is-correct-phone",
+      "Введите корректный номер телефона в формате +7 (012) 345-67-89",
       (value) => {
         if (!value) {
           return false;
         }
         const formattedPhone = formatPhoneNumber(value);
         return /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(formattedPhone);
-      }
+      },
     ),
   password: Yup.string()
-    .required('Введите пароль')
+    .required("Введите пароль")
     .test(
-      'no-profanity',
-      'Пароль не должен содержать нецензурных слов',
-      (value) => !leoProfanity.check(value)
-    )
+      "no-profanity",
+      "Пароль не должен содержать нецензурных слов",
+      (value) => !leoProfanity.check(value),
+    ),
 });
 
 export { loginSchema, formatPhoneNumber };

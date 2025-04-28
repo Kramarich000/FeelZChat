@@ -1,9 +1,9 @@
-import { StrictMode, Profiler } from 'react';
-import { createRoot } from 'react-dom/client';
-import './index.css';
-import AppWithMeta from '@metadata/AppWithMeta.jsx';
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import './i18n';
+import { StrictMode, Profiler } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import AppWithMeta from "@metadata/AppWithMeta.jsx";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import "./i18n";
 
 // const handleRender = (id, phase, actualDuration, baseDuration, startTime, commitTime) => {
 //   console.log('Component rendered:', id);
@@ -14,7 +14,7 @@ import './i18n';
 //   console.log('Commit time (ms):', commitTime)
 // };
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <GoogleOAuthProvider clientId="575143609253-fkuprof1lpke3qbq78qhns7518ma57cq.apps.googleusercontent.com">
       {/* <Profiler id="App" onRender={handleRender}> */}

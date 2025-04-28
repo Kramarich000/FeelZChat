@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 import { HiUser } from "react-icons/hi";
-import { Menu, MenuItem, MenuItems, Transition, MenuButton } from "@headlessui/react";
+import {
+  Menu,
+  MenuItem,
+  MenuItems,
+  Transition,
+  MenuButton,
+} from "@headlessui/react";
 import { Fragment } from "react";
 import translate from "@utils/translate";
 import Logo from "../animations/logoAnimation";
@@ -10,7 +16,7 @@ export default function ChatHeader() {
     <header className="container bg-gray-700-opacity mx-auto min-w-[100%] p-5 transition-all min-h-[100px]">
       <div className="max-w-[1200px] mx-auto flex justify-between items-center">
         <Link className="block w-10" to="/">
-          <Logo/>
+          <Logo />
         </Link>
 
         <div className="relative">
@@ -62,7 +68,7 @@ export default function ChatHeader() {
                           active ? "bg-gray-200" : ""
                         }`}
                       >
-                         {translate("key_logout")}
+                        {translate("key_logout")}
                       </Link>
                     )}
                   </MenuItem>

@@ -9,35 +9,29 @@ import translate from "@utils/translate";
 const faqData = [
   {
     question: translate("key_how_sign_in"),
-    answer:
-      translate("key_homepage_register_hint"),
+    answer: translate("key_homepage_register_hint"),
   },
   {
     question: translate("key_forgot_password_hint"),
-    answer:
-      translate("key_forgot_password_process"),
+    answer: translate("key_forgot_password_process"),
   },
   {
     question: translate("key_change_phone_hint"),
-    answer:
-      translate("key_change_phone_instruction"),
+    answer: translate("key_change_phone_instruction"),
   },
   {
     question: translate("key_account_delete_hint"),
-    answer:
-      translate("key_account_delete_instruction")        
+    answer: translate("key_account_delete_instruction"),
   },
   {
     question: translate("key_messages_not_sending"),
-    answer:
-      translate("key_check_connection"),
+    answer: translate("key_check_connection"),
   },
 ];
 
 const handleSubmit = (e) => {
   e.preventDefault();
 };
-
 
 export default function Help() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -90,7 +84,10 @@ export default function Help() {
         <div className="">
           <h2 className="text-3xl mb-5">{translate("key_contact_us")}</h2>
           <div className="bg-white text-black  border-b-4 rounded-2xl border-cyan-700 p-4">
-            <form className="gap-5 grid grid-cols-3 mb-4" onSubmit={handleSubmit}>
+            <form
+              className="gap-5 grid grid-cols-3 mb-4"
+              onSubmit={handleSubmit}
+            >
               <label>
                 <input
                   className="input-styles"
@@ -125,28 +122,36 @@ export default function Help() {
                           value="Technical"
                           className="p-2.5 cursor-pointer hover:bg-cyan-700 hover:text-white"
                         >
-                          <Select.ItemText>{translate("key_technical_question")}</Select.ItemText>
+                          <Select.ItemText>
+                            {translate("key_technical_question")}
+                          </Select.ItemText>
                           <Select.ItemIndicator></Select.ItemIndicator>
                         </Select.Item>
                         <Select.Item
                           value="Account"
                           className="p-2.5 cursor-pointer hover:bg-cyan-700 hover:text-white"
                         >
-                          <Select.ItemText>{translate("key_account_question")}</Select.ItemText>
+                          <Select.ItemText>
+                            {translate("key_account_question")}
+                          </Select.ItemText>
                           <Select.ItemIndicator></Select.ItemIndicator>
                         </Select.Item>
                         <Select.Item
                           value="Bug"
                           className="p-2 cursor-pointer hover:bg-cyan-700 hover:text-white"
                         >
-                          <Select.ItemText>{translate("key_bug")}</Select.ItemText>
+                          <Select.ItemText>
+                            {translate("key_bug")}
+                          </Select.ItemText>
                           <Select.ItemIndicator></Select.ItemIndicator>
                         </Select.Item>
                         <Select.Item
                           value="Other"
                           className="p-2 cursor-pointer hover:bg-cyan-700 hover:text-white"
                         >
-                          <Select.ItemText>{translate("key_other")}</Select.ItemText>
+                          <Select.ItemText>
+                            {translate("key_other")}
+                          </Select.ItemText>
                           <Select.ItemIndicator></Select.ItemIndicator>
                         </Select.Item>
                       </Select.Viewport>
@@ -160,7 +165,7 @@ export default function Help() {
                 placeholder={translate("key_your_question")}
               />
               <button
-                type="submit" 
+                type="submit"
                 className="mx-auto w-[300px] col-span-3 bg-cyan-700 text-white rounded-2xl py-2"
               >
                 {translate("key_send")}
@@ -174,7 +179,9 @@ export default function Help() {
           </h2>
           <div className="space-y-2">
             <p className="text-lg text-gray-700">
-              <strong className="font-medium">{translate("key_phone_colon")}{" "}</strong>
+              <strong className="font-medium">
+                {translate("key_phone_colon")}{" "}
+              </strong>
               <a
                 className="text-cyan-700 hover:underline transition-all"
                 type="tel"
@@ -184,10 +191,16 @@ export default function Help() {
               </a>
             </p>
             <p className="text-lg text-gray-700">
-              <strong className="font-medium">{translate("key_address_colon")}{" "}</strong> {translate("key_contact_address")}
+              <strong className="font-medium">
+                {translate("key_address_colon")}{" "}
+              </strong>{" "}
+              {translate("key_contact_address")}
             </p>
             <p className="text-lg text-gray-700">
-              <strong className="font-medium">{translate("key_working_hours_colon")}{" "}</strong>{translate("key_working_hours")}
+              <strong className="font-medium">
+                {translate("key_working_hours_colon")}{" "}
+              </strong>
+              {translate("key_working_hours")}
             </p>
           </div>
         </div>
