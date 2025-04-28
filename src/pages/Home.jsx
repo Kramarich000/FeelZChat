@@ -112,13 +112,14 @@ export default function Home() {
             <img
               src={EmtnAnlsys}
               alt="Emotion Analysis"
+              loading="lazy"
               className="w-full mb-4 h-[500px] object-cover rounded-lg object-top"
             />
             <iframe
               className="w-full h-[500px]"
               src="https://www.youtube.com/embed/-U8rukzWCNs"
               title="Sentiment Analysis &amp; Emotional Classification with GPT-4"
-              frameBorder="0"
+              loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
