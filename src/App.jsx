@@ -1,5 +1,5 @@
 import './App.css';
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { ErrorBoundary } from 'react-error-boundary';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
