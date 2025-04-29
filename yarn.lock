@@ -7679,6 +7679,11 @@ react-loadable@^5.5.0:
   dependencies:
     prop-types "^15.5.0"
 
+react-otp-input@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/react-otp-input/-/react-otp-input-3.1.1.tgz#910169629812c40a614e6c175cc2c5f36102bb61"
+  integrity sha512-bjPavgJ0/Zmf/AYi4onj8FbH93IjeD+e8pWwxIJreDEWsU1ILR5fs8jEJmMGWSBe/yyvPP6X/W6Mk9UkOCkTPw==
+
 react-player@^2.16.0:
   version "2.16.0"
   resolved "https://registry.yarnpkg.com/react-player/-/react-player-2.16.0.tgz#89070700b03f5a5ded9f0b3165d4717390796481"

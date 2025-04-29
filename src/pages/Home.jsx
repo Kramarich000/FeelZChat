@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '@components/Header';
 import { motion } from 'framer-motion';
 import Footer from '@components/Footer';
-import translate from '../utils/translate';
+import translate from '@utils/translate';
 import EmtnAnlsys from '@assets/images/emotion-analysis.jpg';
 import mainVideo from '@assets/videos/main-bg.mp4';
 export default function Home() {

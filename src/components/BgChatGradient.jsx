@@ -1,13 +1,13 @@
-import React, { useEffect, useMemo } from "react";
-import { useSpring, animated } from "react-spring";
+import React, { useEffect, useMemo } from 'react';
+import { useSpring, animated } from 'react-spring';
 
-import useEmotionGradient from "@hooks/useEmotionGradient";
-import useLocalStorage from "@hooks/useLocalStorage";
+import useEmotionGradient from '@hooks/useEmotionGradient';
+import useLocalStorage from '@hooks/useLocalStorage';
 
 export default function BgChatGradient({ aggregated, children }) {
   const currentGradient = useEmotionGradient(aggregated);
   const [displayedGradient, setDisplayedGradient] = useLocalStorage(
-    "prevGradient",
+    'prevGradient',
     currentGradient,
   );
 
@@ -34,13 +34,13 @@ export default function BgChatGradient({ aggregated, children }) {
 
   const layerStyle = useMemo(
     () => ({
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",
-      backgroundSize: "300% 300%",
-      filter: "blur(20px)",
-      transition: "filter 1.2s ease, background-image 1.2s ease",
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      backgroundSize: '300% 300%',
+      filter: 'blur(20px)',
+      transition: 'filter 1.2s ease, background-image 1.2s ease',
       animation:
-        "moveGradient 8s ease-in-out infinite, rotateGradient 12s ease-in-out infinite",
+        'moveGradient 8s ease-in-out infinite, rotateGradient 12s ease-in-out infinite',
     }),
     [],
   );
@@ -48,15 +48,15 @@ export default function BgChatGradient({ aggregated, children }) {
   return (
     <div
       className="bg-chat-gradient-container z-0"
-      style={{ position: "absolute", width: "100%", height: "100%" }}
+      style={{ position: 'absolute', width: '100%', height: '100%' }}
     >
       <div
         className="gradient-layer base"
         style={{
           ...layerStyle,
           backgroundImage: displayedGradient,
-          mixBlendMode: "screen",
-          position: "absolute",
+          mixBlendMode: 'screen',
+          position: 'absolute',
           top: 0,
           left: 0,
           right: 0,
@@ -69,8 +69,8 @@ export default function BgChatGradient({ aggregated, children }) {
         style={{
           ...layerStyle,
           backgroundImage: currentGradient,
-          mixBlendMode: "overlay",
-          position: "absolute",
+          mixBlendMode: 'overlay',
+          position: 'absolute',
           top: 0,
           left: 0,
           right: 0,
@@ -79,7 +79,7 @@ export default function BgChatGradient({ aggregated, children }) {
           opacity: fadeInStyle.opacity,
         }}
       />
-      <div style={{ position: "relative", zIndex: 2 }}>{children}</div>
+      <div style={{ position: 'relative', zIndex: 2 }}>{children}</div>
       <style>{`
         @keyframes moveGradient {
           0% { background-position: 0% 0%; }
