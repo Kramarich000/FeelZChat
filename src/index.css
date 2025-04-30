@@ -414,7 +414,6 @@ button:hover svg {
   color: black;
 }
 
-
 .message {
   position: relative;
   padding: 12px 16px;
@@ -462,6 +461,31 @@ button:hover svg {
   z-index: 9999;
 }
 
+
 .spotify-btn:hover {
   background-color: #000;
 }
+
+.letter-spacing {
+  letter-spacing: 0.699em;
+}
+
+.input-styles::placeholder {
+  letter-spacing: normal;
+}
+
+/* .input-decoration {
+  top: 35px;
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.input-decoration span {
+  width: 15px;
+  border-bottom: 1px solid #ccc;
+  display: block;
+  height: 1px;
+} */

@@ -1,16 +1,15 @@
-import { Link } from "react-router-dom";
-import { HiUser } from "react-icons/hi";
+import { Link } from 'react-router-dom';
+import { HiUser } from 'react-icons/hi';
 import {
   Menu,
   MenuItem,
   MenuItems,
   Transition,
   MenuButton,
-} from "@headlessui/react";
-import { Fragment } from "react";
-import translate from "@utils/translate";
-import Logo from "../animations/logoAnimation";
-
+} from '@headlessui/react';
+import { Fragment } from 'react';
+import translate from '@utils/translate';
+import Logo from '../animations/logoAnimation';
 export default function ChatHeader() {
   return (
     <header className="container bg-gray-700-opacity mx-auto min-w-[100%] p-5 transition-all min-h-[100px]">
@@ -41,10 +40,10 @@ export default function ChatHeader() {
                       <Link
                         to="/profile"
                         className={`block px-4 py-2 text-gray-800 rounded-lg transition-colors duration-300 ${
-                          active ? "bg-gray-200" : ""
+                          active ? 'bg-gray-200' : ''
                         }`}
                       >
-                        {translate("key_profile")}
+                        {translate('key_profile')}
                       </Link>
                     )}
                   </MenuItem>
@@ -53,10 +52,10 @@ export default function ChatHeader() {
                       <Link
                         to="/settings"
                         className={`block px-4 py-2 text-gray-800 rounded-lg transition-colors duration-300 ${
-                          active ? "bg-gray-200" : ""
+                          active ? 'bg-gray-200' : ''
                         }`}
                       >
-                        {translate("key_settings")}
+                        {translate('key_settings')}
                       </Link>
                     )}
                   </MenuItem>
@@ -65,10 +64,10 @@ export default function ChatHeader() {
                       <Link
                         to="/logout"
                         className={`block px-4 py-2 text-gray-800 rounded-lg transition-colors duration-300 ${
-                          active ? "bg-gray-200" : ""
+                          active ? 'bg-gray-200' : ''
                         }`}
                       >
-                        {translate("key_logout")}
+                        {translate('key_logout')}
                       </Link>
                     )}
                   </MenuItem>
