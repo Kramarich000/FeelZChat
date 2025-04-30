@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { useState, useEffect, useRef } from 'react';
+=======
+import { useState, useEffect } from 'react';
+>>>>>>> 9bfbaca6c58a97b5dc78d6bc0f0ea260411259f0
 import { motion } from 'framer-motion';
 
 const playlists = [
@@ -47,7 +51,10 @@ const playlists = [
 const SpotifyPlayer = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentSrc, setCurrentSrc] = useState('');
+<<<<<<< HEAD
   const playerRef = useRef(null);
+=======
+>>>>>>> 9bfbaca6c58a97b5dc78d6bc0f0ea260411259f0
 
   useEffect(() => {
     const savedSrc = localStorage.getItem('selectedPlaylist');
@@ -101,7 +108,10 @@ const SpotifyPlayer = () => {
       </button>
 
       <motion.div
+<<<<<<< HEAD
         ref={playerRef}
+=======
+>>>>>>> 9bfbaca6c58a97b5dc78d6bc0f0ea260411259f0
         initial={{ visibility: 'hidden', opacity: 0 }}
         animate={{
           visibility: isVisible ? 'visible' : 'hidden',
