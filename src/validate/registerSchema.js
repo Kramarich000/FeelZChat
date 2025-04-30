@@ -109,6 +109,7 @@ const emailSchema = Yup.object().shape({
 
 const confirmationCodeSchema = Yup.object().shape({
   confirmationCode: Yup.string()
+    .matches(/^\d{6}$/, "Код должен состоять только из 6 цифр")
     .length(6, "Код должен состоять из 6 символов")
     .required("Введите код подтверждения")
     .test(

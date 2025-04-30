@@ -15,8 +15,7 @@ import { Loader } from '@components/Loader';
 import translate from '@utils/translate';
 import SpotifyPlayer from '@components/SpotifyPlayer';
 
-import SmoothScroll from '@components/SmoothScroll';
-
+// import { useSmoothScrollbar } from '@hooks/useSmoothScroll';
 // const registerServiceWorker = () => {
 //   if ('serviceWorker' in navigator) {
 //     navigator.serviceWorker
@@ -147,9 +146,10 @@ function App() {
   // registerServiceWorker();
   // requestPermissionForPushNotifications();
   // }, []);
+  // useSmoothScrollbar({ smoothing: 0.1 });
+
   return (
     <Router>
-      <SmoothScroll />
       <ErrorBoundary FallbackComponent={FallbackComponent}>
         <Suspense fallback={<Loader fullScreen />}>
           <main className="container mx-auto">
