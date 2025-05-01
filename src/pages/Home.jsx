@@ -7,6 +7,8 @@ import translate from '@utils/translate';
 import EmtnAnlsys from '@assets/images/emotion-analysis.jpg';
 import mainVideo from '@assets/videos/main-bg.mp4';
 import { opacity } from '@cloudinary/url-gen/actions/adjust';
+import VideoFrame from '@components/VideoFrame';
+
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -22,16 +24,19 @@ export default function Home() {
   const features = [
     {
       title: translate('key_emotion_analysis'),
+      id: 1,
       description: translate('key_ai_analyzes_the'),
       animated: true,
     },
     {
       title: translate('key_security'),
+      id: 2,
       description: translate('key_messages_protected'),
       animated: true,
     },
     {
       title: translate('key_intuitive_interface'),
+      id: 3,
       description: translate('key_user_friendly_interface'),
       animated: true,
     },
@@ -123,8 +128,8 @@ export default function Home() {
         <div className="flex gap-5 flex-wrap items-center justify-center">
           {features.map((item, index) => (
             <motion.div
-              key={index}
-              className={`bg-white feature-item p-4 rounded-lg h-[120px] max-w-[400px] ${item.specialClass}`}
+              key={item.id}
+              className={`bg-white feature-item p-4 rounded-lg h-[120px] max-w-[400px]`}
               initial={{ opacity: 0, y: 20 * index }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -150,17 +155,7 @@ export default function Home() {
               loading="lazy"
               className="w-full mb-4 h-[500px] object-cover rounded-lg object-top"
             />
-            <iframe
-              className="w-full h-[500px]"
-              src="https://www.youtube.com/embed/-U8rukzWCNs"
-              title="Sentiment Analysis &amp; Emotional Classification with GPT-4"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            >
-              {translate('key_video_not_supported')}
-            </iframe>
+            <VideoFrame />
           </div>
         </div>
       </section>
