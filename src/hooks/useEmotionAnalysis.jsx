@@ -1,7 +1,7 @@
-import { useState, useCallback, useRef } from "react";
-import debounce from "lodash.debounce";
+import { useState, useCallback, useRef } from 'react';
+import debounce from 'lodash.debounce';
 export function useEmotionAnalysis() {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const batchMessagesRef = useRef([]);
@@ -14,22 +14,21 @@ export function useEmotionAnalysis() {
 
       if (batchMessagesRef.current.length >= 5) {
         setLoading(true);
-        const batch = batchMessagesRef.current.join(" ");
+        const batch = batchMessagesRef.current.join(' ');
         batchMessagesRef.current = [];
 
         try {
-          const response = await fetch("http://127.0.0.1:8000/analyze", {
-            method: "POST",
+          const response = await axios.post('http://127.0.0.1:8000/analyze', {
             headers: {
-              "Content-Type": "application/json",
+              'Content-Type': 'application/json',
             },
             body: JSON.stringify({ text: batch }),
           });
 
-          const data = await response.json();
+          const data = await response;
           setResult(data);
         } catch (err) {
-          setResult({ error: "Ошибка при запросе к серверу." });
+          setResult({ error: 'Ошибка при запросе к серверу.' });
         } finally {
           setLoading(false);
         }

@@ -1,16 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@components/Header';
 import { motion } from 'framer-motion';
 import Footer from '@components/Footer';
+import { useInView } from 'framer-motion';
 import translate from '@utils/translate';
-import EmtnAnlsys from '@assets/images/emotion-analysis.jpg';
-import mainVideo from '@assets/videos/main-bg.mp4';
-import { opacity } from '@cloudinary/url-gen/actions/adjust';
+import EmtnAnlsysJPG from '@assets/images/emotion-analysis.jpg';
+import EmtnAnlsysWEBP from '@assets/images/emotion-analysis.webp';
+// import mainVideo from '@assets/videos/main-bg.mp4';
+// import { opacity } from '@cloudinary/url-gen/actions/adjust';
 import VideoFrame from '@components/VideoFrame';
-
+import BgGradient from '@components/BgGradient';
+import { ItemIndicator } from '@radix-ui/react-select';
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const hasVisited = localStorage.getItem('hasVisited');
@@ -19,6 +23,13 @@ export default function Home() {
       setIsModalOpen(true);
       localStorage.setItem('hasVisited', 'true');
     }
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 500);
+    return () => clearTimeout(timer);
   }, []);
 
   const features = [
@@ -41,17 +52,20 @@ export default function Home() {
       animated: true,
     },
   ];
-  const [isLoaded, setIsLoaded] = useState(false);
-
   const handleVideoLoad = () => {
     setIsLoaded(true);
   };
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+
   return (
-    <div className="w-full mx-auto min-h-screen absolute top-0 left-0">
+    <div className="w-full mx-auto absolute top-0 left-0">
       <Header />
-      <motion.video
+      <BgGradient>
+        {/* <motion.video
         src={mainVideo}
+        kind="options"
         autoPlay
         muted
         loop
@@ -59,7 +73,7 @@ export default function Home() {
         disablePictureInPicture
         disableRemotePlayback
         loading="lazy"
-        className="z-[-100] absolute top-150 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto object-cover"
+        className="z-[-100] absolute top-150 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[1300px] w-full object-cover"
         initial={{ opacity: 0 }}
         animate={{ opacity: isLoaded ? 1 : 0 }}
         transition={{
@@ -67,10 +81,12 @@ export default function Home() {
           ease: 'easeInOut',
         }}
         onLoadedData={handleVideoLoad}
-      />
+      /> */}
+      </BgGradient>
+
       {isModalOpen && (
         <motion.div
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          className="fixed z-9999 inset-0 bg-black bg-opacity-50 flex justify-center items-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -85,7 +101,7 @@ export default function Home() {
             </p>
             <button
               onClick={() => setIsModalOpen(false)}
-              className="bg-cyan-700 hover:bg-black transition-all px-6 py-3 rounded-lg text-white"
+              className="bg-primary hover:bg-black transition-all px-6 py-3 rounded-lg text-white"
             >
               {translate('key_close')}
             </button>
@@ -96,23 +112,28 @@ export default function Home() {
       <motion.section
         className="main-section min-h-screen flex items-center justify-center text-center bg-opacity-40 p-4 backdrop-blur-[2px]"
         layout
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 2, ease: 'easeOut' }}
+        // initial={{ opacity: 0 }}
+        // animate={{ opacity: 1 }}
+        // exit={{ opacity: 0 }}
+        // transition={{ duration: 1.5, ease: 'easeOut' }}
       >
-        <div className="max-w-3xl mx-auto p-4 rounded-4xl">
+        <motion.div
+          className="main-description max-w-3xl shadow-[0px_6px_24px_rgba(0,0,0,0.5)] bg-white border-b-8 border-primary mx-auto p-10 rounded-4xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
           <h2 className="text-4xl font-bold mb-4">
             {translate('key_welcome_to_feelzchat')},
           </h2>
           <p className="text-lg mb-8">{translate('key_discover_a_new')}</p>
           <Link
             to="/register"
-            className="bg-cyan-700 hover:bg-black transition-all px-6 py-3 rounded-lg text-white"
+            className="bg-primary hover:bg-black transition-all px-6 py-3 rounded-lg text-white"
           >
             {translate('key_start_chatting')}
           </Link>
-        </div>
+        </motion.div>
       </motion.section>
 
       <section className="pt-6 items-center gap-5 flex flex-col justify-center bg-gray-900 mx-auto">
@@ -125,55 +146,95 @@ export default function Home() {
         >
           {translate('key_features')}
         </motion.h2>
-        <div className="flex gap-5 flex-wrap items-center justify-center">
+        <div
+          ref={ref}
+          className="flex gap-5 flex-wrap items-center justify-center"
+        >
           {features.map((item, index) => (
-            <motion.div
+            <div
               key={item.id}
-              className={`bg-white feature-item p-4 rounded-lg h-[120px] max-w-[400px]`}
-              initial={{ opacity: 0, y: 20 * index }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.33 }}
+              className="bg-white p-4 rounded-lg min-h-[150px] max-w-[400px] opacity-0 border-primary border-b-8"
+              style={{
+                animationName: isInView ? 'fade-in-up' : undefined,
+                animationDuration: '0.5s',
+                animationTimingFunction: 'ease',
+                animationFillMode: 'forwards',
+                animationDelay: isInView ? `${index * 0.2}s` : '0s',
+              }}
             >
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </motion.div>
+              <h3 className="font-extrabold text-2xl mb-2">{item.title}</h3>
+              <p className="text-base">{item.description}</p>
+            </div>
           ))}
         </div>
       </section>
 
       <section className="w-full py-12 text-center p-4 bg-gray-900 text-white">
-        <h2 className="text-4xl font-bold mb-8">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.2, delay: 0.13 }}
+          className="text-4xl font-bold mb-8"
+        >
           {translate('key_see_how_it_works')}
-        </h2>
+        </motion.h2>
 
         <div className="max-w-7xl mx-auto gap-8">
-          <div className="bg-gray-800 p-6 rounded-lg shadow-md text-center mx-auto max-w-[1000px]">
-            <img
-              src={EmtnAnlsys}
-              alt="Emotion Analysis"
-              loading="lazy"
-              className="w-full mb-4 h-[500px] object-cover rounded-lg object-top"
-            />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.2, delay: 0.13 }}
+            className="bg-gray-800 p-6 rounded-lg flex flex-col gap-4 shadow-md text-center mx-auto max-w-[1000px] border-primary border-b-8"
+          >
+            <picture className="aspect-w-16 aspect-h-9">
+              <source srcSet={EmtnAnlsysWEBP} type="image/webp" />
+              <img
+                src={EmtnAnlsysJPG}
+                alt="Emotion Analysis"
+                loading="lazy"
+                className="w-full h-full object-cover rounded-lg object-top"
+              />
+            </picture>
+
             <VideoFrame />
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <section className="flex justify-center items-center gap-4 w-full py-12 p-4 pb-0 text-center bg-gray-900 text-white">
-        <Link
-          to="/login"
-          className="text-2xl hover:underline text-cyan-700 font-bold"
+      <section className="flex justify-center items-center gap-4 w-full pt-12 px-4 text-center bg-gray-900 text-white">
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
         >
-          {translate('key_sign_in')}
-        </Link>
+          <Link
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            to="/login"
+            className="text-2xl hover:underline text-primary font-bold"
+          >
+            {translate('key_sign_in')}
+          </Link>
+        </motion.p>
         <p className="text-2xl">{translate('key_or')}</p>
-        <Link
-          to="/register"
-          className="text-2xl hover:underline text-cyan-700 font-bold"
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
         >
-          {translate('key_sign_up')}
-        </Link>
+          <Link
+            to="/register"
+            className="text-2xl hover:underline text-primary font-bold"
+          >
+            {translate('key_sign_up')}
+          </Link>
+        </motion.p>
       </section>
 
       <Footer />

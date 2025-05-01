@@ -1,38 +1,39 @@
-import { useState, useEffect, useRef } from "react";
-import { Formik, Field, Form } from "formik";
-import { IoSend } from "react-icons/io5";
-import { motion } from "framer-motion";
-import ChatHeader from "@components/ChatHeader";
-import BgChatGradient from "@components/BgChatGradient";
-import translate from "@utils/translate";
-import { useResizablePanel } from "@hooks/useResizablePanel";
-import HelpButton from "@components/HelpButton";
+import { useState, useEffect, useRef } from 'react';
+import { Formik, Field, Form } from 'formik';
+import { IoSend } from 'react-icons/io5';
+import { motion } from 'framer-motion';
+import ChatHeader from '@components/ChatHeader';
+import BgChatGradient from '@components/BgChatGradient';
+import translate from '@utils/translate';
+import { useResizablePanel } from '@hooks/useResizablePanel';
+import HelpButton from '@components/HelpButton';
+import axios from 'axios';
 
 export default function Chat() {
   const [activeChatId, setActiveChatId] = useState(1);
   const [chats] = useState([
-    { id: 1, title: "чат1", titleKey: "key_chat1" },
-    { id: 2, title: "чат2", titleKey: "key_chat2" },
-    { id: 3, title: "чат3", titleKey: "key_chat3" },
+    { id: 1, title: 'чат1', titleKey: 'key_chat1' },
+    { id: 2, title: 'чат2', titleKey: 'key_chat2' },
+    { id: 3, title: 'чат3', titleKey: 'key_chat3' },
   ]);
   const formattedTime = `${new Date()
     .getHours()
     .toString()
-    .padStart(2, "0")}:${new Date().getMinutes().toString().padStart(2, "0")}`;
+    .padStart(2, '0')}:${new Date().getMinutes().toString().padStart(2, '0')}`;
   const [messages, setMessages] = useState([
     {
-      author: "Иван",
-      text: "Привет запара как дела?",
-      type: "sent",
+      author: 'Иван',
+      text: 'Привет запара как дела?',
+      type: 'sent',
       timestamp: formattedTime,
       delivered: true,
       read: true,
     },
 
     {
-      author: "Диван",
-      text: "Привет juj как дела?",
-      type: "received",
+      author: 'Диван',
+      text: 'Привет juj как дела?',
+      type: 'received',
       timestamp: formattedTime,
       delivered: true,
       read: true,
@@ -48,24 +49,23 @@ export default function Chat() {
   }, []);
 
   const showPushNotification = (title, options) => {
-    if (Notification.permission === "granted") {
-      console.log("Отправка уведомления...");
+    if (Notification.permission === 'granted') {
+      console.log('Отправка уведомления...');
       new Notification(title, options);
     }
   };
 
-  const sendMessage = (text) => {
+  const sendMessage = async (text) => {
     if (!text.trim() || isSendingMessage) return;
-
-    setIsSendingMessage(true);
+    axios.setIsSendingMessage(true);
     setLoading(true);
 
     setMessages((prev) => [
       ...prev,
       {
-        author: "Иван",
+        author: 'Иван',
         text,
-        type: "sent",
+        type: 'sent',
         timestamp: formattedTime,
         delivered: true,
       },
@@ -73,9 +73,9 @@ export default function Chat() {
 
     setTimeout(() => {
       const reply = {
-        author: "Запара",
-        text: "Ответ...",
-        type: "received",
+        author: 'Запара',
+        text: 'Ответ...',
+        type: 'received',
         timestamp: formattedTime,
         delivered: true,
       };
@@ -84,9 +84,9 @@ export default function Chat() {
       setLoading(false);
 
       // if (document.hidden) {
-      showPushNotification("Новое сообщение", {
+      showPushNotification('Новое сообщение', {
         body: reply.text,
-        icon: "/icon.png",
+        icon: '/icon.png',
       });
       // }
 
@@ -107,8 +107,8 @@ export default function Chat() {
   useEffect(() => {
     if (endOfMessagesRef.current) {
       endOfMessagesRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
+        behavior: 'smooth',
+        block: 'end',
       });
     }
   }, [messages]);
@@ -117,11 +117,11 @@ export default function Chat() {
     <BgChatGradient>
       <ChatHeader />
       <motion.div
-        className="flex min-h-[850px] border-1 p-[30px] rounded-4xl w-[1200px]"
+        className="flex min-h-[850px] border-2 p-[30px] rounded-4xl w-[1200px] border-primary border-b-8"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -50 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
       >
         <div className="flex relative w-full max-w-[1200px] mx-auto">
           <div
@@ -130,7 +130,7 @@ export default function Chat() {
             style={{ width: `${leftPanelWidth}px` }}
           >
             <h2 className="text-lg font-semibold mb-4">
-              {translate("key_chats")}
+              {translate('key_chats')}
             </h2>
             <ul className="space-y-2">
               {chats.map((chat) => (
@@ -138,7 +138,7 @@ export default function Chat() {
                   key={chat.id}
                   onClick={() => selectChat(chat.id)}
                   className={`p-3 rounded cursor-pointer hover:bg-gray-800 transition ${
-                    chat.id === activeChatId ? "bg-cyan-700" : ""
+                    chat.id === activeChatId ? 'bg-primary' : ''
                   }`}
                 >
                   {chat.titleKey ? translate(chat.titleKey) : chat.title}
@@ -147,7 +147,7 @@ export default function Chat() {
             </ul>
           </div>
           <div
-            className="resize-handle top-0 left-0 cursor-ew-resize bg-cyan-700 mt-8 ml-1 mb-8 rounded-3xl"
+            className="resize-handle top-0 left-0 cursor-ew-resize bg-primary mt-8 ml-1 mb-8 rounded-3xl"
             onMouseDown={onMouseDown}
             style={{
               width: `${separatorWidth}px`,
@@ -170,10 +170,10 @@ export default function Chat() {
                     key={index}
                     className={`max-w-[70%] p-3 rounded-xl message shadow text-left ${
                       msg.type
-                    } ${msg.type === "sent" ? "self-end" : "self-start"} ${
-                      isLoaded ? "opacity-100" : "opacity-0"
+                    } ${msg.type === 'sent' ? 'self-end' : 'self-start'} ${
+                      isLoaded ? 'opacity-100' : 'opacity-0'
                     } transition-opacity duration-300`}
-                    style={{ wordWrap: "break-word", whiteSpace: "pre-wrap" }}
+                    style={{ wordWrap: 'break-word', whiteSpace: 'pre-wrap' }}
                   >
                     <div className="mb-1  text-left text-sm">{msg.author}</div>
                     <div className="grid grid-cols-1 text-sm text-left">
@@ -182,7 +182,7 @@ export default function Chat() {
                       </p>
                       <div className="flex items-center gap-2 text-xs text-blue-900 justify-end">
                         <span>{msg.timestamp}</span>
-                        {msg.type === "sent" && (
+                        {msg.type === 'sent' && (
                           <span>
                             {msg.read ? (
                               <span className="text-blue-900">✓✓</span>
@@ -203,7 +203,7 @@ export default function Chat() {
 
             <div className="w-full h-[160px] glass-container bg-transparent p-4 rounded transition-all duration-500">
               <Formik
-                initialValues={{ text: "" }}
+                initialValues={{ text: '' }}
                 onSubmit={(values, { resetForm }) => {
                   sendMessage(values.text);
                   resetForm();
@@ -217,18 +217,18 @@ export default function Chat() {
                           <textarea
                             {...field}
                             className="scrollbar-hide w-full h-32 p-4 pr-14 border chat-textarea rounded resize-none"
-                            placeholder={translate("key_enter_message")}
+                            placeholder={translate('key_enter_message')}
                             value={values.text}
                             onChange={(e) =>
-                              setFieldValue("text", e.target.value)
+                              setFieldValue('text', e.target.value)
                             }
                             onKeyDown={(e) => {
-                              if (e.key === "Enter" && !e.shiftKey) {
+                              if (e.key === 'Enter' && !e.shiftKey) {
                                 e.preventDefault();
                                 submitForm();
                               }
                             }}
-                            disabled={isSendingMessage}
+                            // disabled={isSendingMessage}
                           />
                         )}
                       </Field>
@@ -236,11 +236,11 @@ export default function Chat() {
                         <button
                           type="submit"
                           disabled={loading || isSendingMessage}
-                          className="message-send-button text-cyan-700 px-4 focus:outline-none outline-none py-2 mx-auto absolute top-[45%] rounded disabled:opacity-50 disabled:pointer-events-none hover:bg-gray-200 transition-all"
+                          className="message-send-button text-primary px-4 focus:outline-none outline-none py-2 mx-auto absolute top-[45%] rounded disabled:opacity-50 disabled:pointer-events-none hover:bg-gray-200 transition-all"
                         >
                           <IoSend
                             size={30}
-                            className="send-message text-cyan-700 hover:fill-black transition-colors"
+                            className="send-message text-primary hover:fill-black transition-colors"
                           />
                         </button>
                       </div>

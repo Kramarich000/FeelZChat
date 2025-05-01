@@ -10,31 +10,32 @@ export default function VideoFrame() {
       if (!loaded) {
         setFailed(true);
       }
-    }, 5000);
+    }, 60000);
 
     return () => clearTimeout(timerRef.current);
   }, [loaded]);
 
   return (
     <motion.div
-      className="w-full h-[500px] relative"
+      className="w-full h-[650px] relative"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ delay: 0.5, duration: 0.5 }}
     >
       {failed ? (
         <div className="w-full h-full flex items-center justify-center bg-black text-center">
-          <p className="text-cyan-700 text-4xl font-bold w-[700px]">
+          <p className="text-primary text-4xl font-bold w-[700px]">
             Видео недоступно. Проверьте подключение к интернету или попробуйте
             позже.
           </p>
         </div>
       ) : (
         <motion.iframe
+          sandbox="allow-scripts allow-same-origin allow-presentation"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          className="w-full h-full"
+          // transition={{ delay: 0.5, duration: 0.5 }}
+          className="w-full h-[650px]"
           src="https://www.youtube.com/embed/-U8rukzWCNs"
           title="Видео"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -49,7 +50,7 @@ export default function VideoFrame() {
       )}
       {!loaded && !failed && (
         <div className="absolute inset-0 flex items-center justify-center bg-black animate-pulse">
-          <span className="text-cyan-700 text-4xl font-bold">
+          <span className="text-primary text-4xl font-bold">
             Загрузка видео...
           </span>
         </div>
