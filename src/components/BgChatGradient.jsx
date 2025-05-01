@@ -1,14 +1,22 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
-
 import useEmotionGradient from '@hooks/useEmotionGradient';
 import useLocalStorage from '@hooks/useLocalStorage';
 
 export default function BgChatGradient({ aggregated, children }) {
-  const currentGradient = useEmotionGradient(aggregated);
-  const [displayedGradient, setDisplayedGradient] = useLocalStorage(
-    'prevGradient',
-    currentGradient,
+  const { gradient: currentGradient, textColor: currentTextColor } =
+    useEmotionGradient(aggregated);
+
+  const [storedGradient, setStoredGradient] = useLocalStorage('chatGradient', {
+    gradient: '',
+    textColor: '#ffffff',
+  });
+
+  const [displayedGradient, setDisplayedGradient] = useState(
+    storedGradient.gradient,
+  );
+  const [displayedTextColor, setDisplayedTextColor] = useState(
+    storedGradient.textColor,
   );
 
   const [fadeInStyle, api] = useSpring(() => ({
@@ -18,19 +26,27 @@ export default function BgChatGradient({ aggregated, children }) {
 
   useEffect(() => {
     if (currentGradient && currentGradient !== displayedGradient) {
-      api.start({
-        opacity: 1,
-        from: { opacity: 0 },
+      setStoredGradient({
+        gradient: currentGradient,
+        textColor: currentTextColor,
       });
 
+      api.start({ opacity: 1, from: { opacity: 0 } });
       const timer = setTimeout(() => {
         setDisplayedGradient(currentGradient);
+        setDisplayedTextColor(currentTextColor);
         api.start({ opacity: 0 });
       }, 1200);
 
       return () => clearTimeout(timer);
     }
-  }, [currentGradient, displayedGradient, api, setDisplayedGradient]);
+  }, [
+    currentGradient,
+    currentTextColor,
+    displayedGradient,
+    api,
+    setStoredGradient,
+  ]);
 
   const layerStyle = useMemo(
     () => ({
@@ -46,9 +62,12 @@ export default function BgChatGradient({ aggregated, children }) {
   );
 
   return (
-    <div className="bg-chat-gradient-container z-0 absolute w-[100%] h-[100%]">
+    <div
+      className="bg-chat-gradient-container z-0 absolute w-full h-full"
+      style={{ color: displayedTextColor, transition: 'color 1.2s ease' }}
+    >
       <div
-        className="gradient-layer base bottom-0 absolute top-0 right-0 left-0 z-0"
+        className="gradient-layer base absolute inset-0 z-0"
         style={{
           ...layerStyle,
           backgroundImage: displayedGradient,
@@ -56,7 +75,7 @@ export default function BgChatGradient({ aggregated, children }) {
         }}
       />
       <animated.div
-        className="gradient-layer overlay top-0 right-0 absolute bottom-0 left-0 z-1"
+        className="gradient-layer overlay absolute inset-0 z-1"
         style={{
           ...layerStyle,
           backgroundImage: currentGradient,
@@ -75,9 +94,9 @@ export default function BgChatGradient({ aggregated, children }) {
         }
 
         @keyframes rotateGradient {
-          0% { background-position: 0% 0%; filter: hue-rotate(0deg); }
-          50% { background-position: 100% 100%; filter: hue-rotate(45deg); }
-          100% { background-position: 0% 0%; filter: hue-rotate(0deg); }
+          0% { filter: hue-rotate(0deg); }
+          50% { filter: hue-rotate(45deg); }
+          100% { filter: hue-rotate(0deg); }
         }
       `}</style>
     </div>

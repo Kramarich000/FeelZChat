@@ -16,32 +16,18 @@ export default function Chat() {
     { id: 2, title: 'чат2', titleKey: 'key_chat2' },
     { id: 3, title: 'чат3', titleKey: 'key_chat3' },
   ]);
+
   const formattedTime = `${new Date()
     .getHours()
     .toString()
     .padStart(2, '0')}:${new Date().getMinutes().toString().padStart(2, '0')}`;
-  const [messages, setMessages] = useState([
-    {
-      author: 'Иван',
-      text: 'Привет запара как дела?',
-      type: 'sent',
-      timestamp: formattedTime,
-      delivered: true,
-      read: true,
-    },
 
-    {
-      author: 'Диван',
-      text: 'Привет juj как дела?',
-      type: 'received',
-      timestamp: formattedTime,
-      delivered: true,
-      read: true,
-    },
-  ]);
+  const [messages, setMessages] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isSendingMessage, setIsSendingMessage] = useState(false);
+
+  const [aggregated, setAggregated] = useState(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100);
@@ -50,14 +36,14 @@ export default function Chat() {
 
   const showPushNotification = (title, options) => {
     if (Notification.permission === 'granted') {
-      console.log('Отправка уведомления...');
       new Notification(title, options);
     }
   };
 
   const sendMessage = async (text) => {
     if (!text.trim() || isSendingMessage) return;
-    axios.setIsSendingMessage(true);
+
+    setIsSendingMessage(true);
     setLoading(true);
 
     setMessages((prev) => [
@@ -71,29 +57,47 @@ export default function Chat() {
       },
     ]);
 
-    setTimeout(() => {
-      const reply = {
-        author: 'Запара',
-        text: 'Ответ...',
-        type: 'received',
-        timestamp: formattedTime,
-        delivered: true,
-      };
+    try {
+      const { data } = await axios.post('http://localhost:8000/analyze', {
+        text,
+      });
 
-      setMessages((prev) => [...prev, reply]);
-      setLoading(false);
+      setAggregated(data.aggregated);
 
-      // if (document.hidden) {
+      const { category, emoji } = data.dominant_emotion;
+      const replyText = `${emoji} ${category}`;
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          author: 'Запара',
+          text: replyText,
+          type: 'received',
+          timestamp: formattedTime,
+          delivered: true,
+        },
+      ]);
+
       showPushNotification('Новое сообщение', {
-        body: reply.text,
+        body: replyText,
         icon: '/icon.png',
       });
-      // }
-
-      setTimeout(() => {
-        setIsSendingMessage(false);
-      }, 1000);
-    }, 1000);
+    } catch (err) {
+      console.error('Ошибка при анализе текста:', err);
+      setMessages((prev) => [
+        ...prev,
+        {
+          author: 'Запара',
+          text: 'Извините, не смог обработать запрос 😞',
+          type: 'received',
+          timestamp: formattedTime,
+          delivered: true,
+        },
+      ]);
+    } finally {
+      setLoading(false);
+      setTimeout(() => setIsSendingMessage(false), 500);
+    }
   };
 
   const selectChat = (id) => setActiveChatId(id);
@@ -114,16 +118,16 @@ export default function Chat() {
   }, [messages]);
 
   return (
-    <BgChatGradient>
+    <BgChatGradient aggregated={aggregated}>
       <ChatHeader />
       <motion.div
-        className="flex min-h-[850px] border-2 p-[30px] rounded-4xl w-[1200px] border-primary border-b-8"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -50 }}
+        className="flex min-h-[800px] max-h-[800px] border-2 p-[30px] rounded-4xl w-[1200px] border-primary border-b-8 relative -z-1"
+        initial={{ opacity: 0, transform: 'translateY(-50px)' }}
+        animate={{ opacity: 1, transform: 'translateY(0)' }}
+        exit={{ opacity: 0, transform: 'translateY(-50px)' }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
-        <div className="flex relative w-full max-w-[1200px] mx-auto">
+        <div className="flex relative w-full max-w-[1200px] mx-auto max-h-[800px]">
           <div
             className="resizeable-panel scrollbar-chat bg-transparent p-2 mt-[32px] overflow-y-auto max-h-[722px]"
             ref={panelRef}
@@ -146,12 +150,11 @@ export default function Chat() {
               ))}
             </ul>
           </div>
+
           <div
             className="resize-handle top-0 left-0 cursor-ew-resize bg-primary mt-8 ml-1 mb-8 rounded-3xl"
             onMouseDown={onMouseDown}
-            style={{
-              width: `${separatorWidth}px`,
-            }}
+            style={{ width: `${separatorWidth}px` }}
           />
 
           <div
@@ -160,14 +163,12 @@ export default function Chat() {
           >
             <div
               className="scrollbar-chat flex-1 glass-container overflow-y-auto bg-transparent w-full rounded transition-all duration-500 p-4 m-4"
-              style={{
-                Maxwidth: `calc(${rightPanelWidth - 50}px)`,
-              }}
+              style={{ Maxwidth: `calc(${rightPanelWidth - 50}px)` }}
             >
               <div className="flex flex-col gap-4">
-                {messages.map((msg, index) => (
+                {messages.map((msg, idx) => (
                   <div
-                    key={index}
+                    key={idx}
                     className={`max-w-[70%] p-3 rounded-xl message shadow text-left ${
                       msg.type
                     } ${msg.type === 'sent' ? 'self-end' : 'self-start'} ${
@@ -175,7 +176,7 @@ export default function Chat() {
                     } transition-opacity duration-300`}
                     style={{ wordWrap: 'break-word', whiteSpace: 'pre-wrap' }}
                   >
-                    <div className="mb-1  text-left text-sm">{msg.author}</div>
+                    <div className="mb-1 text-left text-sm">{msg.author}</div>
                     <div className="grid grid-cols-1 text-sm text-left">
                       <p className="whitespace-pre-wrap break-words max-w-[100%]">
                         {msg.text}
@@ -218,7 +219,6 @@ export default function Chat() {
                             {...field}
                             className="scrollbar-hide w-full h-32 p-4 pr-14 border chat-textarea rounded resize-none"
                             placeholder={translate('key_enter_message')}
-                            value={values.text}
                             onChange={(e) =>
                               setFieldValue('text', e.target.value)
                             }
@@ -228,7 +228,6 @@ export default function Chat() {
                                 submitForm();
                               }
                             }}
-                            // disabled={isSendingMessage}
                           />
                         )}
                       </Field>
@@ -236,7 +235,7 @@ export default function Chat() {
                         <button
                           type="submit"
                           disabled={loading || isSendingMessage}
-                          className="message-send-button text-primary px-4 focus:outline-none outline-none py-2 mx-auto absolute top-[45%] rounded disabled:opacity-50 disabled:pointer-events-none hover:bg-gray-200 transition-all"
+                          className="message-send-button text-primary px-4 outline-none py-2 absolute top-[45%] rounded disabled:opacity-50 disabled:pointer-events-none hover:bg-gray-200 transition-all"
                         >
                           <IoSend
                             size={30}

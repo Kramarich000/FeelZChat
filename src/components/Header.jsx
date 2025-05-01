@@ -18,8 +18,8 @@ export default function Header() {
   return (
     <div className="w-full max-w-[1280px] px-4 mx-auto">
       <motion.header
-        initial={{ y: -150 }}
-        animate={{ y: 0 }}
+        initial={{ transform: 'translateY(-150px)' }}
+        animate={{ transform: 'translateY(0)' }}
         viewport={{ once: true }}
         className="header max-w-[1280px] border-b-8 border-primary shadow-[0px_6px_24px_rgba(0,0,0,0.5)] m-4 mt-4 container mx-auto relative z-9998 bg-neutral-50 rounded-4xl p-5 transition-all min-h-[100px] "
       >

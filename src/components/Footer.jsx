@@ -13,9 +13,9 @@ export default function Footer() {
             href="#"
             aria-label="Facebook"
             transition={{ type: 'tween', stiffness: 300 }}
-            initial={{ x: -50 }}
+            initial={{ transform: 'translateX(-50px)' }}
             viewport={{ once: true }}
-            whileInView={{ x: 0 }}
+            whileInView={{ transform: 'translateX(0)' }}
           >
             <i className="fab fa-facebook-f"></i>
           </motion.a>
@@ -25,9 +25,9 @@ export default function Footer() {
             href="#"
             aria-label="X (Twitter)"
             transition={{ type: 'tween', stiffness: 300 }}
-            initial={{ x: -50 }}
+            initial={{ transform: 'translateX(-50px)' }}
             viewport={{ once: true }}
-            whileInView={{ x: 0 }}
+            whileInView={{ transform: 'translateX(0)' }}
           >
             <i className="fab fa-twitter"></i>
           </motion.a>
@@ -37,9 +37,9 @@ export default function Footer() {
             href="#"
             aria-label="Instagram"
             transition={{ type: 'tween', stiffness: 300 }}
-            initial={{ x: 50 }}
+            initial={{ transform: 'translateX(50px)' }}
             viewport={{ once: true }}
-            whileInView={{ x: 0 }}
+            whileInView={{ transform: 'translateX(0)' }}
           >
             <i className="fab fa-instagram"></i>
           </motion.a>
@@ -49,9 +49,9 @@ export default function Footer() {
             href="#"
             aria-label="YouTube"
             transition={{ type: 'tween', stiffness: 300 }}
-            initial={{ x: 50 }}
+            initial={{ transform: 'translateX(50px)' }}
             viewport={{ once: true }}
-            whileInView={{ x: 0 }}
+            whileInView={{ transform: 'translateX(0)' }}
           >
             <i className="fab fa-youtube"></i>
           </motion.a>

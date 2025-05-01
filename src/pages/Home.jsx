@@ -138,8 +138,8 @@ export default function Home() {
 
       <section className="pt-6 items-center gap-5 flex flex-col justify-center bg-gray-900 mx-auto">
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, transform: 'translateY(-20px)' }}
+          whileInView={{ opacity: 1, transform: 'translateY(0)' }}
           viewport={{ once: true }}
           transition={{ duration: 0.2, delay: 0.13 }}
           className="text-white text-4xl font-bold"
@@ -171,8 +171,8 @@ export default function Home() {
 
       <section className="w-full py-12 text-center p-4 bg-gray-900 text-white">
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, transform: 'translateY(-20px)' }}
+          whileInView={{ opacity: 1, transform: 'translateY(0)' }}
           viewport={{ once: true }}
           transition={{ duration: 0.2, delay: 0.13 }}
           className="text-4xl font-bold mb-8"
@@ -182,8 +182,8 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto gap-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, transform: 'translateY(-20px)' }}
+            whileInView={{ opacity: 1, transform: 'translateY(0)' }}
             viewport={{ once: true }}
             transition={{ duration: 0.2, delay: 0.13 }}
             className="bg-gray-800 p-6 rounded-lg flex flex-col gap-4 shadow-md text-center mx-auto max-w-[1000px] border-primary border-b-8"
@@ -205,14 +205,14 @@ export default function Home() {
 
       <section className="flex justify-center items-center gap-4 w-full pt-12 px-4 text-center bg-gray-900 text-white">
         <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, transform: 'translateY(10px)' }}
+          whileInView={{ opacity: 1, transform: 'translateY(0)' }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
           <Link
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, transform: 'translateY(10px)' }}
+            whileInView={{ opacity: 1, transform: 'translateY(0)' }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             to="/login"
@@ -223,8 +223,8 @@ export default function Home() {
         </motion.p>
         <p className="text-2xl">{translate('key_or')}</p>
         <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, transform: 'translateY(10px)' }}
+          whileInView={{ opacity: 1, transform: 'translateY(0)' }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
