@@ -24,9 +24,9 @@ export default function Login() {
   return (
     <BgGradient>
       <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: 50 }}
+        initial={{ opacity: 0, transform: 'translateX(50px)' }}
+        animate={{ opacity: 1, transform: 'translateX(0)' }}
+        exit={{ opacity: 0, transform: 'translateX(50px)' }}
         transition={{ duration: 0.5 }}
         className="container flex flex-row gap justify-between w-[75%] items-center"
       >

@@ -113,9 +113,9 @@ export default function Register() {
   return (
     <BgGradient>
       <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: 50 }}
+        initial={{ opacity: 0, transform: 'translateX(50px)' }}
+        animate={{ opacity: 1, transform: 'translateX(0)' }}
+        exit={{ opacity: 0, transform: 'translateX(50px)' }}
         transition={{ duration: 0.5 }}
         className="container flex flex-row gap justify-between w-[75%] items-center"
       >
@@ -283,9 +283,9 @@ export default function Register() {
             >
               {() => (
                 <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -50 }}
+                  initial={{ opacity: 0, transform: 'transate: -50px' }}
+                  animate={{ opacity: 1, transform: 'translateX(0)' }}
+                  exit={{ opacity: 0, transform: 'translateX(-50px)' }}
                   transition={{ duration: 0.5 }}
                 >
                   <Form noValidate className="grid gap-6" autoComplete="email">
@@ -324,9 +324,9 @@ export default function Register() {
                 <Form
                   as={motion.form}
                   className="grid grid-cols-1 gap-6"
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 50 }}
+                  initial={{ opacity: 0, transform: 'transate: 50px' }}
+                  animate={{ opacity: 1, transform: 'translateX(0)' }}
+                  exit={{ opacity: 0, transform: 'translateX(50px)' }}
                   transition={{ duration: 0.5 }}
                 >
                   <div className="relative">
@@ -362,9 +362,9 @@ export default function Register() {
           {step === 4 && (
             <motion.div
               className="flex flex-col items-center gap-4"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, transform: 'transate: 50px' }}
+              animate={{ opacity: 1, transform: 'translateX(0)' }}
+              exit={{ opacity: 0, transform: 'translateX(50px)' }}
               transition={{ duration: 0.5 }}
             >
               <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white text-4xl">

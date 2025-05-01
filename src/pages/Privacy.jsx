@@ -9,9 +9,9 @@ export default function Privacy() {
       <Header />
       <motion.div
         layout
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -50 }}
+        initial={{ opacity: 0, transform: 'translateY(-50px)' }}
+        animate={{ opacity: 1, transform: 'translateY(0)' }}
+        exit={{ opacity: 0, transform: 'translateY(-50px)' }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
         <div className="container p-10 m-10 max-w-[1200px] bg-white rounded-2xl border-b-20 border-primary border-r-100">

@@ -10,10 +10,18 @@ import {
 import { Fragment } from 'react';
 import translate from '@utils/translate';
 import Logo from '../animations/logoAnimation';
+import BgChatGradient from '@components/BgChatGradient';
+import { motion } from 'framer-motion';
 export default function ChatHeader() {
   return (
-    <header className="container bg-gray-700-opacity mx-auto min-w-[100%] p-5 transition-all min-h-[100px]">
-      <div className="max-w-[1200px] mx-auto flex justify-between items-center">
+    <motion.header
+      className="container bg-gray-700-opacity mx-auto min-w-[100%] p-5 transition-all min-h-[100px]"
+      initial={{ transform: 'translateY(-150px)' }}
+      animate={{ transform: 'translateY(0px)' }}
+      viewport={{ once: true }}
+      transition={{ type: 'spring', stiffness: 120, damping: 20 }}
+    >
+      <div className="glass-container p-4 max-w-[1200px] mx-auto flex justify-between items-center">
         <Link className="block w-10" to="/">
           <Logo />
         </Link>
@@ -34,7 +42,7 @@ export default function ChatHeader() {
               leaveTo="transform opacity-0 scale-95"
             >
               <MenuItems className="absolute right-0 mt-2 w-48 bg-white bg-opacity-30 backdrop-blur-md shadow-lg rounded-lg border border-gray-300 z-50">
-                <div className="space-y-2 p-2">
+                <div className="space-y-2 p-2 z-9999">
                   <MenuItem>
                     {({ active }) => (
                       <Link
@@ -77,6 +85,6 @@ export default function ChatHeader() {
           </Menu>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }
