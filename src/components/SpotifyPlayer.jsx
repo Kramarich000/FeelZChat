@@ -90,12 +90,7 @@ const SpotifyPlayer = () => {
     <div className="fixed z-9999 top-6 right-10">
       <button
         onClick={() => setIsVisible((prev) => !prev)}
-        style={{
-          padding: '10px 20px',
-          borderRadius: '10px',
-          cursor: 'pointer',
-        }}
-        className="spotify-btn fixed bottom-0 right-5"
+        className="spotify-btn fixed bottom-0 right-5 min-w-[195px] py-[10px] px-[20px] border-r-[10px] cursor-pointer"
       >
         {isVisible ? '♪ Скрыть плеер' : '♪ Показать плеер'}
       </button>
@@ -110,38 +105,26 @@ const SpotifyPlayer = () => {
           pointerEvents: isVisible ? 'auto' : 'none',
         }}
         transition={{ duration: 0.3 }}
-        style={{
-          position: 'fixed',
-          width: '500px',
-          bottom: '40px',
-          right: '100px',
-          borderRadius: '12px',
-          padding: '10px 0 0',
-        }}
-        className="bg-cyan-700"
+        className="bg-primary fixed max-w-[500px] bottom-[40px] right-[100px] rounded-4xl pt-[5px] px-0 pb-0"
       >
-        <h3
-          className="text-2xl text-white"
-          style={{ textAlign: 'center', marginBottom: '2px' }}
-        >
+        <h3 className="text-2xl text-white text-center mb-[2px]">
           Выберите плейлист
         </h3>
 
-        <div style={{ marginBottom: '15px' }}>
+        <div className="mb-4">
           {playlists.map((p, index) => (
             <button
               key={index}
+              className={`
+                m-1 
+                p-[6px] 
+                border-r-[10px] 
+                cursor-pointer 
+                w-[95%] 
+                ${currentSrc === p.src ? 'bg-[#27235f] font-bold' : 'bg-[#06313d] font-normal'} 
+                text-white
+              `}
               onClick={() => handlePlaylistChange(p.src)}
-              style={{
-                margin: '5px',
-                padding: '6px',
-                borderRadius: '10px',
-                cursor: 'pointer',
-                width: '95%',
-                backgroundColor: currentSrc === p.src ? '#27235f' : '#06313d',
-                fontWeight: currentSrc === p.src ? 'bold' : 'normal',
-                color: 'white',
-              }}
             >
               {p.name}
             </button>
@@ -151,12 +134,12 @@ const SpotifyPlayer = () => {
         <iframe
           id="spotifyPlayer"
           src={currentSrc}
+          className="rounded-[20px]"
           width="100%"
           height="380"
           frameBorder="0"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
-          style={{ borderRadius: '12px' }}
           title="Spotify Player"
         />
       </motion.div>

@@ -32,6 +32,8 @@ function detectPreferredLanguage() {
 
 const lang = detectPreferredLanguage();
 
+document.documentElement.lang = lang;
+
 i18n.use(initReactI18next).init({
   resources: {
     ru: { translation: ru },

@@ -6,6 +6,29 @@
   font-display: swap;
 }
 
+
+@layer utilities {
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in-up {
+    animation-name: fade-in-up;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+  }
+}
+
+
 @layer components {
   .input-styles {
     @apply border-2 rounded-xl p-2.5 w-full transition-all;
@@ -15,6 +38,12 @@
     @apply bg-cyan-700;
   }
 
+}
+
+@theme {
+  --color-primary: #0e7490;
+  --color-dark: #111827;
+  --color-light: #f9fafb;
 }
 
 *,
@@ -102,6 +131,7 @@ body {
   padding: 0;
   width: 100%;
   padding-bottom: 1px;
+  scroll-behavior: smooth;
 }
 
 video::-webkit-media-controls {
@@ -144,7 +174,7 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 99vh;
   font-family: "Comfortaa", sans-serif;
   color: #000;
   background-color: #F3F4F6;
@@ -170,8 +200,8 @@ button {
 }
 
 main {
-  width: 100vw;
-  min-height: 100vh;
+  width: 99vw;
+  min-height: 99vh;
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -281,8 +311,8 @@ textarea::-webkit-scrollbar-track {
 
 .main-section {
   min-height: calc(var(--vh) * 100);
-  min-height: 100dvh;
-  height: 100vh;
+  min-height: 83.9dvh;
+  height: 83.9vh;
 }
 
 .main-title {
@@ -314,6 +344,14 @@ button.message-send-button {
 
 button:hover svg {
   fill: #fff;
+}
+
+.help-btn-icon {
+  transition: all .3s ease;
+}
+
+.help-btn-container:hover .help-btn-icon {
+  fill: #000;
 }
 
 
@@ -348,7 +386,7 @@ button:hover svg {
 }
 
 .header {
-  transform: translateY(-120px);
+  transform: translateY(-150px);
   transition: all .3s;
 }
 

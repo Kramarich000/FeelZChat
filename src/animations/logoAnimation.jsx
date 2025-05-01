@@ -1,21 +1,21 @@
-import { gsap } from "gsap";
-import "../App.css";
+import { gsap } from 'gsap';
+import '../App.css';
 
 const Logo = () => {
   const handleMouseEnter = () => {
-    const wheel = document.querySelector(".wheel");
+    const wheel = document.querySelector('.wheel');
     gsap.to(wheel, {
       rotation: 360,
       repeat: -1,
       duration: 5,
-      ease: "linear",
-      transformOrigin: "50% 50%",
+      ease: 'linear',
+      transformOrigin: '50% 50%',
     });
   };
 
   const handleMouseLeave = () => {
-    gsap.killTweensOf(".wheel");
-    gsap.to(".wheel", {
+    gsap.killTweensOf('.wheel');
+    gsap.to('.wheel', {
       rotation: 0,
       duration: 1,
     });

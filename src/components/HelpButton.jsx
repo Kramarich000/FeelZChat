@@ -10,10 +10,10 @@ export default function HelpButton() {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 50 }}
         transition={{ duration: 1 }}
-        className="fixed bottom-10 left-10 flex items-center justify-center gap-5 bg-amber-50 p-3 rounded-4xl"
+        className="help-btn-container fixed bottom-10 left-10 flex items-center justify-center gap-5 hover:border-black transition-colors bg-amber-50 border-primary border-b-8 p-3 rounded-4xl"
       >
         <p>{translate('key_have_questions')}</p>
-        <BsQuestionSquareFill size={50} color="rgb(14, 116, 144)" />
+        <BsQuestionSquareFill className='help-btn-icon' size={50} color="rgb(14, 116, 144)" />
       </motion.div>
     </Link>
   );

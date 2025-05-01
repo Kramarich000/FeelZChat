@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import translate from "@utils/translate";
+import { useEffect, useState } from 'react';
+import translate from '@utils/translate';
 
 export default function MusicComponent() {
-  const [audio] = useState(new Audio("./music/bg-music.mp3"));
+  const [audio] = useState(new Audio('./music/bg-music.mp3'));
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function MusicComponent() {
     } else {
       audio
         .play()
-        .catch(() => console.log("Автовоспроизведение заблокировано"));
+        .catch(() => console.log('Автовоспроизведение заблокировано'));
     }
     setIsPlaying(!isPlaying);
   };
@@ -24,11 +24,11 @@ export default function MusicComponent() {
   return (
     <button
       onClick={toggleMusic}
-      className="hidden fixed bottom-13 right-10 bg-cyan-700 text-white px-4 py-2 rounded-lg"
+      className="hidden fixed bottom-13 right-10 bg-primary text-white px-4 py-2 rounded-lg"
     >
       {isPlaying
-        ? `${translate("key_stop_music")}`
-        : `${translate("key_play_music")}`}
+        ? `${translate('key_stop_music')}`
+        : `${translate('key_play_music')}`}
     </button>
   );
 }

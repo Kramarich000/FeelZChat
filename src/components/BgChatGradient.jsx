@@ -46,40 +46,25 @@ export default function BgChatGradient({ aggregated, children }) {
   );
 
   return (
-    <div
-      className="bg-chat-gradient-container z-0"
-      style={{ position: 'absolute', width: '100%', height: '100%' }}
-    >
+    <div className="bg-chat-gradient-container z-0 absolute w-[100%] h-[100%]">
       <div
-        className="gradient-layer base"
+        className="gradient-layer base bottom-0 absolute top-0 right-0 left-0 z-0"
         style={{
           ...layerStyle,
           backgroundImage: displayedGradient,
           mixBlendMode: 'screen',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          zIndex: 0,
         }}
       />
       <animated.div
-        className="gradient-layer overlay"
+        className="gradient-layer overlay top-0 right-0 absolute bottom-0 left-0 z-1"
         style={{
           ...layerStyle,
           backgroundImage: currentGradient,
           mixBlendMode: 'overlay',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          zIndex: 1,
           opacity: fadeInStyle.opacity,
         }}
       />
-      <div style={{ position: 'relative', zIndex: 2 }}>{children}</div>
+      <div className="relative z-2">{children}</div>
       <style>{`
         @keyframes moveGradient {
           0% { background-position: 0% 0%; }

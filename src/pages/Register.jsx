@@ -127,7 +127,7 @@ export default function Register() {
             {translate('key_app_name')}
           </h1>
         </Link>
-        <section className="max-w-[650px] container bg-white p-16 rounded-2xl border-b-cyan-700 border-b-8 z-999">
+        <section className="max-w-[650px] container bg-white p-16 rounded-2xl border-b-primary border-b-8 z-999">
           <h2 className="text-3xl pb-10">{translate('key_register_1')}</h2>
 
           {step === 1 && (
@@ -235,7 +235,7 @@ export default function Register() {
                         {translate('key_i_confirm')}{' '}
                         <Link
                           to="/privacy"
-                          className="text-cyan-700 hover:underline"
+                          className="text-primary hover:underline"
                           onClick={(e) => e.stopPropagation()}
                         >
                           {translate('key_privacy_1')}
@@ -248,8 +248,8 @@ export default function Register() {
                   </div>
 
                   <button
-                    // className="button-styles col-span-2 disabled:bg-cyan-700 disabled:opacity-40 transition-all disabled:pointer-events-none"
-                    className="button-styles col-span-2 disabled:bg-cyan-700 disabled:opacity-40 transition-all"
+                    // className="button-styles col-span-2 disabled:bg-primary disabled:opacity-40 transition-all disabled:pointer-events-none"
+                    className="button-styles col-span-2 disabled:bg-primary disabled:opacity-40 transition-all"
                     type="submit"
                     // disabled={!captchaVerified}
                   >
@@ -257,7 +257,7 @@ export default function Register() {
                   </button>
                   <GoogleAuth />
                   <Link
-                    className="text-cyan-700 col-span-2 text-center hover:underline"
+                    className="text-primary col-span-2 text-center hover:underline"
                     to="/login"
                   >
                     {translate('key_already_have_account')}
@@ -367,7 +367,7 @@ export default function Register() {
               exit={{ opacity: 0, x: 50 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="w-20 h-20 bg-cyan-700 rounded-full flex items-center justify-center text-white text-4xl">
+              <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white text-4xl">
                 ✓
               </div>
               <p className="text-xl text-center">
