@@ -234,8 +234,7 @@ export default function Chat() {
                       <div className="flex justify-end">
                         <button
                           type="submit"
-                          disabled={loading || isSendingMessage}
-                          className="message-send-button text-primary px-4 outline-none py-2 absolute top-[45%] rounded disabled:opacity-50 disabled:pointer-events-none hover:bg-gray-200 transition-all"
+                          className="message-send-button text-primary px-4 outline-none py-2 absolute top-[45%] rounded hover:bg-gray-200 transition-all"
                         >
                           <IoSend
                             size={30}
