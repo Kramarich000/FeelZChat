@@ -59,6 +59,7 @@ export default function ChatHeader() {
                     {({ active }) => (
                       <Link
                         to="/settings"
+                        aria-label="Go to settings"
                         className={`block px-4 py-2 text-gray-800 rounded-lg transition-colors duration-300 ${
                           active ? 'bg-gray-200' : ''
                         }`}

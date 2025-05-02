@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import FallbackComponent from '@components/FallbackComponent';
 import PrivateRoute from '@components/PrivateRoute';
 import withTitle from '@components/Title';
-import MusicComponent from '@components/MusicComponent';
+// import MusicComponent from '@components/MusicComponent';
 import { Loader } from '@components/Loader';
 
 import translate from '@utils/translate';
@@ -181,7 +181,7 @@ function App() {
               </Routes>
             </AnimatePresence>
           </main>
-          <MusicComponent />
+          {/* <MusicComponent /> */}
           <SpotifyPlayer />
         </Suspense>
       </ErrorBoundary>

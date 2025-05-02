@@ -236,6 +236,7 @@ body {
   min-width: 320px;
   min-height: 99vh;
   font-family: "Comfortaa", sans-serif;
+  font-size: 16px;
   color: #000;
   background-color: #F3F4F6;
 }
@@ -556,7 +557,7 @@ button:hover svg {
   bottom: 15px;
   right: 50px;
   background-color: #0E7490;
-  z-index: 9999;
+  z-index: 9998;
 }
 
 

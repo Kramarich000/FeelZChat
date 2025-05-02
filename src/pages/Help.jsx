@@ -184,7 +184,7 @@ export default function Help() {
               </strong>
               <a
                 className="text-primary hover:underline transition-all"
-                aria-label="FZ"
+                aria-label="phone-number"
                 type="tel"
                 href="tel:1234567890"
               >

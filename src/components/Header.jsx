@@ -24,7 +24,7 @@ export default function Header() {
         className="header max-w-[1280px] border-b-8 border-primary shadow-[0px_6px_24px_rgba(0,0,0,0.5)] m-4 mt-4 container mx-auto relative z-9998 bg-neutral-50 rounded-4xl p-5 transition-all min-h-[100px] "
       >
         <div className="max-w-[1280px] mx-auto flex justify-between items-center">
-          <Link className="block" to="/">
+          <Link className="block" to="/" aria-label="Go to main page">
             <Logo />
           </Link>
           <div className="">
