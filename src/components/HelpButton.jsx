@@ -9,7 +9,7 @@ export default function HelpButton() {
         initial={{ opacity: 0, transform: 'translateY(50px)' }}
         animate={{ opacity: 1, transform: 'translateY(0)' }}
         exit={{ opacity: 0, transform: 'translateY(50px)' }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.5 }}
         className="help-btn-container fixed bottom-10 left-10 flex items-center justify-center gap-5 hover:border-black transition-colors bg-amber-50 border-primary border-b-8 p-3 rounded-4xl"
       >
         <p>{translate('key_have_questions')}</p>

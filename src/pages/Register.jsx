@@ -25,9 +25,11 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import translate from '@utils/translate';
 
 import HelpButton from '@components/HelpButton';
+import useRecaptchaLanguage from '@hooks/useRecaptchaLanguage';
 
 export default function Register() {
   const [step, setStep] = useState(1);
+  useRecaptchaLanguage();
 
   const initialValues = {
     name: '',

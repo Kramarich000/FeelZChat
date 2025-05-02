@@ -11,8 +11,10 @@ import AnimatedError from '@components/AnimatedError';
 import { handleLoginSubmit } from '@services/loginHandlers';
 import translate from '@utils/translate';
 import HelpButton from '@components/HelpButton';
+import useRecaptchaLanguage from '@hooks/useRecaptchaLanguage';
 
 export default function Login() {
+  useRecaptchaLanguage();
   // const Input = ({ type, placeholder }) => (
   //   <input
   //     className="input-styles"
