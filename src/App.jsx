@@ -1,10 +1,11 @@
 import './App.css';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useMemo } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { ErrorBoundary } from 'react-error-boundary';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import FallbackComponent from '@components/FallbackComponent';
 import PrivateRoute from '@components/PrivateRoute';
@@ -43,10 +44,11 @@ const ForgotPassword = lazy(() => import('@pages/ForgotPassword'));
 const Error404 = lazy(() => import('@errors/404'));
 
 const Page = ({ component: Component, title }) => {
-  const translatedTitle = translate(title);
+  const TranslatedComponent = useMemo(() => {
+    return withTitle(Component, translate(title));
+  }, [Component, title]);
 
-  const WrappedComponent = withTitle(Component, translatedTitle);
-  return <WrappedComponent />;
+  return <TranslatedComponent />;
 };
 
 // const requestPermissionForPushNotifications = () => {
@@ -147,46 +149,71 @@ function App() {
   // requestPermissionForPushNotifications();
   // }, []);
   // useSmoothScrollbar({ smoothing: 0.1 });
-
+  const metaTitle = translate('key_meta_title');
+  const metaDesc = translate('key_meta_description');
+  const baseUrl = 'https://messenger-app-movb.onrender.com';
   return (
-    <Router>
-      <ErrorBoundary FallbackComponent={FallbackComponent}>
-        <Suspense fallback={<Loader fullScreen />}>
-          <main className="container mx-auto">
-            <AnimatePresence mode="wait">
-              <Routes>
-                {routes.map((route) => (
-                  <Route
-                    key={route.path}
-                    path={route.path}
-                    element={
-                      <div onMouseEnter={() => preloadPage(route.importFunc)}>
-                        {route.private ? (
-                          <PrivateRoute>
+    <HelmetProvider>
+      <Helmet>
+        <title>{metaTitle}</title>
+        <meta name="description" content={metaDesc} />
+
+        <link rel="canonical" href={baseUrl} />
+        <link rel="alternate" hrefLang="ru" href={`${baseUrl}/`} />
+        <link rel="alternate" hrefLang="en" href={`${baseUrl}/`} />
+
+        <meta property="og:title" content={metaTitle} />
+        <meta property="og:description" content={metaDesc} />
+        <meta property="og:url" content={baseUrl} />
+        <meta property="og:image" content="/images/FZ.webp" />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={metaTitle} />
+        <meta name="twitter:description" content={metaDesc} />
+        <meta name="twitter:image" content="/images/FZ.webp" />
+
+        <meta name="theme-color" content="#0E7490" />
+      </Helmet>
+      <Router>
+        <ErrorBoundary FallbackComponent={FallbackComponent}>
+          <Suspense fallback={<Loader fullScreen />}>
+            <main className="container mx-auto">
+              <AnimatePresence mode="wait">
+                <Routes>
+                  {routes.map((route) => (
+                    <Route
+                      key={route.path}
+                      path={route.path}
+                      element={
+                        <div onMouseEnter={() => preloadPage(route.importFunc)}>
+                          {route.private ? (
+                            <PrivateRoute>
+                              <Page
+                                component={route.component}
+                                title={route.titleKey}
+                              />
+                            </PrivateRoute>
+                          ) : (
                             <Page
                               component={route.component}
                               title={route.titleKey}
                             />
-                          </PrivateRoute>
-                        ) : (
-                          <Page
-                            component={route.component}
-                            title={route.titleKey}
-                          />
-                        )}
-                      </div>
-                    }
-                  />
-                ))}
-              </Routes>
-            </AnimatePresence>
-          </main>
-          {/* <MusicComponent /> */}
-          <SpotifyPlayer />
-        </Suspense>
-      </ErrorBoundary>
-      <ToastContainer newestOnTop limit={10} />
-    </Router>
+                          )}
+                        </div>
+                      }
+                    />
+                  ))}
+                </Routes>
+              </AnimatePresence>
+            </main>
+            {/* <MusicComponent /> */}
+            <SpotifyPlayer />
+          </Suspense>
+        </ErrorBoundary>
+        <ToastContainer newestOnTop limit={10} />
+      </Router>
+    </HelmetProvider>
   );
 }
 
