@@ -162,7 +162,7 @@ export default function Home() {
                 animationDelay: isInView ? `${index * 0.2}s` : '0s',
               }}
             >
-              <h3 className="font-extrabold text-2xl mb-2">{item.title}</h3>
+              <h3 className="font-bold text-2xl mb-2">{item.title}</h3>
               <p className="text-base">{item.description}</p>
             </div>
           ))}

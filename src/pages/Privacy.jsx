@@ -20,23 +20,23 @@ export default function Privacy() {
           </h1>
           <div className="text-lg space-y-4">
             <p>{translate('key_privacy_intro')}</p>
-            <h2 className="text-2xl font-semibold">
+            <h2 className="text-2xl font-medium">
               {translate('key_section_data_collection')}
             </h2>
             <p>{translate('key_data_collection')}</p>
-            <h2 className="text-2xl font-semibold">
+            <h2 className="text-2xl font-medium">
               {translate('key_section_data_usage')}
             </h2>
             <p>{translate('key_data_usage')}</p>
-            <h2 className="text-2xl font-semibold">
+            <h2 className="text-2xl font-medium">
               {translate('key_section_data_protection')}
             </h2>
             <p>{translate('key_data_protection')}</p>
-            <h2 className="text-2xl font-semibold">
+            <h2 className="text-2xl font-medium">
               {translate('key_section_data_sharing')}
             </h2>
             <p>{translate('key_data_sharing')}</p>
-            <h2 className="text-2xl font-semibold">
+            <h2 className="text-2xl font-medium">
               {translate('key_section_policy_changes')}
             </h2>
             <p>{translate('key_policy_changes')}</p>

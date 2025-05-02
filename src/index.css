@@ -1,30 +1,14 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @import 'react-toastify/dist/ReactToastify.css';
 
 @font-face {
   font-display: swap;
   font-family: 'Comfortaa';
   font-style: normal;
-  font-weight: 300;
-  src: url('/fonts/comfortaa-v45-cyrillic_latin-300.eot');
-  src: url('/fonts/comfortaa-v45-cyrillic_latin-300.eot?#iefix') format('embedded-opentype'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-300.woff2') format('woff2'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-300.woff') format('woff'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-300.ttf') format('truetype'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-300.svg#Comfortaa') format('svg');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Comfortaa';
-  font-style: normal;
   font-weight: 400;
-  src: url('/fonts/comfortaa-v45-cyrillic_latin-regular.eot');
-  src: url('/fonts/comfortaa-v45-cyrillic_latin-regular.eot?#iefix') format('embedded-opentype'),
+  src:
     url('/fonts/comfortaa-v45-cyrillic_latin-regular.woff2') format('woff2'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-regular.woff') format('woff'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-regular.ttf') format('truetype'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-regular.svg#Comfortaa') format('svg');
+    url('/fonts/comfortaa-v45-cyrillic_latin-regular.woff') format('woff');
 }
 
 @font-face {
@@ -32,25 +16,9 @@
   font-family: 'Comfortaa';
   font-style: normal;
   font-weight: 500;
-  src: url('/fonts/comfortaa-v45-cyrillic_latin-500.eot');
-  src: url('/fonts/comfortaa-v45-cyrillic_latin-500.eot?#iefix') format('embedded-opentype'),
+  src:
     url('/fonts/comfortaa-v45-cyrillic_latin-500.woff2') format('woff2'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-500.woff') format('woff'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-500.ttf') format('truetype'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-500.svg#Comfortaa') format('svg');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Comfortaa';
-  font-style: normal;
-  font-weight: 600;
-  src: url('/fonts/comfortaa-v45-cyrillic_latin-600.eot');
-  src: url('/fonts/comfortaa-v45-cyrillic_latin-600.eot?#iefix') format('embedded-opentype'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-600.woff2') format('woff2'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-600.woff') format('woff'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-600.ttf') format('truetype'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-600.svg#Comfortaa') format('svg');
+    url('/fonts/comfortaa-v45-cyrillic_latin-500.woff') format('woff');
 }
 
 @font-face {
@@ -58,14 +26,10 @@
   font-family: 'Comfortaa';
   font-style: normal;
   font-weight: 700;
-  src: url('/fonts/comfortaa-v45-cyrillic_latin-700.eot');
-  src: url('/fonts/comfortaa-v45-cyrillic_latin-700.eot?#iefix') format('embedded-opentype'),
+  src:
     url('/fonts/comfortaa-v45-cyrillic_latin-700.woff2') format('woff2'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-700.woff') format('woff'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-700.ttf') format('truetype'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-700.svg#Comfortaa') format('svg');
+    url('/fonts/comfortaa-v45-cyrillic_latin-700.woff') format('woff');
 }
-
 
 @layer utilities {
   @keyframes fade-in-up {
@@ -88,7 +52,6 @@
   }
 }
 
-
 @layer components {
   .input-styles {
     @apply border-2 rounded-xl p-2.5 w-full transition-all;
@@ -97,7 +60,6 @@
   .button-styles {
     @apply bg-cyan-700;
   }
-
 }
 
 @theme {
@@ -112,7 +74,7 @@
   box-sizing: border-box;
 }
 
-input[type="date"] {
+input[type='date'] {
   color: black;
 }
 
@@ -130,7 +92,6 @@ select:-webkit-autofill:focus {
   border-bottom: 1px solid black;
 }
 
-
 .checkbox-custom {
   display: inline-block;
   width: 20px;
@@ -142,13 +103,13 @@ select:-webkit-autofill:focus {
   transition: all 0.3s ease;
 }
 
-input[type="checkbox"]:checked+.checkbox-custom {
+input[type='checkbox']:checked + .checkbox-custom {
   background-color: white;
   border-color: black;
 }
 
-input[type="checkbox"]:checked+.checkbox-custom::after {
-  content: "";
+input[type='checkbox']:checked + .checkbox-custom::after {
+  content: '';
   position: absolute;
   top: 2px;
   left: 5px;
@@ -178,11 +139,11 @@ textarea {
 }
 
 input:focus {
-  border-bottom-color: #0288D1;
+  border-bottom-color: #0288d1;
 }
 
 textarea:focus {
-  border-color: #0288D1;
+  border-color: #0288d1;
 }
 
 html,
@@ -235,10 +196,10 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 99vh;
-  font-family: "Comfortaa", sans-serif;
+  font-family: 'Comfortaa', sans-serif;
   font-size: 16px;
   color: #000;
-  background-color: #F3F4F6;
+  background-color: #f3f4f6;
 }
 
 h1 {
@@ -257,7 +218,7 @@ button {
   /* background-color: #0288D1; */
   color: white;
   cursor: pointer;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 main {
@@ -271,7 +232,6 @@ main {
   /* width: 100vw; */
   /* max-width: 1280px; */
 }
-
 
 scrollbar {
   width: 12px;
@@ -291,7 +251,6 @@ scrollbar-track {
   width: 8px;
   height: 8px;
 }
-
 
 ::-webkit-scrollbar-thumb {
   width: 8px;
@@ -314,7 +273,6 @@ scrollbar-track {
   display: none;
 }
 
-
 button:focus {
   outline: none !important;
 }
@@ -336,8 +294,6 @@ button.trigger.select-styles {
   border-bottom-right-radius: 0;
 }
 
-
-
 textarea scrollbar {
   width: 6px;
   height: 6px;
@@ -356,7 +312,6 @@ textarea::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
-
 
 textarea::-webkit-scrollbar-thumb {
   width: 6px;
@@ -377,12 +332,11 @@ textarea::-webkit-scrollbar-track {
 }
 
 .main-title {
-  transition: all .3s;
-
+  transition: all 0.3s;
 }
 
 .main-title:hover {
-  color: #0E7490;
+  color: #0e7490;
 }
 
 button:hover svg.send-message {
@@ -408,13 +362,12 @@ button:hover svg {
 }
 
 .help-btn-icon {
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 .help-btn-container:hover .help-btn-icon {
   fill: #000;
 }
-
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -430,7 +383,6 @@ button:hover svg {
     background-color: #f9f9f9;
   }
 }
-
 
 @keyframes gradientBG {
   0% {
@@ -448,12 +400,12 @@ button:hover svg {
 
 .header {
   transform: translateY(-150px);
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .header.loaded {
   transform: translateY(0px);
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .bg-gradient-container {
@@ -465,7 +417,12 @@ button:hover svg {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(45deg, rgba(152, 251, 152, 0.8), rgba(255, 20, 147, 0.8), rgba(0, 0, 255, 0.8));
+  background: linear-gradient(
+    45deg,
+    rgba(152, 251, 152, 0.8),
+    rgba(255, 20, 147, 0.8),
+    rgba(0, 0, 255, 0.8)
+  );
   background-size: 400% 400%;
   animation: gradientBG 5s ease infinite;
 }
@@ -479,7 +436,7 @@ button:hover svg {
   display: flex;
   justify-content: center;
   /* align-items: center; */
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 /* .Toastify__toast {
@@ -491,12 +448,12 @@ button:hover svg {
   -webkit-backdrop-filter: blur(10px);
   box-shadow:
     inset -0.75px -0.5px rgba(255, 255, 255, 0.1),
-    inset +0.75px +0.5px rgba(255, 255, 255, 0.025),
+    inset + 0.75px +0.5px rgba(255, 255, 255, 0.025),
     3px 2px 10px rgba(0, 0, 0, 0.25);
 }
 
 .glass-container::before {
-  content: "";
+  content: '';
   background-repeat: repeat;
   background-size: 750px;
   opacity: 0.075;
@@ -556,10 +513,9 @@ button:hover svg {
   position: fixed;
   bottom: 15px;
   right: 50px;
-  background-color: #0E7490;
+  background-color: #0e7490;
   z-index: 9998;
 }
-
 
 .spotify-btn:hover {
   background-color: #000;
