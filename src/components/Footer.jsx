@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import translate from '@utils/translate';
 
 export default function Footer() {
-  const MotionLink = motion(Link);
   return (
     <footer className="w-full text-[24px] p-4 bg-gray-900 text-white py-6">
       <div className="container mx-auto text-center">

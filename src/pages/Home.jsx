@@ -10,8 +10,8 @@ import EmtnAnlsysWEBP from '@assets/images/emotion-analysis.webp';
 // import mainVideo from '@assets/videos/main-bg.mp4';
 // import { opacity } from '@cloudinary/url-gen/actions/adjust';
 import VideoFrame from '@components/VideoFrame';
-import BgGradient from '@components/BgGradient';
-import { ItemIndicator } from '@radix-ui/react-select';
+// import BgGradient from '@components/BgGradient';
+// import { ItemIndicator } from '@radix-ui/react-select';
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -60,10 +60,10 @@ export default function Home() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <div className="w-full mx-auto absolute top-0 left-0">
+    <div className="home-container w-full mx-auto absolute top-0 left-0">
       <Header />
-      <BgGradient>
-        {/* <motion.video
+      {/* <BgGradient> */}
+      {/* <motion.video
         src={mainVideo}
         kind="options"
         autoPlay
@@ -82,7 +82,7 @@ export default function Home() {
         }}
         onLoadedData={handleVideoLoad}
       /> */}
-      </BgGradient>
+      {/* </BgGradient> */}
 
       {isModalOpen && (
         <motion.div
@@ -136,7 +136,7 @@ export default function Home() {
         </motion.div>
       </motion.section>
 
-      <section className="pt-6 items-center gap-5 flex flex-col justify-center bg-gray-900 mx-auto">
+      <section className="pt-6 items-center gap-5 flex flex-col w-full justify-center bg-gray-900 mx-auto">
         <motion.h2
           initial={{ opacity: 0, transform: 'translateY(-20px)' }}
           whileInView={{ opacity: 1, transform: 'translateY(0)' }}
