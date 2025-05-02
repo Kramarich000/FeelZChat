@@ -121,7 +121,7 @@ const SpotifyPlayer = () => {
                 border-r-[10px] 
                 cursor-pointer 
                 w-[95%] 
-                ${currentSrc === p.src ? 'bg-[#27235f] font-bold' : 'bg-[#06313d] font-normal'} 
+                ${currentSrc === p.src ? 'bg-[#124f60] font-bold' : 'bg-[#124f60] font-normal'} 
                 text-white
               `}
               onClick={() => handlePlaylistChange(p.src)}
