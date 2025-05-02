@@ -136,7 +136,7 @@ export default function Home() {
         </motion.div>
       </motion.section>
 
-      <section className="pt-6 items-center gap-5 flex flex-col w-full justify-center bg-gray-900 mx-auto">
+      <section className="p-6 items-center gap-5 flex flex-col w-full justify-center bg-gray-900 mx-auto">
         <motion.h2
           initial={{ opacity: 0, transform: 'translateY(-20px)' }}
           whileInView={{ opacity: 1, transform: 'translateY(0)' }}
