@@ -208,7 +208,7 @@ a {
    color: #535bf2; 
 } */
 
-*/ body {
+body {
   margin: 0;
   display: flex;
   place-items: center;
