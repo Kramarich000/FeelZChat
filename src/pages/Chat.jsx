@@ -133,7 +133,7 @@ export default function Chat() {
             ref={panelRef}
             style={{ width: `${leftPanelWidth}px` }}
           >
-            <h2 className="text-lg font-semibold mb-4">
+            <h2 className="text-lg font-medium mb-4">
               {translate('key_chats')}
             </h2>
             <ul className="space-y-2">

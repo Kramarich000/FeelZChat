@@ -174,7 +174,7 @@ export default function Help() {
           </div>
         </div>
         <div className="bg-white border-primary border-b-8 p-6 rounded-lg shadow-md max-w-lg mx-auto">
-          <h2 className="text-3xl font-semibold text-primary mb-4">
+          <h2 className="text-3xl font-medium text-primary mb-4">
             {translate('key_our_contacts')}
           </h2>
           <div className="space-y-2">
