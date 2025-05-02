@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import translate from '@utils/translate';
-
+import { SafeMotion } from '@components/SafeMotion';
 export default function Footer() {
   return (
     <footer className="w-full text-[24px] p-4 bg-gray-900 text-white py-6">
       <div className="container mx-auto text-center">
         <div className="flex justify-center space-x-6 mt-6">
-          <motion.a
+          <SafeMotion
             className="hover:text-primary transition-all"
             href="#"
             aria-label="Facebook"
@@ -17,9 +17,9 @@ export default function Footer() {
             whileInView={{ transform: 'translateX(0)' }}
           >
             <i className="fab fa-facebook-f"></i>
-          </motion.a>
+          </SafeMotion>
 
-          <motion.a
+          <SafeMotion
             className="hover:text-primary transition-all"
             href="#"
             aria-label="X (Twitter)"
@@ -29,9 +29,9 @@ export default function Footer() {
             whileInView={{ transform: 'translateX(0)' }}
           >
             <i className="fab fa-twitter"></i>
-          </motion.a>
+          </SafeMotion>
 
-          <motion.a
+          <SafeMotion
             className="hover:text-primary transition-all"
             href="#"
             aria-label="Instagram"
@@ -41,9 +41,9 @@ export default function Footer() {
             whileInView={{ transform: 'translateX(0)' }}
           >
             <i className="fab fa-instagram"></i>
-          </motion.a>
+          </SafeMotion>
 
-          <motion.a
+          <SafeMotion
             className="hover:text-primary transition-all"
             href="#"
             aria-label="YouTube"
@@ -53,7 +53,7 @@ export default function Footer() {
             whileInView={{ transform: 'translateX(0)' }}
           >
             <i className="fab fa-youtube"></i>
-          </motion.a>
+          </SafeMotion>
         </div>
 
         <div className="mt-2">

@@ -24,4 +24,11 @@ export default {
     require('tailwindcss-animate'),
     require('@tailwindcss/typography'),
   ],
+  variants: {
+    extend: {
+      animation: ['motion-safe', 'motion-reduce'],
+      transitionProperty: ['motion-safe', 'motion-reduce'],
+      transitionDuration: ['motion-safe', 'motion-reduce'],
+    }
+  }
 };

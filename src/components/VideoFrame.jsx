@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { SafeMotion } from '@components/SafeMotion';
 export default function VideoFrame() {
   const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -16,7 +17,7 @@ export default function VideoFrame() {
   }, [loaded]);
 
   return (
-    <motion.div
+    <SafeMotion
       className="w-full h-[650px] relative"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -30,7 +31,7 @@ export default function VideoFrame() {
           </p>
         </div>
       ) : (
-        <motion.iframe
+        <SafeMotion
           sandbox="allow-scripts allow-same-origin allow-presentation"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -55,6 +56,6 @@ export default function VideoFrame() {
           </span>
         </div>
       )}
-    </motion.div>
+    </SafeMotion>
   );
 }

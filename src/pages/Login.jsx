@@ -12,7 +12,7 @@ import { handleLoginSubmit } from '@services/loginHandlers';
 import translate from '@utils/translate';
 import HelpButton from '@components/HelpButton';
 import useRecaptchaLanguage from '@hooks/useRecaptchaLanguage';
-
+import { SafeMotion } from '@components/SafeMotion';
 export default function Login() {
   useRecaptchaLanguage();
   // const Input = ({ type, placeholder }) => (
@@ -25,7 +25,7 @@ export default function Login() {
   // );
   return (
     <BgGradient>
-      <motion.div
+      <SafeMotion
         initial={{ opacity: 0, transform: 'translateX(50px)' }}
         animate={{ opacity: 1, transform: 'translateX(0)' }}
         exit={{ opacity: 0, transform: 'translateX(50px)' }}
@@ -118,7 +118,7 @@ export default function Login() {
             </Link>
           </div>
         </section>
-      </motion.div>
+      </SafeMotion>
       <HelpButton />
     </BgGradient>
   );

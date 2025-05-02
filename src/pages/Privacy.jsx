@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
 import translate from '../utils/translate';
-
+import { SafeMotion } from '@components/SafeMotion';
 export default function Privacy() {
   return (
     <div className="absolute top-0 left-0 min-h-full w-full bg-blue-200 flex flex-col justify-center items-center">
       <Header />
-      <motion.div
+      <SafeMotion
         layout
         initial={{ opacity: 0, transform: 'translateY(-50px)' }}
         animate={{ opacity: 1, transform: 'translateY(0)' }}
@@ -42,7 +42,7 @@ export default function Privacy() {
             <p>{translate('key_policy_changes')}</p>
           </div>
         </div>
-      </motion.div>
+      </SafeMotion>
       <Footer />
     </div>
   );

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
+import { SafeMotion } from '@components/SafeMotion';
 import translate from '@utils/translate';
 import Logo from '../animations/logoAnimation';
 import BgGradient from '@components/BgGradient';
@@ -17,7 +17,7 @@ export default function Header() {
   }, []);
   return (
     <div className="w-full max-w-[1280px] px-4 mx-auto">
-      <motion.header
+      <SafeMotion
         initial={{ transform: 'translateY(-150px)' }}
         animate={{ transform: 'translateY(0)' }}
         viewport={{ once: true }}
@@ -36,7 +36,7 @@ export default function Header() {
             </Link>
           </div>
         </div>
-      </motion.header>
+      </SafeMotion>
     </div>
   );
 }

@@ -12,6 +12,7 @@ import EmtnAnlsysWEBP from '@assets/images/emotion-analysis.webp';
 import VideoFrame from '@components/VideoFrame';
 // import BgGradient from '@components/BgGradient';
 // import { ItemIndicator } from '@radix-ui/react-select';
+import { SafeMotion } from '@components/SafeMotion';
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -62,30 +63,9 @@ export default function Home() {
   return (
     <div className="home-container w-full mx-auto absolute top-0 left-0">
       <Header />
-      {/* <BgGradient> */}
-      {/* <motion.video
-        src={mainVideo}
-        kind="options"
-        autoPlay
-        muted
-        loop
-        playsInline
-        disablePictureInPicture
-        disableRemotePlayback
-        loading="lazy"
-        className="z-[-100] absolute top-150 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[1300px] w-full object-cover"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isLoaded ? 1 : 0 }}
-        transition={{
-          duration: 1,
-          ease: 'easeInOut',
-        }}
-        onLoadedData={handleVideoLoad}
-      /> */}
-      {/* </BgGradient> */}
 
       {isModalOpen && (
-        <motion.div
+        <SafeMotion
           className="fixed z-9999 inset-0 bg-black bg-opacity-50 flex justify-center items-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -106,10 +86,10 @@ export default function Home() {
               {translate('key_close')}
             </button>
           </div>
-        </motion.div>
+        </SafeMotion>
       )}
 
-      <motion.section
+      <SafeMotion
         className="main-section min-h-screen flex items-center justify-center text-center bg-opacity-40 p-4 backdrop-blur-[2px]"
         layout
         // initial={{ opacity: 0 }}
@@ -117,7 +97,7 @@ export default function Home() {
         // exit={{ opacity: 0 }}
         // transition={{ duration: 1.5, ease: 'easeOut' }}
       >
-        <motion.div
+        <SafeMotion
           className="main-description max-w-3xl shadow-[0px_6px_24px_rgba(0,0,0,0.5)] bg-white border-b-8 border-primary mx-auto p-10 rounded-4xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -133,11 +113,11 @@ export default function Home() {
           >
             {translate('key_start_chatting')}
           </Link>
-        </motion.div>
-      </motion.section>
+        </SafeMotion>
+      </SafeMotion>
 
       <section className="p-6 items-center gap-5 flex flex-col w-full justify-center bg-gray-900 mx-auto">
-        <motion.h2
+        <SafeMotion
           initial={{ opacity: 0, transform: 'translateY(-20px)' }}
           whileInView={{ opacity: 1, transform: 'translateY(0)' }}
           viewport={{ once: true }}
@@ -145,7 +125,7 @@ export default function Home() {
           className="text-white text-4xl font-bold"
         >
           {translate('key_features')}
-        </motion.h2>
+        </SafeMotion>
         <div
           ref={ref}
           className="flex gap-5 flex-wrap items-center justify-center"
@@ -170,7 +150,7 @@ export default function Home() {
       </section>
 
       <section className="w-full py-12 text-center p-4 bg-gray-900 text-white">
-        <motion.h2
+        <SafeMotion
           initial={{ opacity: 0, transform: 'translateY(-20px)' }}
           whileInView={{ opacity: 1, transform: 'translateY(0)' }}
           viewport={{ once: true }}
@@ -178,10 +158,10 @@ export default function Home() {
           className="text-4xl font-bold mb-8"
         >
           {translate('key_see_how_it_works')}
-        </motion.h2>
+        </SafeMotion>
 
         <div className="max-w-7xl mx-auto gap-8">
-          <motion.div
+          <SafeMotion
             initial={{ opacity: 0, transform: 'translateY(-20px)' }}
             whileInView={{ opacity: 1, transform: 'translateY(0)' }}
             viewport={{ once: true }}
@@ -199,12 +179,12 @@ export default function Home() {
             </picture>
 
             <VideoFrame />
-          </motion.div>
+          </SafeMotion>
         </div>
       </section>
 
       <section className="flex justify-center items-center gap-4 w-full pt-12 px-4 text-center bg-gray-900 text-white">
-        <motion.p
+        <SafeMotion
           initial={{ opacity: 0, transform: 'translateY(10px)' }}
           whileInView={{ opacity: 1, transform: 'translateY(0)' }}
           viewport={{ once: true }}
@@ -220,9 +200,9 @@ export default function Home() {
           >
             {translate('key_sign_in')}
           </Link>
-        </motion.p>
+        </SafeMotion>
         <p className="text-2xl">{translate('key_or')}</p>
-        <motion.p
+        <SafeMotion
           initial={{ opacity: 0, transform: 'translateY(10px)' }}
           whileInView={{ opacity: 1, transform: 'translateY(0)' }}
           viewport={{ once: true }}
@@ -234,7 +214,7 @@ export default function Home() {
           >
             {translate('key_sign_up')}
           </Link>
-        </motion.p>
+        </SafeMotion>
       </section>
 
       <Footer />

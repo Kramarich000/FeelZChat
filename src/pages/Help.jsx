@@ -5,7 +5,7 @@ import { ChevronDownIcon } from '@radix-ui/react-icons';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
 import translate from '@utils/translate';
-
+import { SafeMotion } from '@components/SafeMotion';
 const faqData = [
   {
     question: translate('key_how_sign_in'),
@@ -40,7 +40,7 @@ export default function Help() {
   return (
     <div className="absolute top-0 left-0 min-h-full w-full bg-blue-200 flex flex-col justify-center items-center transition-all">
       <Header />
-      <motion.div
+      <SafeMotion
         className="max-w-[1200px] mx-auto space-y-8 p-4 py-10"
         layout
         initial={{ opacity: 0, transform: 'translateY(-50px)' }}
@@ -65,7 +65,7 @@ export default function Help() {
                   {item.question}
                 </p>
 
-                <motion.div
+                <SafeMotion
                   className="overflow-hidden"
                   initial={false}
                   animate={{
@@ -75,7 +75,7 @@ export default function Help() {
                   transition={{ duration: 0.3, ease: 'easeInOut' }}
                 >
                   <p className="text-left mt-2 py-1">{item.answer}</p>
-                </motion.div>
+                </SafeMotion>
               </div>
             );
           })}
@@ -205,7 +205,7 @@ export default function Help() {
             </p>
           </div>
         </div>
-      </motion.div>
+      </SafeMotion>
       <Footer />
     </div>
   );

@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
+import { SafeMotion } from '@components/SafeMotion';
 
 const AnimatedError = ({ msg, centered = false, variant = 'default' }) => {
   const isLogin = variant === 'login';
@@ -22,7 +23,7 @@ const AnimatedError = ({ msg, centered = false, variant = 'default' }) => {
   return (
     <AnimatePresence>
       {msg && (
-        <motion.div
+        <SafeMotion
           initial={{ opacity: 0, transform: 'translateY(6px)' }}
           animate={{ opacity: 1, transform: 'translateY(0)' }}
           exit={{ opacity: 0, transform: 'translateY(6px)' }}
@@ -33,7 +34,7 @@ const AnimatedError = ({ msg, centered = false, variant = 'default' }) => {
           <div
             className={`absolute top-0 ${triangleClass} w-3 h-3 bg-red-100 rotate-45 -translate-y-1/2`}
           />
-        </motion.div>
+        </SafeMotion>
       )}
     </AnimatePresence>
   );
