@@ -18,7 +18,7 @@ import {
   handleSecondStepSubmit,
   handleThirdStepSubmit,
 } from '@services/registerHandlers';
-
+import { SafeMotion } from '@components/SafeMotion';
 import { captcha } from '@services/captcha';
 import { showToast } from '../utils/toast';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -114,7 +114,7 @@ export default function Register() {
 
   return (
     <BgGradient>
-      <motion.div
+      <SafeMotion
         initial={{ opacity: 0, transform: 'translateX(50px)' }}
         animate={{ opacity: 1, transform: 'translateX(0)' }}
         exit={{ opacity: 0, transform: 'translateX(50px)' }}
@@ -284,7 +284,7 @@ export default function Register() {
               }}
             >
               {() => (
-                <motion.div
+                <SafeMotion
                   initial={{ opacity: 0, transform: 'transate: -50px' }}
                   animate={{ opacity: 1, transform: 'translateX(0)' }}
                   exit={{ opacity: 0, transform: 'translateX(-50px)' }}
@@ -311,7 +311,7 @@ export default function Register() {
                       {translate('key_confirm')}
                     </button>
                   </Form>
-                </motion.div>
+                </SafeMotion>
               )}
             </Formik>
           )}
@@ -362,7 +362,7 @@ export default function Register() {
             </Formik>
           )}
           {step === 4 && (
-            <motion.div
+            <SafeMotion
               className="flex flex-col items-center gap-4"
               initial={{ opacity: 0, transform: 'transate: 50px' }}
               animate={{ opacity: 1, transform: 'translateX(0)' }}
@@ -375,10 +375,10 @@ export default function Register() {
               <p className="text-xl text-center">
                 {translate('key_success_registration')}
               </p>
-            </motion.div>
+            </SafeMotion>
           )}
         </section>
-      </motion.div>
+      </SafeMotion>
       <HelpButton />
     </BgGradient>
   );

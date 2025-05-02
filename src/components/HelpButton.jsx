@@ -1,11 +1,12 @@
 import translate from '@utils/translate';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { SafeMotion } from '@components/SafeMotion';
 import { BsQuestionSquareFill } from 'react-icons/bs';
 export default function HelpButton() {
   return (
     <Link to={'/help'}>
-      <motion.div
+      <SafeMotion
         initial={{ opacity: 0, transform: 'translateY(50px)' }}
         animate={{ opacity: 1, transform: 'translateY(0)' }}
         exit={{ opacity: 0, transform: 'translateY(50px)' }}
@@ -18,7 +19,7 @@ export default function HelpButton() {
           size={50}
           color="rgb(14, 116, 144)"
         />
-      </motion.div>
+      </SafeMotion>
     </Link>
   );
 }

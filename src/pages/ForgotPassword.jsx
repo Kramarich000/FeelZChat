@@ -17,7 +17,7 @@ import {
 import AnimatedError from '@components/AnimatedError';
 import translate from '@utils/translate';
 import HelpButton from '@components/HelpButton';
-
+import { SafeMotion } from '@components/SafeMotion';
 export default function ForgotPassword() {
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ export default function ForgotPassword() {
 
   return (
     <BgGradient>
-      <motion.div
+      <SafeMotion
         initial={{ opacity: 0, transform: 'translateX(50px)' }}
         animate={{ opacity: 1, transform: 'translateX(0)' }}
         exit={{ opacity: 0, transform: 'translateX(50px)' }}
@@ -95,7 +95,7 @@ export default function ForgotPassword() {
               validationSchema={confirmationCodeSchema}
             >
               {() => (
-                <motion.div
+                <SafeMotion
                   initial={{ opacity: 0, transform: 'translateX(-50px)' }}
                   animate={{ opacity: 1, transform: 'translateX(0)' }}
                   exit={{ opacity: 0, transform: 'translateX(-50px)' }}
@@ -119,13 +119,13 @@ export default function ForgotPassword() {
                       {translate('key_end_registration')}
                     </button>
                   </Form>
-                </motion.div>
+                </SafeMotion>
               )}
             </Formik>
           )}
 
           {step === 3 && (
-            <motion.div
+            <SafeMotion
               className="flex flex-col items-center gap-4"
               initial={{ opacity: 0, transform: 'translateX(50px)' }}
               animate={{ opacity: 1, transform: 'translateX(0)' }}
@@ -138,10 +138,10 @@ export default function ForgotPassword() {
               <p className="text-xl text-center">
                 {translate('key_reset_success')}
               </p>
-            </motion.div>
+            </SafeMotion>
           )}
         </section>
-      </motion.div>
+      </SafeMotion>
       <HelpButton />
     </BgGradient>
   );

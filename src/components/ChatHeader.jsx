@@ -12,9 +12,10 @@ import translate from '@utils/translate';
 import Logo from '../animations/logoAnimation';
 import BgChatGradient from '@components/BgChatGradient';
 import { motion } from 'framer-motion';
+import { SafeMotion } from '@components/SafeMotion';
 export default function ChatHeader() {
   return (
-    <motion.header
+    <SafeMotion
       className="container bg-gray-700-opacity mx-auto min-w-[100%] p-5 transition-all min-h-[100px]"
       initial={{ transform: 'translateY(-150px)' }}
       animate={{ transform: 'translateY(0px)' }}
@@ -86,6 +87,6 @@ export default function ChatHeader() {
           </Menu>
         </div>
       </div>
-    </motion.header>
+    </SafeMotion>
   );
 }

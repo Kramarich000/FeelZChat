@@ -8,7 +8,7 @@ import translate from '@utils/translate';
 import { useResizablePanel } from '@hooks/useResizablePanel';
 import HelpButton from '@components/HelpButton';
 import axios from 'axios';
-
+import { SafeMotion } from '@components/SafeMotion';
 export default function Chat() {
   const [activeChatId, setActiveChatId] = useState(1);
   const [chats] = useState([
@@ -120,7 +120,7 @@ export default function Chat() {
   return (
     <BgChatGradient aggregated={aggregated}>
       <ChatHeader />
-      <motion.div
+      <SafeMotion
         className="flex min-h-[800px] max-h-[800px] border-2 p-[30px] rounded-4xl w-[1200px] border-primary border-b-8 relative -z-1"
         initial={{ opacity: 0, transform: 'translateY(-50px)' }}
         animate={{ opacity: 1, transform: 'translateY(0)' }}
@@ -249,7 +249,7 @@ export default function Chat() {
             </div>
           </div>
         </div>
-      </motion.div>
+      </SafeMotion>
     </BgChatGradient>
   );
 }

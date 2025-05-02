@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-
+import { SafeMotion } from '@components/SafeMotion';
 const playlists = [
   {
     name: '🔥 Русские Хиты',
@@ -95,7 +95,7 @@ const SpotifyPlayer = () => {
         {isVisible ? '♪ Скрыть плеер' : '♪ Показать плеер'}
       </button>
 
-      <motion.div
+      <SafeMotion
         ref={playerRef}
         initial={{ visibility: 'hidden', opacity: 0 }}
         animate={{
@@ -142,7 +142,7 @@ const SpotifyPlayer = () => {
           loading="lazy"
           title="Spotify Player"
         />
-      </motion.div>
+      </SafeMotion>
     </div>
   );
 };
