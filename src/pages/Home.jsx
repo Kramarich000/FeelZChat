@@ -123,9 +123,9 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <h2 className="text-4xl font-bold mb-4">
+          <h1 className="text-4xl font-bold mb-4">
             {translate('key_welcome_to_feelzchat')},
-          </h2>
+          </h1>
           <p className="text-lg mb-8">{translate('key_discover_a_new')}</p>
           <Link
             to="/register"
