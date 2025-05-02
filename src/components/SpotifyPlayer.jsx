@@ -87,7 +87,7 @@ const SpotifyPlayer = () => {
   };
 
   return (
-    <div className="fixed z-9999 top-6 right-10">
+    <div className="fixed z-9998 top-6 right-10">
       <button
         onClick={() => setIsVisible((prev) => !prev)}
         className="spotify-btn fixed bottom-0 right-5 min-w-[195px] py-[10px] px-[20px] border-r-[10px] cursor-pointer"
