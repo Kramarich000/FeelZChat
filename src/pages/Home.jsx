@@ -191,10 +191,6 @@ export default function Home() {
           transition={{ duration: 0.5 }}
         >
           <Link
-            initial={{ opacity: 0, transform: 'translateY(10px)' }}
-            whileInView={{ opacity: 1, transform: 'translateY(0)' }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
             to="/login"
             className="text-2xl hover:underline text-primary font-bold"
           >
