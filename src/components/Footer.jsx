@@ -33,7 +33,6 @@ export default function Footer() {
       initial: { transform: 'translateX(50px)' },
     },
   ];
-
   return (
     <footer className="w-full text-[24px] p-4 bg-gray-900 text-white py-6">
       <div className="container mx-auto text-center">
@@ -65,7 +64,7 @@ export default function Footer() {
               }}
               className="text-[16px] sm:text-[20px] underline hover:text-primary transition-all"
             >
-              Политика конфиденциальности
+              {translate('key_privacy')}
             </Link>
           </div>
         </div>

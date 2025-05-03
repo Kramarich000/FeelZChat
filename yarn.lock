@@ -9776,7 +9776,7 @@ __metadata:
     tailwindcss-important: "npm:^1.0.0"
     terser: "npm:^5.39.0"
     typescript: "npm:^5.8.3"
-    vite: "npm:^6.3.0"
+    vite: "npm:^6.3.4"
     vite-plugin-compression: "npm:^0.5.1"
     vite-plugin-image-optimizer: "npm:^1.0.0"
     vite-plugin-preload: "npm:^0.4.2"
@@ -13202,7 +13202,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.0.0 || ^6.0.0, vite@npm:^6.3.0":
+"vite@npm:^5.0.0 || ^6.0.0, vite@npm:^6.3.4":
   version: 6.3.4
   resolution: "vite@npm:6.3.4"
   dependencies:
