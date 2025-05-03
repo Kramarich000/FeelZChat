@@ -1,4 +1,4 @@
-(function () {
+setTimeout(function () {
     var gaScript = document.createElement('script');
     gaScript.async = true;
     gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX';
@@ -8,7 +8,7 @@
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXX');
-})();
+}, 2000); // задержка 2 секунды
 
 ; (function () {
     var ld = document.createElement('script');
