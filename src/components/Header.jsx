@@ -36,7 +36,7 @@ export default function Header() {
           <div className="order-2 flex gap-1 mr-2">
             <motion.div transition={{ type: 'tween' }}>
               <Link
-                className="hover:underline hover:text-shadow-[0px_0px_1px_#0E7490] text-primary"
+                className="hover:underline text-[14px] sm:text-[16px] hover:text-shadow-[0px_0px_1px_#0E7490] text-primary"
                 to="/login"
               >
                 {translate('key_login')}
@@ -45,7 +45,7 @@ export default function Header() {
             <span className="text-primary">/</span>
             <motion.div transition={{ type: 'tween' }}>
               <Link
-                className="hover:underline hover:text-shadow-[0px_0px_1px_#0E7490] text-primary"
+                className="hover:underline text-[14px] sm:text-[16px] hover:text-shadow-[0px_0px_1px_#0E7490] text-primary"
                 to="/register"
               >
                 {translate('key_register')}

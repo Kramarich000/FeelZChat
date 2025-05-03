@@ -18,14 +18,14 @@ export default function VideoFrame() {
 
   return (
     <SafeMotion
-      className="w-full h-[650px] relative"
+      className="w-full h-[250px] sm:h-[300px] md:h-[500px] relative"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ delay: 0.5, duration: 0.5 }}
     >
       {failed ? (
         <div className="w-full h-full flex items-center justify-center bg-black text-center">
-          <p className="text-primary text-4xl font-bold w-[700px]">
+          <p className="text-primary text-sm sm:text-4xl  font-bold w-[700px]">
             Видео недоступно. Проверьте подключение к интернету или попробуйте
             позже.
           </p>
@@ -51,7 +51,7 @@ export default function VideoFrame() {
       )}
       {!loaded && !failed && (
         <div className="absolute inset-0 flex items-center justify-center bg-black animate-pulse">
-          <span className="text-primary text-4xl font-bold">
+          <span className="text-primary text-2xl sm:text-4xl font-bold">
             Загрузка видео...
           </span>
         </div>

@@ -73,15 +73,17 @@ export default function Home() {
         // transition={{ duration: 1.5, ease: 'easeOut' }}
       >
         <SafeMotion
-          className="main-description max-w-3xl shadow-[0px_6px_24px_rgba(0,0,0,0.5)] bg-white border-b-8 border-primary mx-auto p-10 rounded-4xl"
+          className="main-description translate-y-[-100px] sm:translate-y-[0px] max-w-3xl shadow-[0px_6px_24px_rgba(0,0,0,0.5)] bg-white border-b-8 border-primary mx-auto p-10 rounded-4xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <h1 className="text-4xl font-bold mb-4">
-            {translate('key_welcome_to_feelzchat')},
+          <h1 className="text-2xl sm:text-4xl font-bold mb-4">
+            {translate('key_welcome_to_feelzchat')}
           </h1>
-          <p className="text-lg mb-8">{translate('key_discover_a_new')}</p>
+          <p className="text-sm sm:text-lg mb-8">
+            {translate('key_discover_a_new')}
+          </p>
           <Link
             to="/register"
             className="bg-primary hover:bg-black transition-all px-6 py-3 rounded-lg text-white"
@@ -122,7 +124,7 @@ export default function Home() {
           whileInView={{ opacity: 1, transform: 'translateY(0)' }}
           viewport={{ once: true }}
           transition={{ duration: 0.2, delay: 0.13 }}
-          className="text-white text-4xl font-bold"
+          className="text-white text-3xl sm:text-4xl font-bold"
         >
           {translate('key_features')}
         </SafeMotion>
@@ -142,25 +144,20 @@ export default function Home() {
                 animationDelay: isInView ? `${index * 0.2}s` : '0s',
               }}
             >
-              <h3 className="font-bold text-2xl mb-2">{item.title}</h3>
-              <p className="text-base">{item.description}</p>
+              <h3 className="font-bold text-xl sm:text-2xl mb-2">
+                {item.title}
+              </h3>
+              <p className="sm:text-base text-sm">{item.description}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="w-full py-12 text-center p-4 bg-gray-900 text-white">
-        <SafeMotion
-          initial={{ opacity: 0, transform: 'translateY(-20px)' }}
-          whileInView={{ opacity: 1, transform: 'translateY(0)' }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.2, delay: 0.13 }}
-          className="text-4xl font-bold mb-8"
-        >
-          {translate('key_see_how_it_works')}
-        </SafeMotion>
-
+      <section className="w-full py-4 sm:py-12 text-center p-4 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto gap-8">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-8">
+            {translate('key_see_how_it_works')}
+          </h2>
           <SafeMotion
             initial={{ opacity: 0, transform: 'translateY(-20px)' }}
             whileInView={{ opacity: 1, transform: 'translateY(0)' }}
@@ -183,7 +180,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="flex justify-center items-center gap-4 w-full pt-12 px-4 text-center bg-gray-900 text-white">
+      <section className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 w-full pt-4 sm:pt-12 px-4 text-center bg-gray-900 text-white">
         <SafeMotion
           initial={{ opacity: 0, transform: 'translateY(10px)' }}
           whileInView={{ opacity: 1, transform: 'translateY(0)' }}
