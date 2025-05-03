@@ -10,26 +10,24 @@ import VitePreload from "vite-plugin-preload";
 import { VitePWA } from "vite-plugin-pwa";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import esbuildCssModules from 'esbuild-css-modules-plugin';
-
+const compressionOpts = {
+  threshold: 10240,
+  filter: /\.(js|css|html|svg|json|txt|xml|wasm)$/,
+};
 export default defineConfig({
-  define: {
-    'process.env.VITE_APP_ENV': JSON.stringify(process.env.VITE_APP_ENV || 'production'),
-  },
   plugins: [
     tailwindcss(),
     react(),
     viteCompression({
+      ...compressionOpts,
       algorithm: 'brotliCompress',
       ext: '.br',
-      threshold: 10240,
       compressionOptions: { level: 11 },
-      filter: /\.(js|css|html|svg|json|txt|xml|wasm)$/,
     }),
     viteCompression({
+      ...compressionOpts,
       algorithm: 'gzip',
       ext: '.gz',
-      threshold: 10240,
-      filter: /\.(js|css|html|svg|json|txt|xml|wasm)$/,
     }),
 
     VitePWA({
@@ -38,7 +36,6 @@ export default defineConfig({
         enabled: true,
       },
       workbox: {
-        debug: false,
         runtimeCaching: [
           {
             urlPattern: /\/src\//,
@@ -116,21 +113,11 @@ export default defineConfig({
 
     // analyzer(),
     ViteImageOptimizer({
-      jpeg: {
-        quality: 75,
-      },
-      png: {
-        quality: 75,
-      },
-      svg: {
-        multipass: true,
-      },
-      gif: {
-        optimizationLevel: 3,
-      },
-      webp: {
-        quality: 75,
-      },
+      jpeg: { quality: 75 },
+      png: { quality: 75 },
+      svg: { multipass: true },
+      gif: { optimizationLevel: 3 },
+      webp: { quality: 75 },
     }),
     // VitePreload(),
     VitePreload({

@@ -140,7 +140,6 @@ function App() {
         <title>{metaTitle}</title>
         <meta name="description" content={metaDesc} />
 
-        <link rel="canonical" href={baseUrl} />
         <link rel="alternate" hrefLang="ru" href={`${baseUrl}/`} />
         <link rel="alternate" hrefLang="en" href={`${baseUrl}/`} />
 
@@ -157,6 +156,7 @@ function App() {
 
         <meta name="theme-color" content="#0E7490" />
       </Helmet>
+
       <Router>
         <ErrorBoundary FallbackComponent={FallbackComponent}>
           <SuspenseWithDelay fallback={<Loader fullScreen />}>
