@@ -1,5 +1,5 @@
 import './App.css';
-import { lazy, Suspense, useMemo } from 'react';
+import { lazy, Suspense, useMemo, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { ErrorBoundary } from 'react-error-boundary';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -10,28 +10,27 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import FallbackComponent from '@components/FallbackComponent';
 import PrivateRoute from '@components/PrivateRoute';
 import withTitle from '@components/Title';
-// import MusicComponent from '@components/MusicComponent';
 import { Loader } from '@components/Loader';
+import SuspenseWithDelay from '@components/SuspenseWithDelay';
 
 import translate from '@utils/translate';
 import SpotifyPlayer from '@components/SpotifyPlayer';
 
-// import { useSmoothScrollbar } from '@hooks/useSmoothScroll';
-// const registerServiceWorker = () => {
-//   if ('serviceWorker' in navigator) {
-//     navigator.serviceWorker
-//       .register('/service-worker.js')
-//       .then((registration) => {
-//         console.log(
-//           'Service Worker зарегистрирован с областью:',
-//           registration.scope,
-//         );
-//       })
-//       .catch((error) => {
-//         console.log('Ошибка при регистрации Service Worker:', error);
-//       });
-//   }
-// };
+const registerServiceWorker = () => {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .register('/service-worker.js')
+      .then((registration) => {
+        console.log(
+          'Service Worker зарегистрирован с областью:',
+          registration.scope,
+        );
+      })
+      .catch((error) => {
+        console.log('Ошибка при регистрации Service Worker:', error);
+      });
+  }
+};
 
 const Register = lazy(() => import('@pages/Register'));
 const Login = lazy(() => import('@pages/Login'));
@@ -144,10 +143,10 @@ const preloadPage = (importFunc, path) => {
 };
 
 function App() {
-  // useEffect(() => {
-  // registerServiceWorker();
-  // requestPermissionForPushNotifications();
-  // }, []);
+  useEffect(() => {
+    registerServiceWorker();
+    // requestPermissionForPushNotifications();
+  }, []);
   // useSmoothScrollbar({ smoothing: 0.1 });
   const metaTitle = translate('key_meta_title');
   const metaDesc = translate('key_meta_description');
@@ -177,7 +176,7 @@ function App() {
       </Helmet>
       <Router>
         <ErrorBoundary FallbackComponent={FallbackComponent}>
-          <Suspense fallback={<Loader fullScreen />}>
+          <SuspenseWithDelay fallback={<Loader fullScreen />}>
             <main className="container mx-auto">
               <AnimatePresence mode="wait">
                 <Routes>
@@ -209,7 +208,7 @@ function App() {
             </main>
             {/* <MusicComponent /> */}
             <SpotifyPlayer />
-          </Suspense>
+          </SuspenseWithDelay>
         </ErrorBoundary>
         <ToastContainer newestOnTop limit={10} />
       </Router>
