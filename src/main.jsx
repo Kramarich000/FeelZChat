@@ -5,6 +5,7 @@ import AppWithMeta from '@metadata/AppWithMeta.jsx';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import './i18n';
 import SuspenseWithDelay from '@components/SuspenseWithDelay';
+import { Loader } from '@components/Loader';
 // const handleRender = (id, phase, actualDuration, baseDuration, startTime, commitTime) => {
 //   console.log('Component rendered:', id);
 //   console.log('Phase:', phase);
@@ -24,10 +25,14 @@ const AppTree = (
 
 const Root = isDev ? (
   <StrictMode>
-    <SuspenseWithDelay>{AppTree}</SuspenseWithDelay>
+    <SuspenseWithDelay fallback={<Loader fullscreen />}>
+      {AppTree}
+    </SuspenseWithDelay>
   </StrictMode>
 ) : (
-  <SuspenseWithDelay>{AppTree}</SuspenseWithDelay>
+  <SuspenseWithDelay fallback={<Loader fullscreen />}>
+    {AppTree}
+  </SuspenseWithDelay>
 );
 
 createRoot(document.getElementById('root')).render(Root);
