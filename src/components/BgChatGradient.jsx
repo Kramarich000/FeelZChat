@@ -11,7 +11,6 @@ export default function BgChatGradient({ aggregated, children }) {
     gradient: '',
     textColor: '#ffffff',
   });
-
   const [displayedGradient, setDisplayedGradient] = useState(
     storedGradient.gradient,
   );
