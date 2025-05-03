@@ -13,23 +13,21 @@ import SuspenseWithDelay from '@components/SuspenseWithDelay';
 //   console.log('Start time (ms):', startTime);
 //   console.log('Commit time (ms):', commitTime)
 // };
-const isDevelopment = import.meta.env.VITE_APP_ENV === 'development';
-// console.log('VITE_APP_ENV value:', import.meta.env.VITE_APP_ENV);
-// console.log('Type of VITE_APP_ENV:', typeof import.meta.env.VITE_APP_ENV);
-// console.log('Is development mode:', isDevelopment);
+const isDev = import.meta.env.DEV;
+const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
-createRoot(document.getElementById('root')).render(
-  <SuspenseWithDelay>
-    {isDevelopment ? (
-      <StrictMode>
-        <GoogleOAuthProvider clientId="575143609253-fkuprof1lpke3qbq78qhns7518ma57cq.apps.googleusercontent.com">
-          <AppWithMeta />
-        </GoogleOAuthProvider>
-      </StrictMode>
-    ) : (
-      <GoogleOAuthProvider clientId="575143609253-fkuprof1lpke3qbq78qhns7518ma57cq.apps.googleusercontent.com">
-        <AppWithMeta />
-      </GoogleOAuthProvider>
-    )}
-  </SuspenseWithDelay>,
+const AppTree = (
+  <GoogleOAuthProvider clientId={clientId}>
+    <AppWithMeta />
+  </GoogleOAuthProvider>
 );
+
+const Root = isDev ? (
+  <StrictMode>
+    <SuspenseWithDelay>{AppTree}</SuspenseWithDelay>
+  </StrictMode>
+) : (
+  <SuspenseWithDelay>{AppTree}</SuspenseWithDelay>
+);
+
+createRoot(document.getElementById('root')).render(Root);

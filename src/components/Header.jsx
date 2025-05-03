@@ -34,10 +34,7 @@ export default function Header() {
             <Logo />
           </Link>
           <div className="order-2 flex gap-1 mr-2">
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              transition={{ type: 'tween' }}
-            >
+            <motion.div transition={{ type: 'tween' }}>
               <Link
                 className="hover:underline hover:text-shadow-[0px_0px_1px_#0E7490] text-primary"
                 to="/login"
@@ -46,10 +43,7 @@ export default function Header() {
               </Link>
             </motion.div>
             <span className="text-primary">/</span>
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              transition={{ type: 'tween' }}
-            >
+            <motion.div transition={{ type: 'tween' }}>
               <Link
                 className="hover:underline hover:text-shadow-[0px_0px_1px_#0E7490] text-primary"
                 to="/register"
