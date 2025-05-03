@@ -419,7 +419,7 @@ button:hover svg {
 }
 
 .header {
-  transform: translateY(-150px);
+  transform: translateY(-500px);
   transition: all 0.3s;
 }
 
@@ -498,6 +498,22 @@ button:hover svg {
   z-index: -1;
   background-attachment: fixed;
 }
+
+
+.group::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0.9), rgba(14, 116, 144, 0.75));
+  opacity: 0;
+  transition: opacity .6s ease-in-out;
+  z-index: -1;
+}
+
+.group:hover::before {
+  opacity: 1;
+}
+
 
 .message-send-button:hover .button-icon {
   color: black;

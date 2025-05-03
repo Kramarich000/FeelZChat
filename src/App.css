@@ -5,9 +5,16 @@
 
 .logo {
   will-change: filter;
-  transition: all 0.3s ease-in-out; 
+  transition: all 0.3s ease-in-out;
   width: 80px;
   height: 80px;
+}
+
+.logo__path {
+  fill: none;
+  stroke-width: 5;
+  stroke: #0e7490;
+  stroke-linecap: round;
 }
 
 .logo__path--1,
@@ -16,7 +23,7 @@
 .logo__path--5,
 .logo__path--4,
 .logo__path--6 {
-  transition: fill 0.3s ease-in-out; 
+  transition: fill 0.3s ease-in-out;
 }
 
 /* .logo:hover {
@@ -27,18 +34,19 @@
 .logo:hover .logo__path--2,
 .logo:hover .logo__path--3,
 .logo:hover .logo__path--5 {
-  fill: black; 
+  fill: black;
 }
 
 .logo:hover .logo__path--4,
 .logo:hover .logo__path--6 {
-  fill: #0E7490; 
+  fill: #0e7490;
 }
 
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

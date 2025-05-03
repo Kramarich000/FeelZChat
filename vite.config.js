@@ -70,39 +70,46 @@ export default defineConfig({
       },
       manifest: {
         name: "FeelZChat",
-        "display": "standalone",
         short_name: "FZ",
         description: "Мессенджер для общения с ИИ",
+        start_url: "/?utm_source=homescreen",
+        scope: "/",
+        display: "standalone",
+        background_color: "#FFFFFF",
         theme_color: "#0E7490",
-        start_url: ".",
+        lang: "ru-RU",
         icons: [
           {
-            src: "icons/pwa-192x192.png",
+            src: "/icons/pwa-192x192.png",
             sizes: "192x192",
             type: "image/png",
+            purpose: "any maskable"
           },
           {
-            src: "icons/pwa-512x512.png",
+            src: "/icons/pwa-512x512.png",
             sizes: "512x512",
             type: "image/png",
-          },
+            purpose: "any maskable"
+          }
         ],
-      },
-      screenshots: [
-        {
-          src: "screenshots/app-mobile.png",
-          sizes: "540x720",
-          type: "image/png",
-          form_factor: "narrow",
-        },
-        {
-          src: "screenshots/app-desktop.png",
-          sizes: "1024x768",
-          type: "image/png",
-          form_factor: "wide",
-        },
-      ],
+        screenshots: [
+          {
+            src: "/screenshots/app-mobile.png",
+            sizes: "540x720",
+            type: "image/png",
+            form_factor: "narrow"
+          },
+          {
+            src: "/screenshots/app-desktop.png",
+            sizes: "1024x768",
+            type: "image/png",
+            form_factor: "wide"
+          }
+        ],
+        categories: ["social", "communication"],
+      }
     }),
+
     // analyzer(),
     ViteImageOptimizer({
       jpeg: {
