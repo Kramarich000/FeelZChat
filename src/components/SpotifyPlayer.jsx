@@ -95,7 +95,7 @@ const SpotifyPlayer = () => {
         {isVisible ? '♪ Скрыть плеер' : '♪ Показать плеер'}
       </button>
 
-      <SafeMotion
+      <motion.div
         ref={playerRef}
         initial={{ visibility: 'hidden', opacity: 0 }}
         animate={{
@@ -142,7 +142,7 @@ const SpotifyPlayer = () => {
           loading="lazy"
           title="Spotify Player"
         />
-      </SafeMotion>
+      </motion.div>
     </div>
   );
 };

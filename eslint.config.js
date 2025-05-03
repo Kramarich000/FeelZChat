@@ -30,7 +30,7 @@ export default [
     },
     settings: {
       react: {
-        version: "detect", // Автоматическое определение версии React
+        version: "detect",
       },
       "import/resolver": {
         alias: {

@@ -17,8 +17,8 @@ function detectPreferredLanguage() {
   const isSystemRu = navLang.startsWith("ru");
   const isBrowserEn = browserLang.startsWith("en");
 
-  console.log("иван");
-  console.log({ navLang, browserLang, isSystemRu, isBrowserEn });
+  // console.log("иван");
+  // console.log({ navLang, browserLang, isSystemRu, isBrowserEn });
 
   if (isSystemRu && isBrowserEn) {
     return "en";
@@ -50,6 +50,6 @@ i18n.use(initReactI18next).init({
   },
 });
 
-console.log("Текущий язык:", i18n.language);
+// console.log("Текущий язык:", i18n.language);
 
 export default i18n;

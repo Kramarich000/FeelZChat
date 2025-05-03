@@ -14,9 +14,9 @@ import SuspenseWithDelay from '@components/SuspenseWithDelay';
 //   console.log('Commit time (ms):', commitTime)
 // };
 const isDevelopment = import.meta.env.VITE_APP_ENV === 'development';
-console.log('VITE_APP_ENV value:', import.meta.env.VITE_APP_ENV);
-console.log('Type of VITE_APP_ENV:', typeof import.meta.env.VITE_APP_ENV);
-console.log('Is development mode:', isDevelopment);
+// console.log('VITE_APP_ENV value:', import.meta.env.VITE_APP_ENV);
+// console.log('Type of VITE_APP_ENV:', typeof import.meta.env.VITE_APP_ENV);
+// console.log('Is development mode:', isDevelopment);
 
 createRoot(document.getElementById('root')).render(
   <SuspenseWithDelay>

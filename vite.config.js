@@ -12,6 +12,9 @@ import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import esbuildCssModules from 'esbuild-css-modules-plugin';
 
 export default defineConfig({
+  define: {
+    'process.env.VITE_APP_ENV': JSON.stringify(process.env.VITE_APP_ENV || 'production'),
+  },
   plugins: [
     tailwindcss(),
     react(),
@@ -35,6 +38,7 @@ export default defineConfig({
         enabled: true,
       },
       workbox: {
+        debug: false,
         runtimeCaching: [
           {
             urlPattern: /\/src\//,

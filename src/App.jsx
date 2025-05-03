@@ -16,22 +16,6 @@ import SuspenseWithDelay from '@components/SuspenseWithDelay';
 import translate from '@utils/translate';
 import SpotifyPlayer from '@components/SpotifyPlayer';
 
-const registerServiceWorker = () => {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-      .register('/service-worker.js')
-      .then((registration) => {
-        console.log(
-          'Service Worker зарегистрирован с областью:',
-          registration.scope,
-        );
-      })
-      .catch((error) => {
-        console.log('Ошибка при регистрации Service Worker:', error);
-      });
-  }
-};
-
 const Register = lazy(() => import('@pages/Register'));
 const Login = lazy(() => import('@pages/Login'));
 const Chat = lazy(() => import('@pages/Chat'));
@@ -144,7 +128,6 @@ const preloadPage = (importFunc, path) => {
 
 function App() {
   useEffect(() => {
-    registerServiceWorker();
     // requestPermissionForPushNotifications();
   }, []);
   // useSmoothScrollbar({ smoothing: 0.1 });
