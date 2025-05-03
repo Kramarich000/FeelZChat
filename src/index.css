@@ -594,3 +594,11 @@ button:hover svg {
   display: block;
   height: 1px;
 } */
+
+@media (max-width: 767px) {
+  * {
+    opacity: 1 !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
