@@ -67,6 +67,7 @@
     "tailwind-scrollbar": "^4.0.2",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-important": "^1.0.0",
+    "terser": "^5.39.0",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-image-optimizer": "^1.0.0",
     "yup": "^1.6.1"
