@@ -1,5 +1,5 @@
 import './App.css';
-import { lazy, Suspense, useMemo, useEffect } from 'react';
+import { lazy, useMemo, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { ErrorBoundary } from 'react-error-boundary';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -10,8 +10,6 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import FallbackComponent from '@components/FallbackComponent';
 import PrivateRoute from '@components/PrivateRoute';
 import withTitle from '@components/Title';
-import { Loader } from '@components/Loader';
-import SuspenseWithDelay from '@components/SuspenseWithDelay';
 
 import translate from '@utils/translate';
 import SpotifyPlayer from '@components/SpotifyPlayer';
@@ -159,39 +157,37 @@ function App() {
 
       <Router>
         <ErrorBoundary FallbackComponent={FallbackComponent}>
-          <SuspenseWithDelay fallback={<Loader fullScreen />}>
-            <main className="container mx-auto">
-              <AnimatePresence mode="wait">
-                <Routes>
-                  {routes.map((route) => (
-                    <Route
-                      key={route.path}
-                      path={route.path}
-                      element={
-                        <div onMouseEnter={() => preloadPage(route.importFunc)}>
-                          {route.private ? (
-                            <PrivateRoute>
-                              <Page
-                                component={route.component}
-                                title={route.titleKey}
-                              />
-                            </PrivateRoute>
-                          ) : (
+          <main className="container mx-auto">
+            <AnimatePresence mode="wait">
+              <Routes>
+                {routes.map((route) => (
+                  <Route
+                    key={route.path}
+                    path={route.path}
+                    element={
+                      <div onMouseEnter={() => preloadPage(route.importFunc)}>
+                        {route.private ? (
+                          <PrivateRoute>
                             <Page
                               component={route.component}
                               title={route.titleKey}
                             />
-                          )}
-                        </div>
-                      }
-                    />
-                  ))}
-                </Routes>
-              </AnimatePresence>
-            </main>
-            {/* <MusicComponent /> */}
-            <SpotifyPlayer />
-          </SuspenseWithDelay>
+                          </PrivateRoute>
+                        ) : (
+                          <Page
+                            component={route.component}
+                            title={route.titleKey}
+                          />
+                        )}
+                      </div>
+                    }
+                  />
+                ))}
+              </Routes>
+            </AnimatePresence>
+          </main>
+          {/* <MusicComponent /> */}
+          <SpotifyPlayer />
         </ErrorBoundary>
         <ToastContainer newestOnTop limit={10} />
       </Router>

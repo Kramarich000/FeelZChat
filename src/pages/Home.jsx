@@ -64,31 +64,6 @@ export default function Home() {
     <div className="home-container w-full mx-auto absolute top-0 left-0">
       <Header />
 
-      {isModalOpen && (
-        <SafeMotion
-          className="fixed z-9999 inset-0 bg-black bg-opacity-50 flex justify-center items-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full text-center">
-            <h3 className="text-xl font-bold mb-4">
-              {translate('key_new_features')}
-            </h3>
-            <p className="text-gray-700 mb-6">
-              {translate('key_what_has_changed')}
-            </p>
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="bg-primary hover:bg-black transition-all px-6 py-3 rounded-lg text-white"
-            >
-              {translate('key_close')}
-            </button>
-          </div>
-        </SafeMotion>
-      )}
-
       <SafeMotion
         className="main-section min-h-screen flex items-center justify-center text-center bg-opacity-40 p-4 backdrop-blur-[2px]"
         layout
@@ -115,6 +90,31 @@ export default function Home() {
           </Link>
         </SafeMotion>
       </SafeMotion>
+
+      {isModalOpen && (
+        <SafeMotion
+          className="fixed z-9999 inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full text-center">
+            <h3 className="text-xl font-bold mb-4">
+              {translate('key_new_features')}
+            </h3>
+            <p className="text-gray-700 mb-6">
+              {translate('key_what_has_changed')}
+            </p>
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="bg-primary hover:bg-black transition-all px-6 py-3 rounded-lg text-white"
+            >
+              {translate('key_close')}
+            </button>
+          </div>
+        </SafeMotion>
+      )}
 
       <section className="p-6 items-center gap-5 flex flex-col w-full justify-center bg-gray-900 mx-auto">
         <SafeMotion
