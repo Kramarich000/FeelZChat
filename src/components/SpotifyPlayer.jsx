@@ -1,46 +1,36 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { SafeMotion } from '@components/SafeMotion';
+import { CloseButton } from '@headlessui/react';
+import { IoClose, IoCloseCircle, IoCloseOutline } from 'react-icons/io5';
 const playlists = [
   {
-    name: '🔥 Русские Хиты',
+    name: 'Русские Хиты',
     src: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXbTxeAdrVG2l',
   },
   {
-    name: '🎧 Lo-Fi Chill',
+    name: 'Lo-Fi Chill',
     src: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX4sWSpwq3LiO',
   },
   {
-    name: '🎶 Популярное сейчас',
+    name: 'Популярное сейчас',
     src: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M',
   },
   {
-    name: '🕺 Ретро Вечеринка',
+    name: 'Ретро Вечеринка',
     src: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX0UrRvztWcAU',
   },
   {
-    name: '💻 Coding Focus',
+    name: 'Coding Focus',
     src: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX8Uebhn9wzrS',
   },
   {
-    name: '🌌 Synthwave/Retrowave',
+    name: 'Synthwave/Retrowave',
     src: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX2TRYkJECvfC',
   },
   {
-    name: '🎤 Русский Рэп',
+    name: 'Русский Рэп',
     src: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX0XUsuxWHRQd',
-  },
-  {
-    name: '🧘 Chill Vibes',
-    src: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX4WYpdgoIcn6',
-  },
-  {
-    name: '💔 Русская Лирика',
-    src: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX5Tw2K0oe43O',
-  },
-  {
-    name: '🎸 Альтернатива',
-    src: 'https://open.spotify.com/embed/playlist/37i9dQZF1DWZtZ8vUCzche',
   },
 ];
 
@@ -85,14 +75,22 @@ const SpotifyPlayer = () => {
   const handlePlaylistChange = (src) => {
     setCurrentSrc(src);
   };
+  useEffect(() => {
+    document.body.style.overflow = isVisible ? 'hidden' : '';
+  }, [isVisible]);
 
   return (
-    <div className="fixed z-9998 top-6 right-10">
+    <div className="sm:fixed z-9999 sm:top-6 sm:right-10">
       <button
         onClick={() => setIsVisible((prev) => !prev)}
-        className="spotify-btn fixed bottom-0 right-5 min-w-[195px] py-[10px] px-[20px] border-r-[10px] cursor-pointer"
+        className="spotify-btn relative top-[18em] sm:[top:unset] !text-[14px] sm:!text-base !p-[4px] sm:!p-2 sm:fixed bottom-2 sm:bottom-4 sm:right-[63px] min-w-[195px] cursor-pointer"
       >
-        {isVisible ? '♪ Скрыть плеер' : '♪ Показать плеер'}
+        <span className="sm:hidden flex items-center justify-center">
+          {isVisible ? <IoCloseOutline size={21} /> : '♪'}
+        </span>
+        <span className="hidden sm:block">
+          {isVisible ? '♪ Скрыть плеер' : '♪ Показать плеер'}
+        </span>
       </button>
 
       <motion.div
@@ -105,9 +103,15 @@ const SpotifyPlayer = () => {
           pointerEvents: isVisible ? 'auto' : 'none',
         }}
         transition={{ duration: 0.3 }}
-        className="bg-primary fixed max-w-[500px] bottom-[40px] right-[100px] rounded-4xl pt-[5px] px-0 pb-0"
+        className="bg-primary overflow-auto z-9999 max-h-[512px] fixed max-w-[500px] bottom-[40px] right-0 sm:right-[100px] rounded-4xl pt-[10px] px-0 pb-0"
       >
-        <h3 className="text-2xl text-white text-center mb-[2px]">
+        <button
+          onClick={() => setIsVisible((prev) => !prev)}
+          className="absolute !p-0 top-[5px] right-[20px] cursor-pointer"
+        >
+          <IoCloseOutline size={35} />
+        </button>
+        <h3 className="text-base sm:text-2xl text-white text-center mb-[2px]">
           Выберите плейлист
         </h3>
 
@@ -116,12 +120,16 @@ const SpotifyPlayer = () => {
             <button
               key={index}
               className={`
+                playlist-btn
                 m-1 
-                p-[6px] 
+                text-[14px]
+                sm:text-[16px]
+                p-0
+                sm:h-[40px]
                 border-r-[10px] 
                 cursor-pointer 
                 w-[95%] 
-                ${currentSrc === p.src ? 'bg-[#124f60] font-bold' : 'bg-[#124f60] font-normal'} 
+                ${currentSrc === p.src ? 'bg-[#0c333f] font-bold' : 'bg-[#134f5f77] font-normal'} 
                 text-white
               `}
               onClick={() => handlePlaylistChange(p.src)}
@@ -134,9 +142,9 @@ const SpotifyPlayer = () => {
         <iframe
           id="spotifyPlayer"
           src={currentSrc}
-          className="rounded-[20px]"
+          className="rounded-[20px] overflow-hidden"
           width="100%"
-          height="380"
+          height="500"
           frameBorder="0"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"

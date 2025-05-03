@@ -22,7 +22,7 @@ const Logo = () => {
   };
   return (
     <div
-      className="logo"
+      className="logo h-[60px] sm:h-[80px] sm:w-[80px]"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -32,7 +32,7 @@ const Logo = () => {
         viewBox="0 0 401 401"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="logo"
+        className="logo h-[60px] sm:h-[80px] sm:w-[80px]"
       >
         <g className="wheel">
           <g>

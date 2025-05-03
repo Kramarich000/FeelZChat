@@ -81,6 +81,10 @@
   --color-primary: #0e7490;
   --color-dark: #111827;
   --color-light: #f9fafb;
+
+  --xs: {
+    max: '400px'
+  }
 }
 
 *,
@@ -560,15 +564,20 @@ button:hover svg {
 }
 
 .spotify-btn {
-  position: fixed;
-  bottom: 15px;
-  right: 50px;
+  /* position: fixed; */
+  /* bottom: 15px; */
+  /* right: 50px; */
   background-color: #0e7490;
-  z-index: 9998;
+  z-index: 9999;
 }
 
 .spotify-btn:hover {
   background-color: #000;
+}
+
+.playlist-btn {
+  padding: 0;
+  font-size: 14px;
 }
 
 .letter-spacing {

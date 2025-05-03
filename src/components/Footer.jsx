@@ -63,7 +63,7 @@ export default function Footer() {
                 e.preventDefault();
                 window.open('/privacy', '_blank', 'noopener,noreferrer');
               }}
-              className="text-[20px] underline hover:text-primary transition-all"
+              className="text-[16px] sm:text-[20px] underline hover:text-primary transition-all"
             >
               Политика конфиденциальности
             </Link>
