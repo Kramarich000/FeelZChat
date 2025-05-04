@@ -454,12 +454,6 @@ button:hover svg {
 }
 
 .header {
-  transform: translateY(-500px);
-  transition: all 0.3s;
-}
-
-.header.loaded {
-  transform: translateY(0px);
   transition: all 0.3s;
 }
 
