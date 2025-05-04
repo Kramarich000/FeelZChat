@@ -53,6 +53,23 @@
   }
 }
 
+@utility home-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    45deg,
+    rgba(152, 251, 152, 0.8),
+    rgba(255, 20, 147, 0.8),
+    rgba(0, 0, 255, 0.8)
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 5s ease infinite;
+}
+
 @layer components {
   .input-styles {
     @apply border-2 rounded-xl p-2.5 w-full transition-all;
@@ -76,15 +93,14 @@
   }
 } */
 
-
 @theme {
   --color-primary: #0e7490;
   --color-dark: #111827;
   --color-light: #f9fafb;
 
   --xs: {
-    max: '400px'
-  }
+    max: '400px';
+  };
 }
 
 *,
@@ -122,12 +138,12 @@ select:-webkit-autofill:focus {
   transition: all 0.3s ease;
 }
 
-input[type='checkbox']:checked+.checkbox-custom {
+input[type='checkbox']:checked + .checkbox-custom {
   background-color: white;
   border-color: black;
 }
 
-input[type='checkbox']:checked+.checkbox-custom::after {
+input[type='checkbox']:checked + .checkbox-custom::after {
   content: '';
   position: absolute;
   top: 2px;
@@ -442,10 +458,12 @@ button:hover svg {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(45deg,
-      rgba(152, 251, 152, 0.8),
-      rgba(255, 20, 147, 0.8),
-      rgba(0, 0, 255, 0.8));
+  background: linear-gradient(
+    45deg,
+    rgba(152, 251, 152, 0.8),
+    rgba(255, 20, 147, 0.8),
+    rgba(0, 0, 255, 0.8)
+  );
   background-size: 400% 400%;
   animation: gradientBG 5s ease infinite;
 }
@@ -460,21 +478,6 @@ button:hover svg {
   justify-content: center;
   /* align-items: center; */
   transition: all 0.3s ease;
-}
-
-.home-container {
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(45deg,
-      rgba(152, 251, 152, 0.8),
-      rgba(255, 20, 147, 0.8),
-      rgba(0, 0, 255, 0.8));
-  background-size: 400% 400%;
-  animation: gradientBG 5s ease infinite;
 }
 
 /* .Toastify__toast {
@@ -504,21 +507,24 @@ button:hover svg {
   background-attachment: fixed;
 }
 
-
 .group::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0.9), rgba(14, 116, 144, 0.75));
+  background: linear-gradient(
+    to bottom,
+    white,
+    rgba(255, 255, 255, 0.9),
+    rgba(14, 116, 144, 0.75)
+  );
   opacity: 0;
-  transition: opacity .6s ease-in-out;
+  transition: opacity 0.6s ease-in-out;
   z-index: -1;
 }
 
 .group:hover::before {
   opacity: 1;
 }
-
 
 .message-send-button:hover .button-icon {
   color: black;
