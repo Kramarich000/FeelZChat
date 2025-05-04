@@ -135,5 +135,6 @@
   "key_home_description": "Welcome to FeelzChat! Start chatting with friends and colleagues, send messages, and stay connected.",
   "key_profile_description": "Go to your FeelzChat profile to edit personal information, configure notifications, and manage privacy settings.",
   "key_reset-password_description": "Forgot your password? Restore access to your FeelzChat account with our password reset feature.",
-  "key_error_description": "Error 404 — Page not found. Go back to the home page of FeelzChat or try again."
+  "key_error_description": "Error 404 — Page not found. Go back to the home page of FeelzChat or try again.",
+  "key_page_locale": "en_EN"
 }

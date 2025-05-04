@@ -10,7 +10,7 @@ import FallbackComponent from '@components/FallbackComponent';
 import PrivateRoute from '@components/PrivateRoute';
 import translate from '@utils/translate';
 import SpotifyPlayer from '@components/SpotifyPlayer';
-import withMetaTags from '@components/Title';
+import withMetaTags from '@metadata/Title';
 
 const Register = lazy(() => import('@pages/Register'));
 const Login = lazy(() => import('@pages/Login'));
@@ -22,14 +22,15 @@ const Profile = lazy(() => import('@pages/Profile'));
 const ForgotPassword = lazy(() => import('@pages/ForgotPassword'));
 const Error404 = lazy(() => import('@errors/404'));
 
-const Page = ({ component: Component, title, description, url }) => {
+const Page = ({ component: Component, title, description, url, locale }) => {
   const TranslatedComponent = useMemo(() => {
     return withMetaTags(Component, {
       title: translate(title),
       description: translate(description),
       url,
+      locale: translate(locale),
     });
-  }, [Component, title, description, url]);
+  }, [Component, title, description, url, locale]);
 
   return <TranslatedComponent />;
 };
@@ -66,6 +67,7 @@ const routes = [
     descriptionKey: 'key_register_description',
     url: 'https://messenger-app-movb.onrender.com/register',
     importFunc: () => import('@pages/Register'),
+    locale: 'key_page_locale',
   },
   {
     path: '/login',
@@ -74,6 +76,7 @@ const routes = [
     descriptionKey: 'key_login_description',
     url: 'https://messenger-app-movb.onrender.com/login',
     importFunc: () => import('@pages/Login'),
+    locale: 'key_page_locale',
   },
   {
     path: '/chat',
@@ -82,6 +85,7 @@ const routes = [
     descriptionKey: 'key_chat_description',
     url: 'https://messenger-app-movb.onrender.com/chat',
     importFunc: () => import('@pages/Chat'),
+    locale: 'key_page_locale',
   },
   {
     path: '/privacy',
@@ -90,6 +94,7 @@ const routes = [
     descriptionKey: 'key_privacy_description',
     url: 'https://messenger-app-movb.onrender.com/privacy',
     importFunc: () => import('@pages/Privacy'),
+    locale: 'key_page_locale',
   },
   {
     path: '/help',
@@ -98,6 +103,7 @@ const routes = [
     descriptionKey: 'key_help_description',
     url: 'https://messenger-app-movb.onrender.com/help',
     importFunc: () => import('@pages/Help'),
+    locale: 'key_page_locale',
   },
   {
     path: '/',
@@ -106,6 +112,7 @@ const routes = [
     descriptionKey: 'key_home_description',
     url: 'https://messenger-app-movb.onrender.com',
     importFunc: () => import('@pages/Home'),
+    locale: 'key_page_locale',
   },
   {
     path: '/profile',
@@ -115,6 +122,7 @@ const routes = [
     url: 'https://messenger-app-movb.onrender.com/profile',
     private: true,
     importFunc: () => import('@pages/Profile'),
+    locale: 'key_page_locale',
   },
   {
     path: '/forgot-password',
@@ -123,6 +131,7 @@ const routes = [
     descriptionKey: 'key_reset-password_description',
     url: 'https://messenger-app-movb.onrender.com/forgot-password',
     importFunc: () => import('@pages/ForgotPassword'),
+    locale: 'key_page_locale',
   },
   {
     path: '*',
@@ -131,6 +140,7 @@ const routes = [
     descriptionKey: 'key_error_description',
     url: 'https://messenger-app-movb.onrender.com/*',
     importFunc: () => import('@errors/404'),
+    locale: 'key_page_locale',
   },
 ];
 
@@ -156,6 +166,7 @@ function App() {
                           title={route.titleKey}
                           description={route.descriptionKey}
                           url={route.url}
+                          locale={route.locale}
                         />
                       </PrivateRoute>
                     ) : (
@@ -164,6 +175,7 @@ function App() {
                         title={route.titleKey}
                         description={route.descriptionKey}
                         url={route.url}
+                        locale={route.locale}
                       />
                     )
                   }
