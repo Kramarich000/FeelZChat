@@ -652,3 +652,7 @@ button:hover svg {
     width: 300px;
   }
 }
+
+.FaYoutube svg path {
+  background: #000;
+}
