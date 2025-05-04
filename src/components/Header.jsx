@@ -1,8 +1,6 @@
 import { SafeMotion } from '@components/SafeMotion';
 import translate from '@utils/translate';
 import Logo from '../animations/logoAnimation';
-import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
 import PrefetchLink from '@components/PrefetchLink';
 import { useMediaQuery } from '@hooks/useMediaQuery';
 

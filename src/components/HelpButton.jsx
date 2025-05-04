@@ -1,5 +1,4 @@
 import translate from '@utils/translate';
-import { motion } from 'framer-motion';
 import { SafeMotion } from '@components/SafeMotion';
 import { BsQuestionSquareFill } from 'react-icons/bs';
 import PrefetchLink from '@components/PrefetchLink';

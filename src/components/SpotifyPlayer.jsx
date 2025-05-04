@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { SafeMotion } from '@components/SafeMotion';
 import { IoCloseOutline } from 'react-icons/io5';
 import MobileDetect from 'mobile-detect';
 const playlists = [

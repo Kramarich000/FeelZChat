@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Formik, Field, Form } from 'formik';
 import { IoSend } from 'react-icons/io5';
-import { motion } from 'framer-motion';
 import ChatHeader from '@components/ChatHeader';
 import BgChatGradient from '@components/BgChatGradient';
 import translate from '@utils/translate';

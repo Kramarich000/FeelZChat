@@ -10,7 +10,6 @@ import { Fragment } from 'react';
 import translate from '@utils/translate';
 import Logo from '../animations/logoAnimation';
 import BgChatGradient from '@components/BgChatGradient';
-import { motion } from 'framer-motion';
 import { SafeMotion } from '@components/SafeMotion';
 import PrefetchLink from '@components/PrefetchLink';
 

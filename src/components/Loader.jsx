@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { PulseLoader } from 'react-spinners';
 import { SafeMotion } from '@components/SafeMotion';
 const LoaderContainer = ({ children }) => (
