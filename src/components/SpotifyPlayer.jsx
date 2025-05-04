@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, px } from 'framer-motion';
 import { SafeMotion } from '@components/SafeMotion';
 import { CloseButton } from '@headlessui/react';
 import { IoClose, IoCloseCircle, IoCloseOutline } from 'react-icons/io5';
@@ -76,7 +76,9 @@ const SpotifyPlayer = () => {
     setCurrentSrc(src);
   };
   useEffect(() => {
-    document.body.style.overflow = isVisible ? 'hidden' : '';
+    if (window.innerWidth <= 640) {
+      document.body.style.overflow = isVisible ? 'hidden' : '';
+    }
   }, [isVisible]);
 
   return (
@@ -103,7 +105,7 @@ const SpotifyPlayer = () => {
           pointerEvents: isVisible ? 'auto' : 'none',
         }}
         transition={{ duration: 0.3 }}
-        className="bg-primary overflow-auto z-9999 max-h-[512px] fixed max-w-[500px] bottom-[40px] right-0 sm:right-[100px] rounded-4xl pt-[10px] px-0 pb-0"
+        className="bg-primary overflow-auto z-9999 max-h-[512px] fixed max-w-[500px] bottom-[60px] right-0 sm:right-[100px] rounded-4xl pt-[10px] px-0 pb-0"
       >
         <button
           onClick={() => setIsVisible((prev) => !prev)}

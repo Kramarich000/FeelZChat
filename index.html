@@ -14,21 +14,12 @@
   <meta name="google-site-verification" content="W4TKGwwRzhOq0m2-2zGb3ot214YaDg-u_N7-O-Van3A" />
   <meta name="google-site-verification" content="SRMZJAxUW2zpTxH3ysKjsMD-KVitOU0xRN0iyR3_nuQ" />
 
-  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
-  <link rel="icon" href="/images/favicon.png" type="image/png" />
-  <link rel="icon" href="/images/logo.svg" type="image/svg+xml" />
-
-  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="FeelZChat" />
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
   <meta name="msapplication-TileColor" content="#0E7490" />
   <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png" />
-
-  <link rel="preload" href="/fonts/comfortaa-v45-cyrillic_latin-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/comfortaa-v45-cyrillic_latin-500.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/comfortaa-v45-cyrillic_latin-700.woff2" as="font" type="font/woff2" crossorigin>
 
   <meta property="og:site_name" content="FeelZChat" />
   <meta property="og:locale" content="ru_RU" />
@@ -44,16 +35,42 @@
   <meta name="twitter:description"
     content="FeelZChat — это современный мессенджер, использующий искусственный интеллект и технологии обработки естественного языка (НЛП) для определения эмоций в сообщениях в режиме реального времени." />
   <meta name="twitter:image" content="/images/FZ.webp" />
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-56S238T4');
+  </script>
 
-  <link rel="canonical" href="https://messenger-app-movb.onrender.com/" />
 
   <meta name="theme-color" content="#0E7490" />
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/images/favicon.png" type="image/png" />
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml" />
+
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+
+  <link rel="preload" href="/fonts/comfortaa-v45-cyrillic_latin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/comfortaa-v45-cyrillic_latin-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/comfortaa-v45-cyrillic_latin-700.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  <link rel="canonical" href="https://messenger-app-movb.onrender.com/" />
 
   <title>FeelZChat — мессенджер нового поколения с AI-анализом эмоций</title>
 </head>
 
 <body>
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56S238T4" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe>
+  </noscript>
   <div id="root"></div>
+
 
   <script type="module" src="/src/main.jsx"></script>
   <!-- <script src="https://www.google.com/recaptcha/api.js?render=6Le7Zw0rAAAAAHKsGR0i4ohPDQTK51JovR46dhnL" asyncdefer></script> -->

@@ -32,11 +32,12 @@ export default function VideoFrame() {
         </div>
       ) : (
         <SafeMotion
+          as="iframe"
           sandbox="allow-scripts allow-same-origin allow-presentation"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           // transition={{ delay: 0.5, duration: 0.5 }}
-          className="w-full h-[650px]"
+          className="w-full h-[250px] sm:h-[300px] md:h-[500px]"
           src="https://www.youtube.com/embed/-U8rukzWCNs"
           title="Видео"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
