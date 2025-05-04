@@ -62,7 +62,7 @@ export default function VideoFrame() {
             <SafeMotion
               as="iframe"
               src="https://www.youtube.com/embed/-U8rukzWCNs?autoplay=1"
-              sandbox="allow-scripts allow-same-origin allow-presentation"
+              // sandbox="allow-scripts allow-same-origin allow-presentation"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               className="w-full h-[250px] sm:h-[300px] md:h-[500px]"

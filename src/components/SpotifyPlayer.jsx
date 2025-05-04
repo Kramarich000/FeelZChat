@@ -51,7 +51,7 @@ const SpotifyPlayer = () => {
       setIframeHidden(true);
       hideTimeoutRef.current = setTimeout(() => {
         setShouldRenderIframe(false);
-      }, 200);
+      }, 300);
     }
 
     return () => clearTimeout(hideTimeoutRef.current);
@@ -122,7 +122,7 @@ const SpotifyPlayer = () => {
         animate={{
           visibility: isVisible ? 'visible' : 'hidden',
           opacity: isVisible ? 1 : 0,
-          x: isVisible ? 0 : 100,
+          transform: `translateX(${isVisible ? 0 : 100}px)`,
           pointerEvents: isVisible ? 'auto' : 'none',
         }}
         transition={{ duration: 0.3 }}
