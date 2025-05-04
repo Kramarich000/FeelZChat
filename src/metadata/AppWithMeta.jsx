@@ -3,7 +3,7 @@ import App from '../App';
 
 export default function AppWithMeta() {
   useEffect(() => {
-    document.title = 'FeelZChat';
+    // document.title = 'FeelZChat';
 
     const metaTitle = document.querySelector('meta[property="og:title"]');
     const metaDescription = document.querySelector(
