@@ -1,11 +1,10 @@
 import { toast } from "react-toastify";
-import MobileDetect from "mobile-detect";
 
 export const showToast = (message, type = "success") => {
-  const md = new MobileDetect(window.navigator.userAgent);
-  const isMobile = md.mobile();
+  const isMobile = window.matchMedia("only screen and (max-width: 639px)").matches;
 
   if (isMobile) return;
+
 
   toast(message, {
     type,
@@ -16,5 +15,6 @@ export const showToast = (message, type = "success") => {
     draggable: true,
     theme: "dark",
     closeButton: false,
+    pauseOnFocusLoss: false,
   });
 };

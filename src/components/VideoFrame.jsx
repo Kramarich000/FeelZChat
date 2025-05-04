@@ -43,11 +43,16 @@ export default function VideoFrame() {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
+          loading="lazy"
           onLoad={() => {
             clearTimeout(timerRef.current);
             setLoaded(true);
           }}
-          style={{ display: loaded ? 'block' : 'none' }}
+          style={{
+            visibility: loaded ? 'visible' : 'hidden',
+            opacity: loaded ? 1 : 0,
+            transition: 'opacity 0.5s ease',
+          }}
         />
       )}
       {!loaded && !failed && (
