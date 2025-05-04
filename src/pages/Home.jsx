@@ -61,7 +61,7 @@ export default function Home() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <div className="sm:home-container w-full mx-auto absolute top-0 left-0">
+    <div className="mobile-bg sm:home-container w-full mx-auto absolute top-0 left-0">
       <Header />
 
       <SafeMotion
