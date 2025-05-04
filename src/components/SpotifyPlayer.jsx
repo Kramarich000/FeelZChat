@@ -109,7 +109,7 @@ const SpotifyPlayer = () => {
           pointerEvents: isVisible ? 'auto' : 'none',
         }}
         transition={{ duration: 0.3 }}
-        className="bg-primary overflow-auto z-9999 max-h-[512px] fixed max-w-[500px] bottom-[60px] right-0 sm:right-[100px] rounded-4xl pt-[10px] px-0 pb-0"
+        className="bg-primary overflow-auto z-9999 max-h-[512px] m-[10px] fixed max-w-[500px] bottom-[60px] right-0 sm:right-[100px] rounded-4xl pt-[10px] px-0 pb-0"
       >
         <button
           onClick={() => setIsVisible((prev) => !prev)}
