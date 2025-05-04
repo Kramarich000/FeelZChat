@@ -8,7 +8,6 @@ import viteCompression from "vite-plugin-compression";
 // import { analyzer } from 'vite-bundle-analyzer';
 import VitePreload from "vite-plugin-preload";
 import { VitePWA } from "vite-plugin-pwa";
-import legacy from '@vitejs/plugin-legacy';
 
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import esbuildCssModules from 'esbuild-css-modules-plugin';

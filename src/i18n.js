@@ -50,6 +50,6 @@ i18n.use(initReactI18next).init({
   },
 });
 
-// console.log("Текущий язык:", i18n.language);
+console.log("Текущий язык:", i18n.language);
 
 export default i18n;
