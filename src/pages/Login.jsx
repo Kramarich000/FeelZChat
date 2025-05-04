@@ -1,5 +1,4 @@
 import BgGradient from '@components/BgGradient';
-import { motion } from 'framer-motion';
 import { BsQuestionSquareFill } from 'react-icons/bs';
 import GoogleAuth from '@components/GoogleAuth';
 import { loginSchema } from '@validate/loginSchema';

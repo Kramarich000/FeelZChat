@@ -1,4 +1,3 @@
-import React from 'react';
 import { useReducedMotion, motion } from 'framer-motion';
 
 export const SafeMotion = ({

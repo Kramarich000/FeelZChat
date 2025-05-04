@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
 import { SafeMotion } from '@components/SafeMotion';
 import { FaYoutube } from 'react-icons/fa';
 
@@ -48,6 +47,7 @@ export default function VideoFrame() {
                 <img
                   src="https://img.youtube.com/vi/-U8rukzWCNs/hqdefault.jpg"
                   alt="Video thumbnail"
+                  loading="lazy"
                   className="w-full h-[250px] sm:h-[300px] md:h-[500px] object-contain"
                 />
                 <FaYoutube

@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import Header from '@components/Header';
-import { motion } from 'framer-motion';
 import Footer from '@components/Footer';
 import { useInView } from 'framer-motion';
 import translate from '@utils/translate';

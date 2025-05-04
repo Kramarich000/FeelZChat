@@ -1,33 +1,43 @@
-import { motion } from 'framer-motion';
 import translate from '@utils/translate';
 import PrefetchLink from '@components/PrefetchLink';
 import { SafeMotion } from '@components/SafeMotion';
+import {
+  faFacebookF,
+  faXTwitter,
+  faInstagram,
+  faYoutube,
+} from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+const iconMap = {
+  Facebook: faFacebookF,
+  'X (Twitter)': faXTwitter,
+  Instagram: faInstagram,
+  YouTube: faYoutube,
+};
+
 export default function Footer() {
   const socialLinks = [
     {
       label: 'Facebook',
-      icon: 'fab fa-facebook-f',
       href: '#',
       id: 1,
       initial: { transform: 'translateX(-50px)' },
     },
     {
       label: 'X (Twitter)',
-      icon: 'fab fa-twitter',
       href: '#',
       id: 2,
       initial: { transform: 'translateX(-50px)' },
     },
     {
       label: 'Instagram',
-      icon: 'fab fa-instagram',
       href: '#',
       id: 3,
       initial: { transform: 'translateX(50px)' },
     },
     {
       label: 'YouTube',
-      icon: 'fab fa-youtube',
       href: '#',
       id: 4,
       initial: { transform: 'translateX(50px)' },
@@ -49,7 +59,7 @@ export default function Footer() {
               whileInView={{ transform: 'translateX(0)' }}
               viewport={{ once: true }}
             >
-              <i className={item.icon} aria-hidden="true"></i>
+              <FontAwesomeIcon icon={iconMap[item.label]} aria-hidden="true" />
             </SafeMotion>
           ))}
         </div>
