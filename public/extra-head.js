@@ -1,16 +1,32 @@
-setTimeout(function () {
-    var gaScript = document.createElement('script');
-    gaScript.async = true;
-    gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX';
-    document.head.appendChild(gaScript);
+setTimeout(() => {
+    fetch('https://analytics.feelzchat.rf.gd/gtag/js?id=G-XXXXXXX', {
+        method: 'GET',
+        headers: {
+            'Cache-Control': 'no-cache',
+        },
+    })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error('Ошибка загрузки скрипта');
+            }
+            return res.text();
+        })
+        .then(code => {
+            const script = document.createElement('script');
+            script.textContent = code;
+            document.head.appendChild(script);
 
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXX');
-}, 2000); // задержка 2 секунды
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-XXXXXXX');
+        })
+        .catch(error => {
+            console.error('Не удалось загрузить Google Analytics:', error);
+        });
+}, 2000);
 
-; (function () {
+(function () {
     var ld = document.createElement('script');
     ld.type = 'application/ld+json';
     ld.text = JSON.stringify({
