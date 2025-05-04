@@ -5,14 +5,12 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import FallbackComponent from '@components/FallbackComponent';
 import PrivateRoute from '@components/PrivateRoute';
-import withTitle from '@components/Title';
-
 import translate from '@utils/translate';
 import SpotifyPlayer from '@components/SpotifyPlayer';
+import withMetaTags from '@components/Title';
 
 const Register = lazy(() => import('@pages/Register'));
 const Login = lazy(() => import('@pages/Login'));
@@ -24,10 +22,14 @@ const Profile = lazy(() => import('@pages/Profile'));
 const ForgotPassword = lazy(() => import('@pages/ForgotPassword'));
 const Error404 = lazy(() => import('@errors/404'));
 
-const Page = ({ component: Component, title }) => {
+const Page = ({ component: Component, title, description, url }) => {
   const TranslatedComponent = useMemo(() => {
-    return withTitle(Component, translate(title));
-  }, [Component, title]);
+    return withMetaTags(Component, {
+      title: translate(title),
+      description: translate(description),
+      url,
+    });
+  }, [Component, title, description, url]);
 
   return <TranslatedComponent />;
 };
@@ -61,42 +63,56 @@ const routes = [
     path: '/register',
     component: Register,
     titleKey: 'key_register_1',
+    descriptionKey: 'key_register_description',
+    url: 'https://messenger-app-movb.onrender.com/register',
     importFunc: () => import('@pages/Register'),
   },
   {
     path: '/login',
     component: Login,
     titleKey: 'key_login_1',
+    descriptionKey: 'key_login_description',
+    url: 'https://messenger-app-movb.onrender.com/login',
     importFunc: () => import('@pages/Login'),
   },
   {
     path: '/chat',
     component: Chat,
     titleKey: 'key_chat',
+    descriptionKey: 'key_chat_description',
+    url: 'https://messenger-app-movb.onrender.com/chat',
     importFunc: () => import('@pages/Chat'),
   },
   {
     path: '/privacy',
     component: Privacy,
     titleKey: 'key_privacy',
+    descriptionKey: 'key_privacy_description',
+    url: 'https://messenger-app-movb.onrender.com/privacy',
     importFunc: () => import('@pages/Privacy'),
   },
   {
     path: '/help',
     component: Help,
     titleKey: 'key_help',
+    descriptionKey: 'key_help_description',
+    url: 'https://messenger-app-movb.onrender.com/help',
     importFunc: () => import('@pages/Help'),
   },
   {
     path: '/',
     component: Home,
     titleKey: 'key_home',
+    descriptionKey: 'key_home_description',
+    url: 'https://messenger-app-movb.onrender.com',
     importFunc: () => import('@pages/Home'),
   },
   {
     path: '/profile',
     component: Profile,
     titleKey: 'key_profile_1',
+    descriptionKey: 'key_profile_description',
+    url: 'https://messenger-app-movb.onrender.com/profile',
     private: true,
     importFunc: () => import('@pages/Profile'),
   },
@@ -104,12 +120,16 @@ const routes = [
     path: '/forgot-password',
     component: ForgotPassword,
     titleKey: 'key_reset_password',
+    descriptionKey: 'key_reset-password_description',
+    url: 'https://messenger-app-movb.onrender.com/forgot-password',
     importFunc: () => import('@pages/ForgotPassword'),
   },
   {
     path: '*',
     component: Error404,
     titleKey: 'key_error',
+    descriptionKey: 'key_error_description',
+    url: 'https://messenger-app-movb.onrender.com/*',
     importFunc: () => import('@errors/404'),
   },
 ];
@@ -118,68 +138,44 @@ function App() {
   useEffect(() => {
     // requestPermissionForPushNotifications();
   }, []);
-  // useSmoothScrollbar({ smoothing: 0.1 });
-  const metaTitle = translate('key_meta_title');
-  const metaDesc = translate('key_meta_description');
-  const baseUrl = 'https://messenger-app-movb.onrender.com';
   return (
-    <HelmetProvider>
-      <Helmet>
-        <title>{metaTitle}</title>
-        <meta name="description" content={metaDesc} />
-
-        <link rel="alternate" hrefLang="ru" href={`${baseUrl}/`} />
-        <link rel="alternate" hrefLang="en" href={`${baseUrl}/`} />
-
-        <meta property="og:title" content={metaTitle} />
-        <meta property="og:description" content={metaDesc} />
-        <meta property="og:url" content={baseUrl} />
-        <meta property="og:image" content="/images/FZ.webp" />
-        <meta property="og:type" content="website" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={metaTitle} />
-        <meta name="twitter:description" content={metaDesc} />
-        <meta name="twitter:image" content="/images/FZ.webp" />
-
-        <meta name="theme-color" content="#0E7490" />
-      </Helmet>
-
-      <Router>
-        <ErrorBoundary FallbackComponent={FallbackComponent}>
-          <main className="container mx-auto">
-            <AnimatePresence mode="wait">
-              <Routes>
-                {routes.map((route) => (
-                  <Route
-                    key={route.path}
-                    path={route.path}
-                    element={
-                      route.private ? (
-                        <PrivateRoute>
-                          <Page
-                            component={route.component}
-                            title={route.titleKey}
-                          />
-                        </PrivateRoute>
-                      ) : (
+    <Router>
+      <ErrorBoundary FallbackComponent={FallbackComponent}>
+        <main className="container mx-auto">
+          <AnimatePresence mode="wait">
+            <Routes>
+              {routes.map((route) => (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  element={
+                    route.private ? (
+                      <PrivateRoute>
                         <Page
                           component={route.component}
                           title={route.titleKey}
+                          description={route.descriptionKey}
+                          url={route.url}
                         />
-                      )
-                    }
-                  />
-                ))}
-              </Routes>
-            </AnimatePresence>
-          </main>
-          {/* <MusicComponent /> */}
-          <SpotifyPlayer />
-        </ErrorBoundary>
-        <ToastContainer newestOnTop limit={10} />
-      </Router>
-    </HelmetProvider>
+                      </PrivateRoute>
+                    ) : (
+                      <Page
+                        component={route.component}
+                        title={route.titleKey}
+                        description={route.descriptionKey}
+                        url={route.url}
+                      />
+                    )
+                  }
+                />
+              ))}
+            </Routes>
+          </AnimatePresence>
+        </main>
+        <SpotifyPlayer />
+      </ErrorBoundary>
+      <ToastContainer newestOnTop limit={10} />
+    </Router>
   );
 }
 
