@@ -9751,6 +9751,7 @@ __metadata:
     leo-profanity: "npm:^1.7.0"
     lottie-react: "npm:^2.4.1"
     meow: "npm:^13.2.0"
+    mobile-detect: "npm:^1.4.5"
     msw: "npm:^2.7.5"
     postcss: "npm:^8.5.3"
     prettier: "npm:^3.5.3"
@@ -9969,6 +9970,13 @@ __metadata:
   bin:
     mkdirp: dist/cjs/src/bin.js
   checksum: 10c0/9f2b975e9246351f5e3a40dcfac99fcd0baa31fbfab615fe059fb11e51f10e4803c63de1f384c54d656e4db31d000e4767e9ef076a22e12a641357602e31d57d
+  languageName: node
+  linkType: hard
+
+"mobile-detect@npm:^1.4.5":
+  version: 1.4.5
+  resolution: "mobile-detect@npm:1.4.5"
+  checksum: 10c0/7a704dc0e80911f8be09c62c9504f236f472ec668b9b010328335bb100660f603dc7b59a788a15b0c0d45b1f14432c6ffb862e02d775c685f8ac535450e0cd9c
   languageName: node
   linkType: hard
 

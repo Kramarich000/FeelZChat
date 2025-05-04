@@ -1,6 +1,12 @@
-import { Bounce, Flip, Slide, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import MobileDetect from "mobile-detect";
 
 export const showToast = (message, type = "success") => {
+  const md = new MobileDetect(window.navigator.userAgent);
+  const isMobile = md.mobile();
+
+  if (isMobile) return;
+
   toast(message, {
     type,
     autoClose: 5000,
