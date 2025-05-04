@@ -126,5 +126,14 @@
   "key_something_went_wrong": "Something went wrong.",
   "key_your_question": "Your question, for example: 'I want to delete my account'",
   "key_meta_title": "FeelZChat — Smart Messenger with AI Emotion Detection & NLP Technology",
-  "key_meta_description": "FeelZChat is a cutting-edge messenger that uses AI and Natural Language Processing (NLP) to detect emotions in real time, enhancing your chat experience through intelligent sentiment analysis."
+  "key_meta_description": "FeelZChat is a cutting-edge messenger that uses AI and Natural Language Processing (NLP) to detect emotions in real time, enhancing your chat experience through intelligent sentiment analysis.",
+  "key_register_description": "Sign up for FeelzChat and start chatting with friends and colleagues. Simple and quick registration process on the platform.",
+  "key_login_description": "Log in to FeelzChat to start chatting with friends and colleagues. Enter your username and password for quick access.",
+  "key_chat_description": "Chat in real-time with friends and colleagues through FeelzChat. Fast messaging, file sharing, and much more.",
+  "key_privacy_description": "Read FeelzChat's privacy policy to learn how we protect your data and maintain your privacy.",
+  "key_help_description": "Need help? Check out the FAQ section of FeelzChat to find answers to common questions about the platform.",
+  "key_home_description": "Welcome to FeelzChat! Start chatting with friends and colleagues, send messages, and stay connected.",
+  "key_profile_description": "Go to your FeelzChat profile to edit personal information, configure notifications, and manage privacy settings.",
+  "key_reset-password_description": "Forgot your password? Restore access to your FeelzChat account with our password reset feature.",
+  "key_error_description": "Error 404 — Page not found. Go back to the home page of FeelzChat or try again."
 }

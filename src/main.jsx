@@ -6,6 +6,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import './i18n';
 import SuspenseWithDelay from '@components/SuspenseWithDelay';
 import { Loader } from '@components/Loader';
+import { HelmetProvider } from 'react-helmet-async';
 // const handleRender = (id, phase, actualDuration, baseDuration, startTime, commitTime) => {
 //   console.log('Component rendered:', id);
 //   console.log('Phase:', phase);
@@ -19,7 +20,9 @@ const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 const AppTree = (
   <GoogleOAuthProvider clientId={clientId}>
-    <App />
+    <HelmetProvider>
+      <App />
+    </HelmetProvider>
   </GoogleOAuthProvider>
 );
 
