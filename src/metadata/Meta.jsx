@@ -9,7 +9,7 @@ const withMetaTags = (
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
-        <link rel="canonical" href={url} />
+        {/* <link rel="canonical" href={url} /> */}
 
         <meta property="og:title" content={title} />
         <meta property="og:locale" content={locale} />

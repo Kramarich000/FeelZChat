@@ -10,7 +10,7 @@ import FallbackComponent from '@components/FallbackComponent';
 import PrivateRoute from '@components/PrivateRoute';
 import translate from '@utils/translate';
 import SpotifyPlayer from '@components/SpotifyPlayer';
-import withMetaTags from '@metadata/Title';
+import withMetaTags from '@metadata/Meta';
 
 const Register = lazy(() => import('@pages/Register'));
 const Login = lazy(() => import('@pages/Login'));
