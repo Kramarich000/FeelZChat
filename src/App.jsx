@@ -114,16 +114,6 @@ const routes = [
   },
 ];
 
-const preloadPage = (importFunc, path) => {
-  if (typeof importFunc === 'function' && !window.preloadedPages) {
-    window.preloadedPages = {};
-  }
-  if (!window.preloadedPages[path]) {
-    importFunc();
-    window.preloadedPages[path] = true;
-  }
-};
-
 function App() {
   useEffect(() => {
     // requestPermissionForPushNotifications();
@@ -165,21 +155,19 @@ function App() {
                     key={route.path}
                     path={route.path}
                     element={
-                      <div onMouseEnter={() => preloadPage(route.importFunc)}>
-                        {route.private ? (
-                          <PrivateRoute>
-                            <Page
-                              component={route.component}
-                              title={route.titleKey}
-                            />
-                          </PrivateRoute>
-                        ) : (
+                      route.private ? (
+                        <PrivateRoute>
                           <Page
                             component={route.component}
                             title={route.titleKey}
                           />
-                        )}
-                      </div>
+                        </PrivateRoute>
+                      ) : (
+                        <Page
+                          component={route.component}
+                          title={route.titleKey}
+                        />
+                      )
                     }
                   />
                 ))}
@@ -196,3 +184,4 @@ function App() {
 }
 
 export default App;
+export { routes };

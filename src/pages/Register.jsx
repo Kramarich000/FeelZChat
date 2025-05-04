@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import BgGradient from '@components/BgGradient';
 import CustomCalendar from '@components/CustomCalendar';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion, transform } from 'framer-motion';
 import { BsQuestionSquareFill } from 'react-icons/bs';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -23,7 +23,7 @@ import { captcha } from '@services/captcha';
 import { showToast } from '../utils/toast';
 import ReCAPTCHA from 'react-google-recaptcha';
 import translate from '@utils/translate';
-
+import PrefetchLink from '@components/PrefetchLink';
 import HelpButton from '@components/HelpButton';
 import useRecaptchaLanguage from '@hooks/useRecaptchaLanguage';
 
@@ -121,14 +121,14 @@ export default function Register() {
         transition={{ duration: 0.5 }}
         className="container flex flex-row gap justify-between w-[75%] items-center"
       >
-        <Link
+        <PrefetchLink
           to={'/'}
           className="flex items-center justify-center hover:scale-110 transition-all"
         >
           <h1 className="main-title flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
             {translate('key_app_name')}
           </h1>
-        </Link>
+        </PrefetchLink>
         <section className="max-w-[650px] container bg-white p-16 rounded-2xl border-b-primary border-b-8 z-999">
           <h2 className="text-3xl pb-10">{translate('key_register_1')}</h2>
 
@@ -235,13 +235,13 @@ export default function Register() {
                       <span className="checkbox-custom"></span>
                       <span>
                         {translate('key_i_confirm')}{' '}
-                        <Link
+                        <PrefetchLink
                           to="/privacy"
                           className="text-primary hover:underline"
                           onClick={(e) => e.stopPropagation()}
                         >
                           {translate('key_privacy_1')}
-                        </Link>
+                        </PrefetchLink>
                       </span>
                     </label>
                     <ErrorMessage name="agreement">
@@ -258,12 +258,12 @@ export default function Register() {
                     {translate('key_sign_up')}
                   </button>
                   <GoogleAuth />
-                  <Link
+                  <PrefetchLink
                     className="text-primary col-span-2 text-center hover:underline"
                     to="/login"
                   >
                     {translate('key_already_have_account')}
-                  </Link>
+                  </PrefetchLink>
                   <div className="flex justify-center items-center mt-4 origin-top col-span-2">
                     <ReCAPTCHA
                       sitekey="6Lc7Xw0rAAAAAB3xa6ZFw2EjErWwzr7qxZbdiO_3"
