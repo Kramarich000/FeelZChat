@@ -13,7 +13,7 @@ export default function Header() {
       {isMobile ? (
         <div
           transition={{ duration: 0.3 }}
-          className="w-full max-w-[1280px] px-4 mx-auto m-4 mt-4 container z-9998"
+          className="w-full max-w-[1280px] px-0 sm:px-4 mx-auto m-4 mt-4 container z-9998"
         >
           <div className="rounded-4xl border-b-8 border-primary shadow-md bg-white p-5 min-h-[100px] flex justify-between items-center">
             <PrefetchLink to="/" aria-label="Go to main page">
@@ -56,23 +56,23 @@ export default function Header() {
               <Logo />
             </PrefetchLink>
             <div className="order-2 flex gap-1 mr-2">
-              <motion.div transition={{ type: 'tween' }}>
+              <SafeMotion transition={{ type: 'tween' }}>
                 <PrefetchLink
                   className="hover:underline text-[14px] sm:text-[16px] hover:text-shadow-[0px_0px_1px_#0E7490] text-primary"
                   to="/login"
                 >
                   {translate('key_login')}
                 </PrefetchLink>
-              </motion.div>
+              </SafeMotion>
               <span className="text-primary">/</span>
-              <motion.div transition={{ type: 'tween' }}>
+              <SafeMotion transition={{ type: 'tween' }}>
                 <PrefetchLink
                   className="hover:underline text-[14px] sm:text-[16px] hover:text-shadow-[0px_0px_1px_#0E7490] text-primary"
                   to="/register"
                 >
                   {translate('key_register')}
                 </PrefetchLink>
-              </motion.div>
+              </SafeMotion>
             </div>
           </div>
         </SafeMotion>
