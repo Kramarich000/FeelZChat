@@ -1,11 +1,11 @@
 import translate from '@utils/translate';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { SafeMotion } from '@components/SafeMotion';
 import { BsQuestionSquareFill } from 'react-icons/bs';
+import PrefetchLink from '@components/PrefetchLink';
 export default function HelpButton() {
   return (
-    <Link to={'/help'}>
+    <PrefetchLink to={'/help'}>
       <SafeMotion
         initial={{ opacity: 0, transform: 'translateY(50px)' }}
         animate={{ opacity: 1, transform: 'translateY(0)' }}
@@ -20,6 +20,6 @@ export default function HelpButton() {
           color="rgb(14, 116, 144)"
         />
       </SafeMotion>
-    </Link>
+    </PrefetchLink>
   );
 }

@@ -1,7 +1,7 @@
 import { StrictMode, Profiler } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import AppWithMeta from '@metadata/AppWithMeta.jsx';
+import App from './App';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import './i18n';
 import SuspenseWithDelay from '@components/SuspenseWithDelay';
@@ -19,7 +19,7 @@ const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 const AppTree = (
   <GoogleOAuthProvider clientId={clientId}>
-    <AppWithMeta />
+    <App />
   </GoogleOAuthProvider>
 );
 

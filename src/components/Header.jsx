@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
 import { SafeMotion } from '@components/SafeMotion';
 import translate from '@utils/translate';
 import Logo from '../animations/logoAnimation';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import PrefetchLink from '@components/PrefetchLink';
 export default function Header() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -30,26 +30,30 @@ export default function Header() {
         "
       >
         <div className="max-w-[1280px] mx-auto flex justify-between items-center relative overflow-hidden">
-          <Link className="block order-0" to="/" aria-label="Go to main page">
+          <PrefetchLink
+            className="block order-0"
+            to="/"
+            aria-label="Go to main page"
+          >
             <Logo />
-          </Link>
+          </PrefetchLink>
           <div className="order-2 flex gap-1 mr-2">
             <motion.div transition={{ type: 'tween' }}>
-              <Link
+              <PrefetchLink
                 className="hover:underline text-[14px] sm:text-[16px] hover:text-shadow-[0px_0px_1px_#0E7490] text-primary"
                 to="/login"
               >
                 {translate('key_login')}
-              </Link>
+              </PrefetchLink>
             </motion.div>
             <span className="text-primary">/</span>
             <motion.div transition={{ type: 'tween' }}>
-              <Link
+              <PrefetchLink
                 className="hover:underline text-[14px] sm:text-[16px] hover:text-shadow-[0px_0px_1px_#0E7490] text-primary"
                 to="/register"
               >
                 {translate('key_register')}
-              </Link>
+              </PrefetchLink>
             </motion.div>
           </div>
         </div>

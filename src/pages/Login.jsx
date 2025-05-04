@@ -1,11 +1,10 @@
 import BgGradient from '@components/BgGradient';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { BsQuestionSquareFill } from 'react-icons/bs';
 import GoogleAuth from '@components/GoogleAuth';
 import { loginSchema } from '@validate/loginSchema';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-
+import PrefetchLink from '@components/PrefetchLink';
 import { formatPhoneNumber } from '@validate/registerSchema';
 import AnimatedError from '@components/AnimatedError';
 import { handleLoginSubmit } from '@services/loginHandlers';
@@ -32,14 +31,14 @@ export default function Login() {
         transition={{ duration: 0.5 }}
         className="container flex flex-row gap justify-between w-[75%] items-center"
       >
-        <Link
+        <PrefetchLink
           to={'/'}
           className="flex items-center justify-center hover:scale-110 transition-all"
         >
           <h1 className="main-title flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
             {translate('key_app_name')}
           </h1>
-        </Link>
+        </PrefetchLink>
         <section className="max-w-[650px] container bg-white p-16 rounded-2xl border-b-primary border-b-8 z-999">
           <h2 className="text-3xl pb-10">{translate('key_login_title')}</h2>
           <Formik
@@ -89,10 +88,10 @@ export default function Login() {
                   <span className="checkbox-custom"></span>
                   <span>
                     {translate('key_remember_me')}{' '}
-                    <Link
+                    <PrefetchLink
                       to="/privacy"
                       className="text-primary hover:underline text-center"
-                    ></Link>
+                    ></PrefetchLink>
                   </span>
                 </label>
 
@@ -107,15 +106,18 @@ export default function Login() {
           </Formik>
           <GoogleAuth />
           <div className="flex justify-evenly col-span-2 mt-4">
-            <Link
+            <PrefetchLink
               className="text-primary hover:underline"
               to="/forgot-password"
             >
               {translate('key_forgot_password')}
-            </Link>
-            <Link className="text-primary hover:underline" to="/register">
+            </PrefetchLink>
+            <PrefetchLink
+              className="text-primary hover:underline"
+              to="/register"
+            >
               {translate('key_no_account')}
-            </Link>
+            </PrefetchLink>
           </div>
         </section>
       </SafeMotion>

@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import Header from '@components/Header';
 import { motion } from 'framer-motion';
 import Footer from '@components/Footer';
@@ -13,6 +12,7 @@ import VideoFrame from '@components/VideoFrame';
 // import BgGradient from '@components/BgGradient';
 // import { ItemIndicator } from '@radix-ui/react-select';
 import { SafeMotion } from '@components/SafeMotion';
+import PrefetchLink from '@components/PrefetchLink';
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -84,12 +84,12 @@ export default function Home() {
           <p className="text-sm sm:text-lg mb-8">
             {translate('key_discover_a_new')}
           </p>
-          <Link
+          <PrefetchLink
             to="/register"
             className="bg-primary hover:bg-black transition-all px-6 py-3 rounded-lg text-white"
           >
             {translate('key_start_chatting')}
-          </Link>
+          </PrefetchLink>
         </SafeMotion>
       </SafeMotion>
 
@@ -187,12 +187,12 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <Link
+          <PrefetchLink
             to="/login"
             className="text-2xl hover:underline text-primary font-bold"
           >
             {translate('key_sign_in')}
-          </Link>
+          </PrefetchLink>
         </SafeMotion>
         <p className="text-2xl">{translate('key_or')}</p>
         <SafeMotion
@@ -201,12 +201,12 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <Link
+          <PrefetchLink
             to="/register"
             className="text-2xl hover:underline text-primary font-bold"
           >
             {translate('key_sign_up')}
-          </Link>
+          </PrefetchLink>
         </SafeMotion>
       </section>
 

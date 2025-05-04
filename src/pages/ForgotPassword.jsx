@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import BgGradient from '@components/BgGradient';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion, transform } from 'framer-motion';
 import { BsQuestionSquareFill } from 'react-icons/bs';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
@@ -8,7 +8,6 @@ import {
   forgotPasswordSchema,
   confirmationCodeSchema,
 } from '@validate/forgotPasswordSchema';
-
 import {
   handleFirstStepForgotSubmit,
   handleSecondStepForgotSubmit,
@@ -18,6 +17,7 @@ import AnimatedError from '@components/AnimatedError';
 import translate from '@utils/translate';
 import HelpButton from '@components/HelpButton';
 import { SafeMotion } from '@components/SafeMotion';
+import PrefetchLink from '@components/PrefetchLink';
 export default function ForgotPassword() {
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
@@ -41,14 +41,14 @@ export default function ForgotPassword() {
         transition={{ duration: 0.5 }}
         className="container flex flex-row gap justify-between w-[75%] items-center"
       >
-        <Link
+        <PrefetchLink
           to={'/'}
           className="flex items-center justify-center hover:scale-110 transition-all"
         >
           <h1 className="main-title flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
             {translate('key_app_name')}
           </h1>
-        </Link>
+        </PrefetchLink>
         <section className="max-w-[650px] container bg-white p-16 rounded-2xl border-b-primary border-b-8 z-999">
           <h2 className="text-3xl pb-10">{translate('key_password_reset')}</h2>
           {step === 1 && (

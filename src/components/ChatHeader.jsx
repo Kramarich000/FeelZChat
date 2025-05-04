@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { HiUser } from 'react-icons/hi';
 import {
   Menu,
@@ -13,6 +12,8 @@ import Logo from '../animations/logoAnimation';
 import BgChatGradient from '@components/BgChatGradient';
 import { motion } from 'framer-motion';
 import { SafeMotion } from '@components/SafeMotion';
+import PrefetchLink from '@components/PrefetchLink';
+
 export default function ChatHeader() {
   return (
     <SafeMotion
@@ -23,9 +24,9 @@ export default function ChatHeader() {
       transition={{ type: 'spring', stiffness: 120, damping: 20 }}
     >
       <div className="glass-container p-4 max-w-[1200px] mx-auto flex justify-between items-center">
-        <Link className="block w-10" to="/">
+        <PrefetchLink className="block w-10" to="/">
           <Logo />
-        </Link>
+        </PrefetchLink>
 
         <div className="relative">
           <Menu as="div" className="relative">
@@ -46,19 +47,19 @@ export default function ChatHeader() {
                 <div className="space-y-2 p-2 z-9999">
                   <MenuItem>
                     {({ active }) => (
-                      <Link
+                      <PrefetchLink
                         to="/profile"
                         className={`block px-4 py-2 text-gray-800 rounded-lg transition-colors duration-300 ${
                           active ? 'bg-gray-200' : ''
                         }`}
                       >
                         {translate('key_profile')}
-                      </Link>
+                      </PrefetchLink>
                     )}
                   </MenuItem>
                   <MenuItem>
                     {({ active }) => (
-                      <Link
+                      <PrefetchLink
                         to="/settings"
                         aria-label="Go to settings"
                         className={`block px-4 py-2 text-gray-800 rounded-lg transition-colors duration-300 ${
@@ -66,19 +67,19 @@ export default function ChatHeader() {
                         }`}
                       >
                         {translate('key_settings')}
-                      </Link>
+                      </PrefetchLink>
                     )}
                   </MenuItem>
                   <MenuItem>
                     {({ active }) => (
-                      <Link
+                      <PrefetchLink
                         to="/logout"
                         className={`block px-4 py-2 text-gray-800 rounded-lg transition-colors duration-300 ${
                           active ? 'bg-gray-200' : ''
                         }`}
                       >
                         {translate('key_logout')}
-                      </Link>
+                      </PrefetchLink>
                     )}
                   </MenuItem>
                 </div>

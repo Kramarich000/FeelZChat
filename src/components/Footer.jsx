@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import translate from '@utils/translate';
+import PrefetchLink from '@components/PrefetchLink';
 import { SafeMotion } from '@components/SafeMotion';
 export default function Footer() {
   const socialLinks = [
@@ -56,8 +56,8 @@ export default function Footer() {
 
         <div className="mt-2">
           <div transition={{ type: 'spring', stiffness: 300 }}>
-            <Link
-              to="#"
+            <PrefetchLink
+              to="/privacy"
               onClick={(e) => {
                 e.preventDefault();
                 window.open('/privacy', '_blank', 'noopener,noreferrer');
@@ -65,7 +65,7 @@ export default function Footer() {
               className="text-[16px] sm:text-[20px] underline hover:text-primary transition-all"
             >
               {translate('key_privacy')}
-            </Link>
+            </PrefetchLink>
           </div>
         </div>
       </div>
