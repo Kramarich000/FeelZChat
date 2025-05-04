@@ -3,6 +3,7 @@ import { motion, px } from 'framer-motion';
 import { SafeMotion } from '@components/SafeMotion';
 import { CloseButton } from '@headlessui/react';
 import { IoClose, IoCloseCircle, IoCloseOutline } from 'react-icons/io5';
+import MobileDetect from 'mobile-detect';
 const playlists = [
   {
     name: 'Русские Хиты',
@@ -75,8 +76,11 @@ const SpotifyPlayer = () => {
   const handlePlaylistChange = (src) => {
     setCurrentSrc(src);
   };
+
   useEffect(() => {
-    if (window.innerWidth <= 640) {
+    const md = new MobileDetect(window.navigator.userAgent);
+    const isMobile = md.mobile();
+    if (isMobile) {
       document.body.style.overflow = isVisible ? 'hidden' : '';
     }
   }, [isVisible]);
