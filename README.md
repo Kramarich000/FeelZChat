@@ -1,235 +1,80 @@
-
-```
-Messenger
-├─ .VSCodeCounter
-│  ├─ 2025-04-11_01-55-58
-│  │  ├─ details.md
-│  │  ├─ diff-details.md
-│  │  ├─ diff.csv
-│  │  ├─ diff.md
-│  │  ├─ diff.txt
-│  │  ├─ results.csv
-│  │  ├─ results.json
-│  │  ├─ results.md
-│  │  └─ results.txt
-│  └─ 2025-04-29_01-53-37
-│     ├─ details.md
-│     ├─ diff-details.md
-│     ├─ diff.csv
-│     ├─ diff.md
-│     ├─ diff.txt
-│     ├─ results.csv
-│     ├─ results.json
-│     ├─ results.md
-│     └─ results.txt
-├─ argos_translate.py
-├─ cypress.config.js
-└─ messenger-app
-   ├─ .husky
-   │  ├─ pre-commit
-   │  └─ _
-   │     ├─ applypatch-msg
-   │     ├─ commit-msg
-   │     ├─ h
-   │     ├─ husky.sh
-   │     ├─ post-applypatch
-   │     ├─ post-checkout
-   │     ├─ post-commit
-   │     ├─ post-merge
-   │     ├─ post-rewrite
-   │     ├─ pre-applypatch
-   │     ├─ pre-auto-gc
-   │     ├─ pre-commit
-   │     ├─ pre-merge-commit
-   │     ├─ pre-push
-   │     ├─ pre-rebase
-   │     └─ prepare-commit-msg
-   ├─ cypress.config.js
-   ├─ dev-dist
-   │  ├─ registerSW.js
-   │  ├─ sw.js
-   │  └─ workbox-fc76d6c3.js
-   ├─ dist
-   │  ├─ assets
-   │  │  ├─ 404.DLu-TB5C.js
-   │  │  ├─ BgGradient.lf4IWVyI.js
-   │  │  ├─ Chat.T-0KVxEs.js
-   │  │  ├─ Chat.T-0KVxEs.js.br
-   │  │  ├─ Chat.T-0KVxEs.js.gz
-   │  │  ├─ emotion-analysis.D23RS13K.jpg
-   │  │  ├─ emotion-analysis.sPPmPa1c.webp
-   │  │  ├─ floating-ui.react-dom.CWg3abyF.js
-   │  │  ├─ floating-ui.react-dom.CWg3abyF.js.br
-   │  │  ├─ floating-ui.react-dom.CWg3abyF.js.gz
-   │  │  ├─ Footer.Dq_MilQo.js
-   │  │  ├─ ForgotPassword.DFpHunsb.js
-   │  │  ├─ formik.esm.D6JTH9y7.js
-   │  │  ├─ formik.esm.D6JTH9y7.js.br
-   │  │  ├─ formik.esm.D6JTH9y7.js.gz
-   │  │  ├─ FZ.Sd57oWXC.webp
-   │  │  ├─ GoogleAuth.DbCpLA1Z.js
-   │  │  ├─ Help.Dp8m-AXk.js
-   │  │  ├─ Help.Dp8m-AXk.js.br
-   │  │  ├─ Help.Dp8m-AXk.js.gz
-   │  │  ├─ HelpButton.B75tnSSt.js
-   │  │  ├─ HelpButton.B75tnSSt.js.br
-   │  │  ├─ HelpButton.B75tnSSt.js.gz
-   │  │  ├─ Home.DOVPg7wf.js
-   │  │  ├─ index.DF-svF5U.css
-   │  │  ├─ index.DF-svF5U.css.br
-   │  │  ├─ index.DF-svF5U.css.gz
-   │  │  ├─ index.DmIvC5Nk.js
-   │  │  ├─ index.DmIvC5Nk.js.br
-   │  │  ├─ index.DmIvC5Nk.js.gz
-   │  │  ├─ Login.CbbtgP0y.js
-   │  │  ├─ logoAnimation.Ch3BYO3_.js
-   │  │  ├─ logoAnimation.Ch3BYO3_.js.br
-   │  │  ├─ logoAnimation.Ch3BYO3_.js.gz
-   │  │  ├─ Privacy.D7r7Dsm0.js
-   │  │  ├─ Profile.CaKo4e65.js
-   │  │  ├─ react-icons.esm.Bftnd1sj.js
-   │  │  ├─ Register.B_3XufHh.js
-   │  │  ├─ Register.B_3XufHh.js.br
-   │  │  ├─ Register.B_3XufHh.js.gz
-   │  │  ├─ Register.CLxH30By.css
-   │  │  ├─ Register.CLxH30By.css.br
-   │  │  └─ Register.CLxH30By.css.gz
-   │  ├─ icons
-   │  │  ├─ pwa-192x192.png
-   │  │  └─ pwa-512x512.png
-   │  ├─ images
-   │  │  ├─ ivan.jpg
-   │  │  └─ logo.svg
-   │  ├─ index.html
-   │  ├─ manifest.webmanifest
-   │  ├─ music
-   │  │  └─ bg-music.mp3
-   │  ├─ registerSW.js
-   │  ├─ robots.txt
-   │  ├─ screenshots
-   │  │  ├─ app-desktop.png
-   │  │  └─ app-mobile.png
-   │  ├─ sitemap.xml
-   │  ├─ sw.js
-   │  ├─ vite.svg
-   │  ├─ workbox-5b70fac1.js
-   │  ├─ workbox-5b70fac1.js.br
-   │  ├─ workbox-5b70fac1.js.gz
-   │  └─ _redirects
-   ├─ Dockerfile
-   ├─ eslint.config.js
-   ├─ index.html
-   ├─ jsconfig.json
-   ├─ localazy.json
-   ├─ package.json
-   ├─ postcss.config.js
-   ├─ public
-   │  ├─ icons
-   │  │  ├─ pwa-192x192.png
-   │  │  └─ pwa-512x512.png
-   │  ├─ images
-   │  │  ├─ ivan.jpg
-   │  │  └─ logo.svg
-   │  ├─ music
-   │  │  └─ bg-music.mp3
-   │  ├─ robots.txt
-   │  ├─ screenshots
-   │  │  ├─ app-desktop.png
-   │  │  └─ app-mobile.png
-   │  ├─ sitemap.xml
-   │  ├─ vite.svg
-   │  └─ _redirects
-   ├─ README.md
-   ├─ src
-   │  ├─ animations
-   │  │  └─ logoAnimation.jsx
-   │  ├─ api
-   │  │  ├─ axiosInstance.js
-   │  │  └─ refreshAccessToken.js
-   │  ├─ App.css
-   │  ├─ App.jsx
-   │  ├─ assets
-   │  │  ├─ images
-   │  │  │  ├─ emotion-analysis.jpg
-   │  │  │  ├─ emotion-analysis.webp
-   │  │  │  ├─ FZ.jpg
-   │  │  │  ├─ FZ.webp
-   │  │  │  ├─ ivan.jpg
-   │  │  │  ├─ ivan.webp
-   │  │  │  └─ logo.svg
-   │  │  ├─ react.svg
-   │  │  └─ videos
-   │  │     └─ main-bg.mp4
-   │  ├─ components
-   │  │  ├─ AnimatedError.jsx
-   │  │  ├─ BgChatGradient.jsx
-   │  │  ├─ BgGradient.jsx
-   │  │  ├─ ChatHeader.jsx
-   │  │  ├─ CustomCalendar.jsx
-   │  │  ├─ ErrorPage.jsx
-   │  │  ├─ FallbackComponent.jsx
-   │  │  ├─ Footer.jsx
-   │  │  ├─ GoogleAuth.jsx
-   │  │  ├─ Header.jsx
-   │  │  ├─ HelpButton.jsx
-   │  │  ├─ Loader.jsx
-   │  │  ├─ MusicComponent.jsx
-   │  │  ├─ PrivateRoute.jsx
-   │  │  ├─ SpotifyPlayer.jsx
-   │  │  ├─ Title.jsx
-   │  │  └─ VideoFrame.jsx
-   │  ├─ hooks
-   │  │  ├─ useEmotionAnalysis.jsx
-   │  │  ├─ useEmotionGradient.jsx
-   │  │  ├─ useLocalStorage.jsx
-   │  │  ├─ useRecaptchaLanguage.jsx
-   │  │  ├─ useResizablePanel.jsx
-   │  │  └─ useSmoothScroll.jsx
-   │  ├─ i18n.js
-   │  ├─ index.css
-   │  ├─ locales
-   │  │  ├─ en.json
-   │  │  └─ ru.json
-   │  ├─ main.jsx
-   │  ├─ metadata
-   │  │  └─ AppWithMeta.jsx
-   │  ├─ pages
-   │  │  ├─ Chat.jsx
-   │  │  ├─ Contacts.jsx
-   │  │  ├─ errors
-   │  │  │  ├─ 400.jsx
-   │  │  │  ├─ 401.jsx
-   │  │  │  ├─ 403.jsx
-   │  │  │  ├─ 404.jsx
-   │  │  │  └─ 500.jsx
-   │  │  ├─ ForgotPassword.jsx
-   │  │  ├─ Help.jsx
-   │  │  ├─ Home.jsx
-   │  │  ├─ Login.jsx
-   │  │  ├─ Notifications.jsx
-   │  │  ├─ Privacy.jsx
-   │  │  ├─ Profile.jsx
-   │  │  ├─ Register.jsx
-   │  │  └─ Settings.jsx
-   │  ├─ services
-   │  │  ├─ captcha.js
-   │  │  ├─ forgotPasswordsHandlers.js
-   │  │  ├─ loginHandlers.js
-   │  │  └─ registerHandlers.js
-   │  ├─ utils
-   │  │  ├─ peppeteer.js
-   │  │  ├─ scrapedTexts.json
-   │  │  ├─ spotify.js
-   │  │  ├─ toast.js
-   │  │  └─ translate.js
-   │  └─ validate
-   │     ├─ forgotPasswordSchema.js
-   │     ├─ loginSchema.js
-   │     └─ registerSchema.js
-   ├─ static.json
-   ├─ tailwind.config.js
-   ├─ translate-text.js
-   ├─ vite.config.js
-   └─ yarn.lock
-
-```
+├─ @eslint/js@npm:9.26.0
+├─ @fortawesome/fontawesome-free@npm:6.7.2
+├─ @fullhuman/postcss-purgecss@npm:7.0.2
+├─ @headlessui/react@npm:2.2.2
+├─ @radix-ui/react-icons@npm:1.3.2
+├─ @radix-ui/react-select@npm:2.2.2
+├─ @react-oauth/google@npm:0.12.1
+├─ @tailwindcss/aspect-ratio@npm:0.4.2
+├─ @tailwindcss/line-clamp@npm:0.4.4
+├─ @tailwindcss/postcss@npm:4.1.5
+├─ @tailwindcss/typography@npm:0.5.16
+├─ @tailwindcss/vite@npm:4.1.5
+├─ @types/react-dom@npm:18.3.7
+├─ @types/react@npm:18.3.20
+├─ @typescript-eslint/eslint-plugin@npm:8.31.1
+├─ @typescript-eslint/parser@npm:8.31.1
+├─ @vitejs/plugin-legacy@npm:6.1.1
+├─ @vitejs/plugin-react-swc@npm:3.9.0
+├─ autoprefixer@npm:10.4.21
+├─ axios@npm:1.9.0
+├─ cypress@npm:14.3.2
+├─ date-fns@npm:4.1.0
+├─ dotenv@npm:16.5.0
+├─ esbuild-css-modules-plugin@npm:3.1.4
+├─ esbuild@npm:0.25.3
+├─ eslint-config-prettier@npm:10.1.2
+├─ eslint-plugin-import-helpers@npm:2.0.1
+├─ eslint-plugin-import@npm:2.31.0
+├─ eslint-plugin-jsx-a11y@npm:6.10.2
+├─ eslint-plugin-optimize-regex@npm:1.2.1
+├─ eslint-plugin-prettier@npm:5.2.6
+├─ eslint-plugin-react@npm:7.37.5
+├─ eslint-plugin-security@npm:3.0.1
+├─ eslint@npm:9.26.0
+├─ flatpickr@npm:4.6.13
+├─ formik@npm:2.4.6
+├─ framer-motion@npm:12.9.4
+├─ globals@npm:16.0.0
+├─ gsap@npm:3.13.0
+├─ husky@npm:9.1.7
+├─ i18next@npm:24.2.3
+├─ jest@npm:29.7.0
+├─ leo-profanity@npm:1.7.0
+├─ lottie-react@npm:2.4.1
+├─ meow@npm:13.2.0
+├─ messenger-app@workspace:.
+├─ msw@npm:2.7.5
+├─ postcss@npm:8.5.3
+├─ prettier@npm:3.5.3
+├─ prop-types@npm:15.8.1
+├─ puppeteer@npm:24.8.0
+├─ react-dom@npm:18.3.1
+├─ react-error-boundary@npm:5.0.0
+├─ react-flatpickr@npm:4.0.0
+├─ react-google-recaptcha@npm:3.1.0
+├─ react-helmet-async@npm:2.0.5
+├─ react-i18next@npm:15.5.1
+├─ react-icons@npm:5.5.0
+├─ react-router-dom@npm:7.5.3
+├─ react-spinners@npm:0.15.0
+├─ react-spring@npm:9.7.5
+├─ react-toastify@npm:11.0.5
+├─ react@npm:18.3.1
+├─ sharp@npm:0.34.1
+├─ svgo@npm:3.3.2
+├─ tailwind-scrollbar@npm:4.0.2
+├─ tailwindcss-animate@npm:1.0.7
+├─ tailwindcss-important@npm:1.0.0
+├─ tailwindcss@npm:4.1.5
+├─ terser@npm:5.39.0
+├─ typescript@patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5
+├─ vite-plugin-compression@npm:0.5.1
+├─ vite-plugin-image-optimizer@npm:1.1.8
+├─ vite-plugin-preload@npm:0.4.2
+├─ vite-plugin-pwa@npm:1.0.0
+├─ vite@npm:6.3.4
+├─ vitest@npm:3.1.2
+├─ webpack-bundle-analyzer@npm:4.10.2
+├─ workbox-build@npm:7.3.0
+└─ yup@npm:1.6.1
