@@ -208,6 +208,12 @@ video::-webkit-media-controls {
   display: none !important;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 video {
   object-fit: cover;
 }
@@ -605,7 +611,6 @@ button:hover svg {
 
 footer {
   margin: 0;
-  padding: 0;
   margin-top: auto;
 }
 

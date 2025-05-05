@@ -16,9 +16,6 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "prettier --write"
-    ],
-    "*.{css,scss,html}": [
-      "stylelint --fix --quiet"
     ]
   },
   "dependencies": {
