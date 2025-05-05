@@ -1,30 +1,30 @@
-import React, { useState } from 'react';
-import * as Select from '@radix-ui/react-select';
-import { ChevronDownIcon } from '@radix-ui/react-icons';
-import Header from '@components/Header';
-import Footer from '@components/Footer';
-import translate from '@utils/translate';
-import { SafeMotion } from '@components/SafeMotion';
+import React, { useState } from "react";
+import * as Select from "@radix-ui/react-select";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
+import Header from "@components/Header";
+import Footer from "@components/Footer";
+import translate from "@utils/translate";
+import { SafeMotion } from "@components/SafeMotion";
 const faqData = [
   {
-    question: translate('key_how_sign_in'),
-    answer: translate('key_homepage_register_hint'),
+    question: translate("key_how_sign_in"),
+    answer: translate("key_homepage_register_hint"),
   },
   {
-    question: translate('key_forgot_password_hint'),
-    answer: translate('key_forgot_password_process'),
+    question: translate("key_forgot_password_hint"),
+    answer: translate("key_forgot_password_process"),
   },
   {
-    question: translate('key_change_phone_hint'),
-    answer: translate('key_change_phone_instruction'),
+    question: translate("key_change_phone_hint"),
+    answer: translate("key_change_phone_instruction"),
   },
   {
-    question: translate('key_account_delete_hint'),
-    answer: translate('key_account_delete_instruction'),
+    question: translate("key_account_delete_hint"),
+    answer: translate("key_account_delete_instruction"),
   },
   {
-    question: translate('key_messages_not_sending'),
-    answer: translate('key_check_connection'),
+    question: translate("key_messages_not_sending"),
+    answer: translate("key_check_connection"),
   },
 ];
 
@@ -34,20 +34,20 @@ const handleSubmit = (e) => {
 
 export default function Help() {
   const [openIndex, setOpenIndex] = useState(null);
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState("");
 
   return (
-    <div className="w-full bg-blue-200 flex flex-col justify-center items-center transition-all">
+    <div className="wrapper w-full bg-blue-200 justify-center items-center transition-all">
       <Header />
       <SafeMotion
         className="max-w-[1200px] mx-auto space-y-8 p-4 py-10"
         layout
-        initial={{ opacity: 0, transform: 'translateY(-50px)' }}
-        animate={{ opacity: 1, transform: 'translateY(0)' }}
-        exit={{ opacity: 0, transform: 'translateY(-50px)' }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+        initial={{ opacity: 0, transform: "translateY(-50px)" }}
+        animate={{ opacity: 1, transform: "translateY(0)" }}
+        exit={{ opacity: 0, transform: "translateY(-50px)" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <h1 className="text-4xl font-bold mb-6">{translate('key_faq')}</h1>
+        <h1 className="text-4xl font-bold mb-6">{translate("key_faq")}</h1>
         <div className="flex flex-col gap-4">
           {faqData.map((item, index) => {
             const isOpen = openIndex === index;
@@ -71,7 +71,7 @@ export default function Help() {
                     maxHeight: isOpen ? 200 : 0,
                     opacity: isOpen ? 1 : 0,
                   }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
                   <p className="text-left mt-2 py-1">{item.answer}</p>
                 </SafeMotion>
@@ -81,7 +81,7 @@ export default function Help() {
         </div>
 
         <div className="">
-          <h2 className="text-3xl mb-5">{translate('key_contact_us')}</h2>
+          <h2 className="text-3xl mb-5">{translate("key_contact_us")}</h2>
           <div className="bg-white text-black  border-b-8 rounded-2xl border-primary p-4">
             <form
               className="gap-5 grid grid-cols-1 md:grid-cols-3 mb-4"
@@ -92,7 +92,7 @@ export default function Help() {
                   id="name"
                   className="input-styles"
                   type="text"
-                  placeholder={translate('key_your_name')}
+                  placeholder={translate("key_your_name")}
                 />
               </label>
               <label htmlFor="email">
@@ -100,7 +100,7 @@ export default function Help() {
                   id="email"
                   className="input-styles"
                   type="email"
-                  placeholder={translate('key_your_email')}
+                  placeholder={translate("key_your_email")}
                 />
               </label>
 
@@ -113,14 +113,14 @@ export default function Help() {
                   <Select.Trigger className="trigger select-styles input-styles p-2.5">
                     <Select.Value
                       className="text-gray-100"
-                      placeholder={translate('key_question_type')}
+                      placeholder={translate("key_question_type")}
                     />
                     <ChevronDownIcon className="w-5 h-5" />
                   </Select.Trigger>
                   <Select.Portal>
                     <Select.Content className="bg-white border rounded shadow-lg">
                       <Select.Viewport>
-                        {['Technical', 'Account', 'Bug', 'Other'].map(
+                        {["Technical", "Account", "Bug", "Other"].map(
                           (type) => (
                             <Select.Item
                               key={type}
@@ -144,26 +144,26 @@ export default function Help() {
 
               <textarea
                 className="input-styles scrollbar-hide min-h-80 col-span-3 border-1 rounded-2xl p-2 w-full"
-                placeholder={translate('key_your_question')}
+                placeholder={translate("key_your_question")}
               />
 
               <button
                 type="submit"
                 className="mx-auto w-[300px] col-span-3 bg-primary text-white rounded-2xl py-2"
               >
-                {translate('key_send')}
+                {translate("key_send")}
               </button>
             </form>
           </div>
         </div>
         <div className="bg-white border-primary border-b-8 p-6 rounded-lg shadow-md max-w-lg mx-auto">
           <h2 className="text-3xl font-medium text-primary mb-4">
-            {translate('key_our_contacts')}
+            {translate("key_our_contacts")}
           </h2>
           <div className="space-y-2">
             <p className="text-lg text-gray-700">
               <strong className="font-medium">
-                {translate('key_phone_colon')}{' '}
+                {translate("key_phone_colon")}{" "}
               </strong>
               <a
                 className="text-primary hover:underline transition-all"
@@ -171,20 +171,20 @@ export default function Help() {
                 type="tel"
                 href="tel:1234567890"
               >
-                {translate('key_contact_phone')}
+                {translate("key_contact_phone")}
               </a>
             </p>
             <p className="text-lg text-gray-700">
               <strong className="font-medium">
-                {translate('key_address_colon')}{' '}
-              </strong>{' '}
-              {translate('key_contact_address')}
+                {translate("key_address_colon")}{" "}
+              </strong>{" "}
+              {translate("key_contact_address")}
             </p>
             <p className="text-lg text-gray-700">
               <strong className="font-medium">
-                {translate('key_working_hours_colon')}{' '}
+                {translate("key_working_hours_colon")}{" "}
               </strong>
-              {translate('key_working_hours')}
+              {translate("key_working_hours")}
             </p>
           </div>
         </div>
