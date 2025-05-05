@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
-import { useInView } from 'framer-motion';
+import { delay, useInView } from 'framer-motion';
 import translate from '@utils/translate';
 import EmtnAnlsysJPG from '@assets/images/emotion-analysis.jpg';
 import EmtnAnlsysWEBP from '@assets/images/emotion-analysis.webp';
@@ -12,6 +12,26 @@ import VideoFrame from '@components/VideoFrame';
 // import { ItemIndicator } from '@radix-ui/react-select';
 import { SafeMotion } from '@components/SafeMotion';
 import PrefetchLink from '@components/PrefetchLink';
+const features = [
+  {
+    title: translate('key_emotion_analysis'),
+    id: 1,
+    description: translate('key_ai_analyzes_the'),
+    animated: true,
+  },
+  {
+    title: translate('key_security'),
+    id: 2,
+    description: translate('key_messages_protected'),
+    animated: true,
+  },
+  {
+    title: translate('key_intuitive_interface'),
+    id: 3,
+    description: translate('key_user_friendly_interface'),
+    animated: true,
+  },
+];
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -32,32 +52,11 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  const features = [
-    {
-      title: translate('key_emotion_analysis'),
-      id: 1,
-      description: translate('key_ai_analyzes_the'),
-      animated: true,
-    },
-    {
-      title: translate('key_security'),
-      id: 2,
-      description: translate('key_messages_protected'),
-      animated: true,
-    },
-    {
-      title: translate('key_intuitive_interface'),
-      id: 3,
-      description: translate('key_user_friendly_interface'),
-      animated: true,
-    },
-  ];
   const handleVideoLoad = () => {
     setIsLoaded(true);
   };
 
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
     <div className="mobile-bg sm:home-container w-full mx-auto absolute top-0 left-0">
@@ -131,23 +130,20 @@ export default function Home() {
           ref={ref}
           className="flex gap-5 flex-wrap items-center justify-center"
         >
-          {features.map((item, index) => (
-            <div
+          {features.map((item) => (
+            <SafeMotion
               key={item.id}
-              className="bg-white p-4 rounded-lg min-h-[150px] max-w-[400px] opacity-0 border-primary border-b-8"
-              style={{
-                animationName: isInView ? 'fade-in-up' : undefined,
-                animationDuration: '0.5s',
-                animationTimingFunction: 'ease',
-                animationFillMode: 'forwards',
-                animationDelay: isInView ? `${index * 0.2}s` : '0s',
-              }}
+              initial={{ opacity: 0, transform: 'translateY(50px)' }}
+              whileInView={{ opacity: 1, transform: 'translateY(0)' }}
+              transition={{ delay: 0.1, duration: 0.2 * item.id }}
+              viewport={{ once: true }}
+              className="bg-white p-4 rounded-lg min-h-[150px] max-w-[400px]  border-primary border-b-8"
             >
               <h3 className="font-bold text-xl sm:text-2xl mb-2">
                 {item.title}
               </h3>
               <p className="sm:text-base text-sm">{item.description}</p>
-            </div>
+            </SafeMotion>
           ))}
         </div>
       </section>

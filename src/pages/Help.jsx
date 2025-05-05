@@ -37,7 +37,7 @@ export default function Help() {
   const [selectedOption, setSelectedOption] = useState('');
 
   return (
-    <div className="absolute top-0 left-0 min-h-full w-full bg-blue-200 flex flex-col justify-center items-center transition-all">
+    <div className="w-full bg-blue-200 flex flex-col justify-center items-center transition-all">
       <Header />
       <SafeMotion
         className="max-w-[1200px] mx-auto space-y-8 p-4 py-10"
@@ -84,26 +84,29 @@ export default function Help() {
           <h2 className="text-3xl mb-5">{translate('key_contact_us')}</h2>
           <div className="bg-white text-black  border-b-8 rounded-2xl border-primary p-4">
             <form
-              className="gap-5 grid grid-cols-3 mb-4"
+              className="gap-5 grid grid-cols-1 md:grid-cols-3 mb-4"
               onSubmit={handleSubmit}
             >
-              <label>
+              <label htmlFor="name">
                 <input
+                  id="name"
                   className="input-styles"
                   type="text"
                   placeholder={translate('key_your_name')}
                 />
               </label>
-              <label>
+              <label htmlFor="email">
                 <input
+                  id="email"
                   className="input-styles"
                   type="email"
                   placeholder={translate('key_your_email')}
                 />
               </label>
 
-              <label>
+              <label htmlFor="question-type">
                 <Select.Root
+                  id="question-type"
                   value={selectedOption}
                   onValueChange={setSelectedOption}
                 >
@@ -117,42 +120,22 @@ export default function Help() {
                   <Select.Portal>
                     <Select.Content className="bg-white border rounded shadow-lg">
                       <Select.Viewport>
-                        <Select.Item
-                          value="Technical"
-                          className="p-2.5 cursor-pointer hover:bg-primary hover:text-white"
-                        >
-                          <Select.ItemText>
-                            {translate('key_technical_question')}
-                          </Select.ItemText>
-                          <Select.ItemIndicator></Select.ItemIndicator>
-                        </Select.Item>
-                        <Select.Item
-                          value="Account"
-                          className="p-2.5 cursor-pointer hover:bg-primary hover:text-white"
-                        >
-                          <Select.ItemText>
-                            {translate('key_account_question')}
-                          </Select.ItemText>
-                          <Select.ItemIndicator></Select.ItemIndicator>
-                        </Select.Item>
-                        <Select.Item
-                          value="Bug"
-                          className="p-2 cursor-pointer hover:bg-primary hover:text-white"
-                        >
-                          <Select.ItemText>
-                            {translate('key_bug')}
-                          </Select.ItemText>
-                          <Select.ItemIndicator></Select.ItemIndicator>
-                        </Select.Item>
-                        <Select.Item
-                          value="Other"
-                          className="p-2 cursor-pointer hover:bg-primary hover:text-white"
-                        >
-                          <Select.ItemText>
-                            {translate('key_other')}
-                          </Select.ItemText>
-                          <Select.ItemIndicator></Select.ItemIndicator>
-                        </Select.Item>
+                        {['Technical', 'Account', 'Bug', 'Other'].map(
+                          (type) => (
+                            <Select.Item
+                              key={type}
+                              value={type}
+                              className="p-2.5 cursor-pointer hover:bg-primary hover:text-white"
+                            >
+                              <Select.ItemText>
+                                {translate(
+                                  `key_${type.toLowerCase()}_question`,
+                                )}
+                              </Select.ItemText>
+                              <Select.ItemIndicator />
+                            </Select.Item>
+                          ),
+                        )}
                       </Select.Viewport>
                     </Select.Content>
                   </Select.Portal>
@@ -160,9 +143,10 @@ export default function Help() {
               </label>
 
               <textarea
-                className="input-styles scrollbar-hide min-h-80 col-span-3 border-1 rounded-2xl p-2 w-full grid-cols-3"
+                className="input-styles scrollbar-hide min-h-80 col-span-3 border-1 rounded-2xl p-2 w-full"
                 placeholder={translate('key_your_question')}
               />
+
               <button
                 type="submit"
                 className="mx-auto w-[300px] col-span-3 bg-primary text-white rounded-2xl py-2"
