@@ -151,16 +151,25 @@ function App() {
   return (
     <Router>
       <ErrorBoundary FallbackComponent={FallbackComponent}>
-        {/* <main className="container mx-auto"> */}
-        <AnimatePresence mode="wait">
-          <Routes>
-            {routes.map((route) => (
-              <Route
-                key={route.path}
-                path={route.path}
-                element={
-                  route.private ? (
-                    <PrivateRoute>
+        <main>
+          <AnimatePresence mode="wait">
+            <Routes>
+              {routes.map((route) => (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  element={
+                    route.private ? (
+                      <PrivateRoute>
+                        <Page
+                          component={route.component}
+                          title={route.titleKey}
+                          description={route.descriptionKey}
+                          url={route.url}
+                          locale={route.locale}
+                        />
+                      </PrivateRoute>
+                    ) : (
                       <Page
                         component={route.component}
                         title={route.titleKey}
@@ -168,23 +177,14 @@ function App() {
                         url={route.url}
                         locale={route.locale}
                       />
-                    </PrivateRoute>
-                  ) : (
-                    <Page
-                      component={route.component}
-                      title={route.titleKey}
-                      description={route.descriptionKey}
-                      url={route.url}
-                      locale={route.locale}
-                    />
-                  )
-                }
-              />
-            ))}
-          </Routes>
-        </AnimatePresence>
-        {/* </main> */}
-        <SpotifyPlayer />
+                    )
+                  }
+                />
+              ))}
+            </Routes>
+          </AnimatePresence>
+        </main>
+        {/* <SpotifyPlayer /> */}
       </ErrorBoundary>
       <ToastContainer newestOnTop limit={10} />
     </Router>

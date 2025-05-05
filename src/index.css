@@ -55,12 +55,10 @@
 @utility home-container {
   max-height: 100vh;
   width: 100%;
-  background: linear-gradient(
-    45deg,
-    rgba(152, 251, 152, 0.8),
-    rgba(255, 20, 147, 0.8),
-    rgba(0, 0, 255, 0.8)
-  );
+  background: linear-gradient(45deg,
+      rgba(152, 251, 152, 0.8),
+      rgba(255, 20, 147, 0.8),
+      rgba(0, 0, 255, 0.8));
   background-size: 400% 400%;
   animation: gradientBG 5s ease infinite;
   will-change: background;
@@ -146,12 +144,12 @@ select:-webkit-autofill:focus {
   transition: all 0.3s ease;
 }
 
-input[type='checkbox']:checked + .checkbox-custom {
+input[type='checkbox']:checked+.checkbox-custom {
   background-color: white;
   border-color: black;
 }
 
-input[type='checkbox']:checked + .checkbox-custom::after {
+input[type='checkbox']:checked+.checkbox-custom::after {
   content: '';
   position: absolute;
   top: 2px;
@@ -198,6 +196,12 @@ body,
   height: 100%;
   /* padding-bottom: 1px; */
   scroll-behavior: smooth;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 video::-webkit-media-controls {
@@ -263,25 +267,15 @@ button {
   font-weight: 500;
   font-family: inherit;
   outline: none !important;
-  /* background-color: #0288D1; */
   color: white;
   cursor: pointer;
   transition: all 0.3s;
 }
 
 main {
-  /* width: 99vw;
-  min-height: 99vh; */
-  max-width: 1280px;
-  margin: 0 auto;
   flex-grow: 1;
+  display: flex;
 }
-
-/* 
-:root {
-  width: 100vw;
-  max-width: 1280px;
-} */
 
 scrollbar {
   width: 12px;
@@ -461,12 +455,10 @@ button:hover svg {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(
-    45deg,
-    rgba(152, 251, 152, 0.8),
-    rgba(255, 20, 147, 0.8),
-    rgba(0, 0, 255, 0.8)
-  );
+  background: linear-gradient(45deg,
+      rgba(152, 251, 152, 0.8),
+      rgba(255, 20, 147, 0.8),
+      rgba(0, 0, 255, 0.8));
   background-size: 400% 400%;
   animation: gradientBG 5s ease infinite;
 }
@@ -514,12 +506,10 @@ button:hover svg {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    white,
-    rgba(255, 255, 255, 0.9),
-    rgba(14, 116, 144, 0.75)
-  );
+  background: linear-gradient(to bottom,
+      white,
+      rgba(255, 255, 255, 0.9),
+      rgba(14, 116, 144, 0.75));
   opacity: 0;
   transition: opacity 0.6s ease-in-out;
   z-index: -1;
@@ -612,6 +602,12 @@ button:hover svg {
   display: block;
   height: 1px;
 } */
+
+footer {
+  margin: 0;
+  padding: 0;
+  margin-top: auto;
+}
 
 @media (max-width: 767px) {
   * {

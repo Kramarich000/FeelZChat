@@ -19,7 +19,7 @@ const FallbackComponent = ({ error }) => {
     return <Error401 />;
   } else {
     return (
-      <div>
+      <div className="flex flex-col justify-center items-center min-h-full">
         <h1>{translate('key_undefined_error')}</h1>
         <p>{translate('key_something_went_wrong')}</p>
         <PrefetchLink
