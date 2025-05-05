@@ -8,15 +8,17 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint:fix": "eslint . --fix --cache",
     "format": "prettier --write .",
     "prepare": "husky install",
     "test": "jest --passWithNoTests"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
       "prettier --write"
+    ],
+    "*.{css,scss,html}": [
+      "stylelint --fix --quiet"
     ]
   },
   "dependencies": {
