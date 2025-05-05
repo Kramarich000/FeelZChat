@@ -1,25 +1,25 @@
-import { useState, useEffect, useRef } from 'react';
-import { Formik, Field, Form } from 'formik';
-import { IoSend } from 'react-icons/io5';
-import ChatHeader from '@components/ChatHeader';
-import BgChatGradient from '@components/BgChatGradient';
-import translate from '@utils/translate';
-import { useResizablePanel } from '@hooks/useResizablePanel';
-import HelpButton from '@components/HelpButton';
-import axios from 'axios';
-import { SafeMotion } from '@components/SafeMotion';
+import { useState, useEffect, useRef } from "react";
+import { Formik, Field, Form } from "formik";
+import { IoSend } from "react-icons/io5";
+import ChatHeader from "@components/ChatHeader";
+import BgChatGradient from "@components/BgChatGradient";
+import translate from "@utils/translate";
+import { useResizablePanel } from "@hooks/useResizablePanel";
+import HelpButton from "@components/HelpButton";
+import axios from "axios";
+import { SafeMotion } from "@components/SafeMotion";
 export default function Chat() {
   const [activeChatId, setActiveChatId] = useState(1);
   const [chats] = useState([
-    { id: 1, title: 'чат1', titleKey: 'key_chat1' },
-    { id: 2, title: 'чат2', titleKey: 'key_chat2' },
-    { id: 3, title: 'чат3', titleKey: 'key_chat3' },
+    { id: 1, title: "чат1", titleKey: "key_chat1" },
+    { id: 2, title: "чат2", titleKey: "key_chat2" },
+    { id: 3, title: "чат3", titleKey: "key_chat3" },
   ]);
 
   const formattedTime = `${new Date()
     .getHours()
     .toString()
-    .padStart(2, '0')}:${new Date().getMinutes().toString().padStart(2, '0')}`;
+    .padStart(2, "0")}:${new Date().getMinutes().toString().padStart(2, "0")}`;
 
   const [messages, setMessages] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -34,7 +34,7 @@ export default function Chat() {
   }, []);
 
   const showPushNotification = (title, options) => {
-    if (Notification.permission === 'granted') {
+    if (Notification.permission === "granted") {
       new Notification(title, options);
     }
   };
@@ -48,16 +48,16 @@ export default function Chat() {
     setMessages((prev) => [
       ...prev,
       {
-        author: 'Иван',
+        author: "Иван",
         text,
-        type: 'sent',
+        type: "sent",
         timestamp: formattedTime,
         delivered: true,
       },
     ]);
 
     try {
-      const { data } = await axios.post('http://localhost:8000/analyze', {
+      const { data } = await axios.post("http://localhost:8000/analyze", {
         text,
       });
 
@@ -69,26 +69,26 @@ export default function Chat() {
       setMessages((prev) => [
         ...prev,
         {
-          author: 'Запара',
+          author: "Запара",
           text: replyText,
-          type: 'received',
+          type: "received",
           timestamp: formattedTime,
           delivered: true,
         },
       ]);
 
-      showPushNotification('Новое сообщение', {
+      showPushNotification("Новое сообщение", {
         body: replyText,
-        icon: '/icon.png',
+        icon: "/icon.png",
       });
     } catch (err) {
-      console.error('Ошибка при анализе текста:', err);
+      console.error("Ошибка при анализе текста:", err);
       setMessages((prev) => [
         ...prev,
         {
-          author: 'Запара',
-          text: 'Извините, не смог обработать запрос 😞',
-          type: 'received',
+          author: "Запара",
+          text: "Извините, не смог обработать запрос 😞",
+          type: "received",
           timestamp: formattedTime,
           delivered: true,
         },
@@ -110,8 +110,8 @@ export default function Chat() {
   useEffect(() => {
     if (endOfMessagesRef.current) {
       endOfMessagesRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'end',
+        behavior: "smooth",
+        block: "end",
       });
     }
   }, [messages]);
@@ -121,10 +121,10 @@ export default function Chat() {
       <ChatHeader />
       <SafeMotion
         className="flex min-h-[800px] max-h-[800px] border-2 p-[30px] rounded-4xl w-[1200px] border-primary border-b-8 relative -z-1"
-        initial={{ opacity: 0, transform: 'translateY(-50px)' }}
-        animate={{ opacity: 1, transform: 'translateY(0)' }}
-        exit={{ opacity: 0, transform: 'translateY(-50px)' }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+        initial={{ opacity: 0, transform: "translateY(-50px)" }}
+        animate={{ opacity: 1, transform: "translateY(0)" }}
+        exit={{ opacity: 0, transform: "translateY(-50px)" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <div className="flex relative w-full max-w-[1200px] mx-auto max-h-[800px]">
           <div
@@ -133,7 +133,7 @@ export default function Chat() {
             style={{ width: `${leftPanelWidth}px` }}
           >
             <h2 className="text-lg font-medium mb-4">
-              {translate('key_chats')}
+              {translate("key_chats")}
             </h2>
             <ul className="space-y-2">
               {chats.map((chat) => (
@@ -141,7 +141,7 @@ export default function Chat() {
                   key={chat.id}
                   onClick={() => selectChat(chat.id)}
                   className={`p-3 rounded cursor-pointer hover:bg-gray-800 transition ${
-                    chat.id === activeChatId ? 'bg-primary' : ''
+                    chat.id === activeChatId ? "bg-primary" : ""
                   }`}
                 >
                   {chat.titleKey ? translate(chat.titleKey) : chat.title}
@@ -168,12 +168,12 @@ export default function Chat() {
                 {messages.map((msg, idx) => (
                   <div
                     key={idx}
-                    className={`max-w-[70%] p-3 rounded-xl message shadow text-left ${
+                    className={`max-w-[70%] p-3 rounded-xl message sm:shadow text-left ${
                       msg.type
-                    } ${msg.type === 'sent' ? 'self-end' : 'self-start'} ${
-                      isLoaded ? 'opacity-100' : 'opacity-0'
+                    } ${msg.type === "sent" ? "self-end" : "self-start"} ${
+                      isLoaded ? "opacity-100" : "opacity-0"
                     } transition-opacity duration-300`}
-                    style={{ wordWrap: 'break-word', whiteSpace: 'pre-wrap' }}
+                    style={{ wordWrap: "break-word", whiteSpace: "pre-wrap" }}
                   >
                     <div className="mb-1 text-left text-sm">{msg.author}</div>
                     <div className="grid grid-cols-1 text-sm text-left">
@@ -182,7 +182,7 @@ export default function Chat() {
                       </p>
                       <div className="flex items-center gap-2 text-xs text-blue-900 justify-end">
                         <span>{msg.timestamp}</span>
-                        {msg.type === 'sent' && (
+                        {msg.type === "sent" && (
                           <span>
                             {msg.read ? (
                               <span className="text-blue-900">✓✓</span>
@@ -203,7 +203,7 @@ export default function Chat() {
 
             <div className="w-full h-[160px] glass-container bg-transparent p-4 rounded transition-all duration-500">
               <Formik
-                initialValues={{ text: '' }}
+                initialValues={{ text: "" }}
                 onSubmit={(values, { resetForm }) => {
                   sendMessage(values.text);
                   resetForm();
@@ -217,12 +217,12 @@ export default function Chat() {
                           <textarea
                             {...field}
                             className="scrollbar-hide w-full h-32 p-4 pr-14 border chat-textarea rounded resize-none"
-                            placeholder={translate('key_enter_message')}
+                            placeholder={translate("key_enter_message")}
                             onChange={(e) =>
-                              setFieldValue('text', e.target.value)
+                              setFieldValue("text", e.target.value)
                             }
                             onKeyDown={(e) => {
-                              if (e.key === 'Enter' && !e.shiftKey) {
+                              if (e.key === "Enter" && !e.shiftKey) {
                                 e.preventDefault();
                                 submitForm();
                               }

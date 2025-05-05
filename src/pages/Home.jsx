@@ -65,7 +65,7 @@ export default function Home() {
 
       <div className="main-section min-h-screen flex items-center justify-center text-center bg-opacity-40 p-4">
         <SafeMotion
-          className="main-description max-w-3xl shadow-[0px_6px_24px_rgba(0,0,0,0.5)] bg-white border-b-8 border-primary mx-auto p-10 rounded-4xl"
+          className="main-description max-w-3xl sm:shadow-[0px_6px_24px_rgba(0,0,0,0.5)] bg-white border-b-8 border-primary mx-auto p-10 rounded-4xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -93,7 +93,7 @@ export default function Home() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full text-center">
+          <div className="bg-white p-8 rounded-lg sm:shadow-lg max-w-lg w-full text-center">
             <h3 className="text-xl font-bold mb-4">
               {translate("key_new_features")}
             </h3>
@@ -146,7 +146,7 @@ export default function Home() {
             whileInView={{ opacity: 1, transform: "translateY(0)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.2, delay: 0.13 }}
-            className="bg-gray-800 p-6 rounded-lg flex flex-col gap-4 shadow-md text-center mx-auto max-w-[1000px] border-primary border-b-8"
+            className="bg-gray-800 p-6 rounded-lg flex flex-col gap-4 sm:shadow-md text-center mx-auto max-w-[1000px] border-primary border-b-8"
           >
             <picture className="aspect-w-16 aspect-h-9">
               <source srcSet={EmtnAnlsysWEBP} type="image/webp" />
