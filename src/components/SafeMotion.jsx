@@ -1,6 +1,5 @@
 import { useReducedMotion, motion } from "framer-motion";
-import { useMediaQuery } from "@hooks/useMediaQuery";
-
+import useMediaQuery from "@hooks/useMediaQuery";
 export const SafeMotion = ({
   children,
   initial,
@@ -14,7 +13,6 @@ export const SafeMotion = ({
   const isMobile = useMediaQuery("(max-width: 639px)");
   const Component = motion[as] || motion.div;
 
-  // Если нужно отключить анимацию — рендерим обычный элемент
   if (shouldReduce || isMobile) {
     const Fallback = as;
     return <Fallback {...rest}>{children}</Fallback>;

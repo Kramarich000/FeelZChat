@@ -59,12 +59,13 @@ export default function Home() {
   const ref = useRef(null);
 
   return (
-    <div className="wrapper mobile-bg sm:home-container w-full mx-auto">
+    <div className="wrapper relative w-full mx-auto">
+      <div className="fixed inset-x-0 top-0 bottom-0 min-h-screen -z-10 mobile-bg sm:home-container" />
       <Header />
 
       <div className="main-section min-h-screen flex items-center justify-center text-center bg-opacity-40 p-4">
         <SafeMotion
-          className="main-description translate-y-[-100px] sm:translate-y-[0px] max-w-3xl shadow-[0px_6px_24px_rgba(0,0,0,0.5)] bg-white border-b-8 border-primary mx-auto p-10 rounded-4xl"
+          className="main-description max-w-3xl shadow-[0px_6px_24px_rgba(0,0,0,0.5)] bg-white border-b-8 border-primary mx-auto p-10 rounded-4xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}

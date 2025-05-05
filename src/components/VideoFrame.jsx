@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
-import { SafeMotion } from '@components/SafeMotion';
-import { FaYoutube } from 'react-icons/fa';
+import { useEffect, useRef, useState } from "react";
+import { SafeMotion } from "@components/SafeMotion";
+import { FaYoutube } from "react-icons/fa";
 
 export default function VideoFrame() {
   const [failed, setFailed] = useState(false);
@@ -40,22 +40,16 @@ export default function VideoFrame() {
         <>
           {!loadingStarted && (
             <div
-              className="w-full h-full flex items-center justify-center bg-black "
+              className="w-full h-full flex items-center justify-center bg-black cursor-pointer"
               onClick={handlePlayClick}
             >
-              <div className="flex flex-col items-center cursor-pointer">
-                <img
-                  src="https://img.youtube.com/vi/-U8rukzWCNs/hqdefault.jpg"
-                  alt="Video thumbnail"
-                  loading="lazy"
-                  className="w-full h-[250px] sm:h-[300px] md:h-[500px] object-contain"
-                />
-                <FaYoutube
-                  className="absolute top-[45%] "
-                  size={75}
-                  color="red"
-                />
-              </div>
+              <img
+                src="https://img.youtube.com/vi/-U8rukzWCNs/hqdefault.jpg"
+                alt="Video thumbnail"
+                loading="lazy"
+                className="w-full h-[250px] sm:h-[300px] md:h-[500px] object-contain"
+              />
+              <FaYoutube className="absolute" size={75} color="red" />
             </div>
           )}
           {loadingStarted && (
@@ -76,9 +70,9 @@ export default function VideoFrame() {
                 setLoaded(true);
               }}
               style={{
-                visibility: loaded ? 'visible' : 'hidden',
+                visibility: loaded ? "visible" : "hidden",
                 opacity: loaded ? 1 : 0,
-                transition: 'opacity 0.5s ease',
+                transition: "opacity 0.5s ease",
               }}
             />
           )}
