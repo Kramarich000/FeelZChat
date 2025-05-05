@@ -53,28 +53,22 @@
 }
 
 @utility home-container {
-  min-height: 100vh;
+  max-height: 100vh;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(45deg,
-      rgba(152, 251, 152, 0.8),
-      rgba(255, 20, 147, 0.8),
-      rgba(0, 0, 255, 0.8));
+  background: linear-gradient(
+    45deg,
+    rgba(152, 251, 152, 0.8),
+    rgba(255, 20, 147, 0.8),
+    rgba(0, 0, 255, 0.8)
+  );
   background-size: 400% 400%;
   animation: gradientBG 5s ease infinite;
   will-change: background;
 }
 
 @utility mobile-bg {
-  min-height: 100vh;
+  max-height: 100vh;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background-size: cover;
   animation: none;
   background: linear-gradient(45deg, #98fb98, #ff1493, #0000ff);
@@ -152,12 +146,12 @@ select:-webkit-autofill:focus {
   transition: all 0.3s ease;
 }
 
-input[type='checkbox']:checked+.checkbox-custom {
+input[type='checkbox']:checked + .checkbox-custom {
   background-color: white;
   border-color: black;
 }
 
-input[type='checkbox']:checked+.checkbox-custom::after {
+input[type='checkbox']:checked + .checkbox-custom::after {
   content: '';
   position: absolute;
   top: 2px;
@@ -196,7 +190,8 @@ textarea:focus {
 }
 
 html,
-body {
+body,
+#root {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -382,8 +377,8 @@ textarea::-webkit-scrollbar-track {
 
 .main-section {
   /* min-height: calc(var(--vh) * 100); */
-  min-height: 100dvh;
-  height: 100vh;
+  min-height: 83vh;
+  min-height: 83dvh;
 }
 
 .main-title {
@@ -466,10 +461,12 @@ button:hover svg {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(45deg,
-      rgba(152, 251, 152, 0.8),
-      rgba(255, 20, 147, 0.8),
-      rgba(0, 0, 255, 0.8));
+  background: linear-gradient(
+    45deg,
+    rgba(152, 251, 152, 0.8),
+    rgba(255, 20, 147, 0.8),
+    rgba(0, 0, 255, 0.8)
+  );
   background-size: 400% 400%;
   animation: gradientBG 5s ease infinite;
 }
@@ -517,10 +514,12 @@ button:hover svg {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom,
-      white,
-      rgba(255, 255, 255, 0.9),
-      rgba(14, 116, 144, 0.75));
+  background: linear-gradient(
+    to bottom,
+    white,
+    rgba(255, 255, 255, 0.9),
+    rgba(14, 116, 144, 0.75)
+  );
   opacity: 0;
   transition: opacity 0.6s ease-in-out;
   z-index: -1;

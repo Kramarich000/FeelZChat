@@ -52,7 +52,7 @@ export default defineConfig({
     }),
 
     VitePWA({
-      registerType: "autoUpdate",
+      registerType: 'autoUpdate',
       devOptions: {
         enabled: true,
       },
@@ -173,7 +173,7 @@ export default defineConfig({
     target: "esnext",
     minify: "esbuild",
     cssCodeSplit: true,
-    // sourcemap: true,
+    sourcemap: false,
 
     rollupOptions: {
       output: {
