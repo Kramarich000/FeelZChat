@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
+import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 // import checker from 'vite-plugin-checker';
@@ -8,9 +9,10 @@ import viteCompression from "vite-plugin-compression";
 // import { analyzer } from 'vite-bundle-analyzer';
 import VitePreload from "vite-plugin-preload";
 import { VitePWA } from "vite-plugin-pwa";
-
+import { visualizer } from 'rollup-plugin-visualizer';
+import imp from 'vite-plugin-imp';
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
-import esbuildCssModules from 'esbuild-css-modules-plugin';
+
 
 const compressionOpts = {
   threshold: 10240,
@@ -18,8 +20,25 @@ const compressionOpts = {
 };
 export default defineConfig({
   plugins: [
+    imp({
+      libList: [
+        { libName: 'lodash-es', libDirectory: '', camel2DashComponentName: false },
+        { libName: 'date-fns', libDirectory: '', camel2DashComponentName: false },
+        { libName: 'react-icons', libDirectory: '', camel2DashComponentName: false },
+      ]
+    }),
+
     tailwindcss(),
     react(),
+    chunkSplitPlugin({
+      strategy: 'single-vendor',
+    }),
+    visualizer({
+      filename: './dist/stats.html',
+      open: true,
+      gzipSize: true,
+      brotliSize: true,
+    }),
     viteCompression({
       ...compressionOpts,
       algorithm: 'brotliCompress',
@@ -121,7 +140,6 @@ export default defineConfig({
       gif: { optimizationLevel: 3 },
       webp: { quality: 75 },
     }),
-    // VitePreload(),
     VitePreload({
       rel: 'modulepreload',
       include: ['**/*.js'],
@@ -131,9 +149,9 @@ export default defineConfig({
   ],
   optimizeDeps: {
     include: ["framer-motion"],
-    esbuildOptions: {
-      plugins: [esbuildCssModules()],
-    },
+    // esbuildOptions: {
+    //   plugins: [esbuildCssModules()],
+    // },
   },
   resolve: {
     alias: {
@@ -151,7 +169,6 @@ export default defineConfig({
   server: {
     historyApiFallback: true,
   },
-  // mode: "production",
   build: {
     target: "esnext",
     minify: "esbuild",
@@ -160,37 +177,6 @@ export default defineConfig({
 
     rollupOptions: {
       output: {
-        //   manualChunks(id) {
-        //     if (id.includes('node_modules')) {
-        //       if (id.includes('react') || id.includes('scheduler')) {
-        //         return 'react-vendor';
-        //       }
-        //       if (id.includes('react-router')) {
-        //         return 'router-vendor';
-        //       }
-        //       if (id.includes('formik')) {
-        //         return 'formik-vendor';
-        //       }
-        //       if (id.includes('framer-motion')) {
-        //         return 'motion-vendor';
-        //       }
-        //       if (id.includes('axios')) {
-        //         return 'axios-vendor';
-        //       }
-        //       return 'vendor';
-        //     }
-
-        //     const srcPath = (dir) => id.includes(path.resolve(__dirname, `src/${dir}`));
-
-        //     if (srcPath('assets')) return 'assets';
-        //     if (srcPath('components')) return 'components';
-        //     if (srcPath('hooks')) return 'hooks';
-        //     if (srcPath('services')) return 'services';
-        //     if (srcPath('utils')) return 'utils';
-        //     if (srcPath('validate')) return 'validate';
-
-        //     return 'misc';
-        //   },
         entryFileNames: 'assets/[name].[hash].js',
         chunkFileNames: 'assets/[name].[hash].js',
         assetFileNames: 'assets/[name].[hash].[ext]'
