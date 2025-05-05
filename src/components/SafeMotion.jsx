@@ -1,4 +1,5 @@
-import { useReducedMotion, motion } from 'framer-motion';
+import { useReducedMotion, motion } from "framer-motion";
+import { useMediaQuery } from "@hooks/useMediaQuery";
 
 export const SafeMotion = ({
   children,
@@ -6,18 +7,25 @@ export const SafeMotion = ({
   animate,
   exit,
   transition,
-  as = 'div',
+  as = "div",
   ...rest
 }) => {
   const shouldReduce = useReducedMotion();
-  const Component = motion[as] || SafeMotion;
+  const isMobile = useMediaQuery("(max-width: 639px)");
+  const Component = motion[as] || motion.div;
+
+  // Если нужно отключить анимацию — рендерим обычный элемент
+  if (shouldReduce || isMobile) {
+    const Fallback = as;
+    return <Fallback {...rest}>{children}</Fallback>;
+  }
 
   return (
     <Component
-      initial={shouldReduce ? false : initial}
+      initial={initial}
       animate={animate}
-      exit={shouldReduce ? undefined : exit}
-      transition={shouldReduce ? { duration: 0 } : transition}
+      exit={exit}
+      transition={transition}
       {...rest}
     >
       {children}

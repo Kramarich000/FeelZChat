@@ -448,10 +448,6 @@ button:hover svg {
   }
 }
 
-.header {
-  transition: all 0.3s;
-}
-
 .bg-gradient-container {
   position: absolute;
   left: 0;
