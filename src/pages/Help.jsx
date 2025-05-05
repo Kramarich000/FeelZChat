@@ -132,7 +132,7 @@ export default function Help() {
                     <ChevronDownIcon className="w-5 h-5" />
                   </Select.Trigger>
                   <Select.Portal>
-                    <Select.Content className="bg-white border rounded shadow-lg">
+                    <Select.Content className="bg-white border rounded sm:shadow-lg">
                       <Select.Viewport>
                         {["Technical", "Account", "Bug", "Other"].map(
                           (type) => (
@@ -170,7 +170,7 @@ export default function Help() {
             </form>
           </div>
         </>
-        <div className="bg-white border-primary border-b-8 p-6 rounded-lg shadow-md max-w-lg mx-auto">
+        <div className="bg-white border-primary border-b-8 p-6 rounded-lg sm:shadow-md max-w-lg mx-auto">
           <h2 className="text-3xl font-medium text-primary mb-4">
             {translate("key_our_contacts")}
           </h2>

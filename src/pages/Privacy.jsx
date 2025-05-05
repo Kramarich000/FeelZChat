@@ -8,36 +8,36 @@ export default function Privacy() {
       <Header />
       <SafeMotion
         as="section"
-        className="privacy-section"
+        className="privacy-section max-w-[1280px] p-4"
         layout
         initial={{ opacity: 0, transform: "translateY(-50px)" }}
         animate={{ opacity: 1, transform: "translateY(0)" }}
         exit={{ opacity: 0, transform: "translateY(-50px)" }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <div className="container p-10 m-10 max-w-[1200px] bg-white rounded-2xl border-b-20 border-primary border-r-100">
-          <h1 className="text-4xl font-bold mb-4">
+        <div className="container p-4 sm:p-10 max-w-[1200px] bg-white rounded-2xl border-b-20 border-primary">
+          <h1 className="text-3xl sm:text-4xl font-bold mb-2 border-b-1 pb-2 sm:pb-4 border-primary  sm:mb-4">
             {translate("key_privacy")}
           </h1>
-          <div className="text-lg space-y-4">
+          <div className="text-sm sm:text-lg space-y-2 sm:space-y-4">
             <p>{translate("key_privacy_intro")}</p>
-            <h2 className="text-2xl font-medium">
+            <h2 className="text-[20px] sm:text-2xl font-medium">
               {translate("key_section_data_collection")}
             </h2>
             <p>{translate("key_data_collection")}</p>
-            <h2 className="text-2xl font-medium">
+            <h2 className="text-[20px] sm:text-2xl font-medium">
               {translate("key_section_data_usage")}
             </h2>
             <p>{translate("key_data_usage")}</p>
-            <h2 className="text-2xl font-medium">
+            <h2 className="text-[20px] sm:text-2xl font-medium">
               {translate("key_section_data_protection")}
             </h2>
             <p>{translate("key_data_protection")}</p>
-            <h2 className="text-2xl font-medium">
+            <h2 className="text-[20px] sm:text-2xl font-medium">
               {translate("key_section_data_sharing")}
             </h2>
             <p>{translate("key_data_sharing")}</p>
-            <h2 className="text-2xl font-medium">
+            <h2 className="text-[20px] sm:text-2xl font-medium">
               {translate("key_section_policy_changes")}
             </h2>
             <p>{translate("key_policy_changes")}</p>

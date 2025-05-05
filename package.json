@@ -66,6 +66,7 @@
     "react-toastify": "^11.0.5",
     "sharp": "^0.34.1",
     "stylelint": "^14",
+    "swiper": "^11.2.6",
     "tailwind-scrollbar": "^4.0.2",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-important": "^1.0.0",

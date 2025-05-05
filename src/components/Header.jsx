@@ -14,7 +14,7 @@ export default function Header() {
           max-w-[1280px]
           relative
           border-b-8 border-primary
-          shadow-[0px_6px_24px_rgba(0,0,0,0.5)]
+          sm:shadow-[0px_6px_24px_rgba(0,0,0,0.5)]
           m-4 mt-4 container mx-auto z-9998
           bg-white overflow-hidden
           rounded-4xl p-5 min-h-[100px]

@@ -1,10 +1,9 @@
 import { toast } from "react-toastify";
-
+import { useResponsive } from "@hooks/useResponsive";
 export const showToast = (message, type = "success") => {
-  const isMobile = window.matchMedia("only screen and (max-width: 639px)").matches;
+  const { isMobile } = useResponsive();
 
   if (isMobile) return;
-
 
   toast(message, {
     type,

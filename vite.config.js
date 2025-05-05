@@ -12,6 +12,7 @@ import { VitePWA } from "vite-plugin-pwa";
 // import { visualizer } from 'rollup-plugin-visualizer';
 import imp from "vite-plugin-imp";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
+import legacy from "@vitejs/plugin-legacy";
 
 const compressionOpts = {
   threshold: 10240,
@@ -19,6 +20,12 @@ const compressionOpts = {
 };
 export default defineConfig({
   plugins: [
+    tailwindcss(),
+    react(),
+    legacy({
+      targets: ["defaults", "not IE 11"],
+      additionalLegacyPolyfills: ["regenerator-runtime/runtime"],
+    }),
     imp({
       libList: [
         {
@@ -38,9 +45,6 @@ export default defineConfig({
         },
       ],
     }),
-
-    tailwindcss(),
-    react(),
     chunkSplitPlugin({
       strategy: "single-vendor",
     }),
@@ -155,6 +159,22 @@ export default defineConfig({
       rel: "modulepreload",
       include: ["**/*.js"],
     }),
+    {
+      name: "inject-suppress-console",
+      apply: "build",
+      transformIndexHtml: {
+        enforce: "pre",
+        transform(html) {
+          return html;
+        },
+        inject: [
+          {
+            tag: "script",
+            attrs: { type: "module", src: "/disableErrors.js" },
+          },
+        ],
+      },
+    },
 
     // checker({ typescript: true, eslint: { lintCommand: 'eslint "src/**/*.{ts,tsx,js,jsx}"' } }),
   ],
@@ -185,6 +205,12 @@ export default defineConfig({
     minify: "esbuild",
     cssCodeSplit: true,
     sourcemap: false,
+    assetsInlineLimit: 4096,
+    chunkSizeWarningLimit: 500,
+    esbuild: {
+      drop: ["console", "debugger"],
+    },
+    polyfillModulePreload: true,
 
     rollupOptions: {
       output: {
