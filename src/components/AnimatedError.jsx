@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { SafeMotion } from '@components/SafeMotion';
 
 const AnimatedError = ({ msg, centered = false, variant = 'default' }) => {

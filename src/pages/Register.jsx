@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import BgGradient from '@components/BgGradient';
 import CustomCalendar from '@components/CustomCalendar';
 import { useNavigate } from 'react-router-dom';
-import { motion, transform } from 'framer-motion';
 import { BsQuestionSquareFill } from 'react-icons/bs';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import {
@@ -324,7 +323,7 @@ export default function Register() {
             >
               {() => (
                 <Form
-                  as={motion.form}
+                  as={SafeMotion}
                   className="grid grid-cols-1 gap-6"
                   initial={{ opacity: 0, transform: 'transate: 50px' }}
                   animate={{ opacity: 1, transform: 'translateX(0)' }}

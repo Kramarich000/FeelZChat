@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 @import 'react-toastify/dist/ReactToastify.css';
-@import '@fortawesome/fontawesome-free/css/all.min.css';
 
 @font-face {
   font-display: swap;
