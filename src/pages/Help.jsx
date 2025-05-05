@@ -4,6 +4,7 @@ import { ChevronDownIcon } from "@radix-ui/react-icons";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import translate from "@utils/translate";
+import { motion } from "framer-motion";
 import { SafeMotion } from "@components/SafeMotion";
 const faqData = [
   {
@@ -33,24 +34,35 @@ const handleSubmit = (e) => {
 };
 
 export default function Help() {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndices, setOpenIndices] = useState([]);
   const [selectedOption, setSelectedOption] = useState("");
+
+  const toggleIndex = (index) => {
+    setOpenIndices((prev) => {
+      if (prev.includes(index)) {
+        return prev.filter((i) => i !== index);
+      } else {
+        return [...prev, index];
+      }
+    });
+  };
 
   return (
     <div className="wrapper w-full bg-blue-200 justify-center items-center transition-all">
       <Header />
       <SafeMotion
-        className="max-w-[1200px] mx-auto space-y-8 p-4 py-10"
+        className="mx-auto space-y-4 px-4 py-5 sm:space-y-8 sm:p-4 sm:py-10"
         layout
         initial={{ opacity: 0, transform: "translateY(-50px)" }}
         animate={{ opacity: 1, transform: "translateY(0)" }}
         exit={{ opacity: 0, transform: "translateY(-50px)" }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <h1 className="text-4xl font-bold mb-6">{translate("key_faq")}</h1>
+        <h1 className="text-2xl mb-4 sm:text-4xl font-bold sm:mb-6">
+          {translate("key_faq")}
+        </h1>
         <div className="flex flex-col gap-4">
           {faqData.map((item, index) => {
-            const isOpen = openIndex === index;
+            const isOpen = openIndices.includes(index);
 
             return (
               <div
@@ -59,12 +71,12 @@ export default function Help() {
               >
                 <p
                   className="w-full cursor-pointer text-left font-medium"
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  onClick={() => toggleIndex(index)}
                 >
                   {item.question}
                 </p>
 
-                <SafeMotion
+                <motion.div
                   className="overflow-hidden"
                   initial={false}
                   animate={{
@@ -74,20 +86,22 @@ export default function Help() {
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
                   <p className="text-left mt-2 py-1">{item.answer}</p>
-                </SafeMotion>
+                </motion.div>
               </div>
             );
           })}
         </div>
 
-        <div className="">
-          <h2 className="text-3xl mb-5">{translate("key_contact_us")}</h2>
+        <>
+          <h2 className="text-2xl sm:text-3xl mb-5">
+            {translate("key_contact_us")}
+          </h2>
           <div className="bg-white text-black  border-b-8 rounded-2xl border-primary p-4">
             <form
-              className="gap-5 grid grid-cols-1 md:grid-cols-3 mb-4"
+              className="gap-5 flex flex-col sm:grid sm:grid-cols-3 mb-4 text-sm"
               onSubmit={handleSubmit}
             >
-              <label htmlFor="name">
+              <label>
                 <input
                   id="name"
                   className="input-styles"
@@ -95,7 +109,7 @@ export default function Help() {
                   placeholder={translate("key_your_name")}
                 />
               </label>
-              <label htmlFor="email">
+              <label>
                 <input
                   id="email"
                   className="input-styles"
@@ -104,7 +118,7 @@ export default function Help() {
                 />
               </label>
 
-              <label htmlFor="question-type">
+              <label>
                 <Select.Root
                   id="question-type"
                   value={selectedOption}
@@ -143,7 +157,7 @@ export default function Help() {
               </label>
 
               <textarea
-                className="input-styles scrollbar-hide min-h-80 col-span-3 border-1 rounded-2xl p-2 w-full"
+                className="input-styles scrollbar-hide min-h-40 sm:min-h-80 col-span-2 sm:col-span-3 border-1 rounded-2xl p-2 w-full"
                 placeholder={translate("key_your_question")}
               />
 
@@ -155,7 +169,7 @@ export default function Help() {
               </button>
             </form>
           </div>
-        </div>
+        </>
         <div className="bg-white border-primary border-b-8 p-6 rounded-lg shadow-md max-w-lg mx-auto">
           <h2 className="text-3xl font-medium text-primary mb-4">
             {translate("key_our_contacts")}
