@@ -163,7 +163,7 @@ export default function Help() {
 
               <button
                 type="submit"
-                className="mx-auto w-[300px] col-span-3 bg-primary text-white rounded-2xl py-2"
+                className="mx-auto w-[200px] sm:w-[300px] col-span-3 bg-primary text-white rounded-2xl py-2"
               >
                 {translate("key_send")}
               </button>

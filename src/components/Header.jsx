@@ -5,7 +5,7 @@ import PrefetchLink from "@components/PrefetchLink";
 
 export default function Header() {
   return (
-    <header className="w-full max-w-[1280px] px-4 mx-auto">
+    <header className="w-full mt-6 sm:py-0 max-w-[1280px] px-4 mx-auto">
       <SafeMotion
         initial={{ transform: "translateY(-150%)" }}
         animate={{ transform: "translateY(0)" }}

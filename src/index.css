@@ -65,10 +65,8 @@
 }
 
 @utility mobile-bg {
-  max-height: 100vh;
   width: 100%;
   background-size: cover;
-  animation: none;
   background: linear-gradient(45deg, #98fb98, #ff1493, #0000ff);
   will-change: background;
 }
@@ -375,11 +373,11 @@ textarea::-webkit-scrollbar-track {
   height: 6px;
 }
 
-.main-section {
-  /* min-height: calc(var(--vh) * 100); */
+/* .main-section {
+  min-height: calc(var(--vh) * 100); 
   min-height: 83vh;
   min-height: 83dvh;
-}
+}  */
 
 .main-title {
   transition: all 0.3s;
@@ -610,13 +608,14 @@ footer {
   margin-top: auto;
 }
 
-@media (max-width: 767px) {
+@media (prefers-reduced-motion: reduce) {
   * {
-    opacity: 1 !important;
     animation: none !important;
     transition: none !important;
+    scroll-behavior: auto !important;
   }
 }
+
 
 @media (max-width: 530px) {
   .spotify-container {
@@ -645,6 +644,25 @@ footer {
 
   #spotifyPlayer {
     width: 300px;
+  }
+
+  .login-form {
+    padding: 16px;
+    font-size: 14px;
+  }
+
+  .login-form button {
+    padding: 4px;
+  }
+
+  .help-btn-container {
+    padding: 6px;
+    font-size: 12px;
+    bottom: 10px;
+  }
+
+  .help-btn-icon {
+    height: 35px;
   }
 }
 

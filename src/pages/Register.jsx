@@ -1,53 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import BgGradient from '@components/BgGradient';
-import CustomCalendar from '@components/CustomCalendar';
-import { useNavigate } from 'react-router-dom';
-import { BsQuestionSquareFill } from 'react-icons/bs';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import React, { useState, useEffect } from "react";
+import BgGradient from "@components/BgGradient";
+import CustomCalendar from "@components/CustomCalendar";
+import { useNavigate } from "react-router-dom";
+import { BsQuestionSquareFill } from "react-icons/bs";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import {
   registerSchema,
   formatPhoneNumber,
   emailSchema,
   confirmationCodeSchema,
-} from '@validate/registerSchema';
-import GoogleAuth from '@components/GoogleAuth';
-import AnimatedError from '@components/AnimatedError';
+} from "@validate/registerSchema";
+import GoogleAuth from "@components/GoogleAuth";
+import AnimatedError from "@components/AnimatedError";
 import {
   handleFirstStepSubmit,
   handleSecondStepSubmit,
   handleThirdStepSubmit,
-} from '@services/registerHandlers';
-import { SafeMotion } from '@components/SafeMotion';
-import { captcha } from '@services/captcha';
-import { showToast } from '../utils/toast';
-import ReCAPTCHA from 'react-google-recaptcha';
-import translate from '@utils/translate';
-import PrefetchLink from '@components/PrefetchLink';
-import HelpButton from '@components/HelpButton';
-import useRecaptchaLanguage from '@hooks/useRecaptchaLanguage';
+} from "@services/registerHandlers";
+import { SafeMotion } from "@components/SafeMotion";
+import { captcha } from "@services/captcha";
+import { showToast } from "../utils/toast";
+import ReCAPTCHA from "react-google-recaptcha";
+import translate from "@utils/translate";
+import PrefetchLink from "@components/PrefetchLink";
+import HelpButton from "@components/HelpButton";
+import useRecaptchaLanguage from "@hooks/useRecaptchaLanguage";
+import { useResponsive } from "@hooks/useResponsive";
 
 export default function Register() {
   const [step, setStep] = useState(1);
-  useRecaptchaLanguage();
-
-  const initialValues = {
-    name: '',
-    surname: '',
-    phone: '',
-    password: '',
-    confirmPassword: '',
-    date: null,
-    agreement: false,
-  };
-
   const [registrationData, setRegistrationData] = useState({});
-
   const navigate = useNavigate();
-
+  useRecaptchaLanguage();
   useEffect(() => {
     if (step === 4) {
       const timer = setTimeout(() => {
-        navigate('/login');
+        navigate("/login");
       }, 5000);
 
       return () => clearTimeout(timer);
@@ -56,27 +44,39 @@ export default function Register() {
 
   const [captchaVerified, setCaptchaVerified] = useState(false);
 
+  const { isMobile, hasMounted } = useResponsive();
+  if (!hasMounted) return null;
+  const initialValues = {
+    name: "",
+    surname: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
+    date: null,
+    agreement: false,
+  };
+
   const executeRecaptchaV3 = async () => {
     try {
       const token = await window.grecaptcha.execute(
-        '6Le7Zw0rAAAAAHKsGR0i4ohPDQTK51JovR46dhnL',
-        { action: 'submit' },
+        "6Le7Zw0rAAAAAHKsGR0i4ohPDQTK51JovR46dhnL",
+        { action: "submit" },
       );
       return token;
     } catch (error) {
-      console.error('Ошибка при вызове reCAPTCHA v3:', error);
+      console.error("Ошибка при вызове reCAPTCHA v3:", error);
       return null;
     }
   };
 
   const handleCaptcha = async (token) => {
     if (!token) {
-      showToast.error('Ошибка: капча не пройдена');
+      showToast.error("Ошибка: капча не пройдена");
       return;
     }
 
     try {
-      const verificationResultV2 = await captcha(token, 'v2');
+      const verificationResultV2 = await captcha(token, "v2");
 
       if (verificationResultV2.success && verificationResultV2.score >= 0.5) {
         console.log(verificationResultV2);
@@ -89,7 +89,7 @@ export default function Register() {
         const tokenV3 = await executeRecaptchaV3();
 
         if (tokenV3) {
-          const verificationResultV3 = await captcha(tokenV3, 'v3');
+          const verificationResultV3 = await captcha(tokenV3, "v3");
 
           if (
             verificationResultV3.success &&
@@ -106,30 +106,32 @@ export default function Register() {
         }
       }
     } catch (error) {
-      showToast('Ошибка при верификации капчи!', 'error');
-      console.error('Captcha verification error:', error);
+      showToast("Ошибка при верификации капчи!", "error");
+      console.error("Captcha verification error:", error);
     }
   };
 
   return (
     <BgGradient>
       <SafeMotion
-        initial={{ opacity: 0, transform: 'translateX(50px)' }}
-        animate={{ opacity: 1, transform: 'translateX(0)' }}
-        exit={{ opacity: 0, transform: 'translateX(50px)' }}
+        initial={{ opacity: 0, transform: "translateX(50px)" }}
+        animate={{ opacity: 1, transform: "translateX(0)" }}
+        exit={{ opacity: 0, transform: "translateX(50px)" }}
         transition={{ duration: 0.5 }}
-        className="container flex flex-row gap justify-between w-[75%] items-center"
+        className="container flex flex-col 2xl:flex-row gap-y-1 sm:gap-y-4 m-1 justify-between w-[95%] items-center"
       >
         <PrefetchLink
-          to={'/'}
+          to={"/"}
           className="flex items-center justify-center hover:scale-110 transition-all"
         >
-          <h1 className="main-title flex text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
-            {translate('key_app_name')}
+          <h1 className="main-title py-2 sm:p-0 flex text-4xl sm:text-7xl font-bold items-center justify-center text-shadow-[-1px_3px_6px]">
+            {translate("key_app_name")}
           </h1>
         </PrefetchLink>
-        <section className="max-w-[650px] container bg-white p-16 rounded-2xl border-b-primary border-b-8 z-999">
-          <h2 className="text-3xl pb-10">{translate('key_register_1')}</h2>
+        <section className="form-section text-[14px] sm:text-[16px] max-w-[650px] container bg-white p-4 sm:p-16 rounded-2xl border-b-primary border-b-8 z-999">
+          <h2 className="text-2xl sm:text-3xl pb-2 sm:pb-10">
+            {translate("key_register_1")}
+          </h2>
 
           {step === 1 && (
             <Formik
@@ -140,12 +142,12 @@ export default function Register() {
               }
             >
               {({ setFieldValue, values }) => (
-                <Form className="grid grid-cols-2 gap-6">
+                <Form className="grid grid-cols-2 gap-2 sm:gap-6">
                   <div className="relative">
                     <Field
                       name="name"
                       type="text"
-                      placeholder={translate('key_name')}
+                      placeholder={translate("key_name")}
                       className="input-styles"
                       autoComplete="given-name"
                     />
@@ -158,7 +160,7 @@ export default function Register() {
                     <Field
                       name="surname"
                       type="text"
-                      placeholder={translate('key_surname')}
+                      placeholder={translate("key_surname")}
                       className="input-styles "
                       autoComplete="family-name"
                     />
@@ -171,13 +173,13 @@ export default function Register() {
                     <Field
                       name="phone"
                       type="tel"
-                      placeholder={translate('key_phone')}
+                      placeholder={translate("key_phone")}
                       className="input-styles"
                       autoComplete="tel"
                       onChange={(e) => {
                         const phoneValue = e.target.value;
                         const formattedPhone = formatPhoneNumber(phoneValue);
-                        setFieldValue('phone', formattedPhone);
+                        setFieldValue("phone", formattedPhone);
                       }}
                       value={values.phone}
                     />
@@ -190,7 +192,7 @@ export default function Register() {
                   <div className="relative">
                     <CustomCalendar
                       date={values.date || new Date()} // Здесь важно установить дефолтное значение
-                      setDate={(date) => setFieldValue('date', date)}
+                      setDate={(date) => setFieldValue("date", date)}
                     />
 
                     <ErrorMessage name="date">
@@ -202,7 +204,7 @@ export default function Register() {
                     <Field
                       name="password"
                       type="password"
-                      placeholder={translate('key_password')}
+                      placeholder={translate("key_password")}
                       className="input-styles "
                       autoComplete="new-password"
                     />
@@ -215,7 +217,7 @@ export default function Register() {
                     <Field
                       name="confirmPassword"
                       type="password"
-                      placeholder={translate('key_confirm_password')}
+                      placeholder={translate("key_confirm_password")}
                       className="input-styles "
                       autoComplete="new-password"
                     />
@@ -233,13 +235,13 @@ export default function Register() {
                       />
                       <span className="checkbox-custom"></span>
                       <span>
-                        {translate('key_i_confirm')}{' '}
+                        {translate("key_i_confirm")}{" "}
                         <PrefetchLink
                           to="/privacy"
                           className="text-primary hover:underline"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          {translate('key_privacy_1')}
+                          {translate("key_privacy_1")}
                         </PrefetchLink>
                       </span>
                     </label>
@@ -254,14 +256,14 @@ export default function Register() {
                     type="submit"
                     // disabled={!captchaVerified}
                   >
-                    {translate('key_sign_up')}
+                    {translate("key_sign_up")}
                   </button>
                   <GoogleAuth />
                   <PrefetchLink
                     className="text-primary col-span-2 text-center hover:underline"
                     to="/login"
                   >
-                    {translate('key_already_have_account')}
+                    {translate("key_already_have_account")}
                   </PrefetchLink>
                   <div className="flex justify-center items-center mt-4 origin-top col-span-2">
                     <ReCAPTCHA
@@ -276,7 +278,7 @@ export default function Register() {
 
           {step === 2 && (
             <Formik
-              initialValues={{ email: '' }}
+              initialValues={{ email: "" }}
               validationSchema={emailSchema}
               onSubmit={(values) => {
                 handleSecondStepSubmit(values.email, registrationData, setStep);
@@ -284,9 +286,9 @@ export default function Register() {
             >
               {() => (
                 <SafeMotion
-                  initial={{ opacity: 0, transform: 'transate: -50px' }}
-                  animate={{ opacity: 1, transform: 'translateX(0)' }}
-                  exit={{ opacity: 0, transform: 'translateX(-50px)' }}
+                  initial={{ opacity: 0, transform: "transate: -50px" }}
+                  animate={{ opacity: 1, transform: "translateX(0)" }}
+                  exit={{ opacity: 0, transform: "translateX(-50px)" }}
                   transition={{ duration: 0.5 }}
                 >
                   <Form noValidate className="grid gap-6" autoComplete="email">
@@ -307,7 +309,7 @@ export default function Register() {
                     </label>
 
                     <button className="button-styles col-span-1" type="submit">
-                      {translate('key_confirm')}
+                      {translate("key_confirm")}
                     </button>
                   </Form>
                 </SafeMotion>
@@ -317,7 +319,7 @@ export default function Register() {
 
           {step === 3 && (
             <Formik
-              initialValues={{ confirmationCode: '' }}
+              initialValues={{ confirmationCode: "" }}
               onSubmit={(values) => handleThirdStepSubmit(values, setStep)}
               validationSchema={confirmationCodeSchema}
             >
@@ -325,9 +327,9 @@ export default function Register() {
                 <Form
                   as={SafeMotion}
                   className="grid grid-cols-1 gap-6"
-                  initial={{ opacity: 0, transform: 'transate: 50px' }}
-                  animate={{ opacity: 1, transform: 'translateX(0)' }}
-                  exit={{ opacity: 0, transform: 'translateX(50px)' }}
+                  initial={{ opacity: 0, transform: "transate: 50px" }}
+                  animate={{ opacity: 1, transform: "translateX(0)" }}
+                  exit={{ opacity: 0, transform: "translateX(50px)" }}
                   transition={{ duration: 0.5 }}
                 >
                   <div className="relative">
@@ -337,7 +339,7 @@ export default function Register() {
                       placeholder="Код подтверждения"
                       maxLength={6}
                       onInput={(e) => {
-                        e.target.value = e.target.value.replace(/\D/g, '');
+                        e.target.value = e.target.value.replace(/\D/g, "");
                       }}
                       className="input-styles letter-spacing"
                     />
@@ -354,7 +356,7 @@ export default function Register() {
                     </ErrorMessage>
                   </div>
                   <button className="button-styles mb-4" type="submit">
-                    {translate('key_end_registration')}
+                    {translate("key_end_registration")}
                   </button>
                 </Form>
               )}
@@ -363,22 +365,23 @@ export default function Register() {
           {step === 4 && (
             <SafeMotion
               className="flex flex-col items-center gap-4"
-              initial={{ opacity: 0, transform: 'transate: 50px' }}
-              animate={{ opacity: 1, transform: 'translateX(0)' }}
-              exit={{ opacity: 0, transform: 'translateX(50px)' }}
+              initial={{ opacity: 0, transform: "transate: 50px" }}
+              animate={{ opacity: 1, transform: "translateX(0)" }}
+              exit={{ opacity: 0, transform: "translateX(50px)" }}
               transition={{ duration: 0.5 }}
             >
               <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white text-4xl">
                 ✓
               </div>
               <p className="text-xl text-center">
-                {translate('key_success_registration')}
+                {translate("key_success_registration")}
               </p>
             </SafeMotion>
           )}
         </section>
+        {isMobile && <HelpButton />}
       </SafeMotion>
-      <HelpButton />
+      {!isMobile && <HelpButton />}
     </BgGradient>
   );
 }

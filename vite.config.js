@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import { chunkSplitPlugin } from 'vite-plugin-chunk-split';
+import { chunkSplitPlugin } from "vite-plugin-chunk-split";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 // import checker from 'vite-plugin-checker';
@@ -9,10 +9,9 @@ import viteCompression from "vite-plugin-compression";
 // import { analyzer } from 'vite-bundle-analyzer';
 import VitePreload from "vite-plugin-preload";
 import { VitePWA } from "vite-plugin-pwa";
-import { visualizer } from 'rollup-plugin-visualizer';
-import imp from 'vite-plugin-imp';
+// import { visualizer } from 'rollup-plugin-visualizer';
+import imp from "vite-plugin-imp";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
-
 
 const compressionOpts = {
   threshold: 10240,
@@ -22,37 +21,49 @@ export default defineConfig({
   plugins: [
     imp({
       libList: [
-        { libName: 'lodash-es', libDirectory: '', camel2DashComponentName: false },
-        { libName: 'date-fns', libDirectory: '', camel2DashComponentName: false },
-        { libName: 'react-icons', libDirectory: '', camel2DashComponentName: false },
-      ]
+        {
+          libName: "lodash-es",
+          libDirectory: "",
+          camel2DashComponentName: false,
+        },
+        {
+          libName: "date-fns",
+          libDirectory: "",
+          camel2DashComponentName: false,
+        },
+        {
+          libName: "react-icons",
+          libDirectory: "",
+          camel2DashComponentName: false,
+        },
+      ],
     }),
 
     tailwindcss(),
     react(),
     chunkSplitPlugin({
-      strategy: 'single-vendor',
+      strategy: "single-vendor",
     }),
-    visualizer({
-      filename: './dist/stats.html',
-      open: true,
-      gzipSize: true,
-      brotliSize: true,
-    }),
+    // visualizer({
+    //   filename: './dist/stats.html',
+    //   open: true,
+    //   gzipSize: true,
+    //   brotliSize: true,
+    // }),
     viteCompression({
       ...compressionOpts,
-      algorithm: 'brotliCompress',
-      ext: '.br',
+      algorithm: "brotliCompress",
+      ext: ".br",
       compressionOptions: { level: 11 },
     }),
     viteCompression({
       ...compressionOpts,
-      algorithm: 'gzip',
-      ext: '.gz',
+      algorithm: "gzip",
+      ext: ".gz",
     }),
 
     VitePWA({
-      registerType: 'autoUpdate',
+      registerType: "autoUpdate",
       devOptions: {
         enabled: true,
       },
@@ -105,31 +116,31 @@ export default defineConfig({
             src: "/icons/pwa-192x192.png",
             sizes: "192x192",
             type: "image/png",
-            purpose: "any maskable"
+            purpose: "any maskable",
           },
           {
             src: "/icons/pwa-512x512.png",
             sizes: "512x512",
             type: "image/png",
-            purpose: "any maskable"
-          }
+            purpose: "any maskable",
+          },
         ],
         screenshots: [
           {
             src: "/screenshots/app-mobile.png",
             sizes: "540x720",
             type: "image/png",
-            form_factor: "narrow"
+            form_factor: "narrow",
           },
           {
             src: "/screenshots/app-desktop.png",
             sizes: "1024x768",
             type: "image/png",
-            form_factor: "wide"
-          }
+            form_factor: "wide",
+          },
         ],
         categories: ["social", "communication"],
-      }
+      },
     }),
 
     // analyzer(),
@@ -141,8 +152,8 @@ export default defineConfig({
       webp: { quality: 75 },
     }),
     VitePreload({
-      rel: 'modulepreload',
-      include: ['**/*.js'],
+      rel: "modulepreload",
+      include: ["**/*.js"],
     }),
 
     // checker({ typescript: true, eslint: { lintCommand: 'eslint "src/**/*.{ts,tsx,js,jsx}"' } }),
@@ -177,10 +188,10 @@ export default defineConfig({
 
     rollupOptions: {
       output: {
-        entryFileNames: 'assets/[name].[hash].js',
-        chunkFileNames: 'assets/[name].[hash].js',
-        assetFileNames: 'assets/[name].[hash].[ext]'
-      }
-    }
+        entryFileNames: "assets/[name].[hash].js",
+        chunkFileNames: "assets/[name].[hash].js",
+        assetFileNames: "assets/[name].[hash].[ext]",
+      },
+    },
   },
 });
