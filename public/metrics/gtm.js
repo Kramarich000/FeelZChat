@@ -45,6 +45,10 @@
         })(window, document, "script", "dataLayer", "GTM-56S238T4");
 
         console.log("GTM успешно загружен");
+        window.gtag("event", "page_view", {
+          page_title: document.title,
+          page_location: window.location.href,
+        });
       } catch (error) {
         console.error("Ошибка при загрузке GTM:", error);
         setTimeout(tryLoad, delay * Math.pow(2, attempts));
