@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
-import { useResponsive } from "@hooks/useResponsive";
+// import { useResponsive } from "@hooks/useResponsive";
 export const showToast = (message, type = "success") => {
-  const { isMobile } = useResponsive();
+  // const { isMobile } = useResponsive();
 
   // if (isMobile) return;
 
