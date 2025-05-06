@@ -3,7 +3,7 @@ import { useResponsive } from "@hooks/useResponsive";
 export const showToast = (message, type = "success") => {
   const { isMobile } = useResponsive();
 
-  if (isMobile) return;
+  // if (isMobile) return;
 
   toast(message, {
     type,
