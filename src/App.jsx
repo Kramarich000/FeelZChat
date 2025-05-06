@@ -12,6 +12,7 @@ import translate from "@utils/translate";
 import SpotifyPlayer from "@components/SpotifyPlayer";
 import withMetaTags from "@metadata/Meta";
 import Header from "@components/Header";
+import { useResponsive } from "@hooks/useResponsive";
 
 const Register = lazy(() => import("@pages/Register"));
 const Login = lazy(() => import("@pages/Login"));
@@ -146,6 +147,7 @@ const routes = [
 ];
 
 function App() {
+  const { isMobile } = useResponsive();
   useEffect(() => {
     // requestPermissionForPushNotifications();
   }, []);
@@ -187,7 +189,11 @@ function App() {
         </main>
         {/* <SpotifyPlayer /> */}
       </ErrorBoundary>
-      <ToastContainer newestOnTop limit={10} />
+      <ToastContainer
+        toastClassName={`mx-auto mt-4 max-w-[90vw]`}
+        newestOnTop
+        limit={isMobile ? 1 : 10}
+      />
     </Router>
   );
 }
