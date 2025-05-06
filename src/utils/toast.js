@@ -1,11 +1,15 @@
+import MobileDetect from "mobile-detect";
 import { toast } from "react-toastify";
-// import { useResponsive } from "@hooks/useResponsive";
+
+const md = new MobileDetect(window.navigator.userAgent);
+const isMobileUA = Boolean(md.mobile());
+
+let currentToastId = null;
+
 export const showToast = (message, type = "success") => {
-  // const { isMobile } = useResponsive();
+  const isMobile = isMobileUA || window.innerWidth < 640;
 
-  // if (isMobile) return;
-
-  toast(message, {
+  const options = {
     type,
     autoClose: 5000,
     hideProgressBar: false,
@@ -15,5 +19,18 @@ export const showToast = (message, type = "success") => {
     theme: "dark",
     closeButton: false,
     pauseOnFocusLoss: false,
-  });
+  };
+
+  if (isMobile) {
+    if (currentToastId && toast.isActive(currentToastId)) {
+      toast.update(currentToastId, {
+        render: message,
+        ...options,
+      });
+    } else {
+      currentToastId = toast(message, options);
+    }
+  } else {
+    toast(message, options);
+  }
 };
