@@ -87,7 +87,7 @@ export default function Home() {
 
       {isModalOpen && (
         <SafeMotion
-          className="fixed z-9999 inset-0 p-4 bg-black bg-opacity-50 flex justify-center items-center"
+          className="fixed z-50 inset-0 p-4 bg-black bg-opacity-50 flex justify-center items-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

@@ -128,7 +128,7 @@ export default function Register() {
             {translate("key_app_name")}
           </h1>
         </PrefetchLink>
-        <section className="form-section text-[14px] sm:text-[16px] max-w-[650px] container bg-white p-4 sm:p-16 rounded-2xl border-b-primary border-b-8 z-999">
+        <section className="form-section text-[14px] sm:text-[16px] max-w-[650px] container bg-white p-4 sm:p-16 rounded-2xl border-b-primary border-b-8 z-50">
           <h2 className="text-2xl sm:text-3xl pb-2 sm:pb-10">
             {translate("key_register_1")}
           </h2>
@@ -161,7 +161,7 @@ export default function Register() {
                       name="surname"
                       type="text"
                       placeholder={translate("key_surname")}
-                      className="input-styles "
+                      className="input-styles"
                       autoComplete="family-name"
                     />
                     <ErrorMessage name="surname">

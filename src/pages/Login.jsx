@@ -41,7 +41,7 @@ export default function Login() {
             {translate("key_app_name")}
           </h1>
         </PrefetchLink>
-        <section className="form-section text-sm sm:text-[16px] max-w-[650px] container bg-white p-8 sm:p-16 rounded-2xl border-b-primary border-b-8 z-999">
+        <section className="form-section text-sm sm:text-[16px] max-w-[650px] container bg-white p-8 sm:p-16 rounded-2xl border-b-primary border-b-8 z-50">
           <h2 className="text-2xl sm:text-3xl pb-2 sm:pb-10">
             {translate("key_login_title")}
           </h2>
