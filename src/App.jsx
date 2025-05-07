@@ -36,7 +36,7 @@ const Page = ({ component: Component, title, description, url, locale }) => {
 
   return <TranslatedComponent />;
 };
-
+import CookieBanner from "@components/CookieBanner";
 // const requestPermissionForPushNotifications = () => {
 //   Notification.requestPermission().then((permission) => {
 //     if (permission === "granted") {
@@ -60,14 +60,14 @@ const Page = ({ component: Component, title, description, url, locale }) => {
 //     }
 //   });
 // };
-
+const baseUrl = "https://messenger-app-movb.onrender.com";
 const routes = [
   {
     path: "/register",
     component: Register,
     titleKey: "key_register_1",
     descriptionKey: "key_register_description",
-    url: "https://messenger-app-movb.onrender.com/register",
+    url: `${baseUrl}/register`,
     importFunc: () => import("@pages/Register"),
     locale: "key_page_locale",
   },
@@ -76,7 +76,7 @@ const routes = [
     component: Login,
     titleKey: "key_login_1",
     descriptionKey: "key_login_description",
-    url: "https://messenger-app-movb.onrender.com/login",
+    url: `${baseUrl}/login`,
     importFunc: () => import("@pages/Login"),
     locale: "key_page_locale",
   },
@@ -85,7 +85,7 @@ const routes = [
     component: Chat,
     titleKey: "key_chat",
     descriptionKey: "key_chat_description",
-    url: "https://messenger-app-movb.onrender.com/chat",
+    url: `${baseUrl}/chat`,
     importFunc: () => import("@pages/Chat"),
     locale: "key_page_locale",
   },
@@ -94,7 +94,7 @@ const routes = [
     component: Privacy,
     titleKey: "key_privacy",
     descriptionKey: "key_privacy_description",
-    url: "https://messenger-app-movb.onrender.com/privacy",
+    url: `${baseUrl}/privacy`,
     importFunc: () => import("@pages/Privacy"),
     locale: "key_page_locale",
   },
@@ -103,7 +103,7 @@ const routes = [
     component: Help,
     titleKey: "key_help",
     descriptionKey: "key_help_description",
-    url: "https://messenger-app-movb.onrender.com/help",
+    url: `${baseUrl}/help`,
     importFunc: () => import("@pages/Help"),
     locale: "key_page_locale",
   },
@@ -112,7 +112,7 @@ const routes = [
     component: Home,
     titleKey: "key_home",
     descriptionKey: "key_home_description",
-    url: "https://messenger-app-movb.onrender.com",
+    url: `${baseUrl}/`,
     importFunc: () => import("@pages/Home"),
     locale: "key_page_locale",
   },
@@ -121,7 +121,7 @@ const routes = [
     component: Profile,
     titleKey: "key_profile_1",
     descriptionKey: "key_profile_description",
-    url: "https://messenger-app-movb.onrender.com/profile",
+    url: `${baseUrl}/profile`,
     private: true,
     importFunc: () => import("@pages/Profile"),
     locale: "key_page_locale",
@@ -131,7 +131,7 @@ const routes = [
     component: ForgotPassword,
     titleKey: "key_reset_password",
     descriptionKey: "key_reset-password_description",
-    url: "https://messenger-app-movb.onrender.com/forgot-password",
+    url: `${baseUrl}/forgot-password`,
     importFunc: () => import("@pages/ForgotPassword"),
     locale: "key_page_locale",
   },
@@ -140,7 +140,7 @@ const routes = [
     component: Error404,
     titleKey: "key_error",
     descriptionKey: "key_error_description",
-    url: "https://messenger-app-movb.onrender.com/*",
+    url: `${baseUrl}/*`,
     importFunc: () => import("@errors/404"),
     locale: "key_page_locale",
   },
@@ -185,15 +185,16 @@ function App() {
                 />
               ))}
             </Routes>
+            <CookieBanner />
           </AnimatePresence>
         </main>
         {/* <SpotifyPlayer /> */}
+        <ToastContainer
+          toastClassName={`mx-auto mt-4 max-w-[90vw]`}
+          newestOnTop
+          limit={isMobile ? 1 : 10}
+        />
       </ErrorBoundary>
-      <ToastContainer
-        toastClassName={`mx-auto mt-4 max-w-[90vw]`}
-        newestOnTop
-        limit={isMobile ? 1 : 10}
-      />
     </Router>
   );
 }
