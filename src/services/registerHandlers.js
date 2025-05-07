@@ -22,7 +22,6 @@ export const handleFirstStepSubmit = (values, setStep, setRegistrationData) => {
     nickname: `${values.surname} ${values.name}`,
     birthdate: formatDate(values.date),
   };
-  console.log("partialData", partialData);
 
   setRegistrationData(partialData);
   setStep(2);

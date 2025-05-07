@@ -41,9 +41,9 @@ i18n.use(initReactI18next).init({
   },
   lng: lang,
   fallbackLng: "en",
-  detection: {
-    caches: ["localStorage"],
-  },
+  // detection: {
+  //   caches: ["localStorage"],
+  // },
   supportedLngs: ["en", "ru"],
   interpolation: {
     escapeValue: false,
