@@ -47,8 +47,8 @@ A cross-platform messaging application with AI-powered sentiment analysis. Suppo
 
 ## Requirements
 
-- Node.js >= 18
-- Yarn >= 3+
+- Node.js >= 18.20.7
+- Yarn >= 3.0.0
 
 ## How to Run
 
