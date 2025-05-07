@@ -8,18 +8,18 @@ export default async function scrapeText() {
   });
 
   const page = await browser.newPage();
-
+  const baseUrl = "https://messenger-app-movb.onrender.com";
   const urls = [
-    "https://messenger-app-movb.onrender.com/",
-    "https://messenger-app-movb.onrender.com/login",
-    "https://messenger-app-movb.onrender.com/chat",
-    "https://messenger-app-movb.onrender.com/contacts",
-    "https://messenger-app-movb.onrender.com/forgot-password",
-    "https://messenger-app-movb.onrender.com/privacy",
-    "https://messenger-app-movb.onrender.com/settings",
-    "https://messenger-app-movb.onrender.com/profile",
-    "https://messenger-app-movb.onrender.com/notifications",
-    "https://messenger-app-movb.onrender.com/help",
+    `${baseUrl}/`,
+    `${baseUrl}/login`,
+    `${baseUrl}/chat`,
+    `${baseUrl}/contacts`,
+    `${baseUrl}/forgot-password`,
+    `${baseUrl}/privacy`,
+    `${baseUrl}/settings`,
+    `${baseUrl}/profile`,
+    `${baseUrl}/notifications`,
+    `${baseUrl}/help`,
   ];
 
   const allTexts = {};
