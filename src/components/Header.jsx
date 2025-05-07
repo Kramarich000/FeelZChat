@@ -22,7 +22,7 @@ export default function Header() {
           group
         "
       >
-        <div className=" mx-auto flex justify-between items-center relative overflow-hidden">
+        <div className="mx-auto flex justify-between items-center relative overflow-hidden">
           <PrefetchLink
             className="block order-0"
             to="/"

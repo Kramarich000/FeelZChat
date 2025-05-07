@@ -9,9 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import FallbackComponent from "@components/FallbackComponent";
 import PrivateRoute from "@components/PrivateRoute";
 import translate from "@utils/translate";
-import SpotifyPlayer from "@components/SpotifyPlayer";
 import withMetaTags from "@metadata/Meta";
-import Header from "@components/Header";
 import { useResponsive } from "@hooks/useResponsive";
 
 const Register = lazy(() => import("@pages/Register"));
@@ -188,7 +186,6 @@ function App() {
             <CookieBanner />
           </AnimatePresence>
         </main>
-        {/* <SpotifyPlayer /> */}
         <ToastContainer
           toastClassName={`mx-auto mt-4 max-w-[90vw]`}
           newestOnTop

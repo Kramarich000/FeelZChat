@@ -1,10 +1,11 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
+import useLocalStorage from "@hooks/useLocalStorage";
 
 const PrivateRoute = ({ children }) => {
-  const token = localStorage.getItem('access_token');
-  const expiresAt = Number(localStorage.getItem('expires_at'));
+  const [token] = useLocalStorage("access_token", null);
+  const [expiresAt] = useLocalStorage("expires_at", null);
 
-  const isTokenValid = token && Date.now() < expiresAt;
+  const isTokenValid = token && Date.now() < Number(expiresAt);
 
   return isTokenValid ? children : <Navigate to="/login" />;
 };
