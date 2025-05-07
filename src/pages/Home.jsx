@@ -12,6 +12,7 @@ import VideoFrame from "@components/VideoFrame";
 // import { ItemIndicator } from '@radix-ui/react-select';
 import { SafeMotion } from "@components/SafeMotion";
 import PrefetchLink from "@components/PrefetchLink";
+import useLocalStorage from "@hooks/useLocalStorage";
 const features = [
   {
     title: translate("key_emotion_analysis"),
@@ -35,7 +36,7 @@ const features = [
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-
+  const [hasVisited, setHasVisited] = useLocalStorage();
   useEffect(() => {
     const hasVisited = localStorage.getItem("hasVisited");
 
@@ -85,7 +86,7 @@ export default function Home() {
         </SafeMotion>
       </div>
 
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <SafeMotion
           className="fixed z-50 inset-0 p-4 bg-black bg-opacity-50 flex justify-center items-center"
           initial={{ opacity: 0 }}
@@ -108,7 +109,7 @@ export default function Home() {
             </button>
           </div>
         </SafeMotion>
-      )}
+      )} */}
 
       <section className="p-6 items-center gap-5 flex flex-col w-full justify-center bg-gray-900 mx-auto">
         <h2 className="text-white text-3xl sm:text-4xl font-bold">

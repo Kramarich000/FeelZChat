@@ -32,7 +32,7 @@ git clone "https://github.com/Kramarich000/messenger-app"
 cd messenger-app
 yarn install
 yarn dev
-
+```
 
 
 ## Используемые библиотеки:
