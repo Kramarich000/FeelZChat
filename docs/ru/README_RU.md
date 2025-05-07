@@ -1,10 +1,7 @@
-#README: Messenger App
-[![Build Status](https://img.shields.io/github/actions/workflow/status/Kramarich000/messenger-app/ci.yml)](https://github.com/Kramarich000/messenger-app/actions) [![Coverage](https://img.shields.io/codecov/c/gh/Kramarich000/messenger-app)](https://codecov.io/gh/Kramarich000/messenger-app)
-Last commit:
-[![GitHub last commit](https://img.shields.io/github/last-commit/Kramarich000/messenger-app)](https://github.com/Kramarich000/messenger-app)
+# FeelZChat
+Кроссплатформенное приложение для обмена сообщениями с анализом настроений на основе искусственного интеллекта. Поддерживает соответствие GDPR и отзывчивый дизайн.
 
-Issues:
-[![Issues](https://img.shields.io/github/issues/Kramarich000/messenger-app)](https://github.com/Kramarich000/messenger-app/issues)
+---
 
 ## Содержание
 1. О проекте
@@ -14,6 +11,8 @@ Issues:
 5. Как запустить
 6. License
 
+---
+
 ## О проекте
 
 - Мессенжер для корпоративного и массового использования с ИИ для определения эмоциональной окраски текста.
@@ -21,21 +20,27 @@ Issues:
 - Серверная часть: Ruby on Rails.
 - Хранение данных: PostgreSQL.
 - Интеграция с внешними API для ИИ-аналитики (ML-модель для анализа тональности).
-- Полное соответствие GDPR (cookie-баннер, granular consent, политика конфиденциальности, удаление данных).
+- Полное соответствие GDPR (cookie-баннер, гранулированное согласие, политика конфиденциальности, удаление данных).
+
+---
 
 ## Превью
 
 ![Скриншот приложения](./screenshots/main-interface.png)
+
+---
 
 ## Возможности
 
 - Регистрация и вход с валидацией (email, пароль, OTP)
 - Отправка и получение текстовых сообщений 
 - Определение эмоциональной окраски сообщений (на базе ML-модели)
-- Cookie-баннер с granular consent.
-- Политика конфиденциальности и пользовательское соглашени (GDPR-совместимые).
+- Cookie-баннер с гранулированным согласием.
+- Политика конфиденциальности и пользовательское соглашениe (GDPR-совместимые).
 - Загрузка аналитики только при согласии пользователя
 - Полностью адаптивная верстка для мобильных и десктопов.
+
+---
 
 ## Работа с персональными данными
 
@@ -44,19 +49,25 @@ Issues:
 - Cookie-файлы используются только по согласию пользователя
 - Реализована возможность удаления данных пользователя
 
+---
+
 ## Используемые технологии
 
 - React / JS / Vite
 - TailwindCSS
-- ML: Python-скрипты для анализа тональности через REST API.
+- ML: Python-скрипты для анализа тональности через FastAPI.
 - Google Tag Manager (опционально, по согласию)
+
+---
 
 ## Требования
 
 - Node.js >= 18
-- Yarn >= 1.22
+- Yarn >= 3+
 
 ## Как запустить
+
+---
 
 # dev mode
 ```bash
@@ -65,13 +76,17 @@ cd messenger-app
 yarn install
 yarn dev
 ```
-# prod mode
+# prod mode (требует предварительной сборки)
 ```bash
 git clone "https://github.com/Kramarich000/messenger-app"
 cd messenger-app
 yarn install
+yarn build
 yarn preview
 ```
-Список зависимостей: [docs/used-libraries.md](./docs/used-libraries.md)
 
-[MIT License](https://opensource.org/licenses/MIT)
+---
+
+Список зависимостей: [docs/lib/used-libraries.md](./docs/used-libraries.md)
+
+Лицензия: [License](https://github.com/Kramarich000/messenger-app/blob/main/docs/ru/LICENSE_RU.md)
