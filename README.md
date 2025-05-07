@@ -1,7 +1,7 @@
 # FeelZChat 
 A cross-platform messaging application with AI-powered sentiment analysis. Supports GDPR compliance and responsive design.
 
-[English](docs/en/README_en.md) | [Русский](docs/ru/README_ru.md)
+[English](docs/en/README_EN.md) | [Русский](docs/ru/README_RU.md)
 
 ---
 
