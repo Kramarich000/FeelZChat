@@ -8,7 +8,6 @@ export const handleLoginSubmit = async (values, navigate) => {
       password: values.password,
     },
   };
-  console.log("login payload", payload);
 
   try {
     const response = await api.post("/auth/login", payload, {
