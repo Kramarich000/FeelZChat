@@ -4,10 +4,13 @@ import { loadAnalytics } from "@services/loadAnalytics";
 import useLocalStorage from "@hooks/useLocalStorage";
 import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
+// import CookieBannerBg from '@assets/images/cookieBannerBg.svg?react';
 import cookieBannerBg from "@assets/images/cookieBannerBg.svg";
 import { FaCookieBite } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import Modal from "react-modal";
+import CustomCheckbox from "@components/CustomCheckbox";
+import { motion } from "framer-motion";
 
 Modal.setAppElement("#root");
 
@@ -20,27 +23,18 @@ export default function CookieBanner() {
   );
 
   useEffect(() => {
-    console.log("consent", typeof consent);
-    console.log("analyticsEnabled", typeof analyticsEnabled);
-    console.log("consent", consent);
-    console.log("analyticsEnabled", analyticsEnabled);
-    if (consent === "true" && analyticsEnabled === true) {
+    if (consent === true && analyticsEnabled === true) {
       loadAnalytics();
     }
   }, [consent, analyticsEnabled]);
 
   useEffect(() => {
-    if (consent === null || consent === "false") {
+    if (consent === false) {
       setAnalyticsEnabled(false);
     }
   }, [consent]);
-  const handleAcceptCookies = () => {
-    setConsent("true");
-  };
-
-  const handleDeclineCookies = () => {
-    setConsent("false");
-  };
+  const handleAcceptCookies = () => setConsent(true);
+  const handleDeclineCookies = () => setConsent(false);
 
   const handleShowModal = () => {
     setIsOpen(true);
@@ -50,19 +44,18 @@ export default function CookieBanner() {
     setIsOpen(false);
   };
 
-  const handleToggleAnalytics = (event) => {
-    setAnalyticsEnabled(event.target.checked);
+  const handleToggleAnalytics = ({ checked }) => {
+    setAnalyticsEnabled(checked);
   };
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {consent === null && (
         <div
           key="cookie-banner"
           className="fixed w-full inset-x-0 bottom-0 flex justify-center px-4 z-52 lg:z-40"
           role="dialog"
           aria-modal="true"
-          on
         >
           <SafeMotion
             className="overflow-hidden relative flex text-sm sm:text-base max-w-[1280px] flex-col justify-center border-b-8 border-primary items-center bg-white m-0 mb-2 sm:m-4 p-2 sm:p-6 rounded-2xl shadow-lg"
@@ -79,11 +72,11 @@ export default function CookieBanner() {
             }}
           >
             <p className="text-center text-[12px] sm:text-[14px]">
-              Мы используем файлы cookie{" "}
-              <FaCookieBite size={20} className="inline text-primary" /> и
+              Мы используем файлы cookie
+              <FaCookieBite size={20} className="inline mr-1 text-primary" /> и
               собираем персональные данные для улучшения сайта и анализа
               трафика. Продолжая использовать сайт, вы соглашаетесь с обработкой
-              данных.{" "}
+              данных.
               <PrefetchLink
                 className="text-primary hover:underline"
                 to="/privacy"
@@ -91,7 +84,8 @@ export default function CookieBanner() {
                 Политика конфиденциальности
               </PrefetchLink>
             </p>
-
+            {/* <CookieBannerBg className="absolute right-[-20px] bottom-[-20px] w-18 sm:w-20 " />
+            <CookieBannerBg className="absolute right-[40px] bottom-[-30px] w-18 sm:w-20 " /> */}
             <img
               src={cookieBannerBg}
               className="absolute right-[-20px] bottom-[-20px] w-18 sm:w-20 "
@@ -106,13 +100,13 @@ export default function CookieBanner() {
 
             <div className="flex flex-col xs:flex-row mt-3 items-center">
               <button
-                className="sm:max-w-[200px] order-1 xs:order-0 m-2 !text-primary hover:!text-white !border-2 !border-primary transition rounded-xl px-4 py-2"
+                className="flex items-center justify-center w-[140px] h-[40px] order-1 xs:order-0 m-2 !text-primary hover:!text-white !border-2 !border-primary transition rounded-xl px-4 py-2"
                 onClick={handleDeclineCookies}
               >
                 Отклонить
               </button>
               <button
-                className="sm:max-w-[200px] m-2 bg-primary transition rounded-xl px-4 py-2 z-2"
+                className="flex items-center justify-center w-[140px] h-[40px] order-0 xs:order-0 bg-primary m-2 transition rounded-xl px-4 py-2 z-4"
                 onClick={handleAcceptCookies}
               >
                 Принять
@@ -129,60 +123,70 @@ export default function CookieBanner() {
             </div>
           </SafeMotion>
         </div>
-      )}
+      )}{" "}
       <Modal
         isOpen={isOpen}
         onRequestClose={handleCloseModal}
         contentLabel="Настройки конфиденциальности"
-        style={{
-          overlay: {
-            backgroundColor: "rgba(0, 0, 0, 0.7)",
-          },
-          content: {
-            top: "50%",
-            left: "50%",
-            right: "auto",
-            bottom: "auto",
-            marginRight: "-50%",
-            transform: "translate(-50%, -50%)",
-            padding: "20px",
-            border: "1px solid #ccc",
-            background: "#fff",
-            borderRadius: "8px",
-          },
-        }}
+        className="flex justify-center items-center"
       >
-        <h2>Настройки конфиденциальности</h2>
-        <p>
-          Вы можете выбрать, какие типы сбора данных разрешены для работы на
-          сайте.
-        </p>
-        <div className="mt-4">
-          <label>
-            <input type="checkbox" checked={true} disabled className="mr-2" />
-            <span>Обязательные файлы cookie (необходимы для работы сайта)</span>
-          </label>
-        </div>
-        <div className="mt-4">
-          <label>
-            <input
-              type="checkbox"
-              checked={analyticsEnabled}
-              onChange={handleToggleAnalytics}
-              className="mr-2"
-            />
-            <span>
-              Согласие на использование аналитики (Google Analytics, Yandex
-              Metrics, Hotjar)
-            </span>
-          </label>
-        </div>
-        <button
-          onClick={handleCloseModal}
-          className="mt-4 bg-primary text-white px-4 py-2 rounded"
+        <SafeMotion
+          className="bg-white p-8 max-w-[600px] mx-auto border-b-8 overflow-hidden border-primary rounded-4xl"
+          initial={{ transform: "translateY(-300px)", opacity: 0 }}
+          animate={{ transform: "translateY(300px)", opacity: 1 }}
+          exit={{ transform: "translateY(-300px)", opacity: 0 }}
+          transition={{ duration: 0.2 }}
         >
-          Сохранить
-        </button>
+          <img
+            src={cookieBannerBg}
+            className="absolute right-[-20px] bottom-[-20px] w-18 sm:w-20 "
+            alt=""
+          />
+
+          <img
+            src={cookieBannerBg}
+            className="absolute right-[40px] bottom-[-30px] w-18 sm:w-20 "
+            alt=""
+          />
+          <h2>Настройки конфиденциальности</h2>
+          <p>
+            Вы можете выбрать, какие типы сбора данных разрешены для работы на
+            сайте.
+          </p>
+          <div className="mt-4 mr-auto">
+            <label className="flex justify-start items-start">
+              <CustomCheckbox
+                disabled={true}
+                checkedCookie={true}
+                className="mr-2"
+              />
+              <span>
+                Обязательные файлы cookie (необходимы для работы сайта)
+              </span>
+            </label>
+          </div>
+          <div className="mt-4 mr-auto">
+            <label className="flex">
+              <CustomCheckbox
+                disabled={false}
+                checkedCookie={analyticsEnabled}
+                onChange={handleToggleAnalytics}
+                className="mr-2"
+              />
+
+              <span>
+                Согласие на использование аналитики (Google Analytics, Yandex
+                Metrics, Hotjar)
+              </span>
+            </label>
+          </div>
+          <button
+            onClick={handleCloseModal}
+            className="mt-4 bg-primary text-white px-4 py-2 rounded"
+          >
+            Сохранить
+          </button>
+        </SafeMotion>
       </Modal>
     </AnimatePresence>
   );

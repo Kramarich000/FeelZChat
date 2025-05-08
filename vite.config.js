@@ -13,6 +13,9 @@ import { VitePWA } from "vite-plugin-pwa";
 import imp from "vite-plugin-imp";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import legacy from "@vitejs/plugin-legacy";
+import removeConsole from "vite-plugin-remove-console";
+
+import svgr from "vite-plugin-svgr";
 
 const compressionOpts = {
   threshold: 10240,
@@ -20,12 +23,16 @@ const compressionOpts = {
 };
 export default defineConfig({
   plugins: [
-    tailwindcss(),
     react(),
+    tailwindcss(),
     legacy({
       targets: ["defaults", "not IE 11"],
       additionalLegacyPolyfills: ["regenerator-runtime/runtime"],
     }),
+    removeConsole({
+      exclude: ["error", "warn"],
+    }),
+    svgr(),
     imp({
       libList: [
         {
@@ -64,6 +71,17 @@ export default defineConfig({
       ...compressionOpts,
       algorithm: "gzip",
       ext: ".gz",
+    }),
+    ViteImageOptimizer({
+      jpeg: { quality: 75 },
+      png: { quality: 75 },
+      svg: { multipass: true },
+      gif: { optimizationLevel: 3 },
+      webp: { quality: 75 },
+    }),
+    VitePreload({
+      rel: "modulepreload",
+      include: ["**/*.js"],
     }),
 
     VitePWA({
@@ -148,33 +166,6 @@ export default defineConfig({
     }),
 
     // analyzer(),
-    ViteImageOptimizer({
-      jpeg: { quality: 75 },
-      png: { quality: 75 },
-      svg: { multipass: true },
-      gif: { optimizationLevel: 3 },
-      webp: { quality: 75 },
-    }),
-    VitePreload({
-      rel: "modulepreload",
-      include: ["**/*.js"],
-    }),
-    {
-      name: "inject-suppress-console",
-      apply: "build",
-      transformIndexHtml: {
-        enforce: "pre",
-        transform(html) {
-          return html;
-        },
-        inject: [
-          {
-            tag: "script",
-            attrs: { type: "module", src: "/disableErrors.js" },
-          },
-        ],
-      },
-    },
 
     // checker({ typescript: true, eslint: { lintCommand: 'eslint "src/**/*.{ts,tsx,js,jsx}"' } }),
   ],

@@ -27,6 +27,7 @@ import HelpButton from "@components/HelpButton";
 import useRecaptchaLanguage from "@hooks/useRecaptchaLanguage";
 import { useResponsive } from "@hooks/useResponsive";
 import { useLockBodyScroll } from "@hooks/useLockBodyScroll";
+import CustomCheckbox from "@components/CustomCheckbox";
 
 export default function Register() {
   const [step, setStep] = useState(1);
@@ -229,13 +230,17 @@ export default function Register() {
                   </div>
 
                   <div className="col-span-2 relative">
-                    <label className="flex items-center space-x-2 justify-center cursor-pointer">
-                      <Field
-                        type="checkbox"
-                        name="agreement"
-                        className="hidden "
-                      />
-                      <span className="checkbox-custom"></span>
+                    <label className="flex items-center space-x-2 justify-center">
+                      <Field name="agreement">
+                        {({ field, form }) => (
+                          <CustomCheckbox
+                            checkedCookie={field.value}
+                            onChange={(e) =>
+                              form.setFieldValue("agreement", e.checked)
+                            }
+                          />
+                        )}
+                      </Field>
                       <span>
                         {translate("key_i_confirm")}{" "}
                         <PrefetchLink
@@ -247,6 +252,7 @@ export default function Register() {
                         </PrefetchLink>
                       </span>
                     </label>
+
                     <ErrorMessage name="agreement">
                       {(msg) => <AnimatedError msg={msg} centered />}
                     </ErrorMessage>

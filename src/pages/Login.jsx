@@ -1,5 +1,4 @@
 import BgGradient from "@components/BgGradient";
-import { BsQuestionSquareFill } from "react-icons/bs";
 import GoogleAuth from "@components/GoogleAuth";
 import { loginSchema } from "@validate/loginSchema";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -13,6 +12,7 @@ import useRecaptchaLanguage from "@hooks/useRecaptchaLanguage";
 import { SafeMotion } from "@components/SafeMotion";
 import useMediaQuery from "@hooks/useMediaQuery";
 import { useLockBodyScroll } from "@hooks/useLockBodyScroll";
+import CustomCheckbox from "@components/CustomCheckbox";
 
 export default function Login() {
   const isMobile = useMediaQuery("(max-width: 639px)");
@@ -85,18 +85,24 @@ export default function Login() {
                     {(msg) => <AnimatedError msg={msg} variant="login" />}
                   </ErrorMessage>
                 </label>
+
                 <label className="flex items-center space-x-2 justify-center col-span-2">
-                  <Field
-                    type="checkbox"
-                    name="remember"
-                    className="form-checkbox hidden"
-                  />
-                  <span className="checkbox-custom"></span>
+                  <Field name="remember">
+                    {({ field, form }) => (
+                      <CustomCheckbox
+                        checkedCookie={field.value}
+                        onChange={(e) =>
+                          form.setFieldValue("remember", e.checked)
+                        }
+                      />
+                    )}
+                  </Field>
                   <span>
                     {translate("key_remember_me")}{" "}
                     <PrefetchLink
                       to="/privacy"
                       className="text-primary hover:underline text-center"
+                      onClick={(e) => e.stopPropagation()}
                     ></PrefetchLink>
                   </span>
                 </label>

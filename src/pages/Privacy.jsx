@@ -2,6 +2,7 @@ import Header from "@components/Header";
 import Footer from "@components/Footer";
 import translate from "../utils/translate";
 import { SafeMotion } from "@components/SafeMotion";
+
 export default function Privacy() {
   const Section = ({ titleKey, children }) => (
     <div className="space-y-4">
@@ -138,8 +139,14 @@ export default function Privacy() {
       className: "text-gray-600 text-sm",
     },
     {
-      content: translate("key_complaint_procedure"),
-      className: "text-gray-600 text-sm",
+      content: (
+        <span className="text-gray-600 text-sm">
+          {translate("key_complaint_procedure").replace(
+            "https://pd.rkn.gov.ru ",
+            `<a href="${translate("key_rkn_link")}" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline focus:underline">${translate("key_rkn_text")}</a>`,
+          )}
+        </span>
+      ),
     },
   ];
 
@@ -147,36 +154,36 @@ export default function Privacy() {
     {
       content: (
         <a
-          className="text-primary hover:underline"
-          href={translate("key_google_analytics")}
+          className="text-primary hover:underline focus:underline"
+          href={translate("key_google_analytics_policy_link")}
           target="_blank"
           rel="noopener noreferrer"
         >
-          Google Analytics Privacy Policy
+          {translate("key_google_analytics_policy_text")}
         </a>
       ),
     },
     {
       content: (
         <a
-          className="text-primary hover:underline"
-          href={translate("key_hotjar")}
+          className="text-primary hover:underline focus:underline"
+          href={translate("key_hotjar_policy_link")}
           target="_blank"
           rel="noopener noreferrer"
         >
-          Hotjar Privacy Policy
+          {translate("key_hotjar_policy_text")}
         </a>
       ),
     },
     {
       content: (
         <a
-          className="text-primary hover:underline"
-          href={translate("key_yandex_metrica")}
+          className="text-primary hover:underline focus:underline"
+          href={translate("key_yandex_metrica_policy_link")}
           target="_blank"
           rel="noopener noreferrer"
         >
-          Yandex.Metrica Privacy Notice
+          {translate("key_yandex_metrica_policy_text")}
         </a>
       ),
     },
@@ -185,7 +192,7 @@ export default function Privacy() {
         <>
           {translate("key_google_analytics_opt_out_text")}
           <a
-            className="text-primary hover:underline"
+            className="text-primary hover:underline focus:underline"
             href={translate("key_google_analytics_opt_out_link")}
             target="_blank"
             rel="noopener noreferrer"
@@ -200,7 +207,7 @@ export default function Privacy() {
         <>
           {translate("key_hotjar_do_not_text")}
           <a
-            className="text-primary hover:underline"
+            className="text-primary hover:underline focus:underline"
             href={translate("key_hotjar_do_not_link")}
             target="_blank"
             rel="noopener noreferrer"
@@ -215,7 +222,7 @@ export default function Privacy() {
         <>
           {translate("key_roskomnadzor_tools_text")}
           <a
-            className="text-primary hover:underline"
+            className="text-primary hover:underline focus:underline"
             href={translate("key_roskomnadzor_tools_link")}
             target="_blank"
             rel="noopener noreferrer"
@@ -228,7 +235,26 @@ export default function Privacy() {
     {
       content: (
         <p className="text-gray-600 mt-2 text-sm">
-          {translate("key_third_party_warning")}
+          {translate("key_third_party_disclaimer")}
+        </p>
+      ),
+    },
+    {
+      content: (
+        <p className="text-gray-600 mt-2 text-sm">
+          {translate("key_third_party_instructions")
+            .replace(
+              "{key_chrome_dnt_link}",
+              `<a href="${translate("key_chrome_dnt_link")}" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline focus:underline">${translate("key_chrome_dnt_link_text")}</a>`,
+            )
+            .replace(
+              "{key_firefox_dnt_link}",
+              `<a href="${translate("key_firefox_dnt_link")}" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline focus:underline">${translate("key_firefox_dnt_link_text")}</a>`,
+            )
+            .replace(
+              "{key_safari_dnt_link}",
+              `<a href="${translate("key_safari_dnt_link")}" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline focus:underline">${translate("key_safari_dnt_link_text")}</a>`,
+            )}
         </p>
       ),
     },

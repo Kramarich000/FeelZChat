@@ -79,6 +79,7 @@
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-image-optimizer": "^1.0.0",
     "vite-plugin-imp": "^2.4.0",
+    "vite-plugin-svgr": "^4.3.0",
     "yup": "^1.6.1"
   },
   "devDependencies": {
@@ -110,6 +111,7 @@
     "vite": "^6.3.4",
     "vite-plugin-preload": "^0.4.2",
     "vite-plugin-pwa": "^1.0.0",
+    "vite-plugin-remove-console": "^2.2.0",
     "vitest": "^3.1.2",
     "webpack-bundle-analyzer": "^4.10.2",
     "workbox-build": "^7.3.0"
