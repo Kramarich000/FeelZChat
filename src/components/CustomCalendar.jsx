@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/themes/dark.css";
 import { Russian } from "flatpickr/dist/l10n/ru";

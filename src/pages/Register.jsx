@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import BgGradient from "@components/BgGradient";
 import CustomCalendar from "@components/CustomCalendar";
 import { useNavigate } from "react-router-dom";

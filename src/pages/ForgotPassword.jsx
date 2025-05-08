@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import BgGradient from "@components/BgGradient";
 import { useNavigate } from "react-router-dom";
 import { motion, transform } from "framer-motion";

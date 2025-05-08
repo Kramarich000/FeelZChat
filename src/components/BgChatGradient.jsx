@@ -1,15 +1,15 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { useSpring, animated } from 'react-spring';
-import useEmotionGradient from '@hooks/useEmotionGradient';
-import useLocalStorage from '@hooks/useLocalStorage';
+import { useEffect, useMemo, useState } from "react";
+import { useSpring, animated } from "react-spring";
+import useEmotionGradient from "@hooks/useEmotionGradient";
+import useLocalStorage from "@hooks/useLocalStorage";
 
 export default function BgChatGradient({ aggregated, children }) {
   const { gradient: currentGradient, textColor: currentTextColor } =
     useEmotionGradient(aggregated);
 
-  const [storedGradient, setStoredGradient] = useLocalStorage('chatGradient', {
-    gradient: '',
-    textColor: '#ffffff',
+  const [storedGradient, setStoredGradient] = useLocalStorage("chatGradient", {
+    gradient: "",
+    textColor: "#ffffff",
   });
   const [displayedGradient, setDisplayedGradient] = useState(
     storedGradient.gradient,
@@ -49,13 +49,13 @@ export default function BgChatGradient({ aggregated, children }) {
 
   const layerStyle = useMemo(
     () => ({
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      backgroundSize: '300% 300%',
-      filter: 'blur(20px)',
-      transition: 'filter 1.2s ease, background-image 1.2s ease',
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      backgroundSize: "300% 300%",
+      filter: "blur(20px)",
+      transition: "filter 1.2s ease, background-image 1.2s ease",
       animation:
-        'moveGradient 8s ease-in-out infinite, rotateGradient 12s ease-in-out infinite',
+        "moveGradient 8s ease-in-out infinite, rotateGradient 12s ease-in-out infinite",
     }),
     [],
   );
@@ -63,14 +63,14 @@ export default function BgChatGradient({ aggregated, children }) {
   return (
     <div
       className="bg-chat-gradient-container z-0 absolute w-full h-full"
-      style={{ color: displayedTextColor, transition: 'color 1.2s ease' }}
+      style={{ color: displayedTextColor, transition: "color 1.2s ease" }}
     >
       <div
         className="gradient-layer base absolute inset-0 z-0"
         style={{
           ...layerStyle,
           backgroundImage: displayedGradient,
-          mixBlendMode: 'screen',
+          mixBlendMode: "screen",
         }}
       />
       <animated.div
@@ -78,7 +78,7 @@ export default function BgChatGradient({ aggregated, children }) {
         style={{
           ...layerStyle,
           backgroundImage: currentGradient,
-          mixBlendMode: 'overlay',
+          mixBlendMode: "overlay",
           opacity: fadeInStyle.opacity,
         }}
       />
