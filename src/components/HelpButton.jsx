@@ -8,7 +8,7 @@ export default function HelpButton() {
       initial={{ opacity: 0, transform: "translateY(50px)" }}
       animate={{ opacity: 1, transform: "translateY(0)" }}
       transition={{ duration: 0.5 }}
-      className="help-btn-container !p-0 sm:absolute bottom-[10px] left-[12px] sm:bottom-[40px] sm:left-[40px] z-50 hover:border-black transition-colors bg-amber-50 border-primary border-b-8 rounded-4xl"
+      className="help-btn-container !p-0 sm:absolute bottom-[10px] left-[12px] sm:bottom-[40px] sm:left-[40px] z-50 lg:z-40 2xl:z-50 hover:border-black transition-colors bg-amber-50 border-primary border-b-8 rounded-4xl"
     >
       <PrefetchLink
         className="flex items-center justify-center gap-5 p-3"

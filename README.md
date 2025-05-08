@@ -12,9 +12,9 @@ Commercial use is prohibited without the author's permission.
 
 [Читать на русском (ru)](docs/ru/LICENSE_RU.md)
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/Kramarich000/messenger-app/ci.yml)](https://github.com/Kramarich000/messenger-app/actions)
-[![GitHub last commit](https://img.shields.io/github/last-commit/Kramarich000/messenger-app)](https://github.com/Kramarich000/messenger-app)
-[![Issues](https://img.shields.io/github/issues/Kramarich000/messenger-app)](https://github.com/Kramarich000/messenger-app/issues)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/Kramarich000/FeelZChat/ci.yml)](https://github.com/Kramarich000/FeelZChat/actions)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Kramarich000/FeelZChat/commits/main)](https://github.com/Kramarich000/FeelZChat/commits/main)
+[![Issues](https://img.shields.io/github/issues/Kramarich000/FeelZChat)](https://github.com/Kramarich000/FeelZChat/issues)
 
 
 

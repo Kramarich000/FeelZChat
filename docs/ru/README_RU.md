@@ -71,15 +71,15 @@
 
 # dev mode
 ```bash
-git clone "https://github.com/Kramarich000/messenger-app"
-cd messenger-app
+git clone "https://github.com/Kramarich000/FeelZChat"
+cd FeelZChat
 yarn install
 yarn dev
 ```
 # prod mode (требует предварительной сборки)
 ```bash
-git clone "https://github.com/Kramarich000/messenger-app"
-cd messenger-app
+git clone "https://github.com/Kramarich000/FeelZChat"
+cd FeelZChat
 yarn install
 yarn build
 yarn preview
@@ -89,4 +89,4 @@ yarn preview
 
 Список зависимостей: [docs/lib/used-libraries.md](./docs/used-libraries.md)
 
-Лицензия: [License](https://github.com/Kramarich000/messenger-app/blob/main/docs/ru/LICENSE_RU.md)
+Лицензия: [License](https://github.com/Kramarich000/FeelZChat/blob/main/docs/ru/LICENSE_RU.md)

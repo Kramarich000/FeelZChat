@@ -52,4 +52,4 @@
 
 Если вы используете или развиваете этот проект, просим указывать следующее уведомление:
 
-> Kramarich (2025). *FeelZChat*. [GitHub Репозиторий](https://github.com/Kramarich000/messenger-app). Лицензия: [Персональная Некоммерческая Лицензия](https://github.com/Kramarich000/messenger-app/blob/main/docs/ru/LICENSE_RU.md)
+> Kramarich (2025). *FeelZChat*. [GitHub Репозиторий](https://github.com/Kramarich000/FeelZChat). Лицензия: [Персональная Некоммерческая Лицензия](https://github.com/Kramarich000/FeelZChat/blob/main/docs/ru/LICENSE_RU.md)

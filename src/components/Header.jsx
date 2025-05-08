@@ -20,6 +20,18 @@ export default function Header() {
           rounded-4xl p-5 min-h-[100px]
           transition-all 
           group
+          before:absolute
+          before:inset-0
+          before:bg-gradient-to-b
+          before:from-white
+          before:via-[rgba(255,255,255,0.9)]
+          before:to-[rgba(14,116,144,0.75)]
+          before:opacity-0
+          before:transition-opacity
+          before:duration-600
+          before:ease-in-out
+          before:z-[-1]
+          hover:before:opacity-100
         "
       >
         <div className="mx-auto flex justify-between items-center relative overflow-hidden">

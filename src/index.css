@@ -31,6 +31,10 @@
     url('/fonts/comfortaa-v45-cyrillic_latin-700.woff') format('woff');
 }
 
+@theme {
+  --breakpoint-xs: 400px;
+}
+
 @layer utilities {
   @keyframes fade-in-up {
     0% {
@@ -501,23 +505,6 @@ button:hover svg {
   top: 0;
   z-index: -1;
   background-attachment: fixed;
-}
-
-.group::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom,
-      white,
-      rgba(255, 255, 255, 0.9),
-      rgba(14, 116, 144, 0.75));
-  opacity: 0;
-  transition: opacity 0.6s ease-in-out;
-  z-index: -1;
-}
-
-.group:hover::before {
-  opacity: 1;
 }
 
 .message-send-button:hover .button-icon {

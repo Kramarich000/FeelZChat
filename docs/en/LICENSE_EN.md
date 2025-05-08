@@ -52,4 +52,4 @@ For inquiries regarding commercial usage or licensing, please contact:
 
 If you reference or build upon this work, please include the following attribution:
 
-> Kramarich (2025). *FeelZChat*. [GitHub Repository](https://github.com/Kramarich000/messenger-app). Licensed under [Custom Non-Commercial License](https://github.com/Kramarich000/messenger-app/blob/main/docs/en/LICENSE_EN.md)
+> Kramarich (2025). *FeelZChat*. [GitHub Repository](https://github.com/Kramarich000/FeelZChat). Licensed under [Custom Non-Commercial License](https://github.com/Kramarich000/FeelZChat/blob/main/docs/en/LICENSE_EN.md)

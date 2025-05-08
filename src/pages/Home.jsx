@@ -2,8 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import translate from "@utils/translate";
-import EmtnAnlsysJPG from "@assets/images/emotion-analysis.jpg";
-import EmtnAnlsysWEBP from "@assets/images/emotion-analysis.webp";
 // import mainVideo from '@assets/videos/main-bg.mp4';
 // import { opacity } from '@cloudinary/url-gen/actions/adjust';
 import VideoFrame from "@components/VideoFrame";
@@ -151,15 +149,17 @@ export default function Home() {
             className="bg-gray-800 p-6 rounded-lg flex flex-col gap-4 sm:shadow-md text-center mx-auto max-w-[1000px] border-primary border-b-8"
           >
             <picture className="aspect-w-16 aspect-h-9">
-              <source srcSet={EmtnAnlsysWEBP} type="image/webp" />
+              <source
+                srcSet="/images/emotion-analysis.webp"
+                type="image/webp"
+              />
               <img
-                src={EmtnAnlsysJPG}
+                src="/images/emotion-analysis.jpg"
                 alt="Emotion Analysis"
                 loading="lazy"
                 className="w-full h-full object-cover rounded-lg object-top"
               />
             </picture>
-
             <VideoFrame />
           </SafeMotion>
         </div>

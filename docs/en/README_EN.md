@@ -54,19 +54,19 @@ A cross-platform messaging application with AI-powered sentiment analysis. Suppo
 
 # dev mode
 ```bash
-git clone "https://github.com/Kramarich000/messenger-app"
-cd messenger-app
+git clone "https://github.com/Kramarich000/FeelZChat"
+cd FeelZChat
 yarn install
 yarn dev
 ```
 # prod mode (requires pre-build)
 ```bash
-git clone "https://github.com/Kramarich000/messenger-app"
-cd messenger-app
+git clone "https://github.com/Kramarich000/FeelZChat"
+cd FeelZChat
 yarn install
 yarn build
 yarn preview
 ```
 Dependency list: [docs/lib/used-libraries.md](./docs/lib/used-libraries.md)
 
-License: [License](https://github.com/Kramarich000/messenger-app/blob/main/docs/en/LICENSE_EN.md)
+License: [License](https://github.com/Kramarich000/FeelZChat/blob/main/docs/en/LICENSE_EN.md)
