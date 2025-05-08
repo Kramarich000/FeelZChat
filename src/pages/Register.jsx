@@ -26,6 +26,7 @@ import PrefetchLink from "@components/PrefetchLink";
 import HelpButton from "@components/HelpButton";
 import useRecaptchaLanguage from "@hooks/useRecaptchaLanguage";
 import { useResponsive } from "@hooks/useResponsive";
+import { useLockBodyScroll } from "@hooks/useLockBodyScroll";
 
 export default function Register() {
   const [step, setStep] = useState(1);
@@ -41,6 +42,8 @@ export default function Register() {
       return () => clearTimeout(timer);
     }
   }, [step, navigate]);
+
+  useLockBodyScroll(true);
 
   const [captchaVerified, setCaptchaVerified] = useState(false);
 
@@ -116,7 +119,6 @@ export default function Register() {
       <SafeMotion
         initial={{ opacity: 0, transform: "translateX(50px)" }}
         animate={{ opacity: 1, transform: "translateX(0)" }}
-        exit={{ opacity: 0, transform: "translateX(50px)" }}
         transition={{ duration: 0.5 }}
         className="container flex flex-col 2xl:flex-row gap-y-1 sm:gap-y-4 m-1 justify-between w-[95%] items-center"
       >
@@ -288,7 +290,6 @@ export default function Register() {
                 <SafeMotion
                   initial={{ opacity: 0, transform: "transate: -50px" }}
                   animate={{ opacity: 1, transform: "translateX(0)" }}
-                  exit={{ opacity: 0, transform: "translateX(-50px)" }}
                   transition={{ duration: 0.5 }}
                 >
                   <Form noValidate className="grid gap-6" autoComplete="email">
@@ -329,7 +330,6 @@ export default function Register() {
                   className="grid grid-cols-1 gap-6"
                   initial={{ opacity: 0, transform: "transate: 50px" }}
                   animate={{ opacity: 1, transform: "translateX(0)" }}
-                  exit={{ opacity: 0, transform: "translateX(50px)" }}
                   transition={{ duration: 0.5 }}
                 >
                   <div className="relative">
@@ -367,7 +367,6 @@ export default function Register() {
               className="flex flex-col items-center gap-4"
               initial={{ opacity: 0, transform: "transate: 50px" }}
               animate={{ opacity: 1, transform: "translateX(0)" }}
-              exit={{ opacity: 0, transform: "translateX(50px)" }}
               transition={{ duration: 0.5 }}
             >
               <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white text-4xl">

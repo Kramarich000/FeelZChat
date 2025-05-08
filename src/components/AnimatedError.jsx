@@ -1,5 +1,5 @@
-import { AnimatePresence } from "framer-motion";
 import { SafeMotion } from "@components/SafeMotion";
+import { AnimatePresence } from "framer-motion";
 
 const AnimatedError = ({ msg, centered = false, variant = "default" }) => {
   const isLogin = variant === "login";

@@ -23,5 +23,5 @@ Commercial use is prohibited without the author's permission.
 ## Author
 
 GitHub: [Kramarich000](https://github.com/Kramarich000)  
-Email: karen.avakov@gmail.com  
+Email: karen.avakov2@gmail.com  
 For commercial use, please contact the author.

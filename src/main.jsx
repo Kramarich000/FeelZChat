@@ -1,12 +1,11 @@
-import { StrictMode, Profiler } from 'react';
-import { createRoot } from 'react-dom/client';
-import './index.css';
-import App from './App';
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import './i18n';
-import SuspenseWithDelay from '@components/SuspenseWithDelay';
-import { Loader } from '@components/Loader';
-import { HelmetProvider } from 'react-helmet-async';
+import { StrictMode, Suspense } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import "./i18n";
+import { Loader } from "@components/Loader";
+import { HelmetProvider } from "react-helmet-async";
 // const handleRender = (id, phase, actualDuration, baseDuration, startTime, commitTime) => {
 //   console.log('Component rendered:', id);
 //   console.log('Phase:', phase);
@@ -28,14 +27,10 @@ const AppTree = (
 
 const Root = isDev ? (
   <StrictMode>
-    <SuspenseWithDelay fallback={<Loader fullscreen />}>
-      {AppTree}
-    </SuspenseWithDelay>
+    <Suspense fallback={<Loader fullscreen />}>{AppTree}</Suspense>
   </StrictMode>
 ) : (
-  <SuspenseWithDelay fallback={<Loader fullscreen />}>
-    {AppTree}
-  </SuspenseWithDelay>
+  <Suspense fallback={<Loader fullscreen />}>{AppTree}</Suspense>
 );
 
-createRoot(document.getElementById('root')).render(Root);
+createRoot(document.getElementById("root")).render(Root);

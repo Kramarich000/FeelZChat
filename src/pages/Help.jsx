@@ -55,7 +55,6 @@ export default function Help() {
         layout
         initial={{ opacity: 0, transform: "translateY(-50px)" }}
         animate={{ opacity: 1, transform: "translateY(0)" }}
-        exit={{ opacity: 0, transform: "translateY(-50px)" }}
       >
         <h1 className="text-2xl mb-4 sm:text-4xl font-bold sm:mb-6">
           {translate("key_faq")}

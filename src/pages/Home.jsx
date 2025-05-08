@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
-import { delay, useInView } from "framer-motion";
 import translate from "@utils/translate";
 import EmtnAnlsysJPG from "@assets/images/emotion-analysis.jpg";
 import EmtnAnlsysWEBP from "@assets/images/emotion-analysis.webp";
@@ -87,6 +86,7 @@ export default function Home() {
       </div>
 
       {/* {isModalOpen && (
+      <AnimatePresence>
         <SafeMotion
           className="fixed z-50 inset-0 p-4 bg-black bg-opacity-50 flex justify-center items-center"
           initial={{ opacity: 0 }}
@@ -109,6 +109,7 @@ export default function Home() {
             </button>
           </div>
         </SafeMotion>
+        </AnimatePresence>
       )} */}
 
       <section className="p-6 items-center gap-5 flex flex-col w-full justify-center bg-gray-900 mx-auto">

@@ -12,10 +12,12 @@ import HelpButton from "@components/HelpButton";
 import useRecaptchaLanguage from "@hooks/useRecaptchaLanguage";
 import { SafeMotion } from "@components/SafeMotion";
 import useMediaQuery from "@hooks/useMediaQuery";
+import { useLockBodyScroll } from "@hooks/useLockBodyScroll";
 
 export default function Login() {
   const isMobile = useMediaQuery("(max-width: 639px)");
   useRecaptchaLanguage();
+  useLockBodyScroll(true);
   // const Input = ({ type, placeholder }) => (
   //   <input
   //     className="input-styles"

@@ -19,6 +19,7 @@ import HelpButton from "@components/HelpButton";
 import { SafeMotion } from "@components/SafeMotion";
 import PrefetchLink from "@components/PrefetchLink";
 import { useResponsive } from "@hooks/useResponsive";
+import { useLockBodyScroll } from "@hooks/useLockBodyScroll";
 
 export default function ForgotPassword() {
   const [step, setStep] = useState(1);
@@ -32,6 +33,7 @@ export default function ForgotPassword() {
       return () => clearTimeout(timer);
     }
   }, [step, navigate]);
+  useLockBodyScroll(true);
   const { isMobile, hasMounted } = useResponsive();
   if (!hasMounted) return null;
 
@@ -40,7 +42,6 @@ export default function ForgotPassword() {
       <SafeMotion
         initial={{ opacity: 0, transform: "translateX(50px)" }}
         animate={{ opacity: 1, transform: "translateX(0)" }}
-        exit={{ opacity: 0, transform: "translateX(50px)" }}
         transition={{ duration: 0.5 }}
         className="container flex flex-col 2xl:flex-row gap-y-4 justify-between w-[95%] sm:w-[75%] items-center"
       >
@@ -101,9 +102,8 @@ export default function ForgotPassword() {
             >
               {() => (
                 <SafeMotion
-                  initial={{ opacity: 0, transform: "translateX(-50px)" }}
+                  initial={{ opacity: 0, transform: "translateX(50px)" }}
                   animate={{ opacity: 1, transform: "translateX(0)" }}
-                  exit={{ opacity: 0, transform: "translateX(-50px)" }}
                   transition={{ duration: 0.5 }}
                 >
                   <Form as={motion.form} className="grid grid-cols-1 gap-6">
@@ -134,7 +134,6 @@ export default function ForgotPassword() {
               className="flex flex-col items-center gap-4"
               initial={{ opacity: 0, transform: "translateX(50px)" }}
               animate={{ opacity: 1, transform: "translateX(0)" }}
-              exit={{ opacity: 0, transform: "translateX(50px)" }}
               transition={{ duration: 0.5 }}
             >
               <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white text-4xl">

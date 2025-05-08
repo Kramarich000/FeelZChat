@@ -1,6 +1,5 @@
 import "./App.css";
 import { lazy, useMemo, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
 import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -146,6 +145,7 @@ const routes = [
 
 function App() {
   const { isMobile } = useResponsive();
+
   useEffect(() => {
     // requestPermissionForPushNotifications();
   }, []);
@@ -153,24 +153,14 @@ function App() {
     <Router>
       <ErrorBoundary FallbackComponent={FallbackComponent}>
         <main>
-          <AnimatePresence mode="wait">
-            <Routes>
-              {routes.map((route) => (
-                <Route
-                  key={route.path}
-                  path={route.path}
-                  element={
-                    route.private ? (
-                      <PrivateRoute>
-                        <Page
-                          component={route.component}
-                          title={route.titleKey}
-                          description={route.descriptionKey}
-                          url={route.url}
-                          locale={route.locale}
-                        />
-                      </PrivateRoute>
-                    ) : (
+          <Routes>
+            {routes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={
+                  route.private ? (
+                    <PrivateRoute>
                       <Page
                         component={route.component}
                         title={route.titleKey}
@@ -178,13 +168,21 @@ function App() {
                         url={route.url}
                         locale={route.locale}
                       />
-                    )
-                  }
-                />
-              ))}
-            </Routes>
-            <CookieBanner />
-          </AnimatePresence>
+                    </PrivateRoute>
+                  ) : (
+                    <Page
+                      component={route.component}
+                      title={route.titleKey}
+                      description={route.descriptionKey}
+                      url={route.url}
+                      locale={route.locale}
+                    />
+                  )
+                }
+              />
+            ))}
+          </Routes>
+          <CookieBanner />
         </main>
         <ToastContainer
           toastClassName={`mx-auto mt-4 max-w-[90vw]`}

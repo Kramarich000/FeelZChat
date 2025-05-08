@@ -8,6 +8,7 @@ import { useResizablePanel } from "@hooks/useResizablePanel";
 import HelpButton from "@components/HelpButton";
 import axios from "axios";
 import { SafeMotion } from "@components/SafeMotion";
+import { AnimatePresence } from "framer-motion";
 export default function Chat() {
   const [activeChatId, setActiveChatId] = useState(1);
   const [chats] = useState([
@@ -123,7 +124,6 @@ export default function Chat() {
         className="flex min-h-[800px] max-h-[800px] border-2 p-[30px] rounded-4xl w-[1200px] border-primary border-b-8 relative -z-1"
         initial={{ opacity: 0, transform: "translateY(-50px)" }}
         animate={{ opacity: 1, transform: "translateY(0)" }}
-        exit={{ opacity: 0, transform: "translateY(-50px)" }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <div className="flex relative w-full max-w-[1200px] mx-auto max-h-[800px]">
