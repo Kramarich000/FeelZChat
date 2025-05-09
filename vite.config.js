@@ -24,10 +24,10 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    legacy({
-      targets: ["defaults", "not IE 11"],
-      additionalLegacyPolyfills: ["regenerator-runtime/runtime"],
-    }),
+    // legacy({
+    //   targets: ["defaults", "not IE 11"],
+    //   additionalLegacyPolyfills: ["regenerator-runtime/runtime"],
+    // }),
     // removeConsole({
     //   exclude: ["error", "warn"],
     // }),
@@ -194,13 +194,20 @@ export default defineConfig({
   },
   build: {
     target: "esnext",
-    minify: "esbuild",
+    mode: "production",
+    minify: "terser",
     cssCodeSplit: true,
     sourcemap: false,
     assetsInlineLimit: 4096,
     chunkSizeWarningLimit: 500,
-    esbuild: {
-      drop: ["console", "debugger"],
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+      output: {
+        comments: false,
+      },
     },
     polyfillModulePreload: true,
 

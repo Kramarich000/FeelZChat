@@ -338,30 +338,34 @@ export default function Privacy() {
               </p>
               <p className="text-gray-600 mt-2 text-sm flex flex-col">
                 {translate("key_third_party_instructions")}
-                <a
-                  href="https://support.google.com/chrome/answer/95464"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline focus:underline w-15"
-                >
-                  {translate("key_chrome_dnt_link_text")}
-                </a>
-                <a
-                  href="https://support.mozilla.org/kb/do-not-track-prevent-websites-tracking-you"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline focus:underline w-15"
-                >
-                  {translate("key_firefox_dnt_link_text")}
-                </a>
-                <a
-                  href="https://support.apple.com/guide/safari/allow-websites-to-track-you-sfri11476/16.0/mac/11.0"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline focus:underline w-15"
-                >
-                  {translate("key_safari_dnt_link_text")}
-                </a>
+                <div className="flex gap-1 text-center">
+                  <a
+                    href="https://support.google.com/chrome/answer/95464"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline focus:underline w-15"
+                  >
+                    {translate("key_chrome_dnt_link_text")}
+                  </a>
+                  |
+                  <a
+                    href="https://support.mozilla.org/kb/do-not-track-prevent-websites-tracking-you"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline focus:underline w-15"
+                  >
+                    {translate("key_firefox_dnt_link_text")}
+                  </a>
+                  |
+                  <a
+                    href="https://support.apple.com/guide/safari/allow-websites-to-track-you-sfri11476/16.0/mac/11.0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline focus:underline w-15"
+                  >
+                    {translate("key_safari_dnt_link_text")}
+                  </a>
+                </div>
               </p>
             </Section>
 

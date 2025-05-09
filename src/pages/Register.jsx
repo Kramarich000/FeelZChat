@@ -210,7 +210,7 @@ export default function Register() {
                   </button>
                   <GoogleAuth />
                   <PrefetchLink
-                    className="text-primary col-span-2 text-center hover:underline"
+                    className="text-primary col-span-2 mb-4 text-center hover:underline"
                     to="/login"
                   >
                     {translate("key_already_have_account")}
