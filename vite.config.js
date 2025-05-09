@@ -87,7 +87,7 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       devOptions: {
-        enabled: true,
+        enabled: false,
       },
       workbox: {
         runtimeCaching: [
@@ -190,6 +190,10 @@ export default defineConfig({
   },
   server: {
     historyApiFallback: true,
+    watch: {
+      usePolling: true,
+      interval: 1000,
+    },
   },
   build: {
     target: "esnext",

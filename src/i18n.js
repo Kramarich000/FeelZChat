@@ -21,13 +21,13 @@ function detectPreferredLanguage() {
   // console.log({ navLang, browserLang, isSystemRu, isBrowserEn });
 
   if (isSystemRu && isBrowserEn) {
-    return "en";
+    return "ru";
   }
   if (isSystemRu) {
     return "ru";
   }
 
-  return "en";
+  return "ru";
 }
 
 const lang = detectPreferredLanguage();

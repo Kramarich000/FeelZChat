@@ -46,7 +46,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoaded(true);
-    }, 500);
+    }, 5000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -57,7 +57,7 @@ export default function Home() {
   const ref = useRef(null);
 
   return (
-    <div className="wrapper relative w-full mx-auto">
+    <div className="relative w-full mx-auto">
       <div className="fixed inset-x-0 top-0 bottom-0 min-h-screen -z-10 mobile-bg sm:home-container" />
       <Header />
 

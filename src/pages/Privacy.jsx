@@ -100,29 +100,12 @@ export default function Privacy() {
     "key_data_sharing_3",
   ];
 
-  const DATA_TRANSFER = [
-    "key_russia_storage",
-    "key_cross_border_transfer",
-    {
-      content: (
-        <span className="text-gray-600 text-sm">
-          {translate("key_cross_border_transfer_details")}
-        </span>
-      ),
-    },
-  ];
+  const DATA_TRANSFER = ["key_russia_storage", "key_cross_border_transfer"];
 
   const DATA_RETENTION = [
     "key_standard_period",
     "key_extended_period",
     "key_post_expiration",
-    {
-      content: (
-        <span className="text-gray-600 text-sm">
-          {translate("key_data_destruction")}
-        </span>
-      ),
-    },
   ];
 
   const USER_RIGHTS = [
@@ -134,20 +117,6 @@ export default function Privacy() {
     "key_user_right_6",
     "key_user_right_7",
     "key_user_right_8",
-    {
-      content: translate("key_user_right_8_details"),
-      className: "text-gray-600 text-sm",
-    },
-    {
-      content: (
-        <span className="text-gray-600 text-sm">
-          {translate("key_complaint_procedure").replace(
-            "https://pd.rkn.gov.ru ",
-            `<a href="${translate("key_rkn_link")}" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline focus:underline">${translate("key_rkn_text")}</a>`,
-          )}
-        </span>
-      ),
-    },
   ];
 
   const EXTERNAL_TOOLS = [
@@ -155,7 +124,7 @@ export default function Privacy() {
       content: (
         <a
           className="text-primary hover:underline focus:underline"
-          href={translate("key_google_analytics_policy_link")}
+          href="https://policies.google.com/privacy"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -167,7 +136,7 @@ export default function Privacy() {
       content: (
         <a
           className="text-primary hover:underline focus:underline"
-          href={translate("key_hotjar_policy_link")}
+          href="https://www.hotjar.com/privacy"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -179,7 +148,7 @@ export default function Privacy() {
       content: (
         <a
           className="text-primary hover:underline focus:underline"
-          href={translate("key_yandex_metrica_policy_link")}
+          href="https://yandex.ru/legal/confidential/"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -189,73 +158,38 @@ export default function Privacy() {
     },
     {
       content: (
-        <>
+        <a
+          className="text-primary hover:underline focus:underline"
+          href="https://tools.google.com/dlpage/gaoptout"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {translate("key_google_analytics_opt_out_text")}
-          <a
-            className="text-primary hover:underline focus:underline"
-            href={translate("key_google_analytics_opt_out_link")}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {translate("key_google_analytics_opt_out_link")}
-          </a>
-        </>
+        </a>
       ),
     },
     {
       content: (
-        <>
+        <a
+          className="text-primary hover:underline focus:underline"
+          href="https://www.hotjar.com/policies/do-not-track/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {translate("key_hotjar_do_not_text")}
-          <a
-            className="text-primary hover:underline focus:underline"
-            href={translate("key_hotjar_do_not_link")}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {translate("key_hotjar_do_not_link")}
-          </a>
-        </>
+        </a>
       ),
     },
     {
       content: (
-        <>
+        <a
+          className="text-primary hover:underline focus:underline"
+          href="https://pd.rkn.gov.ru"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {translate("key_roskomnadzor_tools_text")}
-          <a
-            className="text-primary hover:underline focus:underline"
-            href={translate("key_roskomnadzor_tools_link")}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {translate("key_roskomnadzor_tools_link")}
-          </a>
-        </>
-      ),
-    },
-    {
-      content: (
-        <p className="text-gray-600 mt-2 text-sm">
-          {translate("key_third_party_disclaimer")}
-        </p>
-      ),
-    },
-    {
-      content: (
-        <p className="text-gray-600 mt-2 text-sm">
-          {translate("key_third_party_instructions")
-            .replace(
-              "{key_chrome_dnt_link}",
-              `<a href="${translate("key_chrome_dnt_link")}" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline focus:underline">${translate("key_chrome_dnt_link_text")}</a>`,
-            )
-            .replace(
-              "{key_firefox_dnt_link}",
-              `<a href="${translate("key_firefox_dnt_link")}" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline focus:underline">${translate("key_firefox_dnt_link_text")}</a>`,
-            )
-            .replace(
-              "{key_safari_dnt_link}",
-              `<a href="${translate("key_safari_dnt_link")}" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline focus:underline">${translate("key_safari_dnt_link_text")}</a>`,
-            )}
-        </p>
+        </a>
       ),
     },
   ];
@@ -267,9 +201,9 @@ export default function Privacy() {
         as="section"
         className="privacy-section bg-white pb-2 sm:pb-4 rounded-2xl sm:mb-4 m-4 max-w-[1080px] p-4 border-b-20 border-primary"
         layout
-        initial={{ opacity: 0, transform: "translateY(-50px)" }}
+        initial={{ opacity: 0, transform: "translateY(100px)" }}
         animate={{ opacity: 1, transform: "translateY(0)" }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        transition={{ duration: 0.5 }}
       >
         <div className="container p-4 sm:p-10 rounded-2xl">
           <h1 className="text-3xl mt-4 sm:text-4xl font-bold mb-2 border-b-1 pb-2 sm:pb-4 border-primary sm:mb-4">
@@ -291,7 +225,10 @@ export default function Privacy() {
             <Section titleKey="key_section_personal_technical_data">
               <Subsection titleKey="key_section_personal_data" />
               <List items={PERSONAL_DATA} />
-              <Paragraph textKey="key_password_storage" />
+              <Paragraph
+                className="text-gray-600 mt-2 text-sm"
+                textKey="key_password_storage"
+              />
               <Subsection titleKey="key_section_technical_data" />
               <List items={TECHNICAL_DATA} />
             </Section>
@@ -318,18 +255,83 @@ export default function Privacy() {
               <List items={DATA_SHARING} />
               <Subsection titleKey="key_section_data_transfer" />
               <List items={DATA_TRANSFER} />
+
+              <Paragraph
+                textKey="key_cross_border_transfer_details"
+                className="text-gray-600 list-none text-sm"
+              />
             </Section>
 
             <Section titleKey="key_section_data_retention">
               <List items={DATA_RETENTION} />
+              <Paragraph
+                textKey="key_data_destruction"
+                className="text-gray-600 text-sm"
+              />
             </Section>
 
             <Section titleKey="key_section_user_rights">
               <List items={USER_RIGHTS} />
+
+              <Paragraph
+                textKey="key_user_right_8_details"
+                className="text-gray-600 mt-2 text-sm"
+              />
+
+              <p className="text-gray-600 text-sm inline">
+                {translate("key_complaint_procedure")}{" "}
+                <a
+                  className="text-primary hover:underline focus:underline"
+                  href="https://pd.rkn.gov.ru"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {translate("key_rkn_text")}
+                </a>
+                |
+                <a
+                  className="text-primary hover:underline focus:underline"
+                  href="https://edpb.europa.eu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {translate("key_eu_dpa_text")}
+                </a>
+              </p>
             </Section>
 
             <Section titleKey="key_section_external_tools">
               <List items={EXTERNAL_TOOLS} />
+              <p className="text-gray-600 mt-2 text-sm">
+                {translate("key_third_party_disclaimer")}
+              </p>
+              <p className="text-gray-600 mt-2 text-sm flex flex-col">
+                {translate("key_third_party_instructions")}
+                <a
+                  href="https://support.google.com/chrome/answer/95464"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline focus:underline w-15"
+                >
+                  {translate("key_chrome_dnt_link_text")}
+                </a>
+                <a
+                  href="https://support.mozilla.org/kb/do-not-track-prevent-websites-tracking-you"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline focus:underline w-15"
+                >
+                  {translate("key_firefox_dnt_link_text")}
+                </a>
+                <a
+                  href="https://support.apple.com/guide/safari/allow-websites-to-track-you-sfri11476/16.0/mac/11.0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline focus:underline w-15"
+                >
+                  {translate("key_safari_dnt_link_text")}
+                </a>
+              </p>
             </Section>
 
             <Section titleKey="key_section_policy_changes">
