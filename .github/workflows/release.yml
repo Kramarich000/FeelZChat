@@ -1,0 +1,45 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  release:
+    runs-on: ubuntu-latest  
+
+    steps:
+      
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '22.14.0'  
+
+      
+      - name: Install dependencies
+        run: yarn install  
+
+      
+      - name: Run standard-version
+        run: |
+          npx standard-version --release-as patch  
+
+      
+      - name: Push release changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: 'GitHub Actions'
+          author_email: 'actions@github.com'
+          message: 'chore(release): new release version'
+          add: 'CHANGELOG.md'  
+          branch: main  
+
+      
+      - name: Push tag
+        run: |
+          git push --follow-tags
