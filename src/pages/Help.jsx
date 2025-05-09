@@ -52,7 +52,6 @@ export default function Help() {
       <Header />
       <SafeMotion
         className="mx-auto space-y-4 px-4 py-5 sm:space-y-8 sm:p-4 sm:py-10"
-        layout
         initial={{ opacity: 0, transform: "translateY(-50px)" }}
         animate={{ opacity: 1, transform: "translateY(0)" }}
       >

@@ -92,6 +92,9 @@ export default function Privacy() {
     "key_data_protection_4",
     "key_data_protection_5",
     "key_data_protection_6",
+    "key_data_protection_7",
+    "key_data_protection_8",
+    "key_data_protection_9",
   ];
 
   const DATA_SHARING = [
@@ -106,6 +109,7 @@ export default function Privacy() {
     "key_standard_period",
     "key_extended_period",
     "key_post_expiration",
+    "key_backup_policy",
   ];
 
   const USER_RIGHTS = [
@@ -200,7 +204,6 @@ export default function Privacy() {
       <SafeMotion
         as="section"
         className="privacy-section bg-white pb-2 sm:pb-4 rounded-2xl sm:mb-4 m-4 max-w-[1080px] p-4 border-b-20 border-primary"
-        layout
         initial={{ opacity: 0, transform: "translateY(100px)" }}
         animate={{ opacity: 1, transform: "translateY(0)" }}
         transition={{ duration: 0.5 }}
@@ -213,6 +216,14 @@ export default function Privacy() {
           <div className="text-sm sm:text-lg text-left space-y-6 sm:space-y-8">
             <Paragraph textKey="key_operator_details" />
             <Paragraph textKey="key_privacy_intro" />
+
+            <Section titleKey="key_policy_definitions">
+              <Paragraph
+                textKey="key_definitions"
+                className="text-sm sm:text-base"
+              />
+              <Paragraph textKey="key_dpo_contact" className="text-gray-700" />
+            </Section>
 
             <Section titleKey="key_section_consent">
               <Paragraph textKey="key_consent" />
@@ -231,6 +242,10 @@ export default function Privacy() {
               />
               <Subsection titleKey="key_section_technical_data" />
               <List items={TECHNICAL_DATA} />
+              <Paragraph
+                className="text-gray-600 mt-2 text-sm"
+                textKey="key_message_logging"
+              />
             </Section>
 
             <Section titleKey="key_section_cookie_usage">
@@ -241,6 +256,10 @@ export default function Privacy() {
 
             <Section titleKey="key_section_analytics">
               <List items={ANONYMOUS_STATISTICS} />
+              <Paragraph
+                textKey="key_profiling_info"
+                className="text-gray-600 text-sm"
+              />
             </Section>
 
             <Section titleKey="key_section_data_usage">
@@ -249,13 +268,20 @@ export default function Privacy() {
 
             <Section titleKey="key_section_data_protection">
               <List items={DATA_PROTECTION} />
+              <Paragraph
+                textKey="key_security_contact"
+                className="text-gray-600 text-sm"
+              />
             </Section>
 
             <Section titleKey="key_section_data_sharing">
               <List items={DATA_SHARING} />
-              <Subsection titleKey="key_section_data_transfer" />
+              <Paragraph
+                textKey="key_data_processors"
+                className="text-gray-600 text-sm"
+              />
+              <Section titleKey="key_section_data_transfer" />
               <List items={DATA_TRANSFER} />
-
               <Paragraph
                 textKey="key_cross_border_transfer_details"
                 className="text-gray-600 list-none text-sm"
@@ -264,6 +290,10 @@ export default function Privacy() {
 
             <Section titleKey="key_section_data_retention">
               <List items={DATA_RETENTION} />
+              <Paragraph
+                textKey="key_account_deletion"
+                className="text-gray-600 text-sm"
+              />
               <Paragraph
                 textKey="key_data_destruction"
                 className="text-gray-600 text-sm"
@@ -278,10 +308,10 @@ export default function Privacy() {
                 className="text-gray-600 mt-2 text-sm"
               />
 
-              <p className="text-gray-600 text-sm inline">
+              <p className="text-gray-600 text-sm">
                 {translate("key_complaint_procedure")}{" "}
                 <a
-                  className="text-primary hover:underline focus:underline"
+                  className="text-primary mr-1 text-[14px] hover:underline focus:underline"
                   href="https://pd.rkn.gov.ru"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -290,7 +320,7 @@ export default function Privacy() {
                 </a>
                 |
                 <a
-                  className="text-primary hover:underline focus:underline"
+                  className="text-primary text-[14px] ml-1 hover:underline focus:underline"
                   href="https://edpb.europa.eu/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -301,6 +331,7 @@ export default function Privacy() {
             </Section>
 
             <Section titleKey="key_section_external_tools">
+              <Paragraph textKey="key_third_party_services_intro" />
               <List items={EXTERNAL_TOOLS} />
               <p className="text-gray-600 mt-2 text-sm">
                 {translate("key_third_party_disclaimer")}
@@ -343,13 +374,6 @@ export default function Privacy() {
               <Paragraph
                 textKey="key_policy_version"
                 className="text-gray-600 mt-2 text-sm"
-              />
-            </Section>
-
-            <Section titleKey="key_policy_definitions">
-              <Paragraph
-                textKey="key_definitions"
-                className="text-sm sm:text-base"
               />
             </Section>
           </div>

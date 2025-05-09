@@ -5,27 +5,54 @@
 //   return translated === key ? `[${key}]` : translated;
 // };
 
-
 // export default translate;
 
+// fallback!!!
+// import i18next from "i18next";
+
+// const translationsCache = {};
+
+// i18next.on('languageChanged', () => {
+//   Object.keys(translationsCache).forEach((key) => {
+//     delete translationsCache[key];
+//   });
+// });
+
+// const translate = (key) => {
+//   if (translationsCache[key]) {
+//     return translationsCache[key];
+//   }
+
+//   const translated = i18next.t(key);
+//   translationsCache[key] = translated;
+
+//   return translated === key ? `[${key}]` : translated;
+// };
+
+// export default translate;
 
 import i18next from "i18next";
 
 const translationsCache = {};
 
-i18next.on('languageChanged', () => {
+i18next.on("languageChanged", () => {
   Object.keys(translationsCache).forEach((key) => {
     delete translationsCache[key];
   });
 });
 
-const translate = (key) => {
-  if (translationsCache[key]) {
+const translate = (key, options = {}) => {
+  const isDynamicKey = key.includes("{{") || key.includes("[");
+
+  if (!isDynamicKey && translationsCache[key]) {
     return translationsCache[key];
   }
 
-  const translated = i18next.t(key);
-  translationsCache[key] = translated;
+  const translated = i18next.t(key, options);
+
+  if (!isDynamicKey) {
+    translationsCache[key] = translated;
+  }
 
   return translated === key ? `[${key}]` : translated;
 };

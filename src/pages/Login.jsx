@@ -13,6 +13,8 @@ import { SafeMotion } from "@components/SafeMotion";
 import useMediaQuery from "@hooks/useMediaQuery";
 import { useLockBodyScroll } from "@hooks/useLockBodyScroll";
 import CustomCheckbox from "@components/CustomCheckbox";
+import handleCaptcha from "@services/captchaHandler";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Login() {
   const isMobile = useMediaQuery("(max-width: 639px)");
@@ -87,17 +89,17 @@ export default function Login() {
                 </label>
 
                 <label className="flex items-center space-x-2 justify-center col-span-2">
-                  <Field name="remember">
-                    {({ field, form }) => (
-                      <CustomCheckbox
-                        checkedCookie={field.value}
-                        onChange={(e) =>
-                          form.setFieldValue("remember", e.checked)
-                        }
-                      />
-                    )}
-                  </Field>
-                  <span>
+                  <span className="flex items-center gap-2">
+                    <Field name="remember">
+                      {({ field, form }) => (
+                        <CustomCheckbox
+                          checkedCookie={field.value}
+                          onChange={(e) =>
+                            form.setFieldValue("remember", e.checked)
+                          }
+                        />
+                      )}
+                    </Field>
                     {translate("key_remember_me")}{" "}
                     <PrefetchLink
                       to="/privacy"
@@ -130,6 +132,12 @@ export default function Login() {
             >
               {translate("key_no_account")}
             </PrefetchLink>
+          </div>
+          <div className="flex justify-center items-center mt-4 origin-top col-span-2">
+            <ReCAPTCHA
+              sitekey="6Lc7Xw0rAAAAAB3xa6ZFw2EjErWwzr7qxZbdiO_3"
+              onChange={handleCaptcha}
+            />
           </div>
         </section>
         {isMobile && <HelpButton />}

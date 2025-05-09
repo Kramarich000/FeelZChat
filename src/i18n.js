@@ -1,54 +1,60 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import Backend from "i18next-http-backend";
 
 import ru from "./locales/ru.json";
 import en from "./locales/en.json";
 
+const SUPPORTED_LANGS = ["en", "ru"];
+
 function detectPreferredLanguage() {
   const savedLang = localStorage.getItem("i18nextLng");
-  if (savedLang) {
+  if (savedLang && SUPPORTED_LANGS.includes(savedLang)) {
     return savedLang;
   }
 
-  const navLang = navigator.language || navigator.userLanguage;
   const browserLang =
-    (navigator.languages && navigator.languages[0]) || navLang;
+    (navigator.languages && navigator.languages[0]) ||
+    navigator.language ||
+    "en";
 
-  const isSystemRu = navLang.startsWith("ru");
-  const isBrowserEn = browserLang.startsWith("en");
+  const detectedLang = SUPPORTED_LANGS.find((lang) =>
+    browserLang.startsWith(lang),
+  );
 
-  // console.log("иван");
-  // console.log({ navLang, browserLang, isSystemRu, isBrowserEn });
-
-  if (isSystemRu && isBrowserEn) {
-    return "ru";
-  }
-  if (isSystemRu) {
-    return "ru";
-  }
-
-  return "ru";
+  return detectedLang || "en";
 }
 
-const lang = detectPreferredLanguage();
+export const changeLanguage = (lang) => {
+  if (SUPPORTED_LANGS.includes(lang)) {
+    i18n.changeLanguage(lang);
+    localStorage.setItem("i18nextLng", lang);
+    document.documentElement.lang = lang;
+  }
+};
 
+const lang = detectPreferredLanguage();
+localStorage.setItem("i18nextLng", lang);
 document.documentElement.lang = lang;
 
-i18n.use(initReactI18next).init({
-  resources: {
-    ru: { translation: ru },
-    en: { translation: en },
-  },
-  lng: lang,
-  fallbackLng: "en",
-  // detection: {
-  //   caches: ["localStorage"],
-  // },
-  supportedLngs: ["en", "ru"],
-  interpolation: {
-    escapeValue: false,
-  },
-});
+i18n
+  .use(Backend)
+  .use(initReactI18next)
+  .init({
+    resources: {
+      ru: { translation: ru },
+      en: { translation: en },
+    },
+    lng: lang,
+    fallbackLng: "en",
+    // detection: {
+    //   caches: ["localStorage"],
+    // },
+    supportedLngs: ["en", "ru"],
+    interpolation: {
+      escapeValue: false,
+    },
+  });
 
 console.log("Текущий язык:", i18n.language);
 

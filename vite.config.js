@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import { chunkSplitPlugin } from "vite-plugin-chunk-split";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 // import checker from 'vite-plugin-checker';
@@ -29,9 +28,9 @@ export default defineConfig({
       targets: ["defaults", "not IE 11"],
       additionalLegacyPolyfills: ["regenerator-runtime/runtime"],
     }),
-    removeConsole({
-      exclude: ["error", "warn"],
-    }),
+    // removeConsole({
+    //   exclude: ["error", "warn"],
+    // }),
     svgr(),
     imp({
       libList: [
@@ -51,9 +50,6 @@ export default defineConfig({
           camel2DashComponentName: false,
         },
       ],
-    }),
-    chunkSplitPlugin({
-      strategy: "single-vendor",
     }),
     // visualizer({
     //   filename: './dist/stats.html',
@@ -186,14 +182,15 @@ export default defineConfig({
       "@services": path.resolve(__dirname, "src/services"),
       "@utils": path.resolve(__dirname, "src/utils"),
       "@assets": path.resolve(__dirname, "src/assets"),
+      "@config": path.resolve(__dirname, "src/config"),
     },
   },
   server: {
     historyApiFallback: true,
     watch: {
       usePolling: true,
-      interval: 1000,
     },
+    logLevel: "info",
   },
   build: {
     target: "esnext",

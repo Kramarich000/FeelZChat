@@ -23,7 +23,7 @@ const CustomCheckbox = ({
   return (
     <div
       onClick={handleChange}
-      className={`flex items-center ${disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer"} ${className}`}
+      className={`inline-flex items-center ${disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer"} ${className}`}
     >
       <div
         className={`w-6 h-6 border-2 rounded-md flex items-center justify-center ${

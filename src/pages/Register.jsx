@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import BgGradient from "@components/BgGradient";
 import CustomCalendar from "@components/CustomCalendar";
 import { useNavigate } from "react-router-dom";
-import { BsQuestionSquareFill } from "react-icons/bs";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import {
   registerSchema,
@@ -18,8 +17,7 @@ import {
   handleThirdStepSubmit,
 } from "@services/registerHandlers";
 import { SafeMotion } from "@components/SafeMotion";
-import { captcha } from "@services/captcha";
-import { showToast } from "../utils/toast";
+
 import ReCAPTCHA from "react-google-recaptcha";
 import translate from "@utils/translate";
 import PrefetchLink from "@components/PrefetchLink";
@@ -28,6 +26,7 @@ import useRecaptchaLanguage from "@hooks/useRecaptchaLanguage";
 import { useResponsive } from "@hooks/useResponsive";
 import { useLockBodyScroll } from "@hooks/useLockBodyScroll";
 import CustomCheckbox from "@components/CustomCheckbox";
+import handleCaptcha from "@services/captchaHandler";
 
 export default function Register() {
   const [step, setStep] = useState(1);
@@ -46,8 +45,6 @@ export default function Register() {
 
   useLockBodyScroll(true);
 
-  const [captchaVerified, setCaptchaVerified] = useState(false);
-
   const { isMobile, hasMounted } = useResponsive();
   if (!hasMounted) return null;
   const initialValues = {
@@ -58,61 +55,6 @@ export default function Register() {
     confirmPassword: "",
     date: null,
     agreement: false,
-  };
-
-  const executeRecaptchaV3 = async () => {
-    try {
-      const token = await window.grecaptcha.execute(
-        "6Le7Zw0rAAAAAHKsGR0i4ohPDQTK51JovR46dhnL",
-        { action: "submit" },
-      );
-      return token;
-    } catch (error) {
-      console.error("Ошибка при вызове reCAPTCHA v3:", error);
-      return null;
-    }
-  };
-
-  const handleCaptcha = async (token) => {
-    if (!token) {
-      showToast.error("Ошибка: капча не пройдена");
-      return;
-    }
-
-    try {
-      const verificationResultV2 = await captcha(token, "v2");
-
-      if (verificationResultV2.success && verificationResultV2.score >= 0.5) {
-        console.log(verificationResultV2);
-        setCaptchaVerified(true);
-        // showToast("Captcha пройдена по v2!", "success");
-      } else {
-        setCaptchaVerified(false);
-        // showToast("Captcha не пройдена по v2, пробуем v3.", "error");
-
-        const tokenV3 = await executeRecaptchaV3();
-
-        if (tokenV3) {
-          const verificationResultV3 = await captcha(tokenV3, "v3");
-
-          if (
-            verificationResultV3.success &&
-            verificationResultV3.score >= 0.5
-          ) {
-            setCaptchaVerified(true);
-            // showToast("Captcha пройдена по v3!", "success");
-          } else {
-            setCaptchaVerified(false);
-            // showToast("Captcha не пройдена по v3!", "error");
-          }
-        } else {
-          // showToast("Ошибка: не удалось получить токен для v3", "error");
-        }
-      }
-    } catch (error) {
-      showToast("Ошибка при верификации капчи!", "error");
-      console.error("Captcha verification error:", error);
-    }
   };
 
   return (
@@ -194,7 +136,7 @@ export default function Register() {
 
                   <div className="relative">
                     <CustomCalendar
-                      date={values.date || new Date()} // Здесь важно установить дефолтное значение
+                      date={values.date || new Date()}
                       setDate={(date) => setFieldValue("date", date)}
                     />
 
@@ -230,7 +172,7 @@ export default function Register() {
                   </div>
 
                   <div className="col-span-2 relative">
-                    <label className="flex items-center space-x-2 justify-center">
+                    <label className="flex items-center justify-center">
                       <Field name="agreement">
                         {({ field, form }) => (
                           <CustomCheckbox
@@ -241,7 +183,7 @@ export default function Register() {
                           />
                         )}
                       </Field>
-                      <span>
+                      <span className="ml-3 mt-1 text-[10px] xs:text-[12px] sm:text-[14px]">
                         {translate("key_i_confirm")}{" "}
                         <PrefetchLink
                           to="/privacy"

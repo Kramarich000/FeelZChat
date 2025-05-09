@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom';
-import { routes } from '../App';
+import { Link } from "react-router-dom";
+import routes from "@config/routes";
+
 const preloadPage = (importFunc, path) => {
-  if (typeof importFunc !== 'function') return;
+  if (typeof importFunc !== "function") return;
   if (!window.preloadedPages) {
     window.preloadedPages = {};
   }
-  if (!window.preloadedPages[path] && typeof path !== 'undefined') {
+  if (!window.preloadedPages[path] && typeof path !== "undefined") {
     importFunc();
     window.preloadedPages[path] = true;
   }
