@@ -3,24 +3,28 @@ name: Release
 on:
   push:
     branches:
-      - main  
+      - main
 
 jobs:
   release:
-    runs-on: ubuntu-latest  
+    runs-on: ubuntu-latest
 
     steps:
-      
       - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22.14.0'  
+          node-version: '22.14.0'
+
+      - name: Install Corepack
+        run: |
+          corepack enable
+          corepack prepare yarn@4.9.1 --activate
 
       - name: Install dependencies
-        run: yarn install  
+        run: yarn install
 
       - name: Set up Semantic Release
         run: yarn add semantic-release @semantic-release/github @semantic-release/npm -D
