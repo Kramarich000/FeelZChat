@@ -102,7 +102,8 @@ export default function CustomCalendar({ date, setDate }) {
           },
         }}
         placeholder={currentLang === "ru" ? "Дата рождения" : "Date of Birth"}
-        className="border-2 rounded-xl p-2.5 w-full"
+        className="border-2 rounded-xl p-2.5 w-full cursor-pointer"
+        autoComplete="bday"
         required
       />
 

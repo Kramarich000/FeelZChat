@@ -69,6 +69,7 @@ export default function Login() {
                       const formattedPhone = formatPhoneNumber(phoneValue);
                       setFieldValue("phone", formattedPhone);
                     }}
+                    autoComplete="given-name"
                     value={values.phone}
                   />
                   <ErrorMessage name="phone">
@@ -80,6 +81,7 @@ export default function Login() {
                   <Field
                     name="password"
                     type="password"
+                    autoComplete="current-password"
                     placeholder={translate("key_password")}
                     className="input-styles "
                   />

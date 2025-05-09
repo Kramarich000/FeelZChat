@@ -1,7 +1,9 @@
 # FeelZChat
+
 A cross-platform messaging application with AI-powered sentiment analysis. Supports GDPR compliance and responsive design.
 
 ## Contents
+
 1. About Project
 2. Features
 3. Working with personal data
@@ -10,6 +12,7 @@ A cross-platform messaging application with AI-powered sentiment analysis. Suppo
 6. License
 
 ## About Project
+
 - A messenger for enterprise and mainstream use with AI to detect the emotional coloring of text.
 - Frontend: React (Vite, TailwindCSS).
 - Backend: Ruby on Rails.
@@ -53,13 +56,16 @@ A cross-platform messaging application with AI-powered sentiment analysis. Suppo
 ## How to Run
 
 # dev mode
+
 ```bash
 git clone "https://github.com/Kramarich000/FeelZChat"
 cd FeelZChat
 yarn install
 yarn dev
 ```
+
 # prod mode (requires pre-build)
+
 ```bash
 git clone "https://github.com/Kramarich000/FeelZChat"
 cd FeelZChat
@@ -67,6 +73,7 @@ yarn install
 yarn build
 yarn preview
 ```
+
 Dependency list: [docs/lib/used-libraries.md](./docs/lib/used-libraries.md)
 
 License: [License](https://github.com/Kramarich000/FeelZChat/blob/main/docs/en/LICENSE_EN.md)

@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
 const withMetaTags = (
   WrappedComponent,
@@ -24,7 +24,7 @@ const withMetaTags = (
   );
 
   const wrappedName =
-    WrappedComponent.displayName || WrappedComponent.name || 'Component';
+    WrappedComponent.displayName || WrappedComponent.name || "Component";
   WithMetaTags.displayName = `withMetaTags(${wrappedName})`;
 
   return WithMetaTags;

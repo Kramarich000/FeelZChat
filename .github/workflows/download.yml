@@ -2,7 +2,7 @@ name: Download from Localazy
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   localazy-download-test:
@@ -14,7 +14,7 @@ jobs:
         with:
           read_key: ${{ secrets.LOCALAZY_READ_KEY }}
           write_key: ${{ secrets.LOCALAZY_WRITE_KEY }}
-      
+
       - run: |
           # Проверим, что локализованные файлы были загружены
           ls src/locales/*.json

@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom';
-import { BsEmojiTearFill } from 'react-icons/bs';
-import translate from '@utils/translate';
+import { useNavigate } from "react-router-dom";
+import { BsEmojiTearFill } from "react-icons/bs";
+import translate from "@utils/translate";
 
 const ErrorPage = ({ errorTitleKey, errorMessageKey }) => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const ErrorPage = ({ errorTitleKey, errorMessageKey }) => {
         onClick={goBack}
         className="mt-4 bg-primary h-[50px] w-[300px] rounded-3xl hover:bg-cyan-600 text-white transition-all"
       >
-        {translate('key_return')}
+        {translate("key_return")}
       </button>
     </div>
   );

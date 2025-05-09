@@ -1,4 +1,4 @@
-import ErrorPage from '@components/ErrorPage';
+import ErrorPage from "@components/ErrorPage";
 
 const Error404 = () => {
   return <ErrorPage errorTitleKey="key_404" errorMessageKey="key_error_404" />;

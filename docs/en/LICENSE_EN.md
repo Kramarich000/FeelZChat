@@ -1,11 +1,13 @@
-# Custom Non-Commercial License for FeelZChat  
+# Custom Non-Commercial License for FeelZChat
+
 **Version 1.0 – April 8, 2025**
 
 > This license is designed to protect the author’s rights while allowing non-commercial use of the software.
 
 ---
 
-## Copyright Notice  
+## Copyright Notice
+
 © 2025 Kramarich. All rights reserved.
 
 This project ("FeelZChat") is protected by copyright law and international treaties.
@@ -15,18 +17,21 @@ This project ("FeelZChat") is protected by copyright law and international treat
 ## License Terms
 
 This software may be used only for the following purposes:
-- Personal use  
-- Educational use  
-- Internal organizational non-commercial use  
+
+- Personal use
+- Educational use
+- Internal organizational non-commercial use
 
 The software must not be used for any commercial purpose without prior written permission from the author.
 
 You are allowed to:
+
 - Study the source code
 - Clone and modify the repository
 - Share the software with others, provided this license is included
 
 You are NOT allowed to:
+
 - Use the software in any product or service that generates revenue
 - Include it in a commercial offering without explicit authorization
 - Remove or alter the copyright notice
@@ -52,4 +57,4 @@ For inquiries regarding commercial usage or licensing, please contact:
 
 If you reference or build upon this work, please include the following attribution:
 
-> Kramarich (2025). *FeelZChat*. [GitHub Repository](https://github.com/Kramarich000/FeelZChat). Licensed under [Custom Non-Commercial License](https://github.com/Kramarich000/FeelZChat/blob/main/docs/en/LICENSE_EN.md)
+> Kramarich (2025). _FeelZChat_. [GitHub Repository](https://github.com/Kramarich000/FeelZChat). Licensed under [Custom Non-Commercial License](https://github.com/Kramarich000/FeelZChat/blob/main/docs/en/LICENSE_EN.md)

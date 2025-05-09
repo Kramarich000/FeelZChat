@@ -1,34 +1,34 @@
-@import 'tailwindcss';
-@import 'react-toastify/dist/ReactToastify.css';
+@import "tailwindcss";
+@import "react-toastify/dist/ReactToastify.css";
 
 @font-face {
   font-display: swap;
-  font-family: 'Comfortaa';
+  font-family: "Comfortaa";
   font-style: normal;
   font-weight: 400;
   src:
-    url('/fonts/comfortaa-v45-cyrillic_latin-regular.woff2') format('woff2'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-regular.woff') format('woff');
+    url("/fonts/comfortaa-v45-cyrillic_latin-regular.woff2") format("woff2"),
+    url("/fonts/comfortaa-v45-cyrillic_latin-regular.woff") format("woff");
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'Comfortaa';
+  font-family: "Comfortaa";
   font-style: normal;
   font-weight: 500;
   src:
-    url('/fonts/comfortaa-v45-cyrillic_latin-500.woff2') format('woff2'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-500.woff') format('woff');
+    url("/fonts/comfortaa-v45-cyrillic_latin-500.woff2") format("woff2"),
+    url("/fonts/comfortaa-v45-cyrillic_latin-500.woff") format("woff");
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'Comfortaa';
+  font-family: "Comfortaa";
   font-style: normal;
   font-weight: 700;
   src:
-    url('/fonts/comfortaa-v45-cyrillic_latin-700.woff2') format('woff2'),
-    url('/fonts/comfortaa-v45-cyrillic_latin-700.woff') format('woff');
+    url("/fonts/comfortaa-v45-cyrillic_latin-700.woff2") format("woff2"),
+    url("/fonts/comfortaa-v45-cyrillic_latin-700.woff") format("woff");
 }
 
 @theme {
@@ -59,10 +59,12 @@
 @utility home-container {
   max-height: 100vh;
   width: 100%;
-  background: linear-gradient(45deg,
-      rgba(152, 251, 152, 0.8),
-      rgba(255, 20, 147, 0.8),
-      rgba(0, 0, 255, 0.8));
+  background: linear-gradient(
+    45deg,
+    rgba(152, 251, 152, 0.8),
+    rgba(255, 20, 147, 0.8),
+    rgba(0, 0, 255, 0.8)
+  );
   background-size: 400% 400%;
   animation: gradientBG 5s ease infinite;
   will-change: background;
@@ -117,7 +119,7 @@ html {
   box-sizing: inherit;
 }
 
-input[type='date'] {
+input[type="date"] {
   color: black;
 }
 
@@ -146,13 +148,13 @@ select:-webkit-autofill:focus {
   transition: all 0.3s ease;
 }
 
-input[type='checkbox']:checked+.checkbox-custom {
+input[type="checkbox"]:checked + .checkbox-custom {
   background-color: white;
   border-color: black;
 }
 
-input[type='checkbox']:checked+.checkbox-custom::after {
-  content: '';
+input[type="checkbox"]:checked + .checkbox-custom::after {
+  content: "";
   position: absolute;
   top: 2px;
   left: 5px;
@@ -256,7 +258,7 @@ body {
   place-items: center;
   min-width: 320px;
   /* min-height: 99vh; */
-  font-family: 'Comfortaa', sans-serif;
+  font-family: "Comfortaa", sans-serif;
   font-size: 16px;
   color: #000;
   background-color: #f3f4f6;
@@ -450,7 +452,6 @@ button:hover svg {
   }
 }
 
-
 .bg-gradient-container {
   position: absolute;
   left: 0;
@@ -460,10 +461,12 @@ button:hover svg {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(45deg,
-      rgba(152, 251, 152, 0.8),
-      rgba(255, 20, 147, 0.8),
-      rgba(0, 0, 255, 0.8));
+  background: linear-gradient(
+    45deg,
+    rgba(152, 251, 152, 0.8),
+    rgba(255, 20, 147, 0.8),
+    rgba(0, 0, 255, 0.8)
+  );
   background-size: 400% 400%;
   animation: gradientBG 5s ease infinite;
 }
@@ -494,7 +497,7 @@ button:hover svg {
 }
 
 .glass-container::before {
-  content: '';
+  content: "";
   background-repeat: repeat;
   background-size: 750px;
   opacity: 0.075;
@@ -591,6 +594,10 @@ button:hover svg {
   height: 1px;
 } */
 
+.ReactModalPortal {
+  z-index: 9999;
+}
+
 footer {
   margin: 0;
   margin-top: auto;
@@ -603,7 +610,6 @@ footer {
     scroll-behavior: auto !important;
   }
 }
-
 
 @media (max-width: 530px) {
   .spotify-container {
