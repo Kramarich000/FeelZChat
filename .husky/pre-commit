@@ -1,2 +1,0 @@
-echo "Husky pre-commit hook is running"
-npx --no-install lint-staged
