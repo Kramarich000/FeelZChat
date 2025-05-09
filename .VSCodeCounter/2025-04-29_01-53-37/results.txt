@@ -1,0 +1,132 @@
+Date : 2025-04-29 01:53:37
+Directory : c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app
+Total : 77 files,  6485 codes, 2095 comments, 589 blanks, all 9169 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JavaScript     |         23 |      3,496 |      1,990 |        191 |      5,677 |
+| JavaScript JSX |         42 |      2,424 |         85 |        264 |      2,773 |
+| PostCSS        |          2 |        413 |         18 |         96 |        527 |
+| SVG            |          4 |         60 |          0 |          4 |         64 |
+| HTML           |          1 |         37 |          1 |         10 |         48 |
+| YAML           |          2 |         32 |          1 |          5 |         38 |
+| Docker         |          1 |          9 |          0 |         12 |         21 |
+| Markdown       |          1 |          7 |          0 |          6 |         13 |
+| XML            |          1 |          7 |          0 |          1 |          8 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                   |         77 |      6,485 |      2,095 |        589 |      9,169 |
+| . (Files)                                                                                                           |          9 |        347 |         46 |         54 |        447 |
+| .github                                                                                                             |          2 |         32 |          1 |          5 |         38 |
+| .github\workflows                                                                                                   |          2 |         32 |          1 |          5 |         38 |
+| dev-dist                                                                                                            |          3 |      2,574 |      1,941 |         72 |      4,587 |
+| public                                                                                                              |          3 |         37 |          0 |          3 |         40 |
+| public (Files)                                                                                                      |          2 |         22 |          0 |          2 |         24 |
+| public\images                                                                                                       |          1 |         15 |          0 |          1 |         16 |
+| src                                                                                                                 |         60 |      3,495 |        107 |        455 |      4,057 |
+| src (Files)                                                                                                         |          5 |        607 |         69 |        125 |        801 |
+| src\animations                                                                                                      |          1 |         73 |          0 |          5 |         78 |
+| src\api                                                                                                             |          2 |         65 |          1 |         16 |         82 |
+| src\assets                                                                                                          |          2 |         30 |          0 |          2 |         32 |
+| src\assets (Files)                                                                                                  |          1 |         15 |          0 |          1 |         16 |
+| src\assets\images                                                                                                   |          1 |         15 |          0 |          1 |         16 |
+| src\components                                                                                                      |         17 |        770 |          7 |         87 |        864 |
+| src\hooks                                                                                                           |          5 |        150 |         11 |         40 |        201 |
+| src\metadata                                                                                                        |          1 |         21 |          0 |          7 |         28 |
+| src\pages                                                                                                           |         16 |      1,258 |         16 |        108 |      1,382 |
+| src\pages (Files)                                                                                                   |         11 |      1,233 |         16 |         93 |      1,342 |
+| src\pages\errors                                                                                                    |          5 |         25 |          0 |         15 |         40 |
+| src\services                                                                                                        |          4 |        199 |          3 |         26 |        228 |
+| src\utils                                                                                                           |          4 |        129 |          0 |         22 |        151 |
+| src\validate                                                                                                        |          3 |        193 |          0 |         17 |        210 |
++---------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                                            | language       | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\.github\workflows\download.yml          | YAML           |         17 |          1 |          3 |         21 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\.github\workflows\upload.yml            | YAML           |         15 |          0 |          2 |         17 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\Dockerfile                              | Docker         |          9 |          0 |         12 |         21 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\README.md                               | Markdown       |          7 |          0 |          6 |         13 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\cypress.config.js                       | JavaScript     |          0 |          9 |          2 |         11 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\dev-dist\registerSW.js                  | JavaScript     |          1 |          0 |          0 |          1 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\dev-dist\sw.js                          | JavaScript     |         78 |         21 |         10 |        109 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\dev-dist\workbox-fc76d6c3.js            | JavaScript     |      2,495 |      1,920 |         62 |      4,477 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\eslint.config.js                        | JavaScript     |         84 |          0 |          7 |         91 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\index.html                              | HTML           |         37 |          1 |         10 |         48 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\postcss.config.js                       | JavaScript     |          6 |          0 |          1 |          7 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\public\images\logo.svg                  | SVG            |         15 |          0 |          1 |         16 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\public\sitemap.xml                      | XML            |          7 |          0 |          1 |          8 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\public\vite.svg                         | SVG            |         15 |          0 |          1 |         16 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\App.css                             | PostCSS        |         47 |          3 |         10 |         60 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\App.jsx                             | JavaScript JSX |        139 |         41 |         14 |        194 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\animations\logoAnimation.jsx        | JavaScript JSX |         73 |          0 |          5 |         78 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\api\axiosInstance.js                | JavaScript     |         43 |          1 |          8 |         52 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\api\refreshAccessToken.js           | JavaScript     |         22 |          0 |          8 |         30 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\assets\images\logo.svg              | SVG            |         15 |          0 |          1 |         16 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\assets\react.svg                    | SVG            |         15 |          0 |          1 |         16 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\AnimatedError.jsx        | JavaScript JSX |         38 |          0 |          5 |         43 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\BgChatGradient.jsx       | JavaScript JSX |         92 |          0 |          9 |        101 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\BgGradient.jsx           | JavaScript JSX |          3 |          0 |          1 |          4 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\ChatHeader.jsx           | JavaScript JSX |         80 |          0 |          4 |         84 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\CustomCalendar.jsx       | JavaScript JSX |        103 |          5 |         11 |        119 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\ErrorPage.jsx            | JavaScript JSX |         25 |          0 |          5 |         30 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\FallbackComponent.jsx    | JavaScript JSX |         38 |          2 |          4 |         44 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\Footer.jsx               | JavaScript JSX |         59 |          0 |          6 |         65 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\GoogleAuth.jsx           | JavaScript JSX |         39 |          0 |          4 |         43 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\Header.jsx               | JavaScript JSX |         34 |          0 |          5 |         39 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\HelpButton.jsx           | JavaScript JSX |         20 |          0 |          1 |         21 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\Loader.jsx               | JavaScript JSX |         19 |          0 |          3 |         22 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\MusicComponent.jsx       | JavaScript JSX |         30 |          0 |          5 |         35 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\PrivateRoute.jsx         | JavaScript JSX |          8 |          0 |          5 |         13 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\SmoothScroll.jsx         | JavaScript JSX |         35 |          0 |          6 |         41 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\SpotifyPlayer.jsx        | JavaScript JSX |        137 |          0 |         10 |        147 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\Title.jsx                | JavaScript JSX |         10 |          0 |          3 |         13 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\hooks\useEmotionAnalysis.jsx        | JavaScript JSX |         42 |          0 |          7 |         49 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\hooks\useEmotionGradient.jsx        | JavaScript JSX |         25 |          0 |          9 |         34 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\hooks\useLocalStorage.jsx           | JavaScript JSX |         14 |          0 |          4 |         18 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\hooks\useRecaptchaLanguage.jsx      | JavaScript JSX |         16 |          0 |          5 |         21 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\hooks\useResizablePanel.jsx         | JavaScript JSX |         53 |         11 |         15 |         79 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\i18n.js                             | JavaScript     |         42 |          0 |         12 |         54 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\index.css                           | PostCSS        |        366 |         15 |         86 |        467 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\main.jsx                            | JavaScript JSX |         13 |         10 |          3 |         26 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\metadata\AppWithMeta.jsx            | JavaScript JSX |         21 |          0 |          7 |         28 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Chat.jsx                      | JavaScript JSX |        238 |          2 |         18 |        258 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Contacts.jsx                  | JavaScript JSX |          0 |          0 |          1 |          1 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\ForgotPassword.jsx            | JavaScript JSX |        139 |          0 |         10 |        149 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Help.jsx                      | JavaScript JSX |        202 |          0 |         10 |        212 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Home.jsx                      | JavaScript JSX |        149 |          0 |         11 |        160 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Login.jsx                     | JavaScript JSX |        111 |          8 |          5 |        124 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Notifications.jsx             | JavaScript JSX |          0 |          0 |          1 |          1 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Privacy.jsx                   | JavaScript JSX |         48 |          0 |          2 |         50 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Profile.jsx                   | JavaScript JSX |         11 |          0 |          3 |         14 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Register.jsx                  | JavaScript JSX |        335 |          5 |         31 |        371 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Settings.jsx                  | JavaScript JSX |          0 |          1 |          1 |          2 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\errors\400.jsx                | JavaScript JSX |          5 |          0 |          3 |          8 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\errors\401.jsx                | JavaScript JSX |          5 |          0 |          3 |          8 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\errors\403.jsx                | JavaScript JSX |          5 |          0 |          3 |          8 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\errors\404.jsx                | JavaScript JSX |          5 |          0 |          3 |          8 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\errors\500.jsx                | JavaScript JSX |          5 |          0 |          3 |          8 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\services\captcha.js                 | JavaScript     |         20 |          0 |          5 |         25 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\services\forgotPasswordsHandlers.js | JavaScript     |         67 |          1 |          5 |         73 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\services\loginHandlers.js           | JavaScript     |         36 |          1 |          7 |         44 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\services\registerHandlers.js        | JavaScript     |         76 |          1 |          9 |         86 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\utils\peppeteer.js                  | JavaScript     |        100 |          0 |         16 |        116 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\utils\spotify.js                    | JavaScript     |         11 |          0 |          1 |         12 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\utils\toast.js                      | JavaScript     |         13 |          0 |          2 |         15 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\utils\translate.js                  | JavaScript     |          5 |          0 |          3 |          8 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\validate\forgotPasswordSchema.js    | JavaScript     |         24 |          0 |          5 |         29 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\validate\loginSchema.js             | JavaScript     |         49 |          0 |          5 |         54 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\validate\registerSchema.js          | JavaScript     |        120 |          0 |          7 |        127 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\tailwind.config.js                      | JavaScript     |         20 |          1 |          1 |         22 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\translate-text.js                       | JavaScript     |         28 |          0 |          7 |         35 |
+| c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\vite.config.js                          | JavaScript     |        156 |         35 |          8 |        199 |
+| Total                                                                                                               |                |      6,485 |      2,095 |        589 |      9,169 |
++---------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

@@ -1,0 +1,71 @@
+"filename", "language", "Python", "JavaScript", "JavaScript JSX", "PostCSS", "XML", "Markdown", "YAML", "HTML", "comment", "blank", "total"
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\argos_translate.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\.github\workflows\download.yml", "YAML", 0, 0, 0, 0, 0, 0, 17, 0, 1, 3, 21
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\.github\workflows\upload.yml", "YAML", 0, 0, 0, 0, 0, 0, 15, 0, 0, 2, 17
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\README.md", "Markdown", 0, 0, 0, 0, 0, 7, 0, 0, 0, 6, 13
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\eslint.config.js", "JavaScript", 0, 32, 0, 0, 0, 0, 0, 0, 0, 2, 34
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\index.html", "HTML", 0, 0, 0, 0, 0, 0, 0, 44, 0, 4, 48
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\postcss.config.js", "JavaScript", 0, 6, 0, 0, 0, 0, 0, 0, 0, 1, 7
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\public\images\logo.svg", "XML", 0, 0, 0, 0, 15, 0, 0, 0, 0, 1, 16
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\public\sitemap.xml", "XML", 0, 0, 0, 0, 7, 0, 0, 0, 0, 1, 8
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\public\vite.svg", "XML", 0, 0, 0, 0, 15, 0, 0, 0, 0, 1, 16
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\App.css", "PostCSS", 0, 0, 0, 47, 0, 0, 0, 0, 3, 10, 60
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\App.jsx", "JavaScript JSX", 0, 0, 133, 0, 0, 0, 0, 0, 0, 12, 145
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\animations\logoAnimation.jsx", "JavaScript JSX", 0, 0, 74, 0, 0, 0, 0, 0, 0, 5, 79
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\api\axiosInstance.js", "JavaScript", 0, 39, 0, 0, 0, 0, 0, 0, 0, 8, 47
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\api\refreshAccessToken.js", "JavaScript", 0, 20, 0, 0, 0, 0, 0, 0, 0, 9, 29
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\assets\images\logo.svg", "XML", 0, 0, 0, 0, 15, 0, 0, 0, 0, 1, 16
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\assets\react.svg", "XML", 0, 0, 0, 0, 15, 0, 0, 0, 0, 1, 16
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\AnimatedError.jsx", "JavaScript JSX", 0, 0, 38, 0, 0, 0, 0, 0, 0, 5, 43
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\BgChatGradient.jsx", "JavaScript JSX", 0, 0, 93, 0, 0, 0, 0, 0, 0, 8, 101
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\BgGradient.jsx", "JavaScript JSX", 0, 0, 8, 0, 0, 0, 0, 0, 0, 2, 10
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\ChatHeader.jsx", "JavaScript JSX", 0, 0, 74, 0, 0, 0, 0, 0, 0, 4, 78
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\CustomCalendar.jsx", "JavaScript JSX", 0, 0, 69, 0, 0, 0, 0, 0, 0, 10, 79
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\FallbackComponent.jsx", "JavaScript JSX", 0, 0, 30, 0, 0, 0, 0, 0, 0, 3, 33
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\Footer.jsx", "JavaScript JSX", 0, 0, 54, 0, 0, 0, 0, 0, 0, 6, 60
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\GoogleAuth.jsx", "JavaScript JSX", 0, 0, 40, 0, 0, 0, 0, 0, 0, 4, 44
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\Header.jsx", "JavaScript JSX", 0, 0, 35, 0, 0, 0, 0, 0, 0, 4, 39
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\HelpButton.jsx", "JavaScript JSX", 0, 0, 20, 0, 0, 0, 0, 0, 0, 1, 21
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\Loader.jsx", "JavaScript JSX", 0, 0, 25, 0, 0, 0, 0, 0, 0, 3, 28
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\MusicComponent.jsx", "JavaScript JSX", 0, 0, 26, 0, 0, 0, 0, 0, 0, 5, 31
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\PrivateRoute.jsx", "JavaScript JSX", 0, 0, 8, 0, 0, 0, 0, 0, 0, 5, 13
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\components\Title.jsx", "JavaScript JSX", 0, 0, 10, 0, 0, 0, 0, 0, 0, 5, 15
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\hooks\useEmotionAnalysis.jsx", "JavaScript JSX", 0, 0, 42, 0, 0, 0, 0, 0, 0, 7, 49
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\hooks\useEmotionGradient.jsx", "JavaScript JSX", 0, 0, 26, 0, 0, 0, 0, 0, 0, 9, 35
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\hooks\useLocalStorage.jsx", "JavaScript JSX", 0, 0, 14, 0, 0, 0, 0, 0, 0, 3, 17
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\hooks\useRecaptchaLanguage.jsx", "JavaScript JSX", 0, 0, 16, 0, 0, 0, 0, 0, 0, 5, 21
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\hooks\useResizablePanel.jsx", "JavaScript JSX", 0, 0, 63, 0, 0, 0, 0, 0, 1, 15, 79
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\i18n.js", "JavaScript", 0, 25, 0, 0, 0, 0, 0, 0, 0, 7, 32
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\index.css", "PostCSS", 0, 0, 0, 343, 0, 0, 0, 0, 15, 80, 438
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\main.jsx", "JavaScript JSX", 0, 0, 13, 0, 0, 0, 0, 0, 10, 3, 26
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\metadata\AppWithMeta.jsx", "JavaScript JSX", 0, 0, 15, 0, 0, 0, 0, 0, 0, 4, 19
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Chat.jsx", "JavaScript JSX", 0, 0, 230, 0, 0, 0, 0, 0, 0, 16, 246
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Contacts.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\ForgotPassword.jsx", "JavaScript JSX", 0, 0, 139, 0, 0, 0, 0, 0, 0, 10, 149
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Help.jsx", "JavaScript JSX", 0, 0, 188, 0, 0, 0, 0, 0, 0, 11, 199
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Home.jsx", "JavaScript JSX", 0, 0, 121, 0, 0, 0, 0, 0, 0, 17, 138
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Login.jsx", "JavaScript JSX", 0, 0, 121, 0, 0, 0, 0, 0, 0, 4, 125
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Notifications.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Privacy.jsx", "JavaScript JSX", 0, 0, 55, 0, 0, 0, 0, 0, 0, 2, 57
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Profile.jsx", "JavaScript JSX", 0, 0, 12, 0, 0, 0, 0, 0, 0, 3, 15
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Register.jsx", "JavaScript JSX", 0, 0, 334, 0, 0, 0, 0, 0, 5, 29, 368
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\Settings.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\errors\400.jsx", "JavaScript JSX", 0, 0, 26, 0, 0, 0, 0, 0, 0, 5, 31
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\errors\401.jsx", "JavaScript JSX", 0, 0, 26, 0, 0, 0, 0, 0, 0, 5, 31
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\errors\403.jsx", "JavaScript JSX", 0, 0, 26, 0, 0, 0, 0, 0, 0, 5, 31
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\errors\404.jsx", "JavaScript JSX", 0, 0, 24, 0, 0, 0, 0, 0, 0, 5, 29
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\pages\errors\500.jsx", "JavaScript JSX", 0, 0, 13, 0, 0, 0, 0, 0, 0, 3, 16
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\services\captcha.js", "JavaScript", 0, 20, 0, 0, 0, 0, 0, 0, 0, 5, 25
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\services\forgotPasswordsHandlers.js", "JavaScript", 0, 54, 0, 0, 0, 0, 0, 0, 1, 9, 64
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\services\loginHandlers.js", "JavaScript", 0, 41, 0, 0, 0, 0, 0, 0, 0, 6, 47
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\services\registerHandlers.js", "JavaScript", 0, 68, 0, 0, 0, 0, 0, 0, 1, 12, 81
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\utils\peppeteer.js", "JavaScript", 0, 77, 0, 0, 0, 0, 0, 0, 0, 17, 94
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\utils\toast.js", "JavaScript", 0, 13, 0, 0, 0, 0, 0, 0, 0, 2, 15
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\utils\translate.js", "JavaScript", 0, 5, 0, 0, 0, 0, 0, 0, 0, 3, 8
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\validate\forgotPasswordSchema.js", "JavaScript", 0, 19, 0, 0, 0, 0, 0, 0, 0, 5, 24
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\validate\loginSchema.js", "JavaScript", 0, 44, 0, 0, 0, 0, 0, 0, 0, 4, 48
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\src\validate\registerSchema.js", "JavaScript", 0, 83, 0, 0, 0, 0, 0, 0, 0, 7, 90
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\tailwind.config.js", "JavaScript", 0, 15, 0, 0, 0, 0, 0, 0, 1, 1, 17
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\translate-text.js", "JavaScript", 0, 24, 0, 0, 0, 0, 0, 0, 0, 7, 31
+"c:\Users\karen\OneDrive\Рабочий стол\3 курс\2 семак\Messenger\messenger-app\vite.config.js", "JavaScript", 0, 70, 0, 0, 0, 0, 0, 0, 21, 2, 93
+"Total", "-", 0, 655, 2241, 390, 67, 7, 32, 44, 60, 463, 3959
