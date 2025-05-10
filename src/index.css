@@ -198,9 +198,6 @@ body,
   height: 100%;
   /* padding-bottom: 1px; */
   scroll-behavior: smooth;
-}
-
-#root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -220,6 +217,11 @@ video {
   object-fit: cover;
 }
 
+img {
+  pointer-events: none;
+  user-select: none;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -236,6 +238,7 @@ video {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --color-cyan-700: #0e7490;
   /* min-height: 100%;
   min-width: 100%; */
   /* --vh: 1vh; */
@@ -594,6 +597,74 @@ button:hover svg {
   z-index: 9999;
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -3000px 0;
+  }
+
+  50% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 3000px 0;
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+}
+
+.shimmer-loader {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: #0a0a0a;
+  border-radius: 12px;
+  display: block;
+  box-shadow:
+    inset 0 0 10px rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.shimmer-loader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(90deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(255, 255, 255, 0.02) 20%,
+      var(--color-cyan-700) 50%,
+      var(--color-cyan-700) 20%,
+      rgba(255, 255, 255, 0.02) 80%,
+      rgba(0, 0, 0, 0.6) 100%);
+  background-size: 6000px 100%;
+  animation: shimmer 4s infinite ease-in-out, pulse 4s infinite ease-in-out;
+  will-change: background-position, opacity;
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .shimmer-loader::before {
+    animation: shimmer 2s infinite linear;
+  }
+}
+
 footer {
   margin: 0;
   margin-top: auto;
@@ -605,6 +676,11 @@ footer {
     transition: none !important;
     scroll-behavior: auto !important;
   }
+
+  .shimmer-loader::before {
+    animation: none;
+  }
+
 }
 
 @media (max-width: 530px) {
