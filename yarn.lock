@@ -12808,6 +12808,7 @@ __metadata:
     react-helmet-async: "npm:^2.0.5"
     react-i18next: "npm:^15.4.1"
     react-icons: "npm:^5.5.0"
+    react-lazyload: "npm:^3.2.1"
     react-modal: "npm:^3.16.3"
     react-router-dom: "npm:^7.5.0"
     react-spinners: "npm:^0.15.0"
@@ -14982,6 +14983,16 @@ __metadata:
   version: 18.3.1
   resolution: "react-is@npm:18.3.1"
   checksum: 10c0/f2f1e60010c683479e74c63f96b09fb41603527cd131a9959e2aee1e5a8b0caf270b365e5ca77d4a6b18aae659b60a86150bb3979073528877029b35aecd2072
+  languageName: node
+  linkType: hard
+
+"react-lazyload@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "react-lazyload@npm:3.2.1"
+  peerDependencies:
+    react: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/dcb4de56aa97eca55780085a32ae07dfb68f4a0515b2b2f5a7854b9d0f7f53ff449746f724c7742c36c02312bf9f642b6bd4182251137c256517a24f09001342
   languageName: node
   linkType: hard
 

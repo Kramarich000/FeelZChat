@@ -10,6 +10,10 @@ import VideoFrame from "@components/VideoFrame";
 import { SafeMotion } from "@components/SafeMotion";
 import PrefetchLink from "@components/PrefetchLink";
 import useLocalStorage from "@hooks/useLocalStorage";
+import LazyLoad from "react-lazyload";
+import emotionAnalysisJPG from "@assets/images/emotion-analysis.jpg";
+import emotionAnalysisWEBP from "@assets/images/emotion-analysis.webp";
+
 const features = [
   {
     title: translate("key_emotion_analysis"),
@@ -147,18 +151,17 @@ export default function Home() {
             transition={{ duration: 0.2, delay: 0.13 }}
             className="bg-gray-800 p-6 rounded-lg flex flex-col gap-4 sm:shadow-md text-center mx-auto max-w-[1000px] border-primary border-b-8"
           >
-            <picture className="aspect-w-16 aspect-h-9">
-              <source
-                srcSet="/images/emotion-analysis.webp"
-                type="image/webp"
-              />
-              <img
-                src="/images/emotion-analysis.jpg"
-                alt="Emotion Analysis"
-                loading="lazy"
-                className="w-full h-full object-cover rounded-lg object-top"
-              />
-            </picture>
+            <LazyLoad height={400} offset={100} once>
+              <picture className="aspect-w-16 aspect-h-9">
+                <source srcSet={emotionAnalysisWEBP} type="image/webp" />
+                <img
+                  src={emotionAnalysisJPG}
+                  alt="Emotion Analysis"
+                  loading="lazy"
+                  className="w-full h-full object-cover rounded-lg object-top"
+                />
+              </picture>
+            </LazyLoad>
             <VideoFrame />
           </SafeMotion>
         </div>
