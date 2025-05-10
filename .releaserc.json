@@ -1,5 +1,6 @@
 {
   "branches": ["main"],
+  "repositoryUrl": "https://github.com/Kramarich000/FeelZChat",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
@@ -8,7 +9,7 @@
     "@semantic-release/npm"
   ],
   "github": {
-    "releaseNotes": false, 
-    "assets": [] 
+    "releaseNotes": false,
+    "assets": []
   }
 }
