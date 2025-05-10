@@ -24,10 +24,7 @@ jobs:
           corepack prepare yarn@4.9.1 --activate
 
       - name: Install dependencies
-        run: yarn install
-
-      - name: Set up Semantic Release
-        run: yarn add semantic-release @semantic-release/github @semantic-release/npm -D
+        run: yarn install --frozen-lockfile
 
       - name: Run Semantic Release
         env:
