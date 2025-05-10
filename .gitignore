@@ -22,8 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-!ru.json
 *.json
+!en.json
+!ru.json
 !.releaserc.json
 !package.json
 !.eslintrc.json
