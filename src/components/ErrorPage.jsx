@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { BsEmojiTearFill } from "react-icons/bs";
 import translate from "@utils/translate";
+import DropAnimation from "../animations/emojiAnimaton";
 
 const ErrorPage = ({ errorTitleKey, errorMessageKey }) => {
   const navigate = useNavigate();
@@ -10,16 +10,18 @@ const ErrorPage = ({ errorTitleKey, errorMessageKey }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <BsEmojiTearFill className="mb-20" size={500} color="rgb(14, 116, 144)" />
-      <h1 className="text-6xl font-bold">{translate(errorTitleKey)}</h1>
-      <p className="text-xl">{translate(errorMessageKey)}</p>
+    <div className="flex flex-col items-center justify-center h-screen mx-auto">
+      <DropAnimation />
+      <h1 className="text-3xl sm:text-6xl font-bold">
+        {translate(errorTitleKey)}
+      </h1>
+      <p className="text-lg sm:text-xl">{translate(errorMessageKey)}</p>
       <button
         onClick={goBack}
-        className="mt-4 bg-primary h-[50px] w-[300px] rounded-3xl hover:bg-cyan-600 text-white transition-all"
+        className="mt-4 bg-primary h-[40px] w-[200px] sm:h-[50px] sm:w-[300px] rounded-3xl hover:bg-cyan-600 text-white transition-all"
       >
         {translate("key_return")}
-      </button>
+      </button>{" "}
     </div>
   );
 };

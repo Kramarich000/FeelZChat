@@ -72,6 +72,7 @@ export default function Footer() {
                 e.preventDefault();
                 window.open("/privacy", "_blank", "noopener,noreferrer");
               }}
+              target="_blank"
               className="text-[16px] sm:text-[20px] underline hover:text-primary transition-all"
             >
               {translate("key_privacy")}

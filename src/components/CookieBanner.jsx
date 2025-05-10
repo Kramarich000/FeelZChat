@@ -51,7 +51,7 @@ export default function CookieBanner() {
           aria-modal="true"
         >
           <SafeMotion
-            className="overflow-hidden relative flex text-sm sm:text-base max-w-[1280px] flex-col justify-center border-b-8 border-primary items-center bg-white m-0 mb-2 sm:m-4 p-2 sm:p-6 rounded-2xl shadow-lg"
+            className="overflow-hidden flex text-sm sm:text-base max-w-[1280px] flex-col justify-center border-b-8 border-primary items-center bg-white m-0 mb-2 sm:m-4 p-2 sm:p-6 rounded-2xl shadow-lg"
             initial={{ opacity: 0, transform: "translateY(100px)" }}
             animate={{ opacity: 1, transform: "translateY(0)" }}
             exit={{
