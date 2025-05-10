@@ -17,10 +17,15 @@ function detectPreferredLanguage() {
     (navigator.languages && navigator.languages[0]) ||
     navigator.language ||
     "en";
+  console.log("s21цdasd", browserLang);
+  console.log("navigator.languages:", navigator.languages);
+  console.log("navigator.language:", navigator.language);
 
   const detectedLang = SUPPORTED_LANGS.find((lang) =>
     browserLang.startsWith(lang),
   );
+
+  console.log("sdasd", detectedLang);
 
   return detectedLang || "en";
 }

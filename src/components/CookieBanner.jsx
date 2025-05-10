@@ -72,7 +72,7 @@ export default function CookieBanner() {
                 className="text-primary hover:underline"
                 to="/privacy"
               >
-                {translate("Privacy Policy")},
+                {translate("key_privacy_policy")}.
               </PrefetchLink>
             </p>
             {/* <CookieBannerBg className="absolute right-[-20px] bottom-[-20px] w-18 sm:w-20 " />

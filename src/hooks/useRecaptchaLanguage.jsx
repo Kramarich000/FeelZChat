@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import useLocalStorage from "@hooks/useLocalStorage";
+import useLocalStorage from "./useLocalStorage";
 
 const RECAPTCHA_SITE_KEY = "6Le7Zw0rAAAAAHKsGR0i4ohPDQTK51JovR46dhnL";
 
 const useRecaptchaLanguage = () => {
-  const [language] = useLocalStorage("language", "ru");
+  const [language] = useLocalStorage("i18nextLng", "ru");
 
   useEffect(() => {
     const existingScript = document.querySelector(
