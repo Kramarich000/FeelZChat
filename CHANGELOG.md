@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/Kramarich000/messenger-app/compare/v0.0.3...v0.0.4) (2025-05-10)
+
+
+### Bug Fixes
+
+* ну пж ([f590559](https://github.com/Kramarich000/messenger-app/commit/f590559d4168410078e2e66f0881c456c243856d))
+* сейчас ([b76015c](https://github.com/Kramarich000/messenger-app/commit/b76015ce792898b6ced7b982a3840a8df8259dc1))
+
 ### 0.0.3 (2025-05-10)
 
 
