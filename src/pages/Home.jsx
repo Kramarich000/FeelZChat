@@ -10,7 +10,7 @@ import VideoFrame from "@components/VideoFrame";
 import { SafeMotion } from "@components/SafeMotion";
 import PrefetchLink from "@components/PrefetchLink";
 import useLocalStorage from "@hooks/useLocalStorage";
-import LazyLoad from "react-lazyload";
+import ScrollbarSlider from "@components/ScrollbarSlider";
 import emotionAnalysisJPG from "@assets/images/emotion-analysis.jpg";
 import emotionAnalysisWEBP from "@assets/images/emotion-analysis.webp";
 import ImageWithLazyLoader from "@components/ImageWithLazyLoader";
@@ -151,11 +151,12 @@ export default function Home() {
             className="bg-gray-800 p-6 rounded-lg flex flex-col gap-4 sm:shadow-md text-center mx-auto max-w-[1000px] border-primary border-b-8"
           >
             <div className="relative w-full pt-[70%]">
-              <picture className="absolute inset-0 w-full h-full">
+              <picture className="absolute flex items-center justify-center inset-0 w-full h-full">
                 <source srcSet={emotionAnalysisWEBP} type="image/webp" />
                 <ImageWithLazyLoader
                   src={emotionAnalysisJPG}
                   alt="Emotion Analysis"
+                  className="rounded-2xl items-center justify-center h-full"
                   skeletonType="shimmer"
                 />
               </picture>
@@ -163,6 +164,12 @@ export default function Home() {
             <VideoFrame />
           </SafeMotion>
         </div>
+      </section>
+      <section className="bg-gray-900">
+        <h2 className="text-3xl p-8 sm:text-4xl font-bold text-white">
+          {translate("key_users_reviews")}
+        </h2>
+        <ScrollbarSlider />
       </section>
 
       <section className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 w-full pt-4 sm:pt-12 px-4 text-center bg-gray-900 text-white">

@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 // import checker from 'vite-plugin-checker';
 import viteCompression from "vite-plugin-compression";
-// import { analyzer } from 'vite-bundle-analyzer';
+import { analyzer } from "vite-bundle-analyzer";
 import VitePreload from "vite-plugin-preload";
 import { VitePWA } from "vite-plugin-pwa";
 // import { visualizer } from 'rollup-plugin-visualizer';
@@ -13,6 +13,8 @@ import imp from "vite-plugin-imp";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import legacy from "@vitejs/plugin-legacy";
 import removeConsole from "vite-plugin-remove-console";
+import { chunkSplitPlugin } from "vite-plugin-chunk-split";
+import compression from "vite-plugin-compression";
 
 import svgr from "vite-plugin-svgr";
 
@@ -31,6 +33,7 @@ export default defineConfig({
     // removeConsole({
     //   exclude: ["error", "warn"],
     // }),
+    compression(),
     svgr(),
     imp({
       libList: [
@@ -160,8 +163,11 @@ export default defineConfig({
         categories: ["social", "communication"],
       },
     }),
+    chunkSplitPlugin({
+      strategy: "single-vendor",
+    }),
 
-    // analyzer(),
+    analyzer(),
 
     // checker({ typescript: true, eslint: { lintCommand: 'eslint "src/**/*.{ts,tsx,js,jsx}"' } }),
   ],

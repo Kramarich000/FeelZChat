@@ -11,10 +11,11 @@ const Loader = ({
   children,
   isLoading,
   skeletonType = "default",
+  className = "",
   ...props
 }) => {
   return (
-    <div {...props} className="w-full h-full flex items-center justify-center">
+    <div {...props} className={`${className} w-full flex`}>
       {isLoading &&
         (skeletonType === "shimmer" ? (
           <div className="absolute inset-0 shimmer-loader rounded z-10" />

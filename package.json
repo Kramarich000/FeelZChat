@@ -28,6 +28,7 @@
     ]
   },
   "dependencies": {
+    "@faker-js/faker": "^9.7.0",
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
@@ -90,6 +91,7 @@
     "tailwindcss-important": "^1.0.0",
     "terser": "^5.39.0",
     "uuid": "^11.1.0",
+    "vite-bundle-analyzer": "^0.20.1",
     "vite-plugin-chunk-split": "^0.5.0",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-image-optimizer": "^1.0.0",
@@ -110,6 +112,7 @@
     "@vitejs/plugin-react-swc": "^3.8.0",
     "autoprefixer": "^10.4.21",
     "cypress": "^14.3.2",
+    "depcheck": "^1.4.7",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-import-helpers": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
