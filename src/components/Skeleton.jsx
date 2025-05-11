@@ -14,7 +14,7 @@ const Loader = ({
   ...props
 }) => {
   return (
-    <div {...props} className="relative w-full h-full">
+    <div {...props} className="w-full h-full flex items-center justify-center">
       {isLoading &&
         (skeletonType === "shimmer" ? (
           <div className="absolute inset-0 shimmer-loader rounded z-10" />

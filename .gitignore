@@ -29,5 +29,6 @@ dist-ssr
 !package.json
 !.eslintrc.json
 !.prettierrc.json
+!licenses.json
 cypress/e2e/spec.cy.js
 .env

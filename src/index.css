@@ -659,6 +659,8 @@ button:hover svg {
   pointer-events: none;
 }
 
+
+
 @media (prefers-reduced-motion: no-preference) {
   .shimmer-loader::before {
     animation: shimmer 2s infinite linear;
