@@ -18,7 +18,7 @@ export default function ScrollbarSlider() {
         slidesPerView={1}
         spaceBetween={10}
         breakpoints={{
-          840: {
+          1040: {
             slidesPerView: 2,
           },
         }}

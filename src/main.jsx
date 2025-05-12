@@ -25,12 +25,6 @@ const AppTree = (
   </GoogleOAuthProvider>
 );
 
-const Root = isDev ? (
-  <StrictMode>
-    <Suspense fallback={<Loader fullscreen />}>{AppTree}</Suspense>
-  </StrictMode>
-) : (
-  <Suspense fallback={<Loader fullscreen />}>{AppTree}</Suspense>
-);
+const Root = isDev ? <StrictMode>{AppTree}</StrictMode> : <>{AppTree}</>;
 
 createRoot(document.getElementById("root")).render(Root);

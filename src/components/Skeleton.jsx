@@ -1,32 +1,31 @@
-const Skeleton = () => {
-  return (
-    <div className="space-y-4">
-      <div className="w-full h-48 bg-gray-300 animate-pulse rounded"></div>
-      <div className="w-3/4 h-6 bg-gray-300 animate-pulse rounded"></div>
-      <div className="w-5/6 h-6 bg-gray-300 animate-pulse rounded"></div>
-    </div>
-  );
-};
-const Loader = ({
-  children,
-  isLoading,
-  skeletonType = "default",
+export default function Skeleton({
+  height = "h-48",
+  textRows = 1,
+  textWidths = ["w-full"],
+  blockType = "rect",
   className = "",
-  ...props
-}) => {
+  children,
+}) {
+  const baseStyles = "bg-gray-300 animate-pulse";
+  const borderRadius = blockType === "circle" ? "rounded-full" : "rounded";
+
+  if (children) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
-    <div {...props} className={`${className} w-full flex`}>
-      {isLoading &&
-        (skeletonType === "shimmer" ? (
-          <div className="absolute inset-0 shimmer-loader rounded z-10" />
-        ) : (
-          <div className="absolute inset-0 z-10">
-            <Skeleton />
-          </div>
-        ))}
-      <div className={isLoading ? "invisible" : "visible"}>{children}</div>
+    <div className={`space-y-4 ${className}`}>
+      <div
+        className={`${baseStyles} ${height} ${blockType === "circle" ? "w-48 h-48" : "w-full"} ${borderRadius}`}
+      ></div>
+
+      {/* Строки текста */}
+      {Array.from({ length: textRows }).map((_, index) => (
+        <div
+          key={index}
+          className={`${baseStyles} h-6 ${textWidths[index] || textWidths[0]}`}
+        ></div>
+      ))}
     </div>
   );
-};
-
-export default Loader;
+}
