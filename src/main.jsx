@@ -1,10 +1,9 @@
-import { StrictMode, Suspense } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import "./i18n";
-import { Loader } from "@components/Loader";
 import { HelmetProvider } from "react-helmet-async";
 // const handleRender = (id, phase, actualDuration, baseDuration, startTime, commitTime) => {
 //   console.log('Component rendered:', id);
@@ -14,6 +13,7 @@ import { HelmetProvider } from "react-helmet-async";
 //   console.log('Start time (ms):', startTime);
 //   console.log('Commit time (ms):', commitTime)
 // };
+
 const isDev = import.meta.env.DEV;
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
@@ -25,12 +25,6 @@ const AppTree = (
   </GoogleOAuthProvider>
 );
 
-const Root = isDev ? (
-  <StrictMode>
-    <Suspense fallback={<Loader fullscreen />}>{AppTree}</Suspense>
-  </StrictMode>
-) : (
-  <Suspense fallback={<Loader fullscreen />}>{AppTree}</Suspense>
-);
+const Root = isDev ? <StrictMode>{AppTree}</StrictMode> : <>{AppTree}</>;
 
 createRoot(document.getElementById("root")).render(Root);

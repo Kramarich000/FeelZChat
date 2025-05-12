@@ -11,8 +11,7 @@ import { VitePWA } from "vite-plugin-pwa";
 // import { visualizer } from 'rollup-plugin-visualizer';
 import imp from "vite-plugin-imp";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
-import legacy from "@vitejs/plugin-legacy";
-import removeConsole from "vite-plugin-remove-console";
+// import legacy from '@vitejs/plugin-legacy';
 
 import svgr from "vite-plugin-svgr";
 
@@ -34,16 +33,6 @@ export default defineConfig({
     svgr(),
     imp({
       libList: [
-        {
-          libName: "lodash-es",
-          libDirectory: "",
-          camel2DashComponentName: false,
-        },
-        {
-          libName: "date-fns",
-          libDirectory: "",
-          camel2DashComponentName: false,
-        },
         {
           libName: "react-icons",
           libDirectory: "",
@@ -160,7 +149,6 @@ export default defineConfig({
         categories: ["social", "communication"],
       },
     }),
-
     // analyzer(),
 
     // checker({ typescript: true, eslint: { lintCommand: 'eslint "src/**/*.{ts,tsx,js,jsx}"' } }),
@@ -183,6 +171,8 @@ export default defineConfig({
       "@utils": path.resolve(__dirname, "src/utils"),
       "@assets": path.resolve(__dirname, "src/assets"),
       "@config": path.resolve(__dirname, "src/config"),
+      "@data": path.resolve(__dirname, "src/data"),
+      "@store": path.resolve(__dirname, "src/store"),
     },
   },
   server: {

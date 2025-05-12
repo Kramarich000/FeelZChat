@@ -1,5 +1,6 @@
 import axios from "axios";
 import { showToast } from "@utils/toast";
+import useRegisterStore from "@store/registerStore";
 
 const formatDate = (d) => {
   if (!d) {
@@ -14,71 +15,58 @@ const formatDate = (d) => {
   return `${day}.${month}.${year}`;
 };
 
-export const handleFirstStepSubmit = (values, setStep, setRegistrationData) => {
-  const partialData = {
+export function handleFirstStepSubmit(values) {
+  const { setStep, setRegistrationData, step } = useRegisterStore.getState();
+  if (step !== 1) return;
+
+  setRegistrationData({
     phone: values.phone.replace(/\D/g, ""),
     password: values.password,
     password_confirmation: values.confirmPassword,
     nickname: `${values.surname} ${values.name}`,
     birthdate: formatDate(values.date),
-  };
-
-  setRegistrationData(partialData);
+  });
   setStep(2);
-};
+}
 
-export const handleSecondStepSubmit = async (
-  email,
-  registrationData,
-  setStep,
-) => {
-  const payload = {
-    user: {
-      ...registrationData,
-      email,
-    },
-  };
-
-  console.log("payload", payload);
+export async function handleSecondStepSubmit(email) {
+  const { registrationData, setStep } = useRegisterStore.getState();
+  const payload = { user: { ...registrationData, email } };
+  console.log(payload);
 
   try {
-    const response = await axios.post(
+    const res = await axios.post(
       "https://signalforge.onrender.com/api/v1/auth/sign_up",
       payload,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
+      { headers: { "Content-Type": "application/json" } },
     );
-
-    if (response.status === 200 || response.status === 201) {
+    if (res.status === 200 || res.status === 201) {
       showToast("На почту отправлен код подтверждения", "info");
-      setStep(4);
+      setStep(3);
     } else {
       showToast("Ошибка при регистрации", "error");
-      console.log("Ошибка регистрации", response.data);
     }
-  } catch (error) {
-    console.error("Ошибка запроса", error);
+  } catch {
+    setStep(3);
     showToast("Ошибка сервера, попробуйте позже.", "error");
   }
-};
-
-export const handleThirdStepSubmit = async (values, setStep) => {
+}
+export async function handleThirdStepSubmit(values) {
+  const { setStep } = useRegisterStore.getState();
   try {
-    showToast("Код подтверждения верен");
-    setStep(4);
     const response = await axios.post("https://api/ivan", values);
     if (response.status === 200) {
+      showToast("Код подтверждения верен");
       console.log("все ок!");
-      // window.location.href = "/profile";
+      setStep(4);
     } else {
+      setStep(4);
       console.log("ошибка!", response.data);
-      showToast("Код подтверждения неверен. \n Повторите попытку", "error");
+      showToast("Код подтверждения неверен. Повторите попытку", "error");
     }
   } catch (error) {
-    console.log("иван error", error);
+    setStep(4);
+    console.log("Иван error", error);
     showToast("Ошибка сервера, попробуйте позже.", "error");
   }
-};
+}

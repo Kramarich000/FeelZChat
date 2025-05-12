@@ -33,7 +33,7 @@ export default function ForgotPassword() {
       return () => clearTimeout(timer);
     }
   }, [step, navigate]);
-  useLockBodyScroll(true);
+  // useLockBodyScroll(true);
   const { isMobile, hasMounted } = useResponsive();
   if (!hasMounted) return null;
 
