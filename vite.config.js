@@ -154,7 +154,7 @@ export default defineConfig({
     // checker({ typescript: true, eslint: { lintCommand: 'eslint "src/**/*.{ts,tsx,js,jsx}"' } }),
   ],
   optimizeDeps: {
-    include: ["framer-motion"],
+    include: ["framer-motion", "react-icons", "react-toastify"],
     // esbuildOptions: {
     //   plugins: [esbuildCssModules()],
     // },
@@ -207,6 +207,20 @@ export default defineConfig({
         chunkFileNames: "assets/[name].[hash].js",
         assetFileNames: "assets/[name].[hash].[ext]",
       },
+    },
+    manualChunks(id) {
+      if (id.includes("node_modules")) {
+        if (id.includes("react-toastify")) {
+          return "vendor-toast";
+        }
+        if (id.match(/react|react-dom|react-router-dom/)) {
+          return "vendor-react";
+        }
+        if (id.match(/framer-motion|floating-ui|react-icons/)) {
+          return "vendor-ui";
+        }
+        return "vendor";
+      }
     },
   },
 });
