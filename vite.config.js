@@ -199,13 +199,26 @@ export default defineConfig({
         comments: false,
       },
     },
-    polyfillModulePreload: true,
-
+    modulePreload: {
+      polyfill: true,
+    },
     rollupOptions: {
       output: {
-        entryFileNames: "assets/[name].[hash].js",
-        chunkFileNames: "assets/[name].[hash].js",
-        assetFileNames: "assets/[name].[hash].[ext]",
+        entryFileNames: "js/[name].[hash].js",
+        chunkFileNames: "js/[name].[hash].js",
+        assetFileNames: (assetInfo) => {
+          const extType = assetInfo.name?.split(".").pop();
+
+          if (["png", "jpg", "jpeg", "webp", "svg", "gif"].includes(extType)) {
+            return "images/[name].[hash][extname]";
+          }
+
+          if (["css"].includes(extType)) {
+            return "css/[name].[hash][extname]";
+          }
+
+          return "assets/[name].[hash][extname]";
+        },
       },
     },
     manualChunks(id) {

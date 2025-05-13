@@ -6,7 +6,7 @@ import { formatPhoneNumber } from "@validate/registerSchema";
 
 import translate from "@utils/translate";
 
-import handleCaptcha from "@services/captchaHandler";
+import useCaptchaHandler from "@services/captchaHandler";
 
 import GoogleAuth from "@components/GoogleAuth";
 import CustomCalendar from "@components/CustomCalendar";
@@ -14,12 +14,10 @@ import PrefetchLink from "@components/PrefetchLink";
 import CustomCheckbox from "@components/CustomCheckbox";
 import AnimatedError from "@components/AnimatedError";
 
-import useRegisterStore from "@store/registerStore";
 import { handleFirstStepSubmit } from "@services/registerHandlers";
 
 export default function RegisterFormFirstStep() {
-  const { setStep, setRegistrationData, step } = useRegisterStore();
-
+  const { handleCaptcha, handleError, captchaVerified } = useCaptchaHandler();
   const initialValues = {
     name: "",
     surname: "",
@@ -163,10 +161,11 @@ export default function RegisterFormFirstStep() {
           >
             {translate("key_already_have_account")}
           </PrefetchLink>
-          <div className="flex justify-center items-center mt-4 origin-top col-span-2 min-h-[78px]">
+          <div className="captcha-wrapper flex justify-center items-center mt-4 origin-top col-span-2 min-h-[78px]">
             <ReCAPTCHA
               sitekey="6Lc7Xw0rAAAAAB3xa6ZFw2EjErWwzr7qxZbdiO_3"
               onChange={handleCaptcha}
+              onErrored={handleError}
             />
           </div>
         </Form>

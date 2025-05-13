@@ -6,8 +6,10 @@ import useRecaptchaLanguage from "@hooks/useRecaptchaLanguage";
 import { SafeMotion } from "@components/SafeMotion";
 import useMediaQuery from "@hooks/useMediaQuery";
 import LoginForm from "@components/login-components/LoginForm";
+import { useLockBodyScroll } from "@hooks/useLockBodyScroll";
 
 export default function Login() {
+  useLockBodyScroll(true);
   const isMobile = useMediaQuery("(max-width: 639px)");
   useRecaptchaLanguage();
   return (

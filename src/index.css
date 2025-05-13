@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "react-toastify/dist/ReactToastify.css";
 
 @font-face {
   font-display: swap;
@@ -454,7 +453,7 @@ button:hover svg {
   position: absolute;
   left: 0;
   top: 0;
-  min-height: 100vh;
+  min-height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -574,6 +573,15 @@ button:hover svg {
   letter-spacing: normal;
 }
 
+.captcha-wrapper iframe {
+  padding-left: 1px;
+}
+
+.g-recaptcha-error {
+  display: none;
+}
+
+
 /* .input-decoration {
   top: 35px;
   display: flex;
@@ -599,13 +607,13 @@ footer {
   margin-top: auto;
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
   }
-}
+} */
 
 @media (max-width: 530px) {
   .spotify-container {

@@ -1,5 +1,5 @@
 import MobileDetect from "mobile-detect";
-import { toast } from "react-toastify";
+import { toast, Slide } from "react-toastify";
 
 const md = new MobileDetect(window.navigator.userAgent);
 const isMobileUA = Boolean(md.mobile());
@@ -19,6 +19,7 @@ export const showToast = (message, type = "success") => {
     theme: "dark",
     closeButton: false,
     pauseOnFocusLoss: false,
+    transition: Slide,
   };
 
   if (isMobile) {

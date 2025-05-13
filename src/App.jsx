@@ -1,30 +1,20 @@
 import "./App.css";
-import { useMemo, useEffect } from "react";
+import { useEffect, Suspense, lazy } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
-import FallbackComponent from "@components/FallbackComponent";
-import PrivateRoute from "@components/PrivateRoute";
-import translate from "@utils/translate";
-import withMetaTags from "@metadata/Meta";
 import { useResponsive } from "@hooks/useResponsive";
-import routes from "./config/routes";
+import routes from "@config/routes";
 
-const Page = ({ component: Component, title, description, url, locale }) => {
-  const TranslatedComponent = useMemo(() => {
-    return withMetaTags(Component, {
-      title: translate(title),
-      description: translate(description),
-      url,
-      locale: translate(locale),
-    });
-  }, [Component, title, description, url, locale]);
+const ToastContainer = lazy(() =>
+  import("react-toastify").then((m) => ({ default: m.ToastContainer })),
+);
+const FallbackComponent = lazy(() => import("@components/FallbackComponent"));
+const PrivateRoute = lazy(() => import("@components/PrivateRoute"));
+const CookieBanner = lazy(() => import("@components/CookieBanner"));
+const Loader = lazy(() => import("@components/Loader"));
+const Page = lazy(() => import("@components/main-components/Page"));
 
-  return <TranslatedComponent />;
-};
-import CookieBanner from "@components/CookieBanner";
 // const requestPermissionForPushNotifications = () => {
 //   Notification.requestPermission().then((permission) => {
 //     if (permission === "granted") {
@@ -65,8 +55,18 @@ function App() {
                 key={route.path}
                 path={route.path}
                 element={
-                  route.private ? (
-                    <PrivateRoute>
+                  <Suspense fallback={<Loader />}>
+                    {route.private ? (
+                      <PrivateRoute>
+                        <Page
+                          component={route.component}
+                          title={route.titleKey}
+                          description={route.descriptionKey}
+                          url={route.url}
+                          locale={route.locale}
+                        />
+                      </PrivateRoute>
+                    ) : (
                       <Page
                         component={route.component}
                         title={route.titleKey}
@@ -74,31 +74,24 @@ function App() {
                         url={route.url}
                         locale={route.locale}
                       />
-                    </PrivateRoute>
-                  ) : (
-                    <Page
-                      component={route.component}
-                      title={route.titleKey}
-                      description={route.descriptionKey}
-                      url={route.url}
-                      locale={route.locale}
-                    />
-                  )
+                    )}
+                  </Suspense>
                 }
               />
             ))}
           </Routes>
           <CookieBanner />
         </main>
-        <ToastContainer
-          toastClassName={`mx-auto mt-4 max-w-[90vw]`}
-          newestOnTop
-          limit={isMobile ? 1 : 10}
-        />
+        <Suspense fallback={<Loader />}>
+          <ToastContainer
+            toastClassName={`mx-auto mt-4 max-w-[90vw]`}
+            // newestOnTop
+            limit={isMobile ? 1 : 10}
+          />
+        </Suspense>
       </ErrorBoundary>
     </Router>
   );
 }
 
 export default App;
-export { routes };

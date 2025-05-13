@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Loader } from "@components/Loader";
+import Loader from "@components/Loader";
 import BgGradient from "@components/BgGradient";
 import { useNavigate } from "react-router-dom";
 import translate from "@utils/translate";
@@ -7,7 +7,7 @@ import PrefetchLink from "@components/PrefetchLink";
 import HelpButton from "@components/HelpButton";
 import useRecaptchaLanguage from "@hooks/useRecaptchaLanguage";
 import { useResponsive } from "@hooks/useResponsive";
-// import { useLockBodyScroll } from '@hooks/useLockBodyScroll';
+import { useLockBodyScroll } from "@hooks/useLockBodyScroll";
 import { SafeMotion } from "@components/SafeMotion";
 
 import RegisterFormFirstStep from "@components/register-components/RegisterFormFirstStep";
@@ -24,8 +24,8 @@ const RegisterFormFourthStep = lazy(
 import useRegisterStore from "@store/registerStore";
 
 export default function Register() {
+  useLockBodyScroll(true);
   const step = useRegisterStore((state) => state.step);
-
   const navigate = useNavigate();
   useEffect(() => {
     if (step === 4) {
@@ -36,7 +36,6 @@ export default function Register() {
     }
   }, [step, navigate]);
   useRecaptchaLanguage();
-  // useLockBodyScroll(true);
 
   const { isMobile, hasMounted } = useResponsive();
   if (!hasMounted) return null;
@@ -46,6 +45,7 @@ export default function Register() {
       <SafeMotion
         initial={{ opacity: 0, transform: "translateX(50px)" }}
         animate={{ opacity: 1, transform: "translateX(0)" }}
+        exit={{ opacity: 0, transform: "translateX(50px)" }}
         transition={{ duration: 0.5 }}
         className="container flex flex-col 2xl:flex-row gap-y-1 sm:gap-y-4 m-1 justify-between w-[95%] items-center"
       >
