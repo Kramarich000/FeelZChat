@@ -16,6 +16,7 @@ const routes = [
   {
     path: "/register",
     component: Register,
+    importFunc: () => import("@pages/Register"),
     titleKey: "key_register_1",
     descriptionKey: "key_register_description",
     url: `${baseUrl}/register`,
@@ -24,6 +25,7 @@ const routes = [
   {
     path: "/login",
     component: Login,
+    importFunc: () => import("@pages/login"),
     titleKey: "key_login_1",
     descriptionKey: "key_login_description",
     url: `${baseUrl}/login`,
@@ -32,6 +34,7 @@ const routes = [
   {
     path: "/chat",
     component: Chat,
+    importFunc: () => import("@pages/Chat"),
     titleKey: "key_chat",
     descriptionKey: "key_chat_description",
     url: `${baseUrl}/chat`,
@@ -40,6 +43,7 @@ const routes = [
   {
     path: "/privacy",
     component: Privacy,
+    importFunc: () => import("@pages/Privacy"),
     titleKey: "key_privacy",
     descriptionKey: "key_privacy_description",
     url: `${baseUrl}/privacy`,
@@ -48,6 +52,7 @@ const routes = [
   {
     path: "/help",
     component: Help,
+    importFunc: () => import("@pages/Help"),
     titleKey: "key_help",
     descriptionKey: "key_help_description",
     url: `${baseUrl}/help`,
@@ -56,6 +61,7 @@ const routes = [
   {
     path: "/",
     component: Home,
+    importFunc: () => import("@pages/Home"),
     titleKey: "key_home",
     descriptionKey: "key_home_description",
     url: `${baseUrl}/`,
@@ -64,6 +70,7 @@ const routes = [
   {
     path: "/profile",
     component: Profile,
+    importFunc: () => import("@pages/Profile"),
     titleKey: "key_profile_1",
     descriptionKey: "key_profile_description",
     url: `${baseUrl}/profile`,
@@ -73,6 +80,7 @@ const routes = [
   {
     path: "/forgot-password",
     component: ForgotPassword,
+    importFunc: () => import("@pages/ForgotPassword"),
     titleKey: "key_reset_password",
     descriptionKey: "key_reset-password_description",
     url: `${baseUrl}/forgot-password`,
