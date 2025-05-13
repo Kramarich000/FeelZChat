@@ -1,4 +1,4 @@
-// import { Loader } from '@components/Loader';
+// import Loader from '@components/Loader';
 // import { Suspense, useState, useEffect } from 'react';
 // const SuspenseWithDelay = ({ children, delay = 500, fallback }) => {
 //   const [showLoader, setShowLoader] = useState(false);

@@ -15,7 +15,6 @@ export const SafeMotion = ({
   const isMobile = useMediaQuery("(max-width: 639px)");
   const Component = motion[as] || motion.div;
 
-  // Фильтруем пропсы, чтобы не передавать whileInView в DOM элементы
   const filteredProps = { ...rest };
   if (whileInView) {
     filteredProps.whileInView = whileInView;
