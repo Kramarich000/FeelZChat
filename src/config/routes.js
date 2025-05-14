@@ -25,7 +25,7 @@ const routes = [
   {
     path: "/login",
     component: Login,
-    importFunc: () => import("@pages/login"),
+    importFunc: () => import("@pages/Login"),
     titleKey: "key_login_1",
     descriptionKey: "key_login_description",
     url: `${baseUrl}/login`,
