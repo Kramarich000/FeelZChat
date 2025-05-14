@@ -28,7 +28,7 @@ export default function ReviewCard({ avatar, name, joined, rating, comment }) {
       <img
         src={avatar}
         alt={name}
-        className="rounded-full mx-auto mb-3 object-cover"
+        className="rounded-full mx-auto mb-2.5 object-cover"
       />
       <div className="text-center">
         <h4 className="font-semibold text-lg">{name}</h4>
