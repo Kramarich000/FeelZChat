@@ -3,114 +3,87 @@ import secondReviewer from "@assets/images/reviewers/2.jpg";
 import thirdReviewer from "@assets/images/reviewers/3.jpg";
 import fourthReviewer from "@assets/images/reviewers/4.jpg";
 import fifthReviewer from "@assets/images/reviewers/5.jpg";
+import translate from "@utils/translate";
 
 const reviews = [
   {
     id: 1,
-    name: "Алексей",
-    joined: "2 года назад",
+    name: translate("key_first_reviewer_name"),
+    joined: translate("key_first_reviewer_joined"),
     rating: 5,
-    comment:
-      "Отличный мессенджер! Быстро, безопасно и без лишней рекламы. Лучший выбор для приватного общения.",
+    comment: translate("key_first_reviewer_comment"),
     avatar: firstReviewer,
   },
   {
     id: 2,
-    name: "Мария",
-    joined: "1 год назад",
+    name: translate("key_second_reviewer_name"),
+    joined: translate("key_second_reviewer_joined"),
     rating: 5,
-    comment:
-      "Удобный интерфейс, легко нашла друзей. Поддержка быстро ответила по багу — молодцы!",
+    comment: translate("key_second_reviewer_comment"),
     avatar: secondReviewer,
   },
   {
     id: 3,
-    name: "Денис",
-    joined: "8 месяцев назад",
+    name: translate("key_third_reviewer_name"),
+    joined: translate("key_third_reviewer_joined"),
     rating: 4,
-    comment:
-      "Всё круто, но хотелось бы темную тему получше. В целом доволен, перешёл с другого мессенджера.",
+    comment: translate("key_third_reviewer_comment"),
     avatar: thirdReviewer,
   },
   {
     id: 4,
-    name: "Ольга",
-    joined: "Полгода назад",
+    name: translate("key_fourth_reviewer_name"),
+    joined: translate("key_fourth_reviewer_joined"),
     rating: 5,
-    comment:
-      "Шифрование, стикеры, звонки — всё есть. Безопасность важна, особенно в работе.",
+    comment: translate("key_fourth_reviewer_comment"),
     avatar: fourthReviewer,
   },
   {
     id: 5,
-    name: "Никита",
-    joined: "3 месяца назад",
+    name: translate("key_fifth_reviewer_name"),
+    joined: translate("key_fifth_reviewer_joined"),
     rating: 4,
-    comment:
-      "Минималистично и быстро. Не хватает группового видеочата, но в остальном всё устраивает.",
+    comment: translate("key_fifth_reviewer_comment"),
     avatar: fifthReviewer,
   },
   {
     id: 6,
-    name: "Никита",
-    joined: "3 месяца назад",
-    rating: 4,
-    comment:
-      "Минималистично и быстро. Не хватает группового видеочата, но в остальном всё устраивает.",
-    avatar: fifthReviewer,
+    name: translate("key_first_reviewer_name"),
+    joined: translate("key_first_reviewer_joined"),
+    rating: 5,
+    comment: translate("key_first_reviewer_comment"),
+    avatar: firstReviewer,
   },
   {
     id: 7,
-    name: "Никита",
-    joined: "3 месяца назад",
-    rating: 4,
-    comment:
-      "Минималистично и быстро. Не хватает группового видеочата, но в остальном всё устраивает.",
-    avatar: fifthReviewer,
+    name: translate("key_second_reviewer_name"),
+    joined: translate("key_second_reviewer_joined"),
+    rating: 5,
+    comment: translate("key_second_reviewer_comment"),
+    avatar: secondReviewer,
   },
   {
     id: 8,
-    name: "Никита",
-    joined: "3 месяца назад",
+    name: translate("key_third_reviewer_name"),
+    joined: translate("key_third_reviewer_joined"),
     rating: 4,
-    comment:
-      "Минималистично и быстро. Не хватает группового видеочата, но в остальном всё устраивает.",
-    avatar: fifthReviewer,
+    comment: translate("key_third_reviewer_comment"),
+    avatar: thirdReviewer,
   },
   {
     id: 9,
-    name: "Никита",
-    joined: "3 месяца назад",
-    rating: 4,
-    comment:
-      "Минималистично и быстро. Не хватает группового видеочата, но в остальном всё устраивает.",
-    avatar: fifthReviewer,
+    name: translate("key_fourth_reviewer_name"),
+    joined: translate("key_fourth_reviewer_joined"),
+    rating: 5,
+    comment: translate("key_fourth_reviewer_comment"),
+    avatar: fourthReviewer,
   },
   {
     id: 10,
-    name: "Никита",
-    joined: "3 месяца назад",
+    name: translate("key_fifth_reviewer_name"),
+    joined: translate("key_fifth_reviewer_joined"),
     rating: 4,
-    comment:
-      "Минималистично и быстро. Не хватает группового видеочата, но в остальном всё устраивает.",
-    avatar: fifthReviewer,
-  },
-  {
-    id: 11,
-    name: "Никита",
-    joined: "3 месяца назад",
-    rating: 4,
-    comment:
-      "Минималистично и быстро. Не хватает группового видеочата, но в остальном всё устраивает.",
-    avatar: fifthReviewer,
-  },
-  {
-    id: 12,
-    name: "Никита",
-    joined: "3 месяца назад",
-    rating: 4,
-    comment:
-      "Минималистично и быстро. Не хватает группового видеочата, но в остальном всё устраивает.",
+    comment: translate("key_fifth_reviewer_comment"),
     avatar: fifthReviewer,
   },
 ];

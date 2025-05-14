@@ -1,4 +1,5 @@
 import translate from "@utils/translate";
+import { SafeMotion } from "@components/SafeMotion";
 
 export default function ReviewCard({ avatar, name, joined, rating, comment }) {
   const renderStars = () => {
@@ -17,7 +18,13 @@ export default function ReviewCard({ avatar, name, joined, rating, comment }) {
   };
 
   return (
-    <div className="bg-gray-800 border-2 border-primary h-[300px] shadow-md p-4 text-white">
+    <SafeMotion
+      className="!bg-gray-800 border-2 border-primary h-[300px] shadow-md p-4 text-white"
+      initial={{ opacity: 0, transform: "translateY(100px)" }}
+      whileInView={{ opacity: 1, transform: "translateY(0)" }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+    >
       <img
         src={avatar}
         alt={name}
@@ -31,6 +38,6 @@ export default function ReviewCard({ avatar, name, joined, rating, comment }) {
         <div className="flex justify-center mb-2">{renderStars()}</div>
         <p className="text-gray-300 text-[12px] xs:text-sm">{comment}</p>
       </div>
-    </div>
+    </SafeMotion>
   );
 }
