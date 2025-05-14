@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import Header from "@components/Header";
 import Loader from "@components/Loader";
 import MainHero from "@components/home-components/MainHero";
+import SecuritySection from "@components/home-components/SecuritySection";
 // import ModalSection from '@components/home-components/ModalSection';
 
 const FeaturesSection = lazy(
@@ -30,6 +31,10 @@ export default function Home() {
 
       <Suspense fallback={<Loader />}>
         <FeaturesSection />
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <SecuritySection />
       </Suspense>
 
       <Suspense fallback={<Loader />}>
