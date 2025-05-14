@@ -129,9 +129,9 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  -webkit-text-fill-color: black;
-  transition: background-color 50000s ease-in-out 0s;
-  border-bottom: 1px solid black;
+  -webkit-text-fill-color: black !important;
+  transition: background-color 50000s ease-in-out 0s !important;
+  border-bottom: 1px solid black !important;
 }
 
 .checkbox-custom {
@@ -581,6 +581,41 @@ button:hover svg {
   display: none;
 }
 
+.swiper {
+  max-width: 1240px;
+  height: 100%;
+  width: 100%;
+  margin: 10px !important;
+}
+
+.swiper-wrapper {
+  margin-bottom: 20px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  max-width: 200px;
+  object-fit: cover;
+
+}
+
+.swiper-scrollbar-drag {
+  background: #0e7490 !important;
+}
+
+.swiper-scrollbar.swiper-scrollbar-horizontal {
+  background: #000;
+}
 
 /* .input-decoration {
   top: 35px;

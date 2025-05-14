@@ -14,8 +14,11 @@ const LinksSection = lazy(
   () => import("@components/home-components/LinksSection"),
 );
 
-const Footer = lazy(() => import("@components/Footer"));
+const SliderSection = lazy(
+  () => import("@components/main-components/MainSlider"),
+);
 
+const Footer = lazy(() => import("@components/Footer"));
 export default function Home() {
   return (
     <div className="relative w-full mx-auto">
@@ -28,12 +31,19 @@ export default function Home() {
       <Suspense fallback={<Loader />}>
         <FeaturesSection />
       </Suspense>
+
       <Suspense fallback={<Loader />}>
         <HowItWorksSection />
       </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <SliderSection />
+      </Suspense>
+
       <Suspense fallback={<Loader />}>
         <LinksSection />
       </Suspense>
+
       <Suspense fallback={<Loader />}>
         <Footer />
       </Suspense>

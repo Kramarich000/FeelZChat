@@ -21,7 +21,7 @@ export default function FeaturesSection() {
             whileInView={{ opacity: 1, transform: "translateY(0)" }}
             transition={{ delay: 0.1 * item.id, duration: 0.2 * item.id }}
             viewport={{ once: true }}
-            className="bg-white p-4 rounded-lg max-w-[400px] min-h-[150px] aspect-[3/1] border-primary border-b-8"
+            className="bg-white p-4 rounded-lg w-full sm:w-auto max-w-full sm:max-w-[400px] min-h-[150px] border-primary border-b-8"
           >
             <h3 className="font-bold text-xl sm:text-2xl mb-2">{item.title}</h3>
             <p className="sm:text-base text-sm">{item.description}</p>

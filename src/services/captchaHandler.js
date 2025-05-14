@@ -29,10 +29,10 @@ const useCaptchaHandler = () => {
       const verificationResultV2 = await captcha(token, "v2");
 
       if (verificationResultV2.success && verificationResultV2.score >= 0.5) {
-        console.log("Captcha v2 пройдена:", verificationResultV2);
+        // console.log("Captcha v2 пройдена:", verificationResultV2);
         setCaptchaVerified(true);
       } else {
-        console.warn("Captcha v2 не пройдена, пробуем v3...");
+        // console.warn("Captcha v2 не пройдена, пробуем v3...");
         const tokenV3 = await executeRecaptchaV3();
 
         if (tokenV3) {
