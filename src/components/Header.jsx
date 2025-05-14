@@ -2,6 +2,7 @@ import { SafeMotion } from "@components/SafeMotion";
 import translate from "@utils/translate";
 import Logo from "../animations/logoAnimation";
 import PrefetchLink from "@components/PrefetchLink";
+import Tooltip from "@components/main-components/Tooltip";
 
 export default function Header() {
   return (
@@ -35,13 +36,15 @@ export default function Header() {
         "
       >
         <div className="mx-auto flex justify-between items-center relative overflow-hidden">
-          <PrefetchLink
-            className="block order-0"
-            to="/"
-            aria-label="Go to main page"
-          >
-            <Logo />
-          </PrefetchLink>
+          <Tooltip tooltipId="tooltip-1" tooltipText="На главную">
+            <PrefetchLink
+              className="block order-0"
+              to="/"
+              aria-label="Go to main page"
+            >
+              <Logo />
+            </PrefetchLink>
+          </Tooltip>
           <div className="order-2 flex gap-1 mr-2">
             <SafeMotion transition={{ type: "tween" }}>
               <PrefetchLink

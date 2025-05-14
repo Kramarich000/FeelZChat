@@ -112,7 +112,7 @@ export default function CookieBanner() {
             </div>
           </SafeMotion>
         </div>
-      )}{" "}
+      )}
       <Modal
         isOpen={isOpen}
         onRequestClose={handleCloseModal}
