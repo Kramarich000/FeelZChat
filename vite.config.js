@@ -132,20 +132,20 @@ export default defineConfig({
             purpose: "any maskable",
           },
         ],
-        screenshots: [
-          {
-            src: "/screenshots/app-mobile.png",
-            sizes: "540x720",
-            type: "image/png",
-            form_factor: "narrow",
-          },
-          {
-            src: "/screenshots/app-desktop.png",
-            sizes: "1024x768",
-            type: "image/png",
-            form_factor: "wide",
-          },
-        ],
+        // screenshots: [
+        //   {
+        //     src: "/screenshots/app-mobile.png",
+        //     sizes: "540x720",
+        //     type: "image/png",
+        //     form_factor: "narrow",
+        //   },
+        //   {
+        //     src: "/screenshots/app-desktop.png",
+        //     sizes: "1024x768",
+        //     type: "image/png",
+        //     form_factor: "wide",
+        //   },
+        // ],
         categories: ["social", "communication"],
       },
     }),
