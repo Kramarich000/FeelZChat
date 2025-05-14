@@ -9,7 +9,11 @@ import ReCAPTCHA from "react-google-recaptcha";
 import handleCaptcha from "@services/captchaHandler";
 import { formatPhoneNumber } from "@validate/loginSchema";
 import { handleLoginSubmit } from "@services/loginHandlers";
+import { useOnlineStatus } from "@hooks/useOnlineStatus";
+
 export default function LoginForm() {
+  const isOnline = useOnlineStatus();
+
   return (
     <section className="form-section text-sm sm:text-[16px] max-w-[650px] container bg-white p-8 sm:p-16 rounded-2xl border-b-primary border-b-8 z-50">
       <h2 className="text-2xl sm:text-3xl pb-2 sm:pb-10">
@@ -99,10 +103,15 @@ export default function LoginForm() {
         </PrefetchLink>
       </div>
       <div className="captcha-wrapper flex justify-center items-center mt-4 origin-top col-span-2 min-h-[78px]">
-        <ReCAPTCHA
-          sitekey="6Lc7Xw0rAAAAAB3xa6ZFw2EjErWwzr7qxZbdiO_3"
-          onChange={handleCaptcha}
-        />
+        {isOnline ? (
+          <ReCAPTCHA
+            sitekey="6Lc7Xw0rAAAAAB3xa6ZFw2EjErWwzr7qxZbdiO_3"
+            onChange={handleCaptcha}
+            onErrored={handleError}
+          />
+        ) : (
+          <p>Нет подключения к интернету</p>
+        )}
       </div>
     </section>
   );

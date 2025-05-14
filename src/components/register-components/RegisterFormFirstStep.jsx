@@ -162,11 +162,15 @@ export default function RegisterFormFirstStep() {
             {translate("key_already_have_account")}
           </PrefetchLink>
           <div className="captcha-wrapper flex justify-center items-center mt-4 origin-top col-span-2 min-h-[78px]">
-            <ReCAPTCHA
-              sitekey="6Lc7Xw0rAAAAAB3xa6ZFw2EjErWwzr7qxZbdiO_3"
-              onChange={handleCaptcha}
-              onErrored={handleError}
-            />
+            {isOnline ? (
+              <ReCAPTCHA
+                sitekey="6Lc7Xw0rAAAAAB3xa6ZFw2EjErWwzr7qxZbdiO_3"
+                onChange={handleCaptcha}
+                onErrored={handleError}
+              />
+            ) : (
+              <p>Нет подключения к интернету</p>
+            )}
           </div>
         </Form>
       )}
