@@ -5,7 +5,7 @@ import { AnimatePresence } from "framer-motion";
 const LoaderContainer = ({ children }) => (
   <AnimatePresence>
     <SafeMotion
-      className="flex items-center justify-center h-full w-full"
+      className="flex items-center justify-center min-h-screen w-full"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

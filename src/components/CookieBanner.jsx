@@ -116,7 +116,7 @@ export default function CookieBanner() {
       <Modal
         isOpen={isOpen}
         onRequestClose={handleCloseModal}
-        contentLabel="Настройки конфиденциальности"
+        contentLabel="Privacy Settings"
         className="flex justify-center items-center"
       >
         <SafeMotion
@@ -133,12 +133,12 @@ export default function CookieBanner() {
           <img
             src={cookieBannerBg}
             className="absolute right-[-20px] bottom-[-20px] w-18 sm:w-20 "
-            alt=""
+            alt="cookie-banner"
           />
           <img
             src={cookieBannerBg}
             className="absolute right-[40px] bottom-[-30px] w-18 sm:w-20 "
-            alt=""
+            alt="cookie-banner"
           />
           <h2>{translate("key_privacy_settings")}</h2>
           <p>{translate("key_choose_type_of_data")}</p>

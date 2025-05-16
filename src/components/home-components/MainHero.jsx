@@ -4,7 +4,7 @@ import PrefetchLink from "@components/PrefetchLink";
 
 export default function MainHero() {
   return (
-    <section className="main-section min-h-screen flex items-center justify-center text-center bg-opacity-40 p-4">
+    <section className="main-section flex items-center justify-center text-center bg-opacity-40 p-4">
       <SafeMotion
         className="main-description max-w-3xl sm:shadow-[0px_6px_24px_rgba(0,0,0,0.5)] bg-white border-b-8 border-primary mx-auto p-10 rounded-4xl"
         initial={{ opacity: 0 }}

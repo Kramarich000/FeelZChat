@@ -8,9 +8,15 @@ import SecuritySection from "@components/home-components/SecuritySection";
 const FeaturesSection = lazy(
   () => import("@components/home-components/FeaturesSection"),
 );
+
 const HowItWorksSection = lazy(
   () => import("@components/home-components/HowItWorksSection"),
 );
+
+const HowStartSection = lazy(
+  () => import("@components/home-components/HowStartSection"),
+);
+
 const LinksSection = lazy(
   () => import("@components/home-components/LinksSection"),
 );
@@ -20,10 +26,11 @@ const SliderSection = lazy(
 );
 
 const Footer = lazy(() => import("@components/Footer"));
+
 export default function Home() {
   return (
     <div className="relative w-full mx-auto">
-      <div className="fixed inset-x-0 top-0 bottom-0 min-h-screen -z-10 mobile-bg sm:home-container" />
+      <div className="absolute inset-x-0 top-0 bottom-0 -z-10 mobile-bg sm:home-container" />
       <Header />
       <MainHero />
 
@@ -45,6 +52,9 @@ export default function Home() {
         <SliderSection />
       </Suspense>
 
+      <Suspense fallback={<Loader />}>
+        <HowStartSection />
+      </Suspense>
       <Suspense fallback={<Loader />}>
         <LinksSection />
       </Suspense>
