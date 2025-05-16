@@ -10,9 +10,11 @@ import handleCaptcha from "@services/captchaHandler";
 import { formatPhoneNumber } from "@validate/loginSchema";
 import { handleLoginSubmit } from "@services/loginHandlers";
 import { useOnlineStatus } from "@hooks/useOnlineStatus";
+import useCaptchaHandler from "@services/captchaHandler";
 
 export default function LoginForm() {
   const isOnline = useOnlineStatus();
+  const { handleError, captchaVerified } = useCaptchaHandler();
 
   return (
     <section className="form-section text-sm sm:text-[16px] max-w-[650px] container bg-white p-8 sm:p-16 rounded-2xl border-b-primary border-b-8 z-50">

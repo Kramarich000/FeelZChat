@@ -7,6 +7,7 @@ import { formatPhoneNumber } from "@validate/registerSchema";
 import translate from "@utils/translate";
 
 import useCaptchaHandler from "@services/captchaHandler";
+import { useOnlineStatus } from "@hooks/useOnlineStatus";
 
 import GoogleAuth from "@components/GoogleAuth";
 import CustomCalendar from "@components/CustomCalendar";
@@ -17,7 +18,9 @@ import AnimatedError from "@components/AnimatedError";
 import { handleFirstStepSubmit } from "@services/registerHandlers";
 
 export default function RegisterFormFirstStep() {
-  const { handleCaptcha, handleError, captchaVerified } = useCaptchaHandler();
+  const { handleCaptcha, handleError } = useCaptchaHandler();
+  const isOnline = useOnlineStatus();
+
   const initialValues = {
     name: "",
     surname: "",
