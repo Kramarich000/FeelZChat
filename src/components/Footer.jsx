@@ -50,7 +50,7 @@ export default function Footer() {
   ];
   return (
     <>
-      <footer className="w-full text-[24px] bg-gray-900 text-white py-6">
+      <footer className="w-full text-[24px] bg-gray-900 text-white py-6 px-4">
         <div className="container mx-auto text-center">
           <div className="flex justify-center space-x-6 pt-6">
             {socialLinks.map((item) => (
@@ -74,7 +74,7 @@ export default function Footer() {
           </div>
 
           <div className="mt-2">
-            <div transition={{ type: "spring", stiffness: 300 }}>
+            <div className="flex flex-wrap items-center justify-center gap-6 py-4">
               <PrefetchLink
                 to="/privacy"
                 onClick={(e) => {
@@ -85,8 +85,7 @@ export default function Footer() {
                 className="text-[16px] sm:text-[20px] underline hover:text-primary transition-all"
               >
                 {translate("key_privacy")}
-              </PrefetchLink>{" "}
-              |{" "}
+              </PrefetchLink>
               <PrefetchLink
                 to="/privacy"
                 onClick={(e) => {
@@ -97,8 +96,7 @@ export default function Footer() {
                 className="text-[16px] sm:text-[20px] underline hover:text-primary transition-all"
               >
                 {translate("key_terms")}
-              </PrefetchLink>{" "}
-              |{" "}
+              </PrefetchLink>
               <button
                 onClick={() => openModal()}
                 className="!text-[16px] !bg-transparent sm:!text-[20px] !p-0 !underline hover:!text-primary !transition-all"

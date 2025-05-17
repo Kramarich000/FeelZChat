@@ -63,7 +63,7 @@ export default function Privacy() {
         transition={{ duration: 0.5 }}
       >
         <div className="container p-4 sm:p-10 rounded-2xl">
-          <h1 className="text-3xl mt-4 sm:text-4xl font-bold mb-2 border-b-1 pb-2 sm:pb-4 border-primary sm:mb-4">
+          <h1 className="text-xl mt-4 sm:text-4xl font-bold mb-2 border-b-1 pb-2 sm:pb-4 border-primary sm:mb-4">
             {translate("key_privacy")}
           </h1>
 
