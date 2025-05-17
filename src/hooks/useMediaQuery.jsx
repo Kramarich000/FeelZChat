@@ -16,8 +16,12 @@ export default function useMediaQuery(query) {
 
     if (mq.addEventListener) {
       mq.addEventListener("change", handler);
-    } else if (mq.addListener) {
-      mq.addListener(handler);
+    } else {
+      console.warn(
+        "MediaQueryList.addEventListener is not supported in this browser. Media query changes won't be detected.",
+      );
+      setMatches(mq.matches);
+      return;
     }
 
     setMatches(mq.matches);
@@ -25,8 +29,6 @@ export default function useMediaQuery(query) {
     return () => {
       if (mq.removeEventListener) {
         mq.removeEventListener("change", handler);
-      } else if (mq.removeListener) {
-        mq.removeListener(handler);
       }
     };
   }, [query]);
