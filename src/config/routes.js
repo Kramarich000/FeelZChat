@@ -4,6 +4,7 @@ const Register = lazy(() => import("@pages/Register"));
 const Login = lazy(() => import("@pages/Login"));
 const Chat = lazy(() => import("@pages/Chat"));
 const Privacy = lazy(() => import("@pages/Privacy"));
+const Terms = lazy(() => import("@pages/Terms"));
 const Help = lazy(() => import("@pages/Help"));
 const Home = lazy(() => import("@pages/Home"));
 const Profile = lazy(() => import("@pages/Profile"));
@@ -47,6 +48,15 @@ const routes = [
     titleKey: "key_privacy",
     descriptionKey: "key_privacy_description",
     url: `${baseUrl}/privacy`,
+    locale: "key_page_locale",
+  },
+  {
+    path: "/terms",
+    component: Terms,
+    importFunc: () => import("@pages/Terms"),
+    titleKey: "key_terms",
+    descriptionKey: "key_terms_description",
+    url: `${baseUrl}/terms`,
     locale: "key_page_locale",
   },
   {

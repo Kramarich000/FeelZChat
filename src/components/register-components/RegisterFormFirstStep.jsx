@@ -136,10 +136,20 @@ export default function RegisterFormFirstStep() {
                 {translate("key_i_confirm")}{" "}
                 <PrefetchLink
                   to="/privacy"
+                  target="_blank"
                   className="text-primary hover:underline"
                   onClick={(e) => e.stopPropagation()}
                 >
                   {translate("key_privacy_1")}
+                </PrefetchLink>{" "}
+                {translate("key_and")}{" "}
+                <PrefetchLink
+                  to="/terms"
+                  target="_blank"
+                  className="text-primary hover:underline"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {translate("key_terms_of_service")}
                 </PrefetchLink>
               </span>
             </label>

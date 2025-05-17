@@ -76,6 +76,18 @@ export default function Footer() {
               className="text-[16px] sm:text-[20px] underline hover:text-primary transition-all"
             >
               {translate("key_privacy")}
+            </PrefetchLink>{" "}
+            |{" "}
+            <PrefetchLink
+              to="/privacy"
+              onClick={(e) => {
+                e.preventDefault();
+                window.open("/terms", "_blank", "noopener,noreferrer");
+              }}
+              target="_blank"
+              className="text-[16px] sm:text-[20px] underline hover:text-primary transition-all"
+            >
+              {translate("key_terms")}
             </PrefetchLink>
           </div>
         </div>

@@ -57,7 +57,7 @@ export const steps = [
     title: (
       <>
         <IoIosSend size={30} color="#0e7490" />
-        Шаг 4: Отправка сообщений
+        Шаг 4: Отправьте сообщение
       </>
     ),
     content:
@@ -68,7 +68,7 @@ export const steps = [
     title: (
       <>
         <IoMdSettings size={30} color="#0e7490" />
-        Шаг 5: Настройки профиля
+        Шаг 5: Настройте профиль
       </>
     ),
     content: "Измените аватар, статус и личные данные.",

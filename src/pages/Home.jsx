@@ -37,15 +37,15 @@ export default function Home() {
       {/* <ModalSection /> */}
 
       <Suspense fallback={<Loader />}>
+        <HowItWorksSection />
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
         <FeaturesSection />
       </Suspense>
 
       <Suspense fallback={<Loader />}>
         <SecuritySection />
-      </Suspense>
-
-      <Suspense fallback={<Loader />}>
-        <HowItWorksSection />
       </Suspense>
 
       <Suspense fallback={<Loader />}>
@@ -55,6 +55,7 @@ export default function Home() {
       <Suspense fallback={<Loader />}>
         <HowStartSection />
       </Suspense>
+
       <Suspense fallback={<Loader />}>
         <LinksSection />
       </Suspense>
