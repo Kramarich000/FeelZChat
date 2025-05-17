@@ -57,12 +57,10 @@
 
 @utility home-container {
   width: 100%;
-  background: linear-gradient(
-    45deg,
-    rgba(152, 251, 152, 0.8),
-    rgba(255, 20, 147, 0.8),
-    rgba(0, 0, 255, 0.8)
-  );
+  background: linear-gradient(45deg,
+      rgba(152, 251, 152, 0.8),
+      rgba(255, 20, 147, 0.8),
+      rgba(0, 0, 255, 0.8));
   background-size: 400% 400%;
   animation: gradientBG 5s ease infinite;
   will-change: transform;
@@ -146,12 +144,12 @@ select:-webkit-autofill:focus {
   transition: all 0.3s ease;
 }
 
-input[type='checkbox']:checked + .checkbox-custom {
+input[type='checkbox']:checked+.checkbox-custom {
   background-color: white;
   border-color: black;
 }
 
-input[type='checkbox']:checked + .checkbox-custom::after {
+input[type='checkbox']:checked+.checkbox-custom::after {
   content: '';
   position: absolute;
   top: 2px;
@@ -459,12 +457,10 @@ button:hover svg {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(
-    45deg,
-    rgba(152, 251, 152, 0.8),
-    rgba(255, 20, 147, 0.8),
-    rgba(0, 0, 255, 0.8)
-  );
+  background: linear-gradient(45deg,
+      rgba(152, 251, 152, 0.8),
+      rgba(255, 20, 147, 0.8),
+      rgba(0, 0, 255, 0.8));
   background-size: 400% 400%;
   animation: gradientBG 5s ease infinite;
 }
@@ -637,6 +633,10 @@ button:hover svg {
 
 .ReactModalPortal {
   z-index: 9999;
+}
+
+.ReactModal__Overlay {
+  background-color: rgba(14, 116, 144, .2) !important;
 }
 
 footer {

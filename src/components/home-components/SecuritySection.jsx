@@ -15,6 +15,20 @@ export default function SecuritySection() {
         ref={ref}
         className="flex gap-5 flex-wrap items-center justify-center max-w-[1240px]"
       >
+        <SafeMotion
+          as="p"
+          initial={{ opacity: 0, transform: "translateY(75px) " }}
+          whileInView={{ opacity: 1, transform: "translateY(0) " }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="mb-6 text-[15px] sm:text-lg text-white bg-gray-800 p-4 rounded-lg"
+        >
+          Защита данных и конфиденциальность — ключевые приоритеты нашего
+          сервиса. Мы применяем комплекс современных технологий шифрования и
+          многоуровневых механизмов аутентификации, чтобы гарантировать
+          максимальную безопасность вашей информации и предотвратить
+          несанкционированный доступ.
+        </SafeMotion>
         {security.map((item) => (
           <SafeMotion
             key={item.id}

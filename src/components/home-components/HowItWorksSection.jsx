@@ -17,10 +17,17 @@ export default function HowItWorksSection() {
         <h2 className="text-3xl sm:text-4xl font-bold mb-8">
           {translate("key_see_how_it_works")}
         </h2>
-        <p className="mb-6 text-lg bg-gray-800 p-4 rounded-lg">
+        <SafeMotion
+          as="p"
+          initial={{ opacity: 0, transform: "translateY(75px) " }}
+          whileInView={{ opacity: 1, transform: "translateY(0) " }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="mb-6 text-[15px] sm:text-lg bg-gray-800 p-4 rounded-lg"
+        >
           Мы объединили искусственный интеллект и интерфейс чата, чтобы вы
           чувствовали настроение собеседника даже между строк.
-        </p>
+        </SafeMotion>
 
         <SafeMotion
           initial={{ opacity: 0, transform: "translateY(-20px)" }}
@@ -81,7 +88,7 @@ export default function HowItWorksSection() {
                   }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5 * (index + 1) }}
-                  className="p-4 flex items-center justify-center text-center border-b-2 border-r-2 sm:border-r-0 border-primary rounded-2xl rounded-bl-[0px] rounded-tr-[0px] sm:rounded-bl-2xl sm:rounded-tr-2xl"
+                  className="p-4 flex items-center justify-center text-sm sm:text-[16px] text-center border-b-2 border-r-2 sm:border-r-0 border-primary rounded-2xl rounded-bl-[0px] rounded-tr-[0px] sm:rounded-bl-2xl sm:rounded-tr-2xl"
                 >
                   {item.user}
                 </SafeMotion>
@@ -99,7 +106,7 @@ export default function HowItWorksSection() {
                   }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5 * (index + 1) + 2.5 }}
-                  className="p-4 flex items-center justify-center text-center border-b-2 border-l-2 sm:border-l-0  border-primary rounded-2xl rounded-tl-[0px] rounded-br-[0px] sm:rounded-tl-2xl sm:rounded-br-2xl"
+                  className="p-4 flex items-center justify-center text-sm sm:text-[16px] text-center border-b-2 border-l-2 sm:border-l-0  border-primary rounded-2xl rounded-tl-[0px] rounded-br-[0px] sm:rounded-tl-2xl sm:rounded-br-2xl"
                 >
                   {item.ai}
                 </SafeMotion>
@@ -110,14 +117,11 @@ export default function HowItWorksSection() {
           <LazyLoad height={610} offset={100} once>
             <div className="relative">
               {!isLoaded && (
-                <SkeletonLoader
-                  height="610px"
-                  width="100%"
-                  borderRadius={8}
-                  className="absolute top-0 left-0 w-full h-full"
-                />
+                <div className="relative w-full aspect-[16/9]">
+                  <SkeletonLoader className="absolute top-0 left-0 w-full h-full" />
+                </div>
               )}
-              <picture className="aspect-w-16 aspect-h-9">
+              <picture className="aspect-w-16 aspect-h-1">
                 <source srcSet={emotionAnalysisWEBP} type="image/webp" />
                 <img
                   src={emotionAnalysisJPG}

@@ -2,7 +2,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const SkeletonLoader = ({
-  height = 16,
+  height,
   width = "100%",
   count = 1,
   borderRadius = 4,

@@ -182,7 +182,11 @@ export default function RegisterFormFirstStep() {
                 onErrored={handleError}
               />
             ) : (
-              <p>Нет подключения к интернету</p>
+              <p>
+                Не удалось установить соединение с сервисом ReCAPTCHA.
+                Пожалуйста, проверьте подключение к интернету и попробуйте снова
+                позже.
+              </p>
             )}
           </div>
         </Form>
