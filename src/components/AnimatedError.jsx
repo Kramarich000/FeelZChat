@@ -24,6 +24,7 @@ const AnimatedError = ({ msg, centered = false, variant = "default" }) => {
     <AnimatePresence>
       {msg && (
         <SafeMotion
+          key={msg}
           initial={{ opacity: 0, transform: "translateY(6px)" }}
           animate={{ opacity: 1, transform: "translateY(0)" }}
           exit={{ opacity: 0, transform: "translateY(6px)" }}

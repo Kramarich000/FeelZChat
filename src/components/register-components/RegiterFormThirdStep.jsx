@@ -7,7 +7,6 @@ import useRegisterStore from "@store/registerStore";
 import AnimatedError from "@components/AnimatedError";
 export default function RegisterFormThirdStep() {
   const { setStep } = useRegisterStore();
-  useLockBodyScroll(true);
 
   return (
     <Formik

@@ -1,6 +1,5 @@
 import { useReducedMotion, motion } from "framer-motion";
 import useMediaQuery from "@hooks/useMediaQuery";
-
 export const SafeMotion = ({
   children,
   initial,

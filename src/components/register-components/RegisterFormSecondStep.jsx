@@ -8,7 +8,6 @@ import useRegisterStore from "@store/registerStore";
 
 export default function RegisterFormSecondStep() {
   const { registrationData } = useRegisterStore();
-  useLockBodyScroll(true);
 
   return (
     <Formik

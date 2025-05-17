@@ -63,7 +63,7 @@ export default function Register() {
           </h2>
 
           {step === 1 && <RegisterFormFirstStep />}
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={null}>
             {step === 2 && <RegisterFormSecondStep />}
             {step === 3 && <RegisterFormThirdStep />}
             {step === 4 && <RegisterFormFourthStep />}
